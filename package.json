@@ -1,6 +1,6 @@
 {
-  "name": "helldivers-stratagem-field-guide",
-  "version": "1.0.0",
+  "name": "hd2-field-guide",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {

@@ -34,7 +34,7 @@ jobs:
       - name: Add content-hash cache keys to modules and stylesheet
         run: |
           node scripts/version-assets.mjs
-          node scripts/check-versioning.mjs
+          node scripts/version-assets.mjs --verify
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site

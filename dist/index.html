@@ -1,112 +1,59 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111312">
-  <meta name="description" content="헬다이버즈 2 스트라타젬 도감. 지원 무기, 궤도, 이글, 배낭, 센트리와 차량의 사거리, 직격·폭발 피해, 장갑 관통과 사용법을 찾아보세요.">
-  <title>HELLDIVERS 2 — 스트라타젬 도감</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23111312'/%3E%3Cpath d='M16 4v24M4 16h24' stroke='%23ffe44f' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23ffe44f' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css">
-  <script type="module" src="./app.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0c0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f4f5f6" media="(prefers-color-scheme: light)">
+  <meta name="description" content="헬다이버즈 2 한국어 필드 가이드. 스트라타젬 수치, 적 부위별 필요 탄수, 시설 철거 조건, 팩션별 추천 장비를 한곳에서 확인하세요.">
+  <title>HD2 필드 가이드 — 헬다이버즈 2 스트라타젬·적 대응</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffd400'/%3E%3Cpath d='M16 6v20M6 16h20' stroke='%23111' stroke-width='3.2'/%3E%3Ccircle cx='16' cy='16' r='6.5' fill='none' stroke='%23111' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="./ui/app.css">
+  <script type="module" src="./ui/main.js"></script>
 </head>
-<body data-active-feature="catalog">
-  <a class="skip-link" href="#main">도감으로 바로 가기</a>
-  <header class="topbar">
-    <a href="./" class="brand" aria-label="스트라타젬 도감 홈"><span class="brand-mark" aria-hidden="true">✛</span><span>HELLDIVERS<span class="brand-two">Ⅱ</span><small>LIBERTY FIELD GUIDE</small></span></a>
-    <nav class="feature-nav" aria-label="자료 종류"><button data-feature="catalog" class="active" aria-pressed="true" aria-controls="catalog-view" title="110종 수치와 사용법"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="feature-name">스트라타젬 도감</span><span class="feature-short" aria-hidden="true">도감</span></button><button data-feature="combat" aria-pressed="false" aria-controls="combat-view" title="어디를 몇 발?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 1v6m0 10v6M1 12h6m10 0h6"/></svg><span class="feature-name">적 대응 계산</span><span class="feature-short" aria-hidden="true">적 대응</span></button><button data-feature="demolition" aria-pressed="false" aria-controls="demolition-view" title="어디까지 부숴질까?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg><span class="feature-name">건물 철거 계산</span><span class="feature-short" aria-hidden="true">철거</span></button><button data-feature="factions" aria-pressed="false" aria-controls="factions-view" title="어떤 걸 들고 갈까?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 22V3m0 1h13l-3 5 3 5H5"/></svg><span class="feature-name">팩션별 장비 추천</span><span class="feature-short" aria-hidden="true">팩션 추천</span></button></nav><div class="topbar-right"><button class="text-button" id="guide-button"><span aria-hidden="true">ⓘ</span> 수치 읽는 법</button></div>
+<body>
+  <a class="skip" href="#view">본문으로 건너뛰기</a>
+  <header class="bar">
+    <a class="brand" href="#/arsenal" aria-label="HD2 필드 가이드 처음으로">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text"><b>HD2</b> 필드 가이드</span>
+    </a>
+    <nav class="tabs" aria-label="도구">
+      <a href="#/arsenal" data-tab="arsenal"><span class="tab-icon" data-icon="arsenal"></span>스트라타젬</a>
+      <a href="#/enemy" data-tab="enemy"><span class="tab-icon" data-icon="enemy"></span>적 대응</a>
+      <a href="#/demolition" data-tab="demolition"><span class="tab-icon" data-icon="demolition"></span>철거</a>
+      <a href="#/factions" data-tab="factions"><span class="tab-icon" data-icon="factions"></span>팩션 추천</a>
+    </nav>
+    <div class="bar-actions">
+      <button class="search-trigger" type="button" data-action="palette" aria-keyshortcuts="Control+K /">
+        <span data-icon="search"></span><span class="search-label">전체 검색</span><kbd>/</kbd>
+      </button>
+      <button class="icon-button" type="button" data-action="method" aria-label="계산 방식 보기" title="계산 방식"><span data-icon="info"></span></button>
+    </div>
   </header>
-  <div class="app-layout">
-    <aside class="sidebar" aria-label="스트라타젬 종류">
-      <div class="nav-heading">ARSENAL INDEX <span>01—07</span></div>
-      <nav id="categories" class="categories"></nav>
-      <div class="sidebar-foot"><span class="mini-cross" aria-hidden="true">✛</span><strong>알고 투하하자.</strong><p>필요한 화력, 필요한 거리.<br>다음 강하를 위한 짧은 작전 브리핑.</p><div class="tiny-rule"></div><span class="mono">FOR MANAGED DEMOCRACY.</span></div>
-    </aside>
-    <main id="main" tabindex="-1">
-      <div class="page-heading"><div><div class="eyebrow"><span class="yellow-line"></span> SUPER EARTH FIELD MANUAL</div><h1><span id="page-title">스트라타젬 도감</span><span class="heading-dot">.</span></h1><p class="intro" id="page-intro">어디까지 닿고, 얼마나 뚫는지. 투하 전에 확인하세요.</p></div><div class="manual-stamp"><span>전술 자료집</span><strong>HD—02</strong><span>열람일 <time datetime="2026-09-16">2026.09.16</time></span></div></div>
-      <div class="notice-strip" id="catalog-notice"><span class="notice-symbol" aria-hidden="true">!</span><p><strong>한 발의 피해와 한 번의 호출은 다릅니다.</strong> 기본 수치 · 함선 모듈 제외 · 미확인 수치 구분</p><button id="notice-guide" aria-label="피해량 기준 자세히 보기">기준 보기 <span aria-hidden="true">↗</span></button></div>
-      <section class="catalog" id="catalog-view" aria-labelledby="section-title">
-        <div class="catalog-heading"><div class="catalog-title"><h2 id="section-title">전체 스트라타젬</h2><span class="count-badge" id="total-count"></span></div><span class="catalog-caption" id="category-caption">임무에 맞는 화력을 찾아보세요.</span></div>
-        <div class="toolbar"><label class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="이름, 장비 코드, 용도로 검색" autocomplete="off" aria-label="스트라타젬 검색" aria-describedby="search-help"><kbd aria-hidden="true">/</kbd></label><label class="select-field"><span class="sr-only">관통 등급</span><select id="penetration"><option value="all">모든 관통 등급</option><option value="tank">대전차 · AP 5 이상</option><option value="heavy">중장갑 · AP 4</option><option value="medium">일반 장갑 · AP 3</option><option value="light">경장갑 · AP 2 이하</option><option value="none">피해 없음 · 지원용</option><option value="unknown">수치 미확인</option></select></label><div class="view-toggle" aria-label="목록 보기 방식"><button class="view-button active" data-view="grid" aria-label="카드 보기" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button><button class="view-button" data-view="list" aria-label="목록 보기" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"/></svg></button></div></div>
-        <p class="search-help" id="search-help">이름은 글자 순서 없이 검색해 보세요. <span>도밀타 → 궤도 정밀 타격</span></p>
-        <div class="results-bar"><p id="results-count" role="status" aria-live="polite"></p><button class="reset-button" id="reset" hidden>필터 초기화 <span aria-hidden="true">↺</span></button><span class="results-tip">최대 3개까지 나란히 비교</span></div>
-        <div class="card-grid" id="cards"></div>
-        <div class="empty-state" id="empty" hidden><span aria-hidden="true">⌕</span><h3>일치하는 스트라타젬이 없습니다.</h3><p>다른 이름이나 용도로 검색해 보세요.</p><button class="primary-button" id="empty-reset">필터 초기화</button></div>
-      </section>
-      <section id="factions-view" aria-label="팩션별 장비 추천" hidden></section>
-      <section id="combat-view" class="combat-view" aria-labelledby="combat-title" hidden>
-        <div class="combat-heading"><div><h2 id="combat-title">이 적, 어디를 노릴까?</h2><p>고난이도 기준으로 부위별 처치 여부와 이론 탄수·장약 개수를 비교합니다.</p></div><span class="count-badge" id="combat-coverage"></span></div>
-        <div class="combat-controls">
-          <label for="combat-enemy">적 유닛<select id="combat-enemy"></select></label>
-          <label for="combat-weapon">지원 무기<select id="combat-weapon"></select></label>
-          <label for="combat-mode"><span id="combat-mode-label">발사·기폭 방식</span><select id="combat-mode"></select></label>
-        </div>
-        <fieldset class="combat-hit-conditions" id="combat-hit-conditions" hidden>
-          <legend>명중 조건 가정</legend>
-          <div class="combat-condition-controls">
-            <label for="combat-impact-count"><span id="combat-impact-label">한 발당 해당 부위 명중 수</span><select id="combat-impact-count" aria-describedby="combat-condition-note"></select></label>
-            <label for="combat-primary-hit" id="combat-primary-control">주탄 명중 조건<select id="combat-primary-hit"><option value="blast">주폭발만 명중</option><option value="direct">주탄 직격과 폭발 명중</option><option value="none">주탄 피해 없음 · 자탄만 명중</option></select></label>
-            <label class="combat-condition-check" id="combat-bomblet-control"><input type="checkbox" id="combat-bomblet-direct">선택한 자탄의 직격도 포함</label>
-          </div>
-          <p id="combat-condition-note"></p>
-        </fieldset>
-        <div class="combat-shield" id="combat-shield" hidden><label><input type="checkbox" id="combat-shield-cleared"><strong id="combat-shield-label"></strong></label><p id="combat-shield-note"></p></div>
-        <div class="combat-answer" id="combat-answer" role="status" aria-live="polite" aria-atomic="true"></div>
-        <p class="combat-assumption" id="combat-assumption">표시 탄수는 <strong>최대 피해로 같은 부위를 계속 맞히는 조건</strong>의 계산값입니다. 거리·각도·빗맞음에 따라 실전에서는 더 필요할 수 있습니다.</p>
-        <div class="combat-context"><div id="combat-enemy-info"></div><div id="combat-loadout"></div></div>
-        <div class="combat-routes" id="combat-routes"></div>
-        <details class="combat-method"><summary>계산 기준과 지원 범위</summary><div>
-          <p>위 목록에 등록된 적과 지원 무기의 탄환 한 발·장약 한 개·근접 타격 피해를 비교합니다. 난이도에 따라 체력·장갑이 달라지는 적은 고난이도 수치만 사용하며, 체형 차이는 따로 구분합니다. 유도탄과 전격은 표시 부위에 명중한 조건으로 계산합니다. 화염·가스 등 미확인 조건은 제외하거나 계산을 보류하며, 계산 보류는 처치 불가능이라는 뜻이 아닙니다.</p>
-          <ul>
-            <li>직격: 일반 피해 × (1 − 부위 내구도) + 내구 피해 × 부위 내구도. 내구도는 별도의 체력이 아니라 적용 비율입니다.</li>
-            <li>관통: 무기의 AP가 부위 장갑보다 높으면 100%, 같으면 65%, 낮으면 0%를 적용합니다. 정면에 가까운 입사각 기준입니다.</li>
-            <li>폭발: 중심부의 내구 피해와 폭발 관통·부위별 폭발 저항을 적용합니다. 폭발 저항이 100%인 부위에는 폭발 피해를 더하지 않고, 본체 장갑을 관통할 때만 본체로 한 번 전달합니다.</li>
-            <li>부위에서 본체로 전달되는 피해와 전달 상한을 반영합니다. 치명 부위 파괴, 본체 체력 소진, 출혈 유발을 구분합니다.</li>
-            <li>‘N발 이상’·‘N회 이상’은 표시된 명중 조건 안에서의 이론값입니다. 실제 최소 처치 횟수나 최대 탄수를 보장하지 않습니다. 디에스컬레이터와 공중폭발 로켓의 명중 개수 선택은 사용자의 가정이며, 전격 10개·자탄 25개가 한 부위에 모두 맞는다고 자동으로 합산하지 않습니다.</li>
-            <li>장갑을 벗긴 공격의 초과 피해는 아래 살점에 넘기지 않습니다. 다음 탄·장약부터 노출 부위를 계산합니다. 파괴 이후 구조가 미확인인 부위는 파괴 시점에서 계산을 멈춥니다.</li>
-            <li>분수 피해는 내구도 혼합 후, 관통·저항 적용 후, 본체 전달 시 각각 소수점 아래를 버립니다. 경계값에서는 실제 게임의 반올림·거리 감쇠로 필요한 탄수·장약 개수가 달라질 수 있습니다.</li>
-            <li>적의 체력이 가득 찬 상태에서 시작합니다. 한 폭발이 여러 부위를 동시에 맞히는 효과, 화상·가스·파편, 기존 피해, 장비 강화와 행성 효과는 포함하지 않습니다. 보호막 제거에 쓴 탄수·장약도 별도입니다. C4 팩은 부착 부위에 최대 폭발 피해가 들어가는 이론값이며 실제 최소 처치 개수를 보장하지 않습니다.</li>
-          </ul>
-          <p id="combat-sources" class="combat-sources"></p>
-        </div></details>
-      </section>
-      <section id="demolition-view" class="combat-view" aria-labelledby="demolition-title" hidden>
-        <div class="combat-heading"><div><h2 id="demolition-title">어디까지 부숴질까?</h2><p>건물이나 스트라타젬을 골라 철거 방법과 필요한 조건을 확인하세요.</p></div><span class="count-badge" id="demolition-coverage"></span></div>
-        <div class="combat-controls">
-          <label for="demolition-structure">건물·시설<select id="demolition-structure"></select></label>
-          <label for="demolition-weapon">스트라타젬<select id="demolition-weapon"></select></label>
-          <label for="demolition-mode">탄종·공격<select id="demolition-mode"></select></label>
-        </div>
-        <div class="demolition-conditions" id="demolition-conditions" hidden>
-          <label id="demolition-shield-option"><input type="checkbox" id="demolition-shield-cleared">워프 함선의 보호막 제거됨</label>
-          <label id="demolition-jammer-option"><input type="checkbox" id="demolition-jammer-disabled">스트라타젬 교란기 비활성화됨</label>
-        </div>
-        <div id="demolition-answer" class="combat-answer" role="status" aria-live="polite" aria-atomic="true"><p>건물이나 스트라타젬을 선택해 주세요.</p></div>
-        <p id="demolition-assumption" class="combat-assumption" hidden>철거력은 <strong>시설 파괴 조건을 판정하는 수치</strong>입니다. 직격은 실제 명중, 폭발은 중심부 최대값 기준이며 외곽에서는 철거력이 줄어듭니다.</p>
-        <div id="demolition-loadout" class="demolition-loadout" hidden></div>
-        <div id="demolition-results" class="combat-routes demolition-results" hidden></div>
-        <details class="combat-method"><summary>철거 계산 기준과 지원 범위</summary><div>
-          <ul>
-            <li>각 공격의 철거력이 시설의 요구값 이상이면 철거 조건을 충족합니다. 직격과 폭발 철거력은 더하지 않으며, 부족한 철거력을 여러 발 쏴서 누적시키지도 않습니다.</li>
-            <li>벌레굴 내부와 제조소 환풍구 등에는 폭발이 직접 닿아야 합니다. 수치가 충분해도 벽·지형에 가리거나 입구 밖에서 터지면 실패할 수 있습니다.</li>
-            <li>체력이 있는 시설은 별도로 피해를 계산합니다. 확인된 탄종만 일반·내구 피해, 장갑 관통, 폭발 배율을 적용하며, 같은 지점을 직격하고 중심 폭발도 닿는 조건입니다.</li>
-            <li>탄수는 포탄·탄환 한 발 단위입니다. 폭격 한 번에 떨어지는 여러 발, 파편, 화상·가스, 거리 감쇠, 이미 받은 피해와 함선 모듈은 합산하지 않습니다.</li>
-            <li>워프 함선 보호막 제거와 교란기 비활성화는 별도 조건입니다. 자료로 확인된 일부 공격의 보호막 관통 사례는 예외로 안내합니다.</li>
-            <li>자동 조준·센트리·지뢰는 시설에 공격을 실제로 맞힐 수 있는지 따로 확인해야 합니다. 지원포드 낙하와 장비 자체의 파괴 폭발은 포함하지 않습니다.</li>
-            <li>‘자료 미확인’은 파괴 불가능이라는 뜻이 아닙니다. 출처가 엇갈리는 값은 범위로 표시하고, 낮은 값으로도 충족할 때만 철거 가능으로 확정합니다.</li>
-          </ul>
-          <p id="demolition-sources" class="combat-sources"></p>
-        </div></details>
-      </section>
-      <footer class="page-footer"><span>HELLDIVERS 2 <span class="slash">/</span> 비공식 팬 가이드</span><p>Arrowhead Game Studios·Sony Interactive Entertainment와 무관합니다. <button id="sources-button">자료 출처 및 확인 기준 ↗</button></p></footer>
-    </main>
-  </div>
-  <div class="compare-bar" id="compare-bar" hidden><div><span class="compare-label">화력 비교</span><span id="compare-names"></span></div><div class="compare-actions"><button class="text-button" id="compare-clear">비우기</button><button class="primary-button" id="compare-open">비교하기 <span id="compare-count">0/3</span> <span aria-hidden="true">↗</span></button></div></div>
-  <div class="toast" id="toast" role="status" hidden></div>
-  <dialog id="detail-dialog" class="detail-dialog"><div id="detail-content"></div></dialog>
-  <dialog id="info-dialog" class="info-dialog"><div id="info-content"></div></dialog>
-  <dialog id="compare-dialog" class="compare-dialog"><div id="comparison-content"></div></dialog>
-  <dialog id="combat-image-dialog" class="combat-image-dialog" aria-labelledby="combat-image-title" aria-describedby="combat-image-tip"><div class="dialog-inner"><div class="dialog-top"><span>조준 부위 사진</span><button class="close-button" data-close aria-label="사진 닫기">×</button></div><h2 id="combat-image-title"></h2><p id="combat-image-tip"></p><div class="combat-image-gallery" id="combat-image-gallery"></div></div></dialog>
-  <noscript><p class="noscript">이 도감을 검색하고 열람하려면 브라우저에서 JavaScript를 켜주세요.</p></noscript>
+
+  <main id="view" tabindex="-1"></main>
+
+  <footer class="footer">
+    <p><b>HD2 필드 가이드</b> · 비공식 팬 가이드. Arrowhead Game Studios, Sony Interactive Entertainment와 관계없습니다.</p>
+    <p>수치·아이콘·부위 이미지: <a href="https://helldivers.wiki.gg/" target="_blank" rel="noopener noreferrer">Helldivers Wiki</a> (2026-09-16 확인). 실시간 패치와 연동되지 않습니다. <button type="button" class="link" data-action="method">계산 방식</button></p>
+  </footer>
+
+  <nav class="tabbar" aria-label="도구">
+    <a href="#/arsenal" data-tab="arsenal"><span data-icon="arsenal"></span>스트라타젬</a>
+    <a href="#/enemy" data-tab="enemy"><span data-icon="enemy"></span>적 대응</a>
+    <a href="#/demolition" data-tab="demolition"><span data-icon="demolition"></span>철거</a>
+    <a href="#/factions" data-tab="factions"><span data-icon="factions"></span>팩션</a>
+  </nav>
+
+  <dialog id="sheet" class="sheet" aria-labelledby="sheet-title"><div class="sheet-body" id="sheet-body"></div></dialog>
+  <dialog id="palette" class="palette" aria-label="전체 검색">
+    <div class="palette-field"><span data-icon="search"></span><input id="palette-input" type="search" placeholder="스트라타젬, 적, 시설, 팩션 검색 — 초성도 됩니다 (ㄱㄷㅈㅁ)" autocomplete="off" spellcheck="false" aria-controls="palette-results" aria-autocomplete="list"><kbd>Esc</kbd></div>
+    <ul id="palette-results" class="palette-results" role="listbox" aria-label="검색 결과"></ul>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
 </body>
 </html>
