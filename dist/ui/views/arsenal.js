@@ -55,8 +55,8 @@ function cardModes(item) {
   const variants = item.variants || [];
   if (variants.length < 2) return '';
   const rest = variants.slice(1);
-  if (rest.length > 2) return html`<span class="card-modes"><span><b>${variants.length}종</b> ${variants.map(v => v.tab || v.name).join(' · ')}</span></span>`;
-  return html`<span class="card-modes">${rest.map(v => html`<span><b>${v.tab || v.name}</b> ${variantBrief(item, v)}</span>`)}</span>`;
+  if (rest.length > 2) return html`<span class="card-modes" data-kind="${item.variantKind || 'modes'}"><span><b>${variants.length}종</b> ${variants.map(v => v.tab || v.name).join(' · ')}</span></span>`;
+  return html`<span class="card-modes" data-kind="${item.variantKind || 'modes'}">${rest.map(v => html`<span><b>${v.tab || v.name}</b> ${variantBrief(item, v)}</span>`)}</span>`;
 }
 
 function card(item) {
@@ -176,7 +176,7 @@ function detailContent(item, { demolition = false } = {}) {
       <div class="chips" style="margin-top:6px">${badge(cat.name, 'outline')}${item.ap != null ? badge(`AP ${item.ap} · ${apBandOf(item).name}`, 'accent') : ''}${item.tags.map(tag => badge(tag))}</div></div></div>
     ${item.input ? html`<div class="block"><h3>호출 코드</h3>${keycaps(item.input, 'large')}</div>` : ''}
     <p style="font-size:16px">${item.summary}</p>
-    ${variants ? html`<div class="variant-tabs"><h3>모드별 수치</h3><div class="segmented" role="group" aria-label="모드 선택">${variants.map(v => html`<button type="button" data-variant="${v.id}" aria-pressed="${String(v === current)}">${v.tab || v.name}</button>`)}</div></div>
+    ${variants ? html`<div class="variant-tabs"><h3>${item.variantLabel || '모드별 수치'}</h3><div class="segmented" role="group" aria-label="${item.variantLabel || '모드 선택'}">${variants.map(v => html`<button type="button" data-variant="${v.id}" aria-pressed="${String(v === current)}">${v.tab || v.name}</button>`)}</div></div>
       ${variants.map(v => html`<div class="variant-panel" data-variant-panel="${v.id}" ${v === current ? '' : raw('hidden')}>${statGrid(withVariant(item, v))}${blastFigure(withVariant(item, v))}${v.note ? html`<p class="variant-note">${v.note}</p>` : ''}</div>`)}`
       : html`${statGrid(item)}${blastFigure(item)}`}
     <section class="block"><h3>이렇게 쓰세요</h3><p>${item.usage}</p></section>

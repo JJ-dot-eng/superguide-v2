@@ -247,6 +247,7 @@ details > summary::-webkit-details-marker { display: none; }
 .card-modes > span { padding-left: 18px; text-indent: -18px; }
 .card-modes b { color: var(--text); font-weight: 700; margin-right: 5px; }
 .card-modes > span::before { content: '⇄'; color: var(--accent); margin-right: 6px; }
+.card-modes[data-kind="parts"] > span::before { content: '+'; }
 .variant-tabs { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; margin-bottom: -8px; }
 .variant-tabs h3 { font-size: 14px; font-weight: 750; }
 .variant-panel:not([hidden]) { display: grid; gap: 12px; }
