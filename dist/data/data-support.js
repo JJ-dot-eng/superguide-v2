@@ -27,15 +27,15 @@ export const support = [
   { id: 'airburst-launcher', name: '공중폭발 로켓 발사기', en: 'RL-77 Airburst Rocket Launcher', code: 'RL-77', direct: 350, splash: 150, ap: 3, splashAp: 3, tags: ['군중 제어', '확산탄', '배낭 필요'], summary: '공중에서 자탄을 흩뿌려 넓게 퍼진 보병을 제압하는 로켓.', usage: '멀리 떨어진 적 무리 위쪽을 향해 발사하세요. 표적까지의 경로에 장애물과 동료가 없는지 먼저 확인합니다.', warning: '자탄이 넓게 퍼지므로 근접 교전에는 부적합합니다.', directNoteShort: '주탄 1발', splashNoteShort: '주폭발 · 자탄 별도', spread: {
     title: '자탄 분산',
     rows: [
-      { label: '대공포탄 모드 · 안전거리', value: '약 30', unit: 'm', caption: '폭발 중심에서 반경 30 m 안은 아군도 위험' },
-      { label: '집속탄 모드 · 최대 사거리', value: '62.5', unit: 'm', caption: '로켓이 이 거리에서 터지며 자탄을 뿌림' },
+      { label: '자탄 폭발 안전거리', value: '약 30', unit: 'm', caption: '폭발 중심에서 반경 30 m 안은 아군도 위험' },
+      { label: '자탄 수', value: '25', unit: '개', caption: '대공포탄·집속탄 두 모드 공통' },
     ],
-    notes: ['자탄이 퍼지는 넓이는 터지는 높이에 따라 달라서 고정값이 없습니다. 높이 터질수록 넓게 퍼집니다.', '대공포탄 모드는 2 m 안에 적이나 장애물이 들어오면 터지고, 자탄은 최대 0.7초 뒤 공중에서 터집니다. 너무 높이서 퍼지면 땅의 적에게 닿지 않을 수 있습니다.', '집속탄 모드의 자탄은 땅에 닿아야 터집니다. 위키에는 바로 위로 쏘면 최대 분산 반경 60 m라고 적혀 있지만, 자탄 속도·중력 자료로 보면 터지는 높이(약 60 m)와 혼동했을 가능성이 있어 검증되지 않은 값입니다.'],
+    notes: ['두 모드 모두 자탄 25개를 뿌리고, 자탄이 터지는 방식만 다릅니다. 퍼지는 넓이는 터지는 높이에 따라 달라서 고정값이 없습니다.', '대공포탄 모드: 2 m 안에 적이나 장애물이 들어오면 터지고, 자탄은 최대 0.7초 뒤 공중에서 터집니다. 안전거리 30 m는 이 모드에서 측정한 값입니다.', '집속탄 모드: 최대 사거리 62.5 m에서 터지고, 자탄은 땅에 닿아야 터집니다. 높이 쏘면 30 m보다 넓게 퍼질 수 있습니다. 위키의 \'최대 분산 반경 60 m\'는 터지는 높이(약 60 m)와 혼동했을 가능성이 있어 검증되지 않은 값입니다.'],
     source: '안전거리는 커뮤니티 측정값 · 위키 패치 1.003.101 기준',
   },
   variantLabel: '주탄·자탄 수치', variantKind: 'parts', variants: [
     { id: 'rocket', name: '주탄', direct: 350, splash: 150, ap: 3, splashAp: 3, radius: 5, innerRadius: 3, unit: '주탄 1발', splashNoteShort: '주폭발' },
-    { id: 'bomblet', name: '자탄 1개', direct: 150, splash: 500, ap: 3, splashAp: 3, radius: 6, innerRadius: 4, unit: '자탄 1개', note: '주탄 한 발에서 자탄 25개가 흩어집니다. 모든 자탄이 한 표적에 맞는다고 합산하지 않습니다.' },
+    { id: 'bomblet', name: '자탄 1개', direct: 150, splash: 500, ap: 3, splashAp: 3, radius: 6, innerRadius: 4, unit: '자탄 1개', note: '주탄 한 발에서 자탄 25개가 흩어집니다(두 모드 공통). 모든 자탄이 한 표적에 맞는다고 합산하지 않습니다.' },
   ] },
   { id: 'wasp', name: 'W.A.S.P. 발사기', en: 'StA-X3 W.A.S.P. Launcher', code: 'StA-X3', direct: 200, splash: 600, ap: 6, splashAp: 3, radius: 5, innerRadius: 2.5, tags: ['유도', '탄종 전환', '배낭 필요'], aliases: ['WASP', '와스프 발사기'], summary: '유도 미사일을 연속 발사하거나 포격 모드로 운용하는 무기.', usage: '표적을 락온한 뒤 버스트로 여러 발을 보내세요. 모드에 따라 탄 소모와 공격 형태가 달라집니다.', warning: '카드 수치는 버스트 미사일 한 발 기준입니다.', notes: '직격 200, AP 6 / 폭발 600, AP 3. 포격 모드 전체 피해는 별도이므로 단순 합산하지 않습니다.', unit: '버스트 미사일 1발' },
   { id: 'sterilizer', name: '스터릴라이저', aliases: ['스테릴라이저'], en: 'TX-41 Sterilizer', code: 'TX-41', direct: 1, splash: 0, ap: 5, range: 47, rangeType: '위키 실측 분사 거리', tags: ['가스', '혼란', '군중 제어'], summary: '가스로 적의 진입을 흐트러뜨리고 다른 무기로 마무리하는 분사기.', usage: '선두 적에게 짧게 가스를 묻힌 뒤 주무기로 전환하세요. 이미 혼란에 걸린 적에 계속 분사하기보다 다른 적에게 옮깁니다.', warning: '분사 입자 피해와 가스 지속 피해는 다른 값입니다.', notes: '입자당 피해 1, AP 5 / 가스 25 DPS, AP 6. 47 m는 커뮤니티 측정치입니다.', unit: '분사 입자 1개', splashNoteShort: '가스 25/s 별도' },
