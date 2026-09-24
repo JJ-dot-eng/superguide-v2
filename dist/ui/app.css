@@ -243,6 +243,16 @@ details > summary::-webkit-details-marker { display: none; }
 .stat-row dd { margin: 1px 0 0; font-weight: 750; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .stat-row dd small { font-size: 11px; font-weight: 600; color: var(--text-3); margin-left: 1px; }
 .stat-row dd.dim { color: var(--text-3); font-weight: 600; font-size: 13px; }
+.card-modes { display: grid; gap: 3px; margin-top: -4px; font-size: 12.5px; color: var(--text-2); }
+.card-modes > span { padding-left: 18px; text-indent: -18px; }
+.card-modes b { color: var(--text); font-weight: 700; margin-right: 5px; }
+.card-modes > span::before { content: '⇄'; color: var(--accent); margin-right: 6px; }
+.variant-tabs { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; margin-bottom: -8px; }
+.variant-tabs h3 { font-size: 14px; font-weight: 750; }
+.variant-panel:not([hidden]) { display: grid; gap: 12px; }
+.variant-note { font-size: 13.5px; color: var(--text-2); }
+.compare-modes { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.compare-modes b { display: block; }
 .compare-toggle { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text-2); display: grid; place-items: center; }
 .compare-toggle:hover { color: var(--text); border-color: var(--text-3); }
 .compare-toggle[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }

@@ -1,5 +1,5 @@
 // Stratagem catalogue: filter, sort, detail sheet and side-by-side comparison.
-import { stratagems, stratagemById, categories, categoryOf, apBands, apBandOf, CHECKED_AT } from '../../core/catalog.js';
+import { stratagems, stratagemById, categories, categoryOf, apBands, apBandOf, withVariant, variantOf, CHECKED_AT } from '../../core/catalog.js';
 import { search, stratagemFields } from '../../core/search.js';
 import { num } from '../../core/explain.js';
 import { shieldRecovery } from '../../core/defense.js';
@@ -16,7 +16,7 @@ const SORTS = [
 const MAX_COMPARE = 3;
 
 let root, ctx;
-const state = { c: '', ap: '', q: '', sort: '', compare: new Set(), detail: null, pushedDetail: false };
+const state = { c: '', ap: '', q: '', sort: '', compare: new Set(), detail: null, variant: '', pushedDetail: false };
 
 export const iconOf = item => html`<img class="strat-icon" src="${wikiIcons[item.id]?.src}" alt="" width="44" height="44" loading="lazy" decoding="async">`;
 
@@ -39,6 +39,26 @@ function stats(item) {
 
 const statRow = item => html`<dl class="stat-row">${stats(item).map(stat => html`<div><dt>${stat.label}</dt><dd class="${stat.dim ? 'dim' : ''}">${stat.text}${stat.unit ? html`<small>${stat.unit}</small>` : ''}</dd></div>`)}</dl>`;
 
+// One-line numbers for a mode, used on cards and in the comparison table.
+function variantBrief(item, variant) {
+  const v = withVariant(item, variant);
+  const parts = [`직격 ${v.directText || num(v.direct)}`];
+  if (v.splashText) parts.push(v.splashText);
+  else if (v.splash > 0) parts.push(`폭발 ${num(v.splash)}`);
+  parts.push(`AP ${v.ap}${v.splashAp != null && v.splashAp !== v.ap ? `/${v.splashAp}` : ''}`);
+  if (v.radius != null) parts.push(`외곽 ${num(v.radius)}m`);
+  return parts.join(' · ');
+}
+
+// Cards show the other modes under the main numbers; long shell lists collapse to names.
+function cardModes(item) {
+  const variants = item.variants || [];
+  if (variants.length < 2) return '';
+  const rest = variants.slice(1);
+  if (rest.length > 2) return html`<span class="card-modes"><span><b>${variants.length}종</b> ${variants.map(v => v.tab || v.name).join(' · ')}</span></span>`;
+  return html`<span class="card-modes">${rest.map(v => html`<span><b>${v.tab || v.name}</b> ${variantBrief(item, v)}</span>`)}</span>`;
+}
+
 function card(item) {
   const selected = state.compare.has(item.id);
   return html`<article class="card ${selected ? 'selected' : ''}" style="--cat:${categoryOf(item.category).color}" data-id="${item.id}">
@@ -47,6 +67,7 @@ function card(item) {
       <div class="card-keys">${item.input ? keycaps(item.input) : html`<span>${categoryOf(item.category).name}</span>`}</div>
       <p class="summary">${item.summary}</p>
       ${statRow(item)}
+      ${cardModes(item)}
     </button>
     <button class="compare-toggle" type="button" data-compare="${item.id}" aria-pressed="${selected}" aria-label="${item.name} 비교에 ${selected ? '담김' : '담기'}" title="비교에 담기">${icon(selected ? 'check' : 'plus', 16)}</button>
   </article>`;
@@ -63,7 +84,7 @@ function visibleItems() {
 }
 
 function syncUrl() {
-  ctx.replace({ view: 'arsenal', id: state.detail, query: { c: state.c, ap: state.ap, q: state.q, sort: state.sort } });
+  ctx.replace({ view: 'arsenal', id: state.detail, query: { c: state.c, ap: state.ap, q: state.q, sort: state.sort, m: state.detail ? state.variant : '' } });
 }
 
 function renderList() {
@@ -133,8 +154,13 @@ function defenseBlock(item) {
   </section>`;
 }
 
+const statGrid = item => html`<dl class="detail-grid">${stats(item).map(stat => html`<div><dt>${stat.label}</dt><dd class="${stat.dim ? 'dim' : ''}">${stat.text}${stat.unit ? html`<small>${stat.unit}</small>` : ''}</dd>${stat.caption ? html`<div class="caption">${stat.caption}</div>` : ''}</div>`)}
+  ${item.cooldown ? html`<div><dt>재사용 대기</dt><dd>${num(item.cooldown)}<small>초</small></dd><div class="caption">함선 강화 제외</div></div>` : ''}</dl>`;
+
 function detailContent(item, { demolition = false } = {}) {
   const cat = categoryOf(item.category);
+  const variants = item.variants?.length > 1 ? item.variants : null;
+  const current = variantOf(item, state.variant);
   const combat = item.category === 'support';
   const notes = [item.rangeNote, item.notes, ...(item.modes || [])].filter(Boolean);
   const inCompare = state.compare.has(item.id);
@@ -145,9 +171,9 @@ function detailContent(item, { demolition = false } = {}) {
       <div class="chips" style="margin-top:6px">${badge(cat.name, 'outline')}${item.ap != null ? badge(`AP ${item.ap} · ${apBandOf(item).name}`, 'accent') : ''}${item.tags.map(tag => badge(tag))}</div></div></div>
     ${item.input ? html`<div class="block"><h3>호출 코드</h3>${keycaps(item.input, 'large')}</div>` : ''}
     <p style="font-size:16px">${item.summary}</p>
-    <dl class="detail-grid">${stats(item).map(stat => html`<div><dt>${stat.label}</dt><dd class="${stat.dim ? 'dim' : ''}">${stat.text}${stat.unit ? html`<small>${stat.unit}</small>` : ''}</dd>${stat.caption ? html`<div class="caption">${stat.caption}</div>` : ''}</div>`)}
-      ${item.cooldown ? html`<div><dt>재사용 대기</dt><dd>${num(item.cooldown)}<small>초</small></dd><div class="caption">함선 강화 제외</div></div>` : ''}</dl>
-    ${blastFigure(item)}
+    ${variants ? html`<div class="variant-tabs"><h3>모드별 수치</h3><div class="segmented" role="group" aria-label="모드 선택">${variants.map(v => html`<button type="button" data-variant="${v.id}" aria-pressed="${String(v === current)}">${v.tab || v.name}</button>`)}</div></div>
+      ${variants.map(v => html`<div class="variant-panel" data-variant-panel="${v.id}" ${v === current ? '' : raw('hidden')}>${statGrid(withVariant(item, v))}${blastFigure(withVariant(item, v))}${v.note ? html`<p class="variant-note">${v.note}</p>` : ''}</div>`)}`
+      : html`${statGrid(item)}${blastFigure(item)}`}
     <section class="block"><h3>이렇게 쓰세요</h3><p>${item.usage}</p></section>
     ${item.warning ? html`<div class="callout warn"><h3>주의</h3><p>${item.warning}</p></div>` : ''}
     ${defenseBlock(item)}
@@ -175,7 +201,7 @@ function openDetail(id) {
     label: `${item.name} 상세`,
     onClose: () => {
       if (state.detail !== id) return;
-      state.detail = null;
+      state.detail = null; state.variant = '';
       if (state.pushedDetail) { state.pushedDetail = false; history.back(); } else syncUrl();
     },
   });
@@ -207,6 +233,7 @@ function openCompare() {
         ${numericRow('폭발', 1, item => item.splash)}
         ${numericRow('관통', 2, item => item.ap)}
         ${numericRow('사거리·반경', 3, item => item.range ?? item.radius)}
+        ${items.some(item => item.variants) ? textRow('모드별', item => item.variants ? html`<ul class="compare-modes">${item.variants.map(v => html`<li><b>${v.name}</b> ${variantBrief(item, v)}</li>`)}</ul>` : '') : ''}
         ${textRow('호출 코드', item => item.input ? keycaps(item.input) : '')}
         ${items.some(item => item.defense) ? textRow('방어', item => item.defense?.type === 'energy' ? `보호막 ${num(item.defense.shield?.capacity)} · 재생 ${num(item.defense.shield?.regeneration)}/초` : item.defense ? `본체 체력 ${num(item.defense.body?.hp)} · 장갑 ${item.defense.body?.armor}` : '') : ''}
         ${textRow('용도', item => item.tags.join(' · '))}
@@ -251,7 +278,7 @@ export function mount(container, context) {
     if (!target) return;
     if (target.dataset.cat != null) { state.c = state.c === target.dataset.cat ? '' : target.dataset.cat; renderList(); syncUrl(); }
     else if (target.dataset.ap != null) { state.ap = state.ap === target.dataset.ap ? '' : target.dataset.ap; renderList(); syncUrl(); }
-    else if (target.dataset.open) { state.pushedDetail = true; ctx.go({ view: 'arsenal', id: target.dataset.open, query: ctx.route.query }); }
+    else if (target.dataset.open) { state.pushedDetail = true; ctx.go({ view: 'arsenal', id: target.dataset.open, query: { ...ctx.route.query, m: '' } }); }
     else if (target.dataset.compare) toggleCompare(target.dataset.compare);
     else if (target.hasAttribute('data-compare-clear')) { state.compare.clear(); renderList(); }
     else if (target.hasAttribute('data-compare-open')) openCompare();
@@ -260,13 +287,24 @@ export function mount(container, context) {
   // Buttons inside the sheet live outside `root`; register that listener once.
   if (!sheetListener) {
     sheetListener = event => {
+      if (document.body.dataset.view !== 'arsenal') return;
       const target = event.target.closest('[data-compare]');
-      if (target && document.body.dataset.view === 'arsenal') toggleCompare(target.dataset.compare);
+      if (target) toggleCompare(target.dataset.compare);
+      const pick = event.target.closest('[data-variant]');
+      if (pick) selectVariant(pick.dataset.variant);
     };
     $('#sheet').addEventListener('click', sheetListener);
   }
 }
 let sheetListener = null;
+
+function selectVariant(id) {
+  state.variant = id;
+  const sheet = $('#sheet');
+  for (const button of $$('[data-variant]', sheet)) button.setAttribute('aria-pressed', String(button.dataset.variant === id));
+  for (const panel of $$('[data-variant-panel]', sheet)) panel.hidden = panel.dataset.variantPanel !== id;
+  syncUrl();
+}
 
 export function update(route) {
   const q = route.query;
@@ -279,6 +317,6 @@ export function update(route) {
   $('#arsenal-sort', root).value = state.sort;
   renderList();
   const id = stratagemById.has(route.id) ? route.id : null;
-  if (id && id !== state.detail) { state.detail = id; openDetail(id); }
-  else if (!id && state.detail) { state.detail = null; state.pushedDetail = false; ctx.closeSheet(); }
+  if (id && id !== state.detail) { state.detail = id; state.variant = stratagemById.get(id).variants?.some(v => v.id === q.m) ? q.m : ''; openDetail(id); }
+  else if (!id && state.detail) { state.detail = null; state.variant = ''; state.pushedDetail = false; ctx.closeSheet(); }
 }

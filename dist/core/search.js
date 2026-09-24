@@ -49,4 +49,4 @@ export function search(items, query, fields) {
     .map(entry => entry.item);
 }
 
-export const stratagemFields = item => ({ names: [item.name, item.en, ...(item.aliases || [])], text: [item.code, item.summary, ...(item.tags || [])] });
+export const stratagemFields = item => ({ names: [item.name, item.en, ...(item.aliases || [])], text: [item.code, item.summary, ...(item.tags || []), ...(item.variants || []).map(variant => variant.name)] });
