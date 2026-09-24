@@ -98,17 +98,19 @@ ok(String(html`<p>${'<img onerror=x>'}</p>`) === '<p>&lt;img onerror=x&gt;</p>',
 ok(String(html`<p>${raw('<b>')}${['a', html`<i>${'&'}</i>`]}</p>`) === '<p><b>a<i>&amp;</i></p>', 'nested templates stay markup');
 ok(josa('헐크', ['과', '와']) === '헐크와' && josa('살점', ['을', '를']) === '살점을', 'Korean particles');
 
-// --- Analytics: only the two published sites, each in its own content group -----------
+// --- Analytics: only the published sites, each to its own GA4 property ---------------
 const { initAnalytics } = await import('../dist/ui/analytics.js');
 const gaRun = url => {
   const win = { location: new URL(url) }; const loaded = [];
   initAnalytics(win, { createElement: () => ({}), head: { appendChild: script => loaded.push(script) } })('enemy');
-  return { loaded: loaded.length, config: win.dataLayer?.find(args => args[0] === 'config')?.[2], events: (win.dataLayer || []).filter(args => args[0] === 'event').map(args => args[2].feature) };
+  const layer = win.dataLayer || [];
+  return { src: loaded[0]?.src, config: layer.find(args => args[0] === 'config')?.[1], events: layer.filter(args => args[0] === 'event').map(args => [args[2].feature, args[2].send_to]) };
 };
-ok(gaRun('https://jj-dot-eng.github.io/superguide-v2/').config.content_group === 'superguide-v2', 'v2 site reports as its own content group');
-ok(gaRun('https://jj-dot-eng.github.io/superguide/').config.content_group === 'superguide', 'original site keeps its group');
-ok(gaRun('https://jj-dot-eng.github.io/superguide-v2/').events.join() === 'combat', 'feature events keep the old names');
-for (const url of ['http://localhost:4173/', 'https://jj-dot-eng.github.io/superguide-v3/', 'https://example.com/superguide/']) ok(gaRun(url).loaded === 0, `no analytics on ${url}`);
+const v2 = gaRun('https://jj-dot-eng.github.io/superguide-v2/#/enemy');
+ok(v2.config === 'G-XKLV3JPDC0' && v2.src.endsWith('id=G-XKLV3JPDC0'), 'v2 site reports to its own property');
+ok(JSON.stringify(v2.events) === JSON.stringify([['combat', 'G-XKLV3JPDC0']]), 'feature events go to the v2 property with the old names');
+ok(gaRun('https://jj-dot-eng.github.io/superguide/').config === 'G-5XFT3VQ054', 'original site keeps its property');
+for (const url of ['http://localhost:4173/', 'https://jj-dot-eng.github.io/superguide-v3/', 'https://example.com/superguide-v2/']) ok(!gaRun(url).src, `no analytics on ${url}`);
 
 // --- Deploy versioning ----------------------------------------------------------------
 const sources = await readSources();
