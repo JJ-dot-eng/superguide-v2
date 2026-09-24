@@ -4,13 +4,14 @@ const MEASUREMENT_ID = 'G-5XFT3VQ054';
 
 export function initAnalytics(win = window, doc = document) {
   const { protocol, hostname, pathname } = win.location;
-  const published = protocol === 'https:' && hostname === 'jj-dot-eng.github.io' && (pathname === '/superguide' || pathname.startsWith('/superguide/'));
-  if (!published) return () => {};
+  // Both published sites share one GA4 property; the rebuild is its own content group.
+  const site = ['superguide', 'superguide-v2'].find(name => pathname === `/${name}` || pathname.startsWith(`/${name}/`));
+  if (protocol !== 'https:' || hostname !== 'jj-dot-eng.github.io' || !site) return () => {};
 
   win.dataLayer = win.dataLayer || [];
   win.gtag = win.gtag || function gtag() { win.dataLayer.push(arguments); };
   win.gtag('js', new Date());
-  win.gtag('config', MEASUREMENT_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
+  win.gtag('config', MEASUREMENT_ID, { allow_google_signals: false, allow_ad_personalization_signals: false, content_group: site });
   const script = doc.createElement('script');
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;

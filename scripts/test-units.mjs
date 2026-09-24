@@ -98,6 +98,18 @@ ok(String(html`<p>${'<img onerror=x>'}</p>`) === '<p>&lt;img onerror=x&gt;</p>',
 ok(String(html`<p>${raw('<b>')}${['a', html`<i>${'&'}</i>`]}</p>`) === '<p><b>a<i>&amp;</i></p>', 'nested templates stay markup');
 ok(josa('헐크', ['과', '와']) === '헐크와' && josa('살점', ['을', '를']) === '살점을', 'Korean particles');
 
+// --- Analytics: only the two published sites, each in its own content group -----------
+const { initAnalytics } = await import('../dist/ui/analytics.js');
+const gaRun = url => {
+  const win = { location: new URL(url) }; const loaded = [];
+  initAnalytics(win, { createElement: () => ({}), head: { appendChild: script => loaded.push(script) } })('enemy');
+  return { loaded: loaded.length, config: win.dataLayer?.find(args => args[0] === 'config')?.[2], events: (win.dataLayer || []).filter(args => args[0] === 'event').map(args => args[2].feature) };
+};
+ok(gaRun('https://jj-dot-eng.github.io/superguide-v2/').config.content_group === 'superguide-v2', 'v2 site reports as its own content group');
+ok(gaRun('https://jj-dot-eng.github.io/superguide/').config.content_group === 'superguide', 'original site keeps its group');
+ok(gaRun('https://jj-dot-eng.github.io/superguide-v2/').events.join() === 'combat', 'feature events keep the old names');
+for (const url of ['http://localhost:4173/', 'https://jj-dot-eng.github.io/superguide-v3/', 'https://example.com/superguide/']) ok(gaRun(url).loaded === 0, `no analytics on ${url}`);
+
 // --- Deploy versioning ----------------------------------------------------------------
 const sources = await readSources();
 const { files, versions } = versionFiles(sources);
@@ -117,4 +129,4 @@ ok(next.get('ui/views/arsenal.js') !== versions.get('ui/views/arsenal.js'), 'imp
 ok(next.get('core/combat.js') === versions.get('core/combat.js'), 'unrelated modules keep their key');
 assert.deepEqual(versionFiles(files).files, files, 'versioning is idempotent'); checks++;
 
-console.log(`PASS units: ${checks} checks (catalogue, assets, references, search, routes, rendering, versioning).`);
+console.log(`PASS units: ${checks} checks (catalogue, assets, references, search, routes, rendering, analytics, versioning).`);
