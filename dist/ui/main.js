@@ -105,7 +105,12 @@ for (const link of $$('[data-tab]')) {
 }
 
 // --- Global actions -------------------------------------------------------------
+// The link to the previous site opens the same tool there.
+const PREVIOUS_SITE = 'https://jj-dot-eng.github.io/superguide/';
+const PREVIOUS_HASH = { arsenal: '', enemy: '#combat', demolition: '#demolition', factions: '#factions' };
 document.addEventListener('click', event => {
+  const version = event.target.closest('[data-version-link]');
+  if (version) version.href = PREVIOUS_SITE + (PREVIOUS_HASH[current.view] || '');
   // The skip link must move focus, not change the routed hash.
   if (event.target.closest('.skip')) { event.preventDefault(); root.focus(); return; }
   const action = event.target.closest('[data-action]')?.dataset.action;
