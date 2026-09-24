@@ -24,7 +24,16 @@ export const support = [
   { id: 'laser-cannon', name: '레이저 캐넌', en: 'LAS-98 Laser Cannon', code: 'LAS-98', direct: 350, splash: 0, ap: 4, damageKind: 'dps', range: 1000, rangeType: '빔 최대 길이', tags: ['지속 피해', '약점 사격', '열 관리'], aliases: ['레이저 캐논'], summary: '같은 약점에 빔을 유지할수록 효율적인 지속 화기.', usage: '약점을 계속 추적하고 과열 직전에 멈추세요. 짧게 냉각해 재사용하면 방열판 소모를 줄일 수 있습니다.', warning: '최대 빔 길이가 안정적으로 조준할 수 있는 교전거리를 뜻하지는 않습니다.', notes: '빔 350 DPS / 내구 200 DPS. 착화 100 DPS는 별도 효과입니다. 2026년 3월 빔 길이가 1,000 m로 증가했습니다.' },
   { id: 'flamethrower', name: '화염방사기', en: 'FLAM-40 Flamethrower', code: 'FLAM-40', direct: 150, splash: 0, ap: 4, damageKind: 'dps', range: 20, rangeType: '화염 분사 거리', tags: ['화염', '근거리', '지역 차단'], summary: '가까운 적과 접근 경로를 함께 태우는 화염 무기.', usage: '통로 바닥과 가까운 적을 짧게 훑으세요. 불길이 남으므로 한곳에서 버티기보다 옆으로 이동하며 분사합니다.', warning: '불붙은 지면과 아군을 향한 분사를 주의하세요.', notes: '150 DPS는 위키 표기값입니다. 분사 입자 피해 2와 착화 100 DPS가 별도이며 실제 명중 입자 수에 따라 달라집니다.' },
   { id: 'grenade-launcher', name: '유탄 발사기', aliases: ['유탄발사기'], en: 'GL-21 Grenade Launcher', code: 'GL-21', direct: 0, splash: 400, ap: 3, splashAp: 3, radius: 7.5, innerRadius: 3.5, tags: ['폭발', '군중 제어', '거점 정리'], summary: '유탄을 연속으로 던져 군집과 구멍을 정리하는 무기.', usage: '적 무리 사이의 지면이나 구멍 안에 유탄을 넣으세요. 곡사 궤도를 이용해 낮은 엄폐물 뒤도 노릴 수 있습니다.', warning: '가까운 곳에 맞히면 자신과 동료도 폭발에 휘말립니다.', rangeNote: '위키의 약 100 m는 제압 사격에 관한 설명입니다. 최대·정밀 사거리로 확정하지 않습니다.', notes: '직격 피해 0 / 폭발 400. 카드 AP 3은 피해를 주는 폭발 기준이고, 피해 0인 투사체 자체 AP는 4입니다.' },
-  { id: 'airburst-launcher', name: '공중폭발 로켓 발사기', en: 'RL-77 Airburst Rocket Launcher', code: 'RL-77', direct: 350, splash: 150, ap: 3, splashAp: 3, tags: ['군중 제어', '확산탄', '배낭 필요'], summary: '공중에서 자탄을 흩뿌려 넓게 퍼진 보병을 제압하는 로켓.', usage: '멀리 떨어진 적 무리 위쪽을 향해 발사하세요. 표적까지의 경로에 장애물과 동료가 없는지 먼저 확인합니다.', warning: '자탄이 넓게 퍼지므로 근접 교전에는 부적합합니다.', directNoteShort: '주탄 1발', splashNoteShort: '주폭발 · 자탄 별도', variantLabel: '주탄·자탄 수치', variantKind: 'parts', variants: [
+  { id: 'airburst-launcher', name: '공중폭발 로켓 발사기', en: 'RL-77 Airburst Rocket Launcher', code: 'RL-77', direct: 350, splash: 150, ap: 3, splashAp: 3, tags: ['군중 제어', '확산탄', '배낭 필요'], summary: '공중에서 자탄을 흩뿌려 넓게 퍼진 보병을 제압하는 로켓.', usage: '멀리 떨어진 적 무리 위쪽을 향해 발사하세요. 표적까지의 경로에 장애물과 동료가 없는지 먼저 확인합니다.', warning: '자탄이 넓게 퍼지므로 근접 교전에는 부적합합니다.', directNoteShort: '주탄 1발', splashNoteShort: '주폭발 · 자탄 별도', spread: {
+    title: '자탄 분산',
+    rows: [
+      { label: '대공포탄 모드 · 안전거리', value: '약 30', unit: 'm', caption: '폭발 중심에서 이 안쪽은 아군도 위험' },
+      { label: '집속탄 모드 · 최대 사거리', value: '62.5', unit: 'm', caption: '로켓이 이 거리에서 터지며 자탄을 뿌림' },
+    ],
+    notes: ['자탄이 퍼지는 넓이는 터지는 높이에 따라 달라서 고정값이 없습니다. 높이 터질수록 넓게 퍼집니다.', '대공포탄 모드는 2 m 안에 적이나 장애물이 들어오면 터지고, 자탄은 최대 0.7초 뒤 공중에서 터집니다. 너무 높이서 퍼지면 땅의 적에게 닿지 않을 수 있습니다.', '집속탄 모드의 자탄은 땅에 닿아야 터집니다. 위키에는 바로 위로 쏘면 최대 분산 반경 60 m라고 적혀 있지만, 자탄 속도·중력 자료로 보면 터지는 높이(약 60 m)와 혼동했을 가능성이 있어 검증되지 않은 값입니다.'],
+    source: '안전거리는 커뮤니티 측정값 · 위키 패치 1.003.101 기준',
+  },
+  variantLabel: '주탄·자탄 수치', variantKind: 'parts', variants: [
     { id: 'rocket', name: '주탄', direct: 350, splash: 150, ap: 3, splashAp: 3, radius: 5, innerRadius: 3, unit: '주탄 1발', splashNoteShort: '주폭발' },
     { id: 'bomblet', name: '자탄 1개', direct: 150, splash: 500, ap: 3, splashAp: 3, radius: 6, innerRadius: 4, unit: '자탄 1개', note: '주탄 한 발에서 자탄 25개가 흩어집니다. 모든 자탄이 한 표적에 맞는다고 합산하지 않습니다.' },
   ] },
