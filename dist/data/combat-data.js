@@ -335,7 +335,7 @@ export const weaponProfiles = {
     shot('direct', '직격 기준 · 가스 피해 제외', 650, 275, 5, 0, 0, { delivery: 'harpoon', falloff: true }),
   ], '작살의 직격 피해만 계산합니다. 가스 영역 피해와 가스 지속 피해는 모두 제외하며, 포함하지 않은 피해까지 반영한 실제 최소 탄수는 아닙니다.'),
   'de-escalator': reviewedImpact('GL-52_De-Escalator', [
-    shot('arc', '전격 · 명중 수 조건', 100, 70, 4, 0, 0, { delivery: 'arc', range: 10, hitCondition: { kind: 'arcs', min: 1, max: 10 } }),
+    shot('arc', '전격 · 명중 수 조건', 100, 70, 4, 0, 0, { delivery: 'arc', range: 10, hitCondition: { kind: 'arcs', min: 1, max: 10, default: 10, defaultPct: 100 } }),
   ], '전격 1회는 일반 피해 100 / 내구 피해 70 / AP 4입니다. 한 유탄에서 전격 10개가 발생하지만, 특정 부위에 들어가는 개수는 자료 미확인입니다. 유탄 자체 직격은 위키 세부 표 20/2와 변경 기록 0/0이 충돌하여 제외합니다. 전격에 폭발 저항을 적용하지 않습니다.'),
   'airburst-launcher': reviewedImpact('RL-77_Airburst_Rocket_Launcher', [
     ...[
@@ -343,7 +343,7 @@ export const weaponProfiles = {
       ['cluster', '집속탄 모드', '주탄은 충돌 또는 짧은 시간 경과 후 터지며, 자탄은 분산 후 충돌 시 폭발합니다.'],
     ].map(([id, name, note]) => shot(id, name, 350, 350, 3, 150, 3, {
       delivery: 'cluster', explosionDurable: 150, innerRadius: 3, radius: 5, note,
-      hitCondition: { kind: 'bomblets', min: 0, max: 25 },
+      hitCondition: { kind: 'bomblets', min: 0, max: 25, default: 5, defaultPct: 20 },
       bomblet: { standard: 150, durable: 150, ap: 3, explosion: 500, explosionDurable: 500, explosionAp: 3, innerRadius: 4, radius: 6 },
     })),
   ], '주탄과 자탄의 직격·폭발을 따로 계산합니다. 자탄은 25개 발생하지만 같은 부위에 모두 맞는다고 자동 합산하지 않습니다. 선택한 폭발이 모두 해당 부위에 최대 피해를 주는 가정이며, 여러 부위 동시 피해는 제외합니다.'),

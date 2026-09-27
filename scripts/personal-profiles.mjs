@@ -72,9 +72,9 @@ export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
       const fragment = weapon.variants.find(v => v.id === 'shrapnel');
       if (!fragment) throw new Error(`Missing shrapnel: ${weapon.id}`);
       const fragmentMode = makeMode(weapon, fragment);
-      modes[0].hitCondition = { kind: 'shrapnel', min: 0, max: weapon.shrapnelCount, default: 0 };
+      modes[0].hitCondition = { kind: 'shrapnel', min: 0, max: weapon.shrapnelCount };
       modes[0].bomblet = fragmentMode;
-      modes[0].note = `기본 계산에서는 파편을 빼고 ${weapon.delivery === 'explosion' ? '폭발 피해만' : '직접 맞혔을 때의 피해와 폭발 피해만'} 반영합니다. 파편 피해도 넣으려면 같은 부위에 맞는 파편 수를 고르세요.`;
+      modes[0].note = `기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정하며, ${weapon.delivery === 'explosion' ? '폭발 피해도' : '직접 맞혔을 때의 피해와 폭발 피해도'} 반영합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.`;
     }
     // Breacher's delayed explosion is linked, not another firing mode. Keep
     // only the known impact here; do not invent timing/attachment success.
@@ -82,17 +82,22 @@ export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
     if (['pyrotech', 'melta-mine'].includes(weapon.id)) modes[0].note = '처음 터지는 폭발만 계산합니다. 남은 불길에 계속 닿아서 받는 피해는 더하지 않습니다.';
     for (const mode of modes) {
       if (mode.unsupported) continue;
+      if (mode.hitCondition) {
+        const condition = mode.hitCondition;
+        condition.defaultPct = ['pellets', 'arcs'].includes(condition.kind) ? 100 : 20;
+        condition.default = Math.max(condition.min, Math.round(condition.max * condition.defaultPct / 100));
+      }
       if (mode.hitCondition?.kind === 'pellets') {
-        mode.hitCondition.default = mode.hitCondition.max;
         mode.note = [mode.note, `기본은 ${mode.hitCondition.projectileName || '펠릿'}이 모두 맞는다고 계산합니다. 명중률을 낮춰 다시 계산할 수 있습니다.`].filter(Boolean).join(' ');
       }
+      if (mode.hitCondition?.kind === 'arcs') mode.note = [mode.note, '기본은 전격이 모두 같은 부위에 맞는다고 가정합니다. 명중률을 낮춰 다시 계산할 수 있습니다.'].filter(Boolean).join(' ');
       if (![mode.standard, mode.durable, mode.ap, mode.explosion, mode.explosionDurable, mode.explosionAp].every(finite)) mode.unsupported = '피해량이나 장갑을 뚫는 능력이 정확히 확인되지 않아 계산하지 않습니다.';
       else if (mode.standard + mode.durable + mode.explosion + mode.explosionDurable === 0) mode.unsupported = '직접 주는 피해가 없는 지원 장비입니다. 적을 기절시키는 등의 효과를 피해로 바꿔 계산하지 않습니다.';
     }
     if (modes.every(mode => mode.unsupported)) personalUnsupported[weapon.id] = modes[0].unsupported;
     else personalProfiles[weapon.id] = {
       source: weapon.source, checkedAt, sourceRevision: pages[weapon.en].revision,
-      note: '같은 부위를 최대 피해로 계속 맞혔을 때의 횟수입니다. 거리와 맞는 각도에 따른 피해 변화, 도탄, 화상 같은 지속 피해와 기절 같은 효과는 빼고 계산합니다. 여러 부위에 동시에 들어가는 피해는 합치지 않습니다. 연사와 점사는 한 발씩 계산합니다. 산탄은 기본적으로 모두 맞는다고 계산하며, 명중률을 낮춰 다시 계산할 수 있습니다. 전격은 맞는 수를 골라야 하며, 파편은 기본적으로 제외합니다.',
+      note: '같은 부위를 최대 피해로 계속 맞혔을 때의 횟수입니다. 거리와 맞는 각도에 따른 피해 변화, 도탄, 화상 같은 지속 피해와 기절 같은 효과는 빼고 계산합니다. 여러 부위에 동시에 들어가는 피해는 합치지 않습니다. 연사와 점사는 한 발씩 계산합니다. 산탄과 전격은 기본적으로 모두 맞는다고 가정하며, 파편은 20%를 반올림한 개수가 맞는다고 가정합니다. 명중률을 바꿔 다시 계산할 수 있습니다.',
       modes,
     };
   }

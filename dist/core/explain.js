@@ -97,7 +97,9 @@ export function attackStats(mode) {
 /** One-line statement of what the count assumes for this kind of attack. */
 export function assumptionText(mode) {
   if (mode?.hitCondition?.kind === 'pellets') return `기본은 ${mode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 계산합니다. 명중률을 낮춰 다시 계산할 수 있습니다.`;
-  if (mode?.hitCondition?.kind === 'shrapnel') return `같은 부위에 ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격·폭발'}과 선택한 수의 파편이 맞는 가정입니다. 파편 0개를 고르면 파편 피해는 제외합니다.`;
+  if (mode?.hitCondition?.kind === 'shrapnel') return `기본은 파편의 ${mode.hitCondition.defaultPct}%를 반올림한 개수가 같은 부위에 ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격·폭발'}과 함께 맞는 가정입니다. 명중률을 바꿀 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.`;
+  if (mode?.hitCondition?.kind === 'arcs') return '기본은 전격이 모두 같은 부위에 맞는다고 가정합니다. 명중률을 낮춰 다시 계산할 수 있으며, 실제로 모두 맞는다는 보장은 없습니다.';
+  if (mode?.hitCondition?.kind === 'bomblets') return `기본은 자탄의 ${mode.hitCondition.defaultPct}%를 반올림한 개수의 폭발이 같은 부위에 맞는 가정입니다. 명중률과 주탄·자탄의 직격 여부를 바꿔 다시 계산할 수 있습니다. 여러 부위 동시 피해는 더하지 않습니다.`;
   if (mode?.delivery === 'explosive') return '기폭 시 같은 부위에 최대 폭발 피해가 닿는 조건입니다. 여러 부위에 동시에 들어가는 피해는 더하지 않습니다.';
   if (mode?.beam) return '같은 부위에 광선을 계속 유지하는 조건. 한 발은 약 1.4초 분량으로 환산합니다.';
   if (mode?.hitCondition) return '선택한 명중 수가 모두 해당 부위에 최대 피해로 들어가는 가정. 여러 부위 동시 피해는 더하지 않습니다.';
@@ -115,7 +117,7 @@ export function assumptionText(mode) {
 export function aimText(row, mode) {
   const target = row.target;
   const lines = [target.tip];
-  if (['pellets', 'shrapnel'].includes(mode?.hitCondition?.kind)) lines.push(assumptionSummary(mode));
+  if (mode?.hitCondition) lines.push(assumptionSummary(mode));
   const radius = explosionsOf(mode || {}).map(blast => blast.innerRadius).filter(Number.isFinite);
   if (mode?.delivery === 'adhesive' && radius.length) lines.push(`기폭 시 이 부위가 폭발 중심 ${num(Math.min(...radius))}m 안에 들어오게 붙이세요.`);
   else if (radius.length && (!mode?.hitCondition || mode.hitCondition.kind === 'shrapnel')) lines.push(`이 부위가 폭발 중심 ${num(Math.min(...radius))}m 안에 들어와야 최대 피해입니다.`);
@@ -166,10 +168,19 @@ export function assumptionSummary(mode) {
     return count === max ? `${projectileName} ${max}개가 모두 이 부위에 명중 (전탄 명중 가정)`
       : `${projectileName} ${max}개 중 ${count}개 명중 (약 ${Math.round(count / max * 100)}%)`;
   }
-  if (mode.hitCondition.kind === 'shrapnel') return `폭발 1회당 파편 ${count}개가 이 부위에 명중 + ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격 + 폭발'}${count === 0 ? ' (파편 피해 제외)' : ''}`;
-  if (mode.hitCondition.kind === 'arcs') return `한 발마다 전격 ${count}회가 이 부위에 명중 (유탄 직격 제외)`;
+  const { max } = mode.hitCondition;
+  const ratio = count / max * 100;
+  const percent = `${Number.isInteger(ratio) ? '' : '약 '}${Math.round(ratio)}%`;
+  const tag = count === mode.hitCondition.default ? ' (기본 가정)' : ' (명중 수 가정)';
+  if (mode.hitCondition.kind === 'shrapnel') {
+    const primary = mode.delivery === 'explosive' ? '주폭발' : '주탄 직격 + 폭발';
+    return count === 0 ? `폭발 1회당 파편 0개가 이 부위에 명중 + ${primary} (파편 피해 제외)`
+      : `파편 ${max}개 중 ${count}개(${percent})가 이 부위에 명중${tag} + ${primary}`;
+  }
+  if (mode.hitCondition.kind === 'arcs') return (count === max ? `전격 ${max}회 모두 이 부위에 명중`
+    : `전격 ${max}회 중 ${count}회(${percent})가 이 부위에 명중`) + tag;
   const primary = { none: '주탄 피해 제외', blast: '주탄 폭발만', direct: '주탄 직격 + 폭발' }[primaryHit];
-  return `${primary} · 자탄 ${count}개 ${bombletDirect && count > 0 ? '직격 + 폭발' : '폭발'} 명중`;
+  return `${primary} · 자탄 ${max}개 중 ${count}개(${percent}) ${bombletDirect && count > 0 ? '직격 + 폭발' : '폭발'}이 이 부위에 명중${tag}`;
 }
 
 // Korean particle after a word: 와/과, 을/를, 은/는 depending on a final consonant.
@@ -184,7 +195,13 @@ export function assumptionTag(mode) {
   if (mode?.hitCondition?.kind === 'pellets') return mode.assumption?.count === mode.hitCondition.max
     ? '전탄 명중 가정' : `${mode.hitCondition.projectileName || '펠릿'} 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
   if (mode?.hitCondition?.kind === 'shrapnel') return mode.assumption?.count === 0
-    ? `파편 제외 · ${mode.delivery === 'explosive' ? '폭발만' : '직격·폭발만'}` : `파편 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
+    ? `파편 제외 · ${mode.delivery === 'explosive' ? '폭발만' : '직격·폭발만'}`
+    : mode.assumption && mode.assumption.count === mode.hitCondition.default ? `파편 ${mode.hitCondition.defaultPct}% 기본 가정` : `파편 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
+  if (['arcs', 'bomblets'].includes(mode?.hitCondition?.kind)) {
+    const name = mode.hitCondition.kind === 'arcs' ? '전격' : '자탄';
+    return mode.assumption && mode.assumption.count === mode.hitCondition.default ? `${name} ${mode.hitCondition.defaultPct}% 기본 가정`
+      : `${name} 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
+  }
   if (!mode?.conditionalImpact) return '';
   if (mode.beam) return '광선 유지 가정';
   if (mode.delivery === 'arc') return '전격 명중 가정 · 부위 조준 불가';

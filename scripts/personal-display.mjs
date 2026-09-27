@@ -49,9 +49,9 @@ export function playerDetails(weapon, box) {
   if (fuse.fuseType === 'proximity') playerNotes.push('가까운 대상을 감지하면 작동합니다.');
   if (fuse.fuseType === 'selectable') playerNotes.push(`작동 시간을 ${fuse.fuseOptions.map(value => `${value}초`).join('·')} 중에서 고를 수 있습니다.`);
   if (weapon.category === 'throwable' && fuse.fuseType === null) playerNotes.push('신관 작동 방식은 아직 확인하지 못했습니다.');
-  if (weapon.shrapnelCount > 0) playerNotes.push('기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.');
+  if (weapon.shrapnelCount > 0) playerNotes.push('기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.');
   if (weapon.pellets > 1) playerNotes.push('표시 피해는 펠릿 한 개 기준입니다. 기본 계산은 펠릿이 모두 맞는다고 가정하며, 명중률을 낮춰 다시 계산할 수 있습니다.');
-  if (weapon.id === 'blitzer') playerNotes.push('표시 피해는 전격 한 줄기 기준입니다. 다섯 줄기가 한 적의 같은 부위에 모두 맞지는 않을 수 있습니다.');
+  if (weapon.id === 'blitzer') playerNotes.push('표시 피해는 전격 한 줄기 기준입니다. 기본은 다섯 줄기가 같은 부위에 모두 맞는다고 가정하며, 명중률을 낮춰 다시 계산할 수 있습니다. 실제로 모두 맞는다는 보장은 없습니다.');
   if ([weapon, ...weapon.variants].some(attack => attack.delivery === 'spray')) playerNotes.push('화염 분사는 불길에 닿은 시간에 따라 피해가 달라져 정확한 처치 탄수를 계산하지 않습니다.');
   if (weapon.delivery === 'beam') playerNotes.push(weapon.damageKind === 'dps'
     ? '표시 피해는 빔이 1초 동안 닿는 기준입니다. 한 발의 피해나 처치 탄수로 환산하지 않습니다.'

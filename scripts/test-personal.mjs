@@ -163,8 +163,8 @@ for (const text of playerCopy) ok(!/ap1|원본|레코드|탄체|\blevel\b|damage
 eq(personalUnsupported.purifier, '충전했을 때의 정확한 피해가 확인되지 않아 계산하지 않습니다.');
 eq(personalUnsupported.scythe, '광선을 얼마나 오래 비추는지에 따라 피해가 달라져 발 단위로 계산하지 않습니다.');
 eq(personalUnsupported.torcher, '불꽃이 몇 번 닿는지 확인되지 않아 발 단위로 계산하지 않습니다.');
-ok(personalProfiles.frag.modes[0].note.includes('파편을 빼고 폭발 피해만'), 'throwable note distinguishes blast-only default');
-ok(personalProfiles.eruptor.modes[0].note.includes('직접 맞혔을 때의 피해와 폭발 피해만'), 'Eruptor note keeps direct plus blast default');
+ok(personalProfiles.frag.modes[0].note.includes('20%') && personalProfiles.frag.modes[0].note.includes('폭발 피해도'), 'throwable note describes default fragments plus blast');
+ok(personalProfiles.eruptor.modes[0].note.includes('직접 맞혔을 때의 피해와 폭발 피해도'), 'Eruptor note keeps primary direct plus blast');
 const weaponOf = id => personalWeapons.find(w => w.id === id);
 eq([weaponOf('dynamite').fuseType, weaponOf('dynamite').fuseOptions, weaponOf('dynamite').fuse], ['selectable', [5, 15, 60], null], 'selectable fuse never chooses a single time');
 eq([weaponOf('impact').fuseType, weaponOf('impact').fuse], ['impact', null]);
@@ -213,9 +213,9 @@ for (const weapon of personalWeapons) {
     ok(Number.isInteger(attack.ammoPerShot) && attack.ammoPerShot > 0, 'ammo use');
     if (attack.hitCondition) {
       const { min, max } = attack.hitCondition;
-      if (attack.hitCondition.kind === 'shrapnel') eq(attack.hitCondition.default, 0, 'fragments default to exclusion');
-      else if (attack.hitCondition.kind === 'pellets') eq(attack.hitCondition.default, max, `${weapon.id}/${attack.id}: all pellets default`);
-      else ok(!Object.hasOwn(attack.hitCondition, 'default'), 'arcs still require a choice');
+      const pct = ['pellets', 'arcs'].includes(attack.hitCondition.kind) ? 100 : 20;
+      eq(attack.hitCondition.defaultPct, pct);
+      eq(attack.hitCondition.default, Math.max(min, Math.round(max * pct / 100)), `${weapon.id}/${attack.id}: rounded default count`);
       ok(Number.isInteger(min) && Number.isInteger(max) && min >= 0 && max >= min, 'assumption bounds');
       eq(head('hunter-hardened', attack).reason, 'assumption-needed', 'raw engine requires applied assumption; comparison/UI apply default');
       for (const hitCount of [-1, max + 1, 1.5, 'bogus', '']) ok(!withHitAssumption(attack, { hitCount }).events, 'invalid count stays pending');
@@ -254,7 +254,7 @@ eq(assumptionSummary(withHitAssumption(mode('breaker'), { hitCount: 6 })), '펠�
 eq(assumptionSummary(withHitAssumption(mode('breaker'), { hitCount: 11 })), '펠릿 11개가 모두 이 부위에 명중 (전탄 명중 가정)');
 eq(assumptionTag(withHitAssumption(mode('breaker'), { hitCount: 11 })), '전탄 명중 가정');
 eq(assumptionSummary(fragmentsZero), '폭발 1회당 파편 0개가 이 부위에 명중 + 주폭발 (파편 피해 제외)');
-eq(assumptionSummary(fragmentsThree), '폭발 1회당 파편 3개가 이 부위에 명중 + 주탄 직격 + 폭발');
+eq(assumptionSummary(fragmentsThree), '파편 30개 중 3개(10%)가 이 부위에 명중 (명중 수 가정) + 주탄 직격 + 폭발');
 ok(assumptionSummary(mode('breaker')).includes('펠릿 수를 고르세요'), 'pending pellet prompt');
 ok(assumptionSummary(withHitAssumption(mode('frag'), { hitCount: -1 })).includes('파편 수를 고르세요'), 'invalid fragment count stays pending in copy');
 eq(assumptionTag(mode('breaker')), '펠릿 명중 수 선택 필요');
@@ -276,21 +276,67 @@ ok(!attackStats(mode('frag')).some(stat => stat.label.includes('자탄')), 'frag
 ok(aimText(frag, fragmentsZero).some(line => line.includes('파편 0개')), 'aim repeats selected assumption');
 ok(aimText(frag, fragmentsZero).some(line => line.includes('폭발 중심')), 'fragment shots retain blast aim condition');
 ok(routeNotes(head('hunter-hardened', mode('breaker')), mode('breaker')).some(note => note.includes('펠릿 수를 고르세요')), 'pending route notes identify pellets');
-eq(assumptionSummary(withHitAssumption(weaponProfiles['de-escalator'].modes[0], { hitCount: 2 })), '한 발마다 전격 2회가 이 부위에 명중 (유탄 직격 제외)', 'legacy arc explanation unchanged');
-eq(assumptionSummary(withHitAssumption(weaponProfiles['airburst-launcher'].modes[0], { hitCount: 2 })), '주탄 폭발만 · 자탄 2개 폭발 명중', 'legacy bomblet explanation unchanged');
+eq(assumptionSummary(withHitAssumption(weaponProfiles['de-escalator'].modes[0], { hitCount: 2 })), '전격 10회 중 2회(20%)가 이 부위에 명중 (명중 수 가정)');
+eq(assumptionSummary(withHitAssumption(weaponProfiles['airburst-launcher'].modes[0], { hitCount: 2 })), '주탄 폭발만 · 자탄 25개 중 2개(8%) 폭발이 이 부위에 명중 (명중 수 가정)');
+eq(assumptionSummary(withHitAssumption(mode('frag'), { hitCount: 7 })), '파편 35개 중 7개(20%)가 이 부위에 명중 (기본 가정) + 주폭발');
+eq(assumptionSummary(withHitAssumption(mode('pineapple'), { hitCount: 4 })), '파편 18개 중 4개(약 22%)가 이 부위에 명중 (기본 가정) + 주폭발', 'display actual rounded count percentage, retain configured 20 in metadata');
+eq(assumptionSummary(withHitAssumption(mode('blitzer'), { hitCount: 5 })), '전격 5회 모두 이 부위에 명중 (기본 가정)');
+eq(assumptionTag(withHitAssumption(mode('frag'), { hitCount: 7 })), '파편 20% 기본 가정');
+eq(assumptionTag(withHitAssumption(mode('blitzer'), { hitCount: 5 })), '전격 100% 기본 가정');
+eq(assumptionTag(withHitAssumption(weaponProfiles['airburst-launcher'].modes[0], { hitCount: 5 })), '자탄 20% 기본 가정');
 ok(assumptionSummary(withHitAssumption(personalProfiles.variable.modes.find(m => m.id === 'volley'), { hitCount: 2 })).includes('탄환 7개 중 2개'), 'volley bullets are not shotgun pellets');
 eq(mode('eruptor').hitCondition.kind, 'shrapnel');
 eq(withHitAssumption(mode('eruptor'), { hitCount: 0 }).assumption.primaryHit, 'direct');
 const defaultEruptor = withHitAssumption(mode('eruptor'), { hitCount: mode('eruptor').hitCondition.default });
-eq(defaultEruptor.events.length, 1, 'default Eruptor has only the primary event');
+eq(defaultEruptor.events.length, 2, 'default Eruptor includes primary and fragments');
 const defaultEruptorHead = head('hunter-hardened', defaultEruptor);
-eq([defaultEruptorHead.hits, defaultEruptorHead.outcome], [1, 'kill'], 'default Eruptor kills Hunter without fragments');
-eq(defaultEruptorHead.stages[0].damage, { direct: 230, explosion: 0, mainExplosion: 225 }, 'Eruptor primary direct and blast only');
+eq([defaultEruptorHead.hits, defaultEruptorHead.outcome], [1, 'kill'], 'default Eruptor kills Hunter');
+eq(defaultEruptorHead.stages[0].damage, { direct: 890, explosion: 0, mainExplosion: 225 }, 'Eruptor potential shot damage includes six 110-damage fragments');
 eq(personalProfiles['double-freedom'].modes[1].ammoPerShot, 2);
 const missingBlast = buildPersonalProfiles([weapons.find(w => w.id === 'liberator')], { projectile: { 'AR-23_P': { explode_on_impact_id: 'unknown-blast' } } }, pages, personalWeaponsCheckedAt);
 ok(missingBlast.personalUnsupported.liberator, 'linked but unknown explosion is never silently zero');
 
 const compare = (id, weaponId, options = {}, modeId) => compareAttacks(enemy(id), [{ weaponId, modeId }], options).entries[0];
+// Every supported assumption kind shares the same default contract. pct is the
+// configured slider percentage, not the rounded count/max ratio (4/18 != 20%).
+for (const [weaponId, modeId, kind, count, max, pct, slot] of [
+  ['blitzer', 'standard', 'arcs', 5, 5, 100, 'primary'],
+  ['de-escalator', 'arc', 'arcs', 10, 10, 100, 'stratagems'],
+  ['airburst-launcher', 'flak', 'bomblets', 5, 25, 20, 'stratagems'],
+  ['airburst-launcher', 'cluster', 'bomblets', 5, 25, 20, 'stratagems'],
+  ['eruptor', 'standard', 'shrapnel', 6, 30, 20, 'primary'],
+  ['frag', 'standard', 'shrapnel', 7, 35, 20, 'throwable'],
+  ['pineapple', 'standard', 'shrapnel', 4, 18, 20, 'throwable'],
+  ['lure-mine', 'standard', 'shrapnel', 7, 35, 20, 'throwable'],
+]) {
+  const attack = resolveAttack(weaponId).profile.modes.find(m => m.id === modeId);
+  eq([attack.hitCondition.default, attack.hitCondition.defaultPct], [count, pct]);
+  eq(count, Math.max(attack.hitCondition.min, Math.round(max * pct / 100)));
+  const result = compare('hunter-hardened', weaponId, {}, modeId);
+  eq([result.status, result.verified, result.defaulted, result.fragmentsExcluded], ['route', true, true, false]);
+  eq(result.defaultAssumed, { kind, count, max, pct });
+  eq(result.assumption.count, count);
+  ok(assumptionSummary(result.mode).includes('(기본 가정)'));
+  const explicit = compare('hunter-hardened', weaponId, { assume: { hitCount: String(count) } }, modeId);
+  eq([explicit.verified, explicit.defaulted, explicit.defaultAssumed], [true, false, result.defaultAssumed], 'explicit default count has same acceptance');
+  const lower = compare('hunter-hardened', weaponId, { assume: { [`${weaponId}:${modeId}`]: { hitCount: 1 } } }, modeId);
+  eq([lower.assumption.count, lower.defaulted, lower.defaultAssumed, lower.status], [1, false, null, 'assume'], 'other count overrides without adopting default acceptance');
+  const invalid = compare('hunter-hardened', weaponId, { assume: { hitCount: max + 1 } }, modeId);
+  eq([invalid.defaulted, invalid.defaultAssumed, invalid.verified], [false, null, false]);
+  eq(compare('hunter-hardened', weaponId, { assume: { hitCount: null } }, modeId).defaultAssumed, result.defaultAssumed, 'null restores configured default');
+  const loadout = { [slot]: slot === 'stratagems' ? [weaponId] : weaponId };
+  const coverage = loadoutCoverage(loadout, 'terminid');
+  const row = coverage.rows.find(r => r.enemyId === 'hunter-hardened');
+  const answer = row.perSlot[0].modes.find(m => m.modeId === modeId);
+  eq([row.status, answer.verified, answer.defaultAssumed], ['route', true, result.defaultAssumed]);
+  ok(!coverage.gaps.some(r => r.enemyId === row.enemyId), 'default routes fill loadout gaps');
+  eq(loadoutView(loadout, 'terminid', { limit: 0 }).rows.find(r => r.enemyId === row.enemyId).best.defaultAssumed, row.best.defaultAssumed);
+}
+eq(compare('hunter-hardened', 'liberator').defaultAssumed, null, 'plain fire never claims a default hit-count assumption');
+const changedBombletDelivery = compare('hunter-hardened', 'airburst-launcher', { assume: { primaryHit: 'none', bombletDirect: true } }, 'cluster');
+eq(changedBombletDelivery.assumption, { count: 5, primaryHit: 'none', bombletDirect: true }, 'default count preserves explicit delivery options');
+const withInvalidDelivery = compare('hunter-hardened', 'airburst-launcher', { assume: { primaryHit: 'invalid' } });
+eq([withInvalidDelivery.defaultAssumed, withInvalidDelivery.verified], [null, false], 'invalid delivery cannot validate a default count');
 eq(resolveAttack('liberator').kind, 'personal');
 eq(resolveAttack('autocannon').profile, weaponProfiles.autocannon);
 ok(resolveAttack('__proto__').unsupported && !resolveAttack('__proto__').profile, 'untrusted IDs cannot resolve prototypes');
@@ -325,7 +371,7 @@ eq([assumed.status, assumed.hits, assumed.assumption.count, assumed.verified], [
 eq(compare('hunter-hardened', 'frag', { assume: { 'frag:standard': { hitCount: 0 } } }).hits, 1);
 for (const id of ['eruptor', 'frag', 'pineapple', 'lure-mine']) {
   const conservative = compare('hunter-hardened', id);
-  eq([conservative.status, conservative.verified, conservative.defaulted, conservative.fragmentsExcluded, conservative.assumption.count], ['route', true, true, true, 0], `${id}: conservative default is verified`);
+  eq([conservative.status, conservative.verified, conservative.defaulted, conservative.fragmentsExcluded, conservative.assumption.count], ['route', true, true, false, mode(id).hitCondition.default], `${id}: configured default is accepted`);
   const explicitZero = compare('hunter-hardened', id, { assume: { hitCount: '0' } });
   eq([explicitZero.verified, explicitZero.defaulted, explicitZero.fragmentsExcluded], [true, false, true], 'explicit zero is also conservative');
   eq(compare('hunter-hardened', id, { assume: { hitCount: '' } }).defaulted, true, 'blank selector uses default');
@@ -333,7 +379,7 @@ for (const id of ['eruptor', 'frag', 'pineapple', 'lure-mine']) {
   eq([positive.status, positive.verified, positive.defaulted, positive.fragmentsExcluded], ['assume', false, false, false], 'positive fragments remain hypothetical');
   const invalid = compare('hunter-hardened', id, { assume: { hitCount: -1 } });
   eq([invalid.status, invalid.verified, invalid.assumption, invalid.defaulted], ['assume', false, null, false], 'invalid explicit input never silently defaults');
-  eq(compare('hunter-hardened', id).assumption.count, 0, 'cache keeps default apart from positive assumption');
+  eq(compare('hunter-hardened', id).assumption.count, mode(id).hitCondition.default, 'cache keeps default apart from other positive assumption');
 }
 eq(compare('hunter-hardened', 'sickle').magazinesNeeded, null, 'heat is not a magazine');
 eq(compare('hunter-hardened', 'frag', { assume: { hitCount: 0 } }).magazinesNeeded, null, 'throwables are not magazines');
@@ -385,7 +431,7 @@ eq(loadoutCoverage({}, 'automaton').gaps.length, loadoutFactions.find(f => f.id 
 eq(loadoutCoverage({ primary: 'breaker' }, 'terminid', { assume: { hitCount: 1 } }).gaps.length, 11, 'lower explicit hit assumption retains existing gap policy');
 for (const loadout of [{ primary: 'eruptor' }, { throwable: 'frag' }]) {
   const row = loadoutCoverage(loadout, 'terminid').rows.find(row => row.enemyId === 'hunter-hardened');
-  eq([row.status, row.best.fragmentsExcluded, row.best.assumption.count], ['route', true, 0], 'loadout uses conservative default');
+  eq([row.status, row.best.fragmentsExcluded, row.best.assumption.count], ['route', false, row.best.mode.hitCondition.default], 'loadout uses configured default');
   eq(loadoutView(loadout, 'terminid', { limit: 0 }).rows.find(row => row.enemyId === 'hunter-hardened').best.weaponId, row.best.weaponId, 'loadout view uses same default');
   eq(loadoutCoverage(loadout, 'terminid', { assume: { hitCount: 1 } }).rows.find(row => row.enemyId === 'hunter-hardened').status, 'gap', 'positive fragment assumption cannot close gap');
 }
@@ -406,7 +452,7 @@ for (const gap of fixes) {
   for (const replacement of gap.replacements) {
     const key = `${replacement.slot}:${replacement.slotIndex}`;
     counts.set(key, (counts.get(key) || 0) + 1);
-    ok(replacement.verified && (!replacement.assumption || replacement.fragmentsExcluded && replacement.assumption.count === 0 || replacement.allPelletsAssumed && replacement.assumption.count === replacement.mode.hitCondition.max) && !replacement.lowerBound, 'only accepted default scenarios can be replacements');
+    ok(replacement.verified && (!replacement.assumption || replacement.fragmentsExcluded && replacement.assumption.count === 0 || replacement.defaultAssumed && replacement.assumption.count === replacement.mode.hitCondition.default) && !replacement.lowerBound, 'only accepted default scenarios can be replacements');
     const next = { primary: 'liberator', stratagems: ['', '', '', ''] };
     if (replacement.slot === 'stratagems') next.stratagems[replacement.slotIndex] = replacement.weaponId;
     else { next[replacement.slot] = replacement.weaponId; eq(resolveAttack(replacement.weaponId).weapon.category, replacement.slot); }

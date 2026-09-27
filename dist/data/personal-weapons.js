@@ -645,7 +645,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: null,
     fuseOptions: [],
-    playerNotes: ['표시 피해는 전격 한 줄기 기준입니다. 다섯 줄기가 한 적의 같은 부위에 모두 맞지는 않을 수 있습니다.'],
+    playerNotes: ['표시 피해는 전격 한 줄기 기준입니다. 기본은 다섯 줄기가 같은 부위에 모두 맞는다고 가정하며, 명중률을 낮춰 다시 계산할 수 있습니다. 실제로 모두 맞는다는 보장은 없습니다.'],
     image: 'ARC-12 Blitzer Primary Render.png',
     sourceRevision: 135712,
     variants: [],
@@ -2039,7 +2039,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: null,
     fuseOptions: [],
-    playerNotes: ['기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
+    playerNotes: ['기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.'],
     image: 'R-36 Eruptor Primary Render.png',
     sourceRevision: 135041,
     variants: [
@@ -5623,7 +5623,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: 'timed',
     fuseOptions: [],
-    playerNotes: ['기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
+    playerNotes: ['기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.'],
     image: 'G-6 Frag Throwable Render.png',
     sourceRevision: 126327,
     variants: [
@@ -5770,7 +5770,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: 'timed',
     fuseOptions: [],
-    playerNotes: ['기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
+    playerNotes: ['기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.'],
     image: 'G-7 Pineapple Throwable Render.png',
     sourceRevision: 134063,
     variants: [
@@ -6211,7 +6211,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: 'proximity',
     fuseOptions: [],
-    playerNotes: ['가까운 대상을 감지하면 작동합니다.', '기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
+    playerNotes: ['가까운 대상을 감지하면 작동합니다.', '기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.'],
     image: 'TM-1 Lure Mine Throwable Render.png',
     sourceRevision: 136571,
     variants: [

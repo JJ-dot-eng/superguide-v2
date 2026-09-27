@@ -4,6 +4,7 @@ import { personalProfiles, personalUnsupported } from './personal-combat.js';
 import { weaponProfiles, unsupportedWeapons } from '../data/combat-data.js';
 import { solveMatchup, withHitAssumption, isFatal, spearCannotLock } from './combat.js';
 import { solveAccumulation } from './accumulate.js';
+import { assumptionSummary } from './explain.js';
 
 const personalById = new Map(personalWeapons.map(weapon => [weapon.id, weapon]));
 const own = (object, id) => Object.hasOwn(object, id) ? object[id] : null;
@@ -63,7 +64,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       route: null, best: null, rows: [], hits: null, outcome: null, part: null,
       accumulated: false, steps: [], summary: null,
       conditional: false, assumption: null, lowerBound: false, shieldCleared: options.shieldCleared === true,
-      defaulted: false, fragmentsExcluded: false, allPelletsAssumed: false,
+      defaulted: false, defaultAssumed: null, fragmentsExcluded: false, allPelletsAssumed: false,
       shieldAssumed: Boolean(enemy?.shield && options.shieldCleared), verified: false, oneShot: false, magazinesNeeded: null,
     };
     if (!rawMode || rawMode.unsupported || !resolved.profile) return { ...base, reason: base.reason || '선택한 발사 모드를 찾을 수 없습니다.' };
@@ -79,20 +80,25 @@ export function compareAttacks(enemy, entries = [], options = {}) {
     // Zero fragments removes an unverified damage component. It is not a
     // positive hit-count assumption and can be a verified conservative route.
     // Keep the underlying count=0 object so the UI can explain the exclusion.
-    const fragmentsExcluded = rawMode.hitCondition?.kind === 'shrapnel' && rawMode.hitCondition.default === 0 && result.mode.assumption?.count === 0;
+    const fragmentsExcluded = !defaulted && rawMode.hitCondition?.kind === 'shrapnel' && result.mode.assumption?.count === 0;
+    // A configured default is accepted whether selected automatically or by
+    // an explicit count. It remains an assumption, never measured accuracy.
+    const condition = rawMode.hitCondition;
+    const defaultAssumed = condition && Number.isFinite(condition.default) && result.mode.assumption?.count === condition.default
+      ? { kind: condition.kind, count: condition.default, max: condition.max, pct: condition.defaultPct } : null;
     // Full pellet hits are an explicit product default, not a guarantee of
     // real-world accuracy. Carry the flag even when max was selected manually.
     const allPelletsAssumed = rawMode.hitCondition?.kind === 'pellets'
       && rawMode.hitCondition.default === rawMode.hitCondition.max
       && result.mode.assumption?.count === rawMode.hitCondition.max;
-    const needsAssumption = Boolean(rawMode.hitCondition) && !fragmentsExcluded && !allPelletsAssumed;
+    const needsAssumption = Boolean(rawMode.hitCondition) && !fragmentsExcluded && !defaultAssumed;
     const status = needsAssumption ? 'assume' : route?.hits != null ? 'route' : 'none';
     const reason = needsAssumption ? result.mode.assumption ? '선택한 명중 수 가정에 따른 결과입니다.' : '부위에 맞는 탄체·펠릿·파편 수를 먼저 선택하세요.'
       : route?.reason ? route.detail || '부위 조건 또는 일부 수치가 미확인입니다.'
         : !route ? result.rows.find(row => row.detail)?.detail || '확인된 처치 경로가 없습니다.'
           : route.accumulated ? route.summary
           : fragmentsExcluded ? `파편 피해를 제외한 ${rawMode.delivery === 'explosive' ? '폭발' : '직격·폭발'}만으로 계산합니다.`
-            : allPelletsAssumed ? `${rawMode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 가정한 결과입니다.` : null;
+            : defaultAssumed ? assumptionSummary(result.mode) : null;
     const magazine = Object.hasOwn(rawMode, 'magazine') ? rawMode.magazine : resolved.weapon?.magazine;
     const shotsPerMagazine = Number.isFinite(magazine) && magazine > 0 ? Math.floor(magazine / (rawMode.ammoPerShot || 1)) : null;
     const verified = Boolean(route && isFatal(route) && !route.lowerBound && !needsAssumption);
@@ -102,7 +108,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       accumulated: Boolean(route?.accumulated), steps: route?.steps || [], summary: route?.summary || null,
       hits: route?.hits ?? null, outcome: route?.outcome ?? null, part: route?.target ?? null,
       conditional: Boolean(route?.conditional), assumption: result.mode.assumption || null, lowerBound: Boolean(route?.lowerBound),
-      defaulted, fragmentsExcluded, allPelletsAssumed,
+      defaulted, defaultAssumed, fragmentsExcluded, allPelletsAssumed,
       verified, oneShot: verified && route.hits === 1,
       magazinesNeeded: route?.hits != null && shotsPerMagazine > 0 ? Math.ceil(route.hits / shotsPerMagazine) : null,
     };

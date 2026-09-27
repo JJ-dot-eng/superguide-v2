@@ -74,8 +74,9 @@ function answers(enemy, slot, options) {
 }
 
 /** A gap has no unconditional, non-regenerating fatal route under the accepted
- * defaults. Zero fragments and full pellet hits are allowed; full pellets keep
- * allPelletsAssumed=true and the existing assumption simplicity penalty.
+ * defaults. All configured hit-count defaults are allowed and keep their
+ * defaultAssumed metadata and assumption simplicity penalty. Explicit zero
+ * fragments excludes damage and has no positive hit-assumption penalty.
  * Explicit shieldCleared may unlock routes; shieldAssumed reports
  * that prerequisite. Each answer uses one weapon/mode; the accumulation fallback
  * may target several explicitly counted instances sequentially.
