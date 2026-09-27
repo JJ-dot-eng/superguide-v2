@@ -9,7 +9,7 @@ import { search } from '../../core/search.js';
 import { num } from '../../core/explain.js';
 import { html, raw, render, $, $$, icon, badge, external } from '../dom.js';
 import { blastFigure } from '../blast.js';
-import { GROUPS, groupOf, typeName, weaponById, displayName } from '../gear-shared.js';
+import { GROUPS, groupOf, typeName, weaponById, displayName, orderTypes } from '../gear-shared.js';
 
 const ELEMENTS = { fire: '화상', gas: '가스', arc: '전기', electric: '전기' };
 const SORTS = [
@@ -90,7 +90,7 @@ function card(w) {
 }
 
 // --- Browse ------------------------------------------------------------------------
-const typesOf = cat => [...new Set(personalWeapons.filter(w => w.category === cat).map(w => w.type))];
+const typesOf = cat => orderTypes(new Set(personalWeapons.filter(w => w.category === cat).map(w => w.type)));
 const fields = w => ({ names: [w.name, w.en, w.code].filter(Boolean), text: [typeName(w.type), groupOf(w.category).name] });
 
 function visibleItems() {

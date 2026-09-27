@@ -5,11 +5,11 @@ import { personalWeapons } from '../../data/personal-weapons.js';
 import { weaponImages } from '../../data/weapon-images.js';
 import { wikiIcons } from '../../data/wiki-icons.js';
 import { pickerEnemyImages } from '../../data/selector-images.js';
-import { stratagems, stratagemById, categoryOf } from '../../core/catalog.js';
+import { stratagems, stratagemById, categories, categoryOf } from '../../core/catalog.js';
 import { search, stratagemFields } from '../../core/search.js';
 import { num, outcomeOf } from '../../core/explain.js';
 import { html, raw, render, $, $$, icon, badge } from '../dom.js';
-import { weaponById, displayName, typeName } from '../gear-shared.js';
+import { weaponById, displayName, typeName, orderTypes } from '../gear-shared.js';
 
 const SLOTS = [
   { key: 'p', label: '주무기', group: 'primary' },
@@ -48,37 +48,66 @@ function slotTile(slot) {
 }
 
 // --- Slot picker sheet -------------------------------------------------------------
-function candidates(slot, q) {
+// Candidates grouped by kind: weapon subtypes (data order) or stratagem categories.
+const weaponFields = w => ({ names: [w.name, w.en, w.code].filter(Boolean), text: [typeName(w.type)] });
+function pickerGroups(slot) {
   if (slot.stratagem != null) {
     const taken = new Set(env.loadout.st.filter((id, index) => id && index !== slot.stratagem));
     const list = stratagems.filter(item => !taken.has(item.id));
-    return search(list, q, stratagemFields).sort((a, b) => q ? 0 : Number(b.category === 'support') - Number(a.category === 'support'));
+    return categories.map(cat => ({ id: cat.id, name: cat.name, color: cat.color, fields: stratagemFields, items: list.filter(item => item.category === cat.id) }))
+      .filter(group => group.items.length);
   }
-  return search(personalWeapons.filter(w => w.category === slot.group), q, w => ({ names: [w.name, w.en, w.code].filter(Boolean), text: [typeName(w.type)] }));
+  const list = personalWeapons.filter(w => w.category === slot.group);
+  return orderTypes(new Set(list.map(w => w.type))).map(type => ({ id: type, name: typeName(type), fields: weaponFields, items: list.filter(w => w.type === type) }));
+}
+
+const picker = { kind: '' }; // chosen kind chip, reset each time the sheet opens
+
+function choiceButton(slot, item) {
+  const personal = weaponById.has(item.id);
+  const sub = personal ? item.en : `${item.en}${item.category === 'support' ? ' · 적 대응 계산' : ''}`;
+  return html`<button type="button" class="picker-item lo-choice" data-choose="${item.id}" aria-current="${slotValue(slot) === item.id}">${thumb(item.id, 36)}<span>${personal ? displayName(item) : item.name}<small>${sub}</small></span></button>`;
 }
 
 function pickerList(slot, q) {
-  const items = candidates(slot, q);
-  if (!items.length) return html`<p class="empty" style="padding:24px 8px">찾는 항목이 없습니다.</p>`;
-  return items.map(item => {
-    const personal = weaponById.has(item.id);
-    const sub = personal ? `${typeName(item.type)} · ${item.en}` : `${categoryOf(item.category).name}${item.category === 'support' ? ' · 적 대응 계산' : ''}`;
-    return html`<button type="button" class="picker-item lo-choice" data-choose="${item.id}" aria-current="${slotValue(slot) === item.id}">${thumb(item.id, 36)}<span>${personal ? displayName(item) : item.name}<small>${sub}</small></span></button>`;
-  });
+  // A search looks through every kind; otherwise the chosen chip narrows the list.
+  let groups = pickerGroups(slot);
+  if (q) groups = groups.map(group => ({ ...group, items: search(group.items, q, group.fields) })).filter(group => group.items.length);
+  else if (picker.kind) groups = groups.filter(group => group.id === picker.kind);
+  if (!groups.length) return html`<p class="empty" style="padding:24px 8px">찾는 항목이 없습니다.</p>`;
+  return groups.map(group => html`<section class="lo-choice-group" style="${group.color ? `--fc:${group.color}` : ''}"><div class="picker-group">${group.name} · ${group.items.length}</div>${group.items.map(item => choiceButton(slot, item))}</section>`);
+}
+
+function kindChips(slot) {
+  const groups = pickerGroups(slot);
+  return html`<button type="button" class="chip" data-kind="" aria-pressed="${!picker.kind}">전체</button>${groups.map(group => html`<button type="button" class="chip" data-kind="${group.id}" aria-pressed="${picker.kind === group.id}" style="${group.color ? `--dot:${group.color}` : ''}">${group.color ? html`<span class="dot"></span>` : ''}${group.name} <span class="count">${group.items.length}</span></button>`)}`;
 }
 
 function openPicker(slot) {
   const { ctx } = env;
+  picker.kind = '';
   ctx.openSheet(html`<div class="sheet-top"><span>${slot.label} 고르기</span><button class="icon-button" type="button" data-close aria-label="닫기">${icon('close', 18)}</button></div>
     <div class="sheet-content lo-picker">
       <h2 id="sheet-title" style="font-size:20px">${slot.label}</h2>
       ${slot.stratagem != null ? html`<p class="muted">지원 무기 스트라타젬만 적 대응 계산에 들어갑니다. 나머지는 편성에 담기만 합니다.</p>` : ''}
       <label class="field">${icon('search', 16)}<span class="sr-only">검색</span><input class="input" id="lo-q" type="search" placeholder="이름·코드 검색 — 초성도 됩니다" autocomplete="off"></label>
+      <div class="chips lo-kinds" id="lo-kinds" role="group" aria-label="종류">${kindChips(slot)}</div>
       <div class="lo-choices" id="lo-choices">${pickerList(slot, '')}</div>
     </div>`, { label: `${slot.label} 고르기` });
   const sheet = $('#sheet');
   const input = $('#lo-q', sheet);
-  input.addEventListener('input', () => render($('#lo-choices', sheet), pickerList(slot, input.value)));
+  const refresh = () => {
+    render($('#lo-choices', sheet), pickerList(slot, input.value));
+    $('#lo-kinds', sheet).hidden = Boolean(input.value);
+    for (const chip of $$('[data-kind]', sheet)) chip.setAttribute('aria-pressed', String(chip.dataset.kind === picker.kind));
+  };
+  input.addEventListener('input', refresh);
+  $('#lo-kinds', sheet).addEventListener('click', event => {
+    const chip = event.target.closest('[data-kind]');
+    if (!chip) return;
+    picker.kind = chip.dataset.kind;
+    refresh();
+  });
   $('#lo-choices', sheet).addEventListener('click', event => {
     const choice = event.target.closest('[data-choose]');
     if (!choice) return;
