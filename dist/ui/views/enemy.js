@@ -394,8 +394,9 @@ function openPhotos(targetId) {
 }
 
 // --- Lifecycle ----------------------------------------------------------------------------------
+let arrived = false;
 export function mount(container, context) {
-  root = container; ctx = context;
+  root = container; ctx = context; arrived = true;
   const families = new Set(enemies.map(enemy => enemy.family || enemy.id)).size;
   render(root, html`<div class="page-head"><div><div class="eyebrow">Target Analysis</div><h1>적 대응</h1><p>적을 고르면 지원 무기·주무기·보조무기·투척을 필요 횟수 순으로 비교합니다. 무기를 누르면 부위별 계산이 열립니다.</p></div>
     <span class="badge outline">적 ${families}종 · 계산 무기 ${Object.keys(weaponProfiles).length + Object.keys(personalProfiles).length}종</span></div>
@@ -474,6 +475,9 @@ export function update(route) {
   state.group = weapon ? weaponById.get(weapon).group : GROUPS.some(group => group.id === route.query.g) ? route.query.g : 'support';
   if (weapon !== state.weapon) resetAssumption();
   const switched = state.shown && enemy !== state.enemy;
+  // Arriving from a link (gear or stratagem detail) with a weapon: jump to its calculation.
+  const linked = weapon && (arrived || weapon !== state.weapon);
+  arrived = false;
   Object.assign(state, {
     enemy, weapon, shown: true,
     mode: modes.some(mode => mode.id === route.query.m) ? route.query.m : weapon ? state.weapon === weapon ? state.mode : null : null,
@@ -483,6 +487,16 @@ export function update(route) {
   if (route.id !== enemy) syncUrl();
   // After picking another enemy, bring its summary into view.
   const main = $('#enemy-main', root);
-  if (switched && main.getBoundingClientRect().top < 0) main.scrollIntoView({ block: 'start' });
+  if (linked) showMatchup();
+  else if (switched && main.getBoundingClientRect().top < 0) main.scrollIntoView({ block: 'start' });
+}
+
+// Scroll the selected weapon's calculation into view and flash it once.
+function showMatchup() {
+  const section = $('#matchup', root);
+  if (!section) return;
+  section.scrollIntoView({ block: 'start' });
+  section.classList.add('flash');
+  section.addEventListener('animationend', () => section.classList.remove('flash'), { once: true });
 }
 

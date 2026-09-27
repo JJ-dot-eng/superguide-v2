@@ -522,6 +522,8 @@ dialog { color: var(--text); }
 .group-tabs { margin: -4px 0 10px; }
 .group-tabs .count { font-size: 12px; opacity: .6; font-weight: 500; }
 .compare-add { margin-left: auto; }
+.matchup.flash > .section-title + .panel { animation: matchup-flash 1.6s ease-out; }
+@keyframes matchup-flash { 0%, 35% { box-shadow: 0 0 0 2px var(--accent), 0 0 0 7px var(--accent-soft); border-color: var(--accent); } 100% { box-shadow: 0 0 0 0 transparent; } }
 .matchup-head .segmented + .compare-add, .matchup-head .compare-add + .segmented { margin-left: 0; }
 .enemy-compare { min-width: 520px; }
 .enemy-compare td .badge { margin-left: 4px; vertical-align: 2px; }
