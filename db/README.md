@@ -60,7 +60,7 @@ Arbitrator/One-Two/Stoker는 하부 무기가 별도 `underbarrel` 모드이며 
 - 편성 정규형은 `{primary,secondary,throwable,stratagems:[id,id,id,id],faction}`입니다. 빈 칸은 `''`입니다. UI 축약형 `{p,s,g,st,f}`도 입력 가능합니다.
 - `encodeLoadout(loadout) → string`: `?` 없는 URL query. `decodeLoadout(query) → 정규형`: query 문자열, 전체 `#/gear?...`, URLSearchParams, route.query 객체를 허용합니다. 잘못된 슬롯 분류·알 수 없는 ID·중복 스트라타젬·5번째 이후 칸을 버리며 빈 칸 위치를 보존합니다. 진영 생략/오류는 terminid입니다.
 - `loadoutFactions = [{id,name,enemyIds}]`: 기존 factionSides의 한국어 이름, 기본 경/중/중장갑·공중 위협 8종, 기존 각 변종 가이드의 마지막 유닛(대개 상위 위협)을 중복 제거해 선택합니다. 테르미니드 11종, 오토마톤 11종, 일루미닛 10종입니다. 출현 확률·난이도별 구성의 추정이 아닌 점검 목록입니다.
-- `loadoutCoverage(loadout,factionId,options) → {faction,rows,gaps,notComputable}`. row는 `{enemyId,enemyName,enemy,best,status,perSlot,reason}`이고 status는 route/gap입니다. best는 비교 결과에 `{slot,slotIndex,weaponId,modeId,partId,partName,modeName,unit}`를 더합니다. perSlot의 각 항목은 `{slot,slotIndex,weaponId,best,modes}`입니다. gaps는 검증된 치명 경로가 없는 row 목록, notComputable은 `{slot,slotIndex,weaponId,id,reason}` 목록입니다. 다른 무기나 부위 피해를 합산하지 않습니다.
+- `loadoutCoverage(loadout,factionId,options) → {faction,rows,gaps,notComputable}`. row는 `{enemyId,enemyName,enemy,best,status,perSlot,reason}`이고 status는 route/gap입니다. best는 비교 결과에 `{slot,slotIndex,weaponId,modeId,partId,partName,modeName,unit}`를 더합니다. perSlot의 각 항목은 `{slot,slotIndex,weaponId,best,modes}`입니다. gaps는 검증된 치명 경로가 없는 row 목록, notComputable은 `{slot,slotIndex,weaponId,id,reason}` 목록입니다. 서로 다른 무기를 합산하지 않습니다. 단일 부위로 처치할 수 없으면 아래의 명시적 개수 기반 순차 누적 경로를 사용합니다.
 - `suggestFixes(loadout,factionId,options) → [{enemyId,enemyName,replacements}]`. 공백마다 같은 종류의 각 슬롯 위치에 최대 `options.limit`개(기본 3, 최대 20; `maxPerSlot` 별칭)의 교체안을 줍니다. 스트라타젬은 지원 무기만 추천합니다. 각 후보는 비교 결과 + slot/slotIndex/replaces이며 hits, 경로 단계 등 조건의 단순성, 즉사 여부, 안정적인 ID 순으로 정렬합니다. 같은 횟수·단계 수라면 전탄 명중을 가정한 경로는 그런 가정이 없는 경로 뒤에 둡니다. 이미 편성한 스트라타젬은 중복 추천하지 않습니다. 부분 산탄 명중·전격·양수 파편 가정, 조건부, 재생 하한값은 추천으로 공백을 메우지 않습니다. 전탄 명중과 파편 0개 제외 경로는 편성 및 추천에 포함합니다.
 - `loadoutView(loadout,factionId,options)`는 프런트엔드 연결용 추가 API입니다. coverage row에 fixes를 붙이고 교체 슬롯 키만 p/s/g/st0..st3으로 바꿉니다.
 
@@ -84,6 +84,7 @@ type Answer = Position & {
   assumption: { count: number; primaryHit: string; bombletDirect: boolean } | null;
   shieldCleared: boolean; shieldAssumed: boolean; verified: boolean; oneShot: boolean;
   defaulted: boolean; fragmentsExcluded: boolean; allPelletsAssumed: boolean;
+  accumulated: boolean; steps: AccumulationStep[]; summary: string | null;
   magazinesNeeded: number | null;
 };
 // CombatRoute는 solveMatchup의 원본 부위 경로:
@@ -117,6 +118,39 @@ type Fixes = {
 `loadoutCoverage`와 `loadoutView`의 `options.prioritizeLarge === true`는 **대형/초대형이면서 oneShot=false인 행**을 먼저 둡니다. 대응 무기가 없는 gap도 이 우선 그룹에 포함합니다. 우선 그룹 내부와 나머지 그룹 내부는 각각 기존 가이드 순서를 유지하며, 크기 등급이나 타격 수로 추가 정렬하지 않습니다. 생략/false면 전체 기존 순서를 그대로 유지합니다. `gaps`와 `suggestFixes`도 해당 행 순서를 따릅니다. 가이드 원본 배열은 변경하지 않습니다.
 
 `dist/core/route.js`는 gear 뷰와 경로 주석을 추가하고 기존 hash 변환을 유지합니다. 검사에는 수계산(Liberator/헌터 머리, Senator/데바스테이터 머리, Frag/헌터 본체 폭발), 산탄 가정, 탄창 경계, 원본 대응, URL 왕복·잘못된 입력, 편성 공백, 추천 재적용·결정성, 생성물 최신성 및 기존 legacy parity가 포함됩니다.
+
+## 여러 부위의 순차 누적 경로
+
+`dist/core/accumulate.js`의 `solveAccumulation(enemy, mode, options?)`는 기존 `solveMatchup`의 결과를 바꾸지 않는 추가 계산입니다. 해당 무기 모드에 단일 부위 치명 경로가 있으면 항상 null입니다. 반환값은 다음 구조 또는 null입니다.
+
+```ts
+type AccumulationStep = {
+  partId: string; partName: string;
+  instances: number;       // 실제로 사격한 해당 부위 개수. 마지막은 미파괴 상태일 수 있음
+  hitsPerInstance: number; // 이 step 안의 각 부위에 쏜 횟수
+  hits: number;           // instances * hitsPerInstance
+  mainDamage: number;     // 이 step의 본체 전달 피해 합계. 마지막 공격의 초과 피해 포함
+};
+type Accumulation = {
+  hits: number; outcome: 'kill' | 'bleed';
+  steps: AccumulationStep[]; accumulated: true;
+  summary: string; notes: string[];
+};
+```
+
+`noFatalPart(enemy)`도 export합니다. 부위 및 노출 후 부위에 kill/bleed/down 효과나 mainOnly가 하나도 없는지를 보는 구조적 검사이며, 무기별 관통 여부를 계산하지 않습니다. 빈/잘못된 적은 false입니다. true여도 본체로 충분한 피해를 전달하는 단일 부위 경로가 있을 수 있습니다. `ACCUMULATION_SUMMARY`는 '덩어리를 하나씩 터뜨리며 본체를 깎는 누적 경로입니다.'라는 플레이어용 한국어 상수입니다.
+
+현재 개수를 추가한 적은 Fleshmob뿐입니다. `combat-data.js`가 기존 검토 원본 `combat-enemies-expanded.js`의 sourcePart 괄호 숫자를 읽어 `parts[].count`로 보존합니다. revision 135182의 Head Chunks (6), Stomach Chunks (2), Arms (4), Legs (2)를 사용하며 원본이나 기존 부위 피해 수치는 수정하지 않습니다. count가 없는 부위를 한 개로 추정하지 않습니다.
+
+계산은 `hitDamage`의 장갑·내구·폭발 규칙과 기존 엔진의 전달 반올림을 사용합니다. 부위 하나를 파괴할 때까지의 **평균 발당 본체 전달 피해**가 큰 종류부터 공격하고, 동률이면 원본 부위 순서를 유지합니다. 체력·전달 상한은 매 부위마다 새로 시작합니다. `overflowCap`이 true면 기존 엔진처럼 부위 체력과 명시된 추가 체력의 합으로 전달량을 제한하며, false면 파괴하는 공격의 초과 전달 피해도 유지합니다. 본체로 우회하는 폭발은 한 번만 더하고 전달 상한 밖에 둡니다. 파괴 시 명시된 추가 본체 피해도 한 번만 반영합니다.
+
+한 번의 공격은 한 부위에만 적용합니다. 부위가 파괴되면 같은 발의 남은 펠릿·파편은 버리며 다음 발부터 다른 부위를 노립니다. 폭발의 여러 부위 동시 피해는 포함하지 않습니다. 본체 체력이 소진되는 즉시 멈추며, 마지막 부위에 필요한 횟수가 다르면 별도 step으로 반환합니다. 같은 종류·같은 발수의 연속 부위들은 하나의 step으로 묶습니다. 이 선택 방식은 검증 가능한 순차 경로이며 모든 순열 중 최저 발수라는 보장은 없습니다.
+
+지원 대상은 count와 전달 규칙이 확인된 독립적인 break 부위입니다. 개수·체력·전달량 미확인, 전달 상한 미확인, 선행 조건, 노출 단계, 별도 본체/장치 등은 제외합니다. 빔·재생 적은 누적을 지원하지 않습니다. 적용 가능한 부위를 모두 사용해도 본체를 소진하지 못하거나 총 20,000회를 넘으면 null입니다. null은 처치 불가능이라는 뜻이 아닙니다. `options`는 기존 피해 함수의 `shieldCleared`, `directHit`, `excludeMainExplosion`, `blastDistance`를 받습니다. `partId`가 있으면 순차 누적을 하지 않습니다. 명중 수 조건이 있는 mode는 직접 호출 전에 `withHitAssumption`으로 적용해야 하며, 이 함수 자체가 기본값을 선택하지는 않습니다.
+
+`compareAttacks`는 기존 최적 단일 부위 경로가 없을 때만 누적 결과를 캐시하고 선택합니다. `partId` 선택은 항상 기존 단일 부위 결과를 유지합니다. 모든 비교 Answer에 `accumulated`(기본 false), `steps`(기본 []), `summary`(기본 null)를 추가합니다. 누적 경로의 `route`/`best`에는 위 Accumulation에 `{target:{id:'accumulation',name:'여러 부위 순차 타격'}, stages:[], via:'main', conditional:false}`를 더합니다. 이 target은 실제 해부 부위가 아니며 공통 `parts` 목록이나 선택 가능한 partId로 추가하지 않습니다. 기존 `rows`는 단일 부위 결과만 보존합니다. **누적 설명은 `steps`/`summary`/`route.notes`를 사용하고 빈 stages를 단일 부위 계산처럼 표시하지 마세요.**
+
+편성·편성 뷰·교체 추천의 Answer도 같은 필드를 그대로 전달합니다. 검증된 누적 경로가 있으면 gap을 해소하고, 기존 가정 판정과 `oneShot = verified && hits === 1`을 유지합니다. 같은 발수에서는 여러 부위를 옮겨 조준하는 복잡도를 순위에 반영합니다. 산탄 전탄 명중 등의 기존 가정 플래그는 누적에서도 계속 표시해야 합니다. 수계산 검증값은 Fleshmob의 오토캐넌 APHET **9발/본체 피해 5013**, 기관총 **54발/5058**이며, 두 경우 모두 기존 단일 부위 엔진은 처치 경로 없음입니다.
 
 ## 적 크기 분류 API
 

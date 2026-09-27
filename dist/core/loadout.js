@@ -57,7 +57,8 @@ function slotsOf(loadout) {
     ...loadout.stratagems.map((weaponId, slotIndex) => ({ slot: 'stratagems', slotIndex, weaponId }))].filter(item => item.weaponId);
 }
 const compareText = (a, b) => a < b ? -1 : a > b ? 1 : 0;
-const simplicity = answer => Number(Boolean(answer.conditional)) + Number(Boolean(answer.assumption) && !answer.fragmentsExcluded) + Number(Boolean(answer.lowerBound)) + Math.max(0, (answer.route?.stages.length || 1) - 1);
+const simplicity = answer => Number(Boolean(answer.conditional)) + Number(Boolean(answer.assumption) && !answer.fragmentsExcluded) + Number(Boolean(answer.lowerBound))
+  + (answer.accumulated ? answer.steps.reduce((sum, step) => sum + step.instances, 0) : Math.max(0, (answer.route?.stages.length || 1) - 1));
 const rank = (a, b) => Number(b.verified) - Number(a.verified)
   || (a.hits ?? Infinity) - (b.hits ?? Infinity) || simplicity(a) - simplicity(b)
   || Number(a.outcome !== 'kill') - Number(b.outcome !== 'kill')
@@ -76,7 +77,8 @@ function answers(enemy, slot, options) {
  * defaults. Zero fragments and full pellet hits are allowed; full pellets keep
  * allPelletsAssumed=true and the existing assumption simplicity penalty.
  * Explicit shieldCleared may unlock routes; shieldAssumed reports
- * that prerequisite. Each answer uses one weapon/mode on one part route only.
+ * that prerequisite. Each answer uses one weapon/mode; the accumulation fallback
+ * may target several explicitly counted instances sequentially.
  */
 export function loadoutCoverage(loadout, factionId, options = {}) {
   options ||= {};

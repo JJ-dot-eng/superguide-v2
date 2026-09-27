@@ -289,7 +289,15 @@ const originalEnemies = [
 const enemyOrder = ["scavenger","spore-burst-scavenger","bile-spitter","pouncer","hunter-hardened","predator-hunter","spore-burst-hunter","warrior-hardened","alpha-warrior","bile-warrior","rupture-warrior","spore-burst-warrior","hive-guard","brood-commander","alpha-commander","nursing-spewer","bile-spewer-armored","rupture-spewer","stalker","predator-stalker","charger","behemoth","spore-charger","rupture-charger","impaler","shrieker","dragonroach","bile-titan","spore-burst-bile-titan","hive-lord","trooper","jet-brigade-trooper","pyro-trooper","brawler","commissar","jet-brigade-commissar","rocket-raider","incendiary-rocket-raider","assault-raider","marauder","mg-raider","jet-brigade-mg-raider","berserker","radical","agitator","devastator","rocket-devastator","heavy-devastator","conflagration-devastator","incendiary-mg-devastator","jet-brigade-devastator","scout-strider","reinforced-strider","hulk","hulk-bruiser","hulk-obliterator","hulk-firebomber","jet-brigade-hulk-scorcher","jet-brigade-hulk-bruiser","annihilator-tank","shredder-tank","barrager-tank","gunship","dropship","war-strider","factory-strider","vox-engine","voteless-light","voteless-medium","voteless-heavy","wretch","overseer","elevated-overseer","crescent-overseer","watcher","obtruder","fleshmob","crusher","harvester","veracitor","gatekeeper","stingray","warp-ship","leviathan"];
 const factionOrder = ['테르미니드', '오토마톤', '일루미닛'];
 const enemyRank = new Map(enemyOrder.map((id, index) => [id, index]));
-export const enemies = [...originalEnemies, ...expandedEnemies, ...additionalEnemies].sort((a, b) =>
+// Explicit instance counts in the reviewed Fleshmob anatomy (revision 135182).
+// Keep the imported source data and all legacy single-part inputs unchanged.
+const countedEnemies = [...originalEnemies, ...expandedEnemies, ...additionalEnemies].map(enemy => enemy.id !== 'fleshmob' ? enemy : {
+  ...enemy, parts: enemy.parts.map(part => {
+    const count = part.sourcePart?.match(/\((\d+)\)$/)?.[1];
+    return count ? { ...part, count: Number(count) } : part;
+  }),
+});
+export const enemies = countedEnemies.sort((a, b) =>
   factionOrder.indexOf(a.faction) - factionOrder.indexOf(b.faction)
   || (enemyRank.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (enemyRank.get(b.id) ?? Number.MAX_SAFE_INTEGER)
   || a.name.localeCompare(b.name, 'ko'));

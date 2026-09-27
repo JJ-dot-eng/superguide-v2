@@ -18,6 +18,7 @@ import { fuseDetails } from './personal-display.mjs';
 import { enemySize, isLargeEnemy, SIZE_NAMES } from '../dist/core/enemy-size.js';
 import { enemySizes, enemySizeEvidence, unmappedEnemySizes, enemySizesCheckedAt } from '../dist/data/enemy-sizes.js';
 import { buildEnemySizes } from './build-enemy-sizes.mjs';
+import { solveAccumulation, noFatalPart } from '../dist/core/accumulate.js';
 
 const root = new URL('../', import.meta.url);
 let checked = 0;
@@ -27,6 +28,90 @@ const pages = JSON.parse(await readFile(new URL('db/source/wiki_pages.json', roo
 const enemy = id => enemies.find(item => item.id === id);
 const mode = id => personalProfiles[id].modes[0];
 const head = (target, attack) => solveMatchup(enemy(target), attack).rows.find(row => row.target.id === 'head');
+
+// Sequential transfers are additive; the legacy per-part solver stays intact.
+const fleshmob = enemy('fleshmob');
+eq(fleshmob.parts.map(part => part.count), [6, 2, 4, 2], 'explicit source instance counts');
+for (const part of fleshmob.parts) eq(part.count, Number(part.sourcePart.match(/\((\d+)\)$/)[1]));
+ok(noFatalPart(fleshmob), 'break-only anatomy has no fatal target');
+eq(noFatalPart(enemy('hunter-hardened')), false);
+eq(noFatalPart({ parts: [{ effect: 'armor', next: { effect: 'kill' } }] }), false, 'exposed fatal layer counts');
+eq(noFatalPart({ parts: [{ effect: 'break', mainOnly: true }] }), false);
+eq(noFatalPart(null), false);
+const beforeAccumulation = JSON.stringify(fleshmob);
+for (const [weaponId, expectedHits, expectedSteps] of [
+  ['autocannon', 9, [
+    ['head-chunk', 6, 1, 6, 3780], ['stomach-chunk', 2, 1, 2, 822], ['leg', 1, 1, 1, 411],
+  ]],
+  ['machine-gun', 54, [
+    ['head-chunk', 6, 6, 36, 3924], ['stomach-chunk', 2, 7, 14, 882], ['leg', 1, 4, 4, 252],
+  ]],
+]) {
+  const attack = weaponProfiles[weaponId].modes[0];
+  // MG head = floor(90*.75+23*.25)=73, transfer=floor(73*1.5)=109;
+  // six 400-HP heads: 36 hits/3924 main; stomach+legs: 63 main per hit.
+  // AC head = floor(325*.75+260*.25)=308 direct + floor(150*.75)=112 blast;
+  // (308+112)*1.5=630 main. Stomach/leg: 299+112=411 main.
+  eq(solveMatchup(fleshmob, attack).best, null, 'legacy still has no fatal part route');
+  const route = solveAccumulation(fleshmob, attack);
+  eq(route.hits, expectedHits);
+  eq(route.outcome, 'kill');
+  eq(route.steps.map(s => [s.partId, s.instances, s.hitsPerInstance, s.hits, s.mainDamage]), expectedSteps, 'hand-computed sequential damage');
+  eq(route.steps.reduce((sum, s) => sum + s.hits, 0), route.hits);
+  const answer = compareAttacks(fleshmob, [{ weaponId }]).entries[0];
+  eq([answer.status, answer.verified, answer.accumulated, answer.oneShot, answer.hits], ['route', true, true, false, expectedHits]);
+  eq(answer.steps, route.steps);
+  ok(answer.reason.includes('누적 경로'));
+  eq(compareAttacks(fleshmob, [{ weaponId }], { partId: 'head-chunk' }).entries[0].accumulated, false, 'part selection cannot silently become a sequence');
+  const row = loadoutCoverage({ stratagems: [weaponId] }, 'illuminate').rows.find(r => r.enemyId === 'fleshmob');
+  eq([row.status, row.best.accumulated, row.best.hits, row.oneShot], ['route', true, expectedHits, false]);
+  eq(loadoutView({ stratagems: [weaponId] }, 'illuminate', { limit: 0 }).rows.find(r => r.enemyId === 'fleshmob').best.steps, route.steps);
+}
+eq(JSON.stringify(fleshmob), beforeAccumulation, 'accumulation never mutates source anatomy');
+const ordinaryEnemy = enemy('hunter-hardened');
+const ordinaryMode = weaponProfiles['machine-gun'].modes[0];
+eq(solveAccumulation(ordinaryEnemy, ordinaryMode), null, 'normal routes always take precedence');
+eq(compareAttacks(ordinaryEnemy, [{ weaponId: 'machine-gun' }]).entries[0].route, solveMatchup(ordinaryEnemy, ordinaryMode).best, 'normal comparison route unchanged');
+
+const sequenceEnemy = { main: { hp: 250, armor: 0, durability: 0, exdr: 0 }, parts: [
+  { id: 'chunk', name: '덩어리', count: 2, hp: 100, armor: 0, durability: 0, exdr: 0, toMain: 100, overflowCap: false, effect: 'break' },
+] };
+const sequenceMode = { standard: 80, durable: 80, ap: 3, explosion: 0, explosionAp: 0 };
+const changedSequence = (part = {}, main = {}) => ({ ...sequenceEnemy, main: { ...sequenceEnemy.main, ...main }, parts: [{ ...sequenceEnemy.parts[0], ...part }] });
+eq(solveAccumulation(sequenceEnemy, sequenceMode).hits, 4, 'uncapped final-hit transfer includes overkill as in combat.js');
+eq(solveAccumulation(changedSequence({ overflowCap: true }), sequenceMode), null, 'per-instance cap prevents invented transfer');
+eq(solveAccumulation(changedSequence({ overflowCap: true, transferExtraHealth: 30 }), sequenceMode).hits, 4, 'explicit extra transfer allowance');
+eq(solveAccumulation(changedSequence({ overflowCap: true, destroyMainDamage: 25 }), sequenceMode).hits, 4, 'destruction bonus applied once per instance');
+eq(solveAccumulation(changedSequence({ overflowCap: true, count: 3, staticConstitution: 20 }), sequenceMode).hits, 5, 'fresh hp/cap pools and partial final instance');
+eq(solveAccumulation(changedSequence({}, { hp: 300, constitution: 100 }), sequenceMode).outcome, 'bleed', 'main constitution follows legacy fatal semantics');
+eq(solveAccumulation(changedSequence({ armor: 3, count: 3 }), sequenceMode).hits, 5, 'equal armor uses 65% damage');
+eq(solveAccumulation(sequenceEnemy, { ...sequenceMode, durable: 0 }).hits, 4, 'zero durability uses standard damage');
+eq(solveAccumulation(changedSequence({ durability: 100 }), { ...sequenceMode, durable: 0 }), null, 'fully durable target takes no standard damage');
+for (const part of [{ count: undefined }, { count: 0 }, { count: 1.5 }, { toMain: null }, { capUnverified: true, overflowCap: null }, { unknownReason: '미확인' }, { prerequisite: '장갑 제거' }, { next: {} }, { partOnly: true }, { isolated: true }, { armor: 4 }]) {
+  eq(solveAccumulation(changedSequence(part), sequenceMode), null, 'missing/conditional/blocked parts never supply fabricated damage');
+}
+eq(solveAccumulation({ ...sequenceEnemy, regeneration: { note: '재생' } }, sequenceMode), null);
+eq(solveAccumulation({ ...sequenceEnemy, shield: { note: '보호막' } }, sequenceMode), null);
+eq(solveAccumulation({ ...sequenceEnemy, shield: { note: '보호막' } }, sequenceMode, { shieldCleared: true }).hits, 4);
+eq(solveAccumulation(sequenceEnemy, { ...sequenceMode, beam: {} }), null);
+const pelletSequenceMode = { ...sequenceMode, hitCondition: { kind: 'pellets', min: 1, max: 4 } };
+eq(solveAccumulation(sequenceEnemy, pelletSequenceMode), null, 'unselected pellets stay unresolved');
+eq(solveAccumulation(changedSequence({ hp: 50, count: 3 }, { hp: 200 }), withHitAssumption(pelletSequenceMode, { hitCount: 4 })).hits, 3, 'remaining pellets never retarget another chunk in the same shot');
+const redirectSequence = changedSequence({ hp: 50, count: 3, exdr: 100, overflowCap: true }, { hp: 450 });
+eq(solveAccumulation(redirectSequence, { ...sequenceMode, explosion: 100, explosionAp: 3 }).hits, 3, 'redirected blast counted once per targeted instance, outside transfer cap');
+eq(solveAccumulation(redirectSequence, { ...sequenceMode, explosion: 100, explosionAp: 3 }, { excludeMainExplosion: true }), null, 'main explosion exclusion respected');
+const roundingSequence = changedSequence({ hp: 1, count: 5, toMain: 50 }, { hp: 5 });
+const roundingMode = { ...sequenceMode, standard: 1, durable: 1, explosion: 1, explosionAp: 3 };
+eq(solveAccumulation(roundingSequence, roundingMode).hits, 5, 'legacy combined transfer rounding');
+eq(solveAccumulation(roundingSequence, { ...roundingMode, explosions: [{ standard: 1, durable: 1, ap: 3 }] }), null, 'explicit separate blast rounds transfer separately');
+const rankedSequence = { ...sequenceEnemy, main: { ...sequenceEnemy.main, hp: 500 }, parts: [
+  { ...sequenceEnemy.parts[0], id: 'slow', hp: 200, toMain: 50, count: 6 },
+  { ...sequenceEnemy.parts[0], id: 'fast', hp: 200, toMain: 150, count: 2 },
+] };
+eq(solveAccumulation(rankedSequence, sequenceMode).steps[0].partId, 'fast', 'higher main transfer per shot first');
+const cachedSequence = compareAttacks(fleshmob, [{ weaponId: 'autocannon' }]).entries[0];
+cachedSequence.steps[0].instances = 999;
+eq(compareAttacks(fleshmob, [{ weaponId: 'autocannon' }]).entries[0].steps[0].instances, 6, 'sequence cache isolates callers');
 
 // Size labels come only from exact source page titles, never anatomy or names.
 const sizeSnapshot = JSON.parse(await readFile(new URL('db/source/wiki_enemy_sizes.json', root), 'utf8'));

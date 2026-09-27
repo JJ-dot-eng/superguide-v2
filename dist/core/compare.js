@@ -3,6 +3,7 @@ import { personalWeapons } from '../data/personal-weapons.js';
 import { personalProfiles, personalUnsupported } from './personal-combat.js';
 import { weaponProfiles, unsupportedWeapons } from '../data/combat-data.js';
 import { solveMatchup, withHitAssumption, isFatal, spearCannotLock } from './combat.js';
+import { solveAccumulation } from './accumulate.js';
 
 const personalById = new Map(personalWeapons.map(weapon => [weapon.id, weapon]));
 const own = (object, id) => Object.hasOwn(object, id) ? object[id] : null;
@@ -28,7 +29,14 @@ function matchup(enemy, rawMode, options) {
   if (!values.has(key)) {
     if (values.size >= 64) values.delete(values.keys().next().value);
     const mode = withHitAssumption(rawMode, assume);
-    values.set(key, { mode, ...solveMatchup(enemy, mode, { shieldCleared: options.shieldCleared === true }) });
+    const combatOptions = { shieldCleared: options.shieldCleared === true };
+    const single = solveMatchup(enemy, mode, combatOptions);
+    const accumulated = single.best ? null : solveAccumulation(enemy, mode, combatOptions);
+    // A synthetic target distinguishes a sequence from any single hitbox.
+    const accumulation = accumulated ? { ...accumulated,
+      target: { id: 'accumulation', name: '여러 부위 순차 타격' }, stages: [],
+      via: 'main', conditional: false } : null;
+    values.set(key, { mode, ...single, accumulation });
   }
   // Cached route objects must not be mutable through a caller's previous result.
   return structuredClone(values.get(key));
@@ -53,6 +61,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       modeLabel: rawMode?.name || null, mode: rawMode || null,
       status: 'unsupported', reason: resolved.unsupported || rawMode?.unsupported || null,
       route: null, best: null, rows: [], hits: null, outcome: null, part: null,
+      accumulated: false, steps: [], summary: null,
       conditional: false, assumption: null, lowerBound: false, shieldCleared: options.shieldCleared === true,
       defaulted: false, fragmentsExcluded: false, allPelletsAssumed: false,
       shieldAssumed: Boolean(enemy?.shield && options.shieldCleared), verified: false, oneShot: false, magazinesNeeded: null,
@@ -65,7 +74,8 @@ export function compareAttacks(enemy, entries = [], options = {}) {
     const defaulted = (requested.hitCount == null || requested.hitCount === '') && Number.isFinite(rawMode.hitCondition?.default);
     const assume = defaulted ? { ...requested, hitCount: rawMode.hitCondition.default } : requested;
     const result = matchup(enemy, rawMode, { ...options, assume });
-    const route = options.partId ? result.rows.find(row => row.target.id === options.partId) : result.best;
+    const best = result.best || result.accumulation;
+    const route = options.partId ? result.rows.find(row => row.target.id === options.partId) : best;
     // Zero fragments removes an unverified damage component. It is not a
     // positive hit-count assumption and can be a verified conservative route.
     // Keep the underlying count=0 object so the UI can explain the exclusion.
@@ -80,6 +90,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
     const reason = needsAssumption ? result.mode.assumption ? '선택한 명중 수 가정에 따른 결과입니다.' : '부위에 맞는 탄체·펠릿·파편 수를 먼저 선택하세요.'
       : route?.reason ? route.detail || '부위 조건 또는 일부 수치가 미확인입니다.'
         : !route ? result.rows.find(row => row.detail)?.detail || '확인된 처치 경로가 없습니다.'
+          : route.accumulated ? route.summary
           : fragmentsExcluded ? `파편 피해를 제외한 ${rawMode.delivery === 'explosive' ? '폭발' : '직격·폭발'}만으로 계산합니다.`
             : allPelletsAssumed ? `${rawMode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 가정한 결과입니다.` : null;
     const magazine = Object.hasOwn(rawMode, 'magazine') ? rawMode.magazine : resolved.weapon?.magazine;
@@ -87,7 +98,8 @@ export function compareAttacks(enemy, entries = [], options = {}) {
     const verified = Boolean(route && isFatal(route) && !route.lowerBound && !needsAssumption);
     return {
       ...base, mode: result.mode, status, reason, reasonCode: route?.reason || null,
-      route: route || null, best: result.best, rows: result.rows,
+      route: route || null, best, rows: result.rows,
+      accumulated: Boolean(route?.accumulated), steps: route?.steps || [], summary: route?.summary || null,
       hits: route?.hits ?? null, outcome: route?.outcome ?? null, part: route?.target ?? null,
       conditional: Boolean(route?.conditional), assumption: result.mode.assumption || null, lowerBound: Boolean(route?.lowerBound),
       defaulted, fragmentsExcluded, allPelletsAssumed,
