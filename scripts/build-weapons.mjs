@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { matchKoreanNames } from './fetch-weapons-source.mjs';
+import { infoboxExtras, infoboxDisagreements, reviewedConflicts } from './weapon-infobox.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = async path => JSON.parse(await readFile(new URL(path, root), 'utf8'));
@@ -12,13 +13,25 @@ const koreanSource = await read('db/source/korean_names.json');
 const data = source.data;
 const categories = categoriesSource.categories;
 const roster = { 'Primary Weapons': 'primary', 'Secondary Weapons': 'secondary', Throwables: 'throwable' };
-export const koreanMatches = matchKoreanNames(koreanSource.pages, Object.keys(roster).flatMap(key => categories[key].map(p => p.title)));
 const subtypeNames = ['Assault Rifles', 'Marksman Rifles', 'Shotguns', 'Submachine Guns', 'Energy-Based', 'Pistols', 'Melee', 'Special Secondaries', 'Standard Throwables', 'Special Throwables'];
 const normalize = value => value.toUpperCase().replace(/[^A-Z0-9]/g, '');
 const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const number = value => typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
 const keys = new Map(Object.keys(data.weapons).map(key => [normalize(key), key]));
 const aliases = { 'CQC-73 Entrenchment Tool': 'CQC-72 ENTRENCHMENT TOOL' };
+const titles = Object.keys(roster).flatMap(key => categories[key].map(p => p.title));
+export const koreanMatches = matchKoreanNames(koreanSource.pages, titles);
+const dataTitles = titles.map(title => aliases[title] ?? keys.get(normalize(title)) ?? title);
+const dataNames = matchKoreanNames(koreanSource.pages, dataTitles);
+for (const [index, title] of titles.entries()) {
+  const code = title.match(/^(\S*\d\S*)\s/)?.[1];
+  const dataCode = dataTitles[index].match(/^(\S*\d\S*)\s/)?.[1];
+  if (!koreanMatches.names[code] && normalize(code ?? '') !== normalize(dataCode ?? '') && dataNames.names[dataCode]) {
+    koreanMatches.names[code] = { ...dataNames.names[dataCode], matchedCode: dataCode };
+    koreanMatches.unmatchedRoster = koreanMatches.unmatchedRoster.filter(w => w.title !== title);
+    koreanMatches.unmappedHeadings = koreanMatches.unmappedHeadings.filter(h => h.source !== dataNames.names[dataCode].source || h.heading !== dataNames.names[dataCode].evidence);
+  }
+}
 const apAll = damage => {
   if (!damage) return null;
   const values = [1, 2, 3, 4].map(index => number(damage[`ap${index}`]));
@@ -155,6 +168,7 @@ const weapons = Object.entries(roster).flatMap(([categoryName, category]) =>
     const infobox = parseInfobox(page.wikitext);
     const infoboxType = plainWiki(infobox.weapon_type);
     const type = infoboxType ? slug(infoboxType) : types.length ? slug(types[0]) : null;
+    const extras = infoboxExtras(infobox, { type, roundType: weapon.roundtype });
     const pageRef = field => ({ file: 'db/source/wiki_pages.json', title: member.title, field: `infobox.${field}`, revision: page.revision, source: page.source, retrievedAt: page.retrievedAt });
     const fuse = category === 'throwable' ? seconds(infobox.fuse) : null;
     const reloading = reloadTimes(infobox);
@@ -166,6 +180,9 @@ const weapons = Object.entries(roster).flatMap(([categoryName, category]) =>
     const attacks = weapon.attacks ?? [];
     const primaryAttack = attacks.find(attack => attack.level === 1) ?? attacks[0];
     const notes = [];
+    if (korean?.matchedCode) notes.push(`한국어 이름 보정: 위키 제목 ${code}와 데이터 키 ${dataKey}의 제식 번호를 함께 대조하여 나무위키 ${korean.evidence}에 연결했습니다.`);
+    if (extras.heatCapacity.raw && extras.heatCapacity.seconds === null) notes.push(`열 용량 단위 미확인: capacity=${extras.heatCapacity.raw}. 초·발수를 추정하지 않고 raw에 보존합니다.`);
+    if (code === 'ARC-12' && /five arcs with damage of 50/.test(page.wikitext)) notes.push('인포박스 전격 피해 250은 본문에 명시된 50 피해 전격 5개의 합계입니다. DB는 전격당 피해를 유지합니다.');
     if (page.error) notes.push(`위키 페이지 수집 실패: ${page.error}. ${page.wikitext ? '이전 원문을 사용합니다.' : '인포박스 값은 미확인입니다.'}`);
     if (types.length && infoboxType && slug(types[0]) !== type) notes.push(`유형 불일치: 분류=${slug(types[0])}, 인포박스 weapon_type=${infoboxType}. 인포박스 값을 우선합니다.`);
     if (!types.length && infoboxType) notes.push(`하위 분류가 없어 위키 인포박스 weapon_type=${infoboxType}을 사용했습니다.`);
@@ -236,22 +253,31 @@ const weapons = Object.entries(roster).flatMap(([categoryName, category]) =>
     if (missingDamage.length) notes.push(`피해 레코드 연결이 비어 있거나 누락되었습니다: ${missingDamage.map(({ attack }) => attack.name).join(', ')}. 피해를 0으로 추정하지 않습니다.`);
     if (expanded.some(({ attack }) => data.explosion[attack.parent]?.shrapnel === attack.name)) notes.push('파편 variant는 파편 1개의 피해입니다. 폭발 1회당 개수는 shrapnelCount이며, 실제로 맞는 파편 수는 거리·각도에 따라 달라 합산하지 않습니다.');
     if (weapon.roundtype === 'rounds') notes.push('낱발 예비탄은 spareRounds에 보존하며 spareMags로 환산하지 않습니다.');
-    return {
+    const result = {
       id, category, type, en: member.title, code, name,
       nameSource: name === null ? null : { file: 'db/source/korean_names.json', code, ...korean },
-      fieldSources: { type: infoboxType ? pageRef('weapon_type') : types.length ? { file: 'db/source/wiki_categories.json', category: types[0] } : null, fuse: fuse === null ? null : pageRef('fuse'), reload: reload === null ? null : pageRef(reloadField), reloadTactical: reloadTactical === null ? null : pageRef('tac_reload_time') },
+      fieldSources: { type: infoboxType ? pageRef('weapon_type') : types.length ? { file: 'db/source/wiki_categories.json', category: types[0] } : null, fuse: fuse === null ? null : pageRef('fuse'), reload: reload === null ? null : pageRef(reloadField), reloadTactical: reloadTactical === null ? null : pageRef('tac_reload_time'),
+        dot: extras.dot.raw === null ? null : pageRef('damage'), heatCapacity: extras.heatCapacity.raw === null ? null : pageRef('capacity'),
+        swingsPerMinute: extras.swingsPerMinute === null ? null : pageRef('fire_rate'), rpmModes: extras.rpmModes.length ? pageRef('fire_rate') : null,
+        rpm: weapon.rpm == null && extras.rpm !== null ? pageRef('fire_rate') : null,
+        spareRounds: weapon.rounds == null && extras.spareRounds !== null ? pageRef('spare_rounds') : null },
       source: `https://helldivers.wiki.gg/wiki/${encodeURIComponent(member.title.replaceAll(' ', '_'))}`,
       sourceRevision: number(member.revision), dataKey,
       ...stats(primaryAttack, weapon, type),
-      magazine: number(weapon.cap), spareMags: number(weapon.mags), rpm: number(weapon.rpm),
+      magazine: number(weapon.cap), spareMags: number(weapon.mags), rpm: number(weapon.rpm) ?? extras.rpm,
+      dot: extras.dot, heatCapacity: extras.heatCapacity, swingsPerMinute: extras.swingsPerMinute, rpmModes: extras.rpmModes,
+      infoboxRaw: Object.fromEntries(['damage', 'penetration', 'capacity', 'fire_rate', 'spare_mags', 'spare_rounds', 'radius'].map(field => [field, infobox[field] ?? null])),
       fireModes: weapon.fire_modes ?? [], ergonomics: number(weapon.ergonomics), charge: weapon.charge ?? null,
-      fuse, reload, reloadTactical, roundType: weapon.roundtype ?? null, spareRounds: number(weapon.rounds),
+      fuse, reload, reloadTactical, roundType: weapon.roundtype ?? null, spareRounds: number(weapon.rounds) ?? extras.spareRounds,
       reloadDetails: reloading.details,
       beamFireRate: number(weapon.beam_fire_rate), beams: number(weapon.beams), barrels: number(weapon.barrels),
       throwableCapacity: number(weapon.max), throwableStart: number(weapon.start),
       attacks, linkedAttacks: attacks.filter(attack => attack.type === 'weapons').map(attack => ({ dataKey: attack.name, attacks: data.weapons[attack.name]?.attacks ?? [] })),
       notes, variants,
     };
+    result.infoboxConflicts = infoboxDisagreements(result, infobox, data).filter(conflict => (reviewedConflicts[member.title] ?? []).some(known => JSON.stringify(known) === JSON.stringify(conflict)));
+    for (const conflict of result.infoboxConflicts) notes.push(`인포박스 수치 불일치: ${conflict.field} DB=${JSON.stringify(conflict.db)}, 인포박스=${JSON.stringify(conflict.infobox)} (원문: ${conflict.raw}; 페이지 revision ${page.revision}). 최신 데이터마이닝 값을 유지합니다.`);
+    return result;
   }));
 
 const weaponsSource = {
