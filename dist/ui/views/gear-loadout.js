@@ -53,7 +53,8 @@ const weaponFields = w => ({ names: [w.name, w.en, w.code].filter(Boolean), text
 function pickerGroups(slot) {
   if (slot.stratagem != null) {
     const taken = new Set(env.loadout.st.filter((id, index) => id && index !== slot.stratagem));
-    const list = stratagems.filter(item => !taken.has(item.id));
+    // Mission and shared stratagems (reinforce, resupply, objectives) are not loadout picks.
+    const list = stratagems.filter(item => item.category !== 'mission' && !taken.has(item.id));
     return categories.map(cat => ({ id: cat.id, name: cat.name, color: cat.color, fields: stratagemFields, items: list.filter(item => item.category === cat.id) }))
       .filter(group => group.items.length);
   }
