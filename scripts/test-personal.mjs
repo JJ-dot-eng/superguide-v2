@@ -297,6 +297,66 @@ const missingBlast = buildPersonalProfiles([weapons.find(w => w.id === 'liberato
 ok(missingBlast.personalUnsupported.liberator, 'linked but unknown explosion is never silently zero');
 
 const compare = (id, weaponId, options = {}, modeId) => compareAttacks(enemy(id), [{ weaponId, modeId }], options).entries[0];
+// New support hit-count modes are traceable to every local datamined record.
+const supportSnapshot = JSON.parse(await readFile(new URL('db/source/weapons_data.json', root), 'utf8'));
+const supportData = supportSnapshot.data;
+const flakMode = weaponProfiles.autocannon.modes.find(m => m.id === 'flak');
+const waspMode = weaponProfiles.wasp.modes.find(m => m.id === 'submunitions');
+for (const [attack, projectileId] of [[flakMode, 'AC-8_P1'], [waspMode, 'StA-X3_P1'], [waspMode.bomblet, 'StA-X3_P']]) {
+  const projectile = supportData.projectile[projectileId];
+  const damage = supportData.damage[projectile.damage_id];
+  const explosion = supportData.explosion[projectile.explode_on_impact_id];
+  const blast = supportData.damage[explosion.damage_id];
+  eq([attack.standard, attack.durable, attack.ap], [damage.dmg, damage.dmg2, damage.ap1], `${projectileId}: direct source values`);
+  eq([attack.explosion, attack.explosionDurable, attack.explosionAp, attack.innerRadius, attack.radius], [blast.dmg, blast.dmg2, blast.ap1, explosion.r1, explosion.r2], `${projectileId}: linked explosion values`);
+}
+const flakExplosion = supportData.explosion[supportData.projectile['AC-8_P1'].explode_on_impact_id];
+eq([flakExplosion.shrapnel, flakExplosion.shrapnel_count], ['AC-8_P2', flakMode.hitCondition.max]);
+const flakFragment = supportData.projectile[flakExplosion.shrapnel];
+const fragmentDamage = supportData.damage[flakFragment.damage_id];
+eq([flakMode.bomblet.standard, flakMode.bomblet.durable, flakMode.bomblet.ap], [fragmentDamage.dmg, fragmentDamage.dmg2, fragmentDamage.ap1]);
+ok(!flakFragment.explode_on_impact_id && flakMode.bomblet.explosion === 0, 'fragment has no linked blast');
+const waspExplosion = supportData.explosion[supportData.projectile['StA-X3_P1'].explode_on_impact_id];
+eq([waspExplosion.shrapnel, waspExplosion.shrapnel_count, waspExplosion.cone_angle], ['StA-X3_P', waspMode.hitCondition.max, waspMode.coneAngle]);
+for (const profile of [flakMode, weaponProfiles.wasp]) eq([profile.source, profile.sourceRevision, profile.checkedAt], [supportSnapshot.source, supportSnapshot.revision, supportSnapshot.retrievedAt], 'support source provenance');
+eq(supportData.projectile['StA-X3_P1'].explode_proximity, 12, 'parent proximity exceeds blast radius');
+ok(supportData.weapons['STA-X3 W.A.S.P. LAUNCHER'].attacks.some(a => a.name === 'StA-X3_P1' && a.level === 1), 'parent is a linked weapon attack');
+const flakZero = withHitAssumption(flakMode, { hitCount: 0 });
+const numericView = result => result.rows.map(row => [row.target.id, row.hits, row.outcome, row.via, row.conditional, row.lowerBound, row.stages.map(s => [s.part.id, s.hits, s.damage])]);
+// Golden flak had no numeric route. Independently verify every zero-fragment
+// result against a plain blast built from the local explosion, with no direct hit.
+const plainFlakBlast = { standard: 0, durable: 0, ap: 0, explosion: 190, explosionDurable: 190, explosionAp: 3, innerRadius: 2, radius: 7 };
+for (const target of enemies) for (const shieldCleared of [false, true]) eq(
+  numericView(solveMatchup(target, flakZero, { shieldCleared })),
+  numericView(solveMatchup(target, plainFlakBlast, { shieldCleared })), `${target.id}: zero fragments preserves plain blast numeric results`);
+eq(head('hunter-hardened', flakZero).stages[0].damage, { direct: 0, explosion: 0, mainExplosion: 190 });
+eq(head('hunter-hardened', withHitAssumption(flakMode, { hitCount: 6 })).stages[0].damage, { direct: 660, explosion: 0, mainExplosion: 190 });
+const waspDefault = withHitAssumption(waspMode, { hitCount: 1 });
+eq(waspDefault.assumption, { count: 1, primaryHit: 'none', bombletDirect: true });
+eq(head('hunter-hardened', waspDefault).stages[0].damage, { direct: 200, explosion: 0, mainExplosion: 600 }, 'one sub-missile direct plus explosion, parent excluded');
+eq(waspDefault.events.length, 1);
+eq(waspDefault.events[0].directHit, true);
+eq(compare('hunter-hardened', 'wasp').magazinesNeeded, null, 'compound attack ammunition consumption is not inferred');
+eq(compare('hunter-hardened', 'wasp', {}, 'guided').status, 'unsupported', 'unverified guided target restrictions remain unsupported');
+ok(compare('hunter-hardened', 'wasp', {}, 'guided').reason.includes('유도'));
+const explicitWaspBlast = compare('hunter-hardened', 'wasp', { assume: { primaryHit: 'blast', bombletDirect: false } });
+eq(explicitWaspBlast.assumption, { count: 1, primaryHit: 'blast', bombletDirect: false }, 'explicit delivery overrides new mode defaults');
+eq(explicitWaspBlast.rows.find(r => r.target.id === 'head').stages[0].damage, { direct: 0, explosion: 0, mainExplosion: 1200 });
+eq(compare('hunter-hardened', 'wasp').assumption, waspDefault.assumption, 'default cache distinct from blast/false override');
+eq(compare('hunter-hardened', 'wasp', { assume: { primaryHit: null } }).verified, false, 'invalid delivery does not collide with default cache');
+eq(compare('hunter-hardened', 'wasp', { assume: { hitCount: 0 } }).hits, null, 'zero sub-missiles with parent excluded gives no damage');
+eq(compare('hunter-hardened', 'autocannon', { assume: { hitCount: 0 } }, 'flak').fragmentsExcluded, true);
+ok(assumptionSummary(waspDefault).includes('주탄 피해 제외') && assumptionSummary(waspDefault).includes('직격 + 폭발'), 'WASP summary matches actual events');
+ok(assumptionText(waspMode).includes('직격과 폭발') && assumptionText(waspMode).includes('주탄 피해는 기본에서 제외'));
+ok(assumptionSummary(withHitAssumption(flakMode, { hitCount: 6 })).includes('주폭발') && !assumptionSummary(withHitAssumption(flakMode, { hitCount: 6 })).includes('주탄 직격'));
+const supportCountTarget = { id: 'support-count-test', main: { hp: 99999, armor: 0, durability: 0, exdr: 0 },
+  parts: [{ id: 'body', name: '몸통', hp: 1000, armor: 0, durability: 0, exdr: 0, toMain: 0, overflowCap: false, effect: 'kill' }] };
+eq(compareAttacks(supportCountTarget, [{ weaponId: 'autocannon', modeId: 'flak' }]).entries[0].hits, 2, '190 blast + 6*110 fragments per shot');
+eq(compareAttacks(supportCountTarget, [{ weaponId: 'autocannon', modeId: 'flak' }], { assume: { hitCount: 0 } }).entries[0].hits, 6, 'zero fragments uses only 190 blast');
+const armoredWaspTarget = { ...supportCountTarget, parts: [{ ...supportCountTarget.parts[0], hp: 300, armor: 5, durability: 100 }] };
+eq(compareAttacks(armoredWaspTarget, [{ weaponId: 'wasp' }]).entries[0].hits, 2, 'AP6 sub-missile direct penetrates armor5; AP3 blast blocked');
+eq(compareAttacks(armoredWaspTarget, [{ weaponId: 'wasp' }], { assume: { hitCount: 2 } }).entries[0].hits, 1, 'two explicitly assumed sub-missiles increase damage');
+eq(compareAttacks(armoredWaspTarget, [{ weaponId: 'wasp' }], { assume: { bombletDirect: false } }).entries[0].hits, null, 'disabling direct leaves blocked explosion; cache stays distinct');
 // Every supported assumption kind shares the same default contract. pct is the
 // configured slider percentage, not the rounded count/max ratio (4/18 != 20%).
 for (const [weaponId, modeId, kind, count, max, pct, slot] of [
@@ -304,6 +364,8 @@ for (const [weaponId, modeId, kind, count, max, pct, slot] of [
   ['de-escalator', 'arc', 'arcs', 10, 10, 100, 'stratagems'],
   ['airburst-launcher', 'flak', 'bomblets', 5, 25, 20, 'stratagems'],
   ['airburst-launcher', 'cluster', 'bomblets', 5, 25, 20, 'stratagems'],
+  ['autocannon', 'flak', 'shrapnel', 6, 30, 20, 'stratagems'],
+  ['wasp', 'submunitions', 'bomblets', 1, 7, 20, 'stratagems'],
   ['eruptor', 'standard', 'shrapnel', 6, 30, 20, 'primary'],
   ['frag', 'standard', 'shrapnel', 7, 35, 20, 'throwable'],
   ['pineapple', 'standard', 'shrapnel', 4, 18, 20, 'throwable'],
@@ -319,8 +381,9 @@ for (const [weaponId, modeId, kind, count, max, pct, slot] of [
   ok(assumptionSummary(result.mode).includes('(기본 가정)'));
   const explicit = compare('hunter-hardened', weaponId, { assume: { hitCount: String(count) } }, modeId);
   eq([explicit.verified, explicit.defaulted, explicit.defaultAssumed], [true, false, result.defaultAssumed], 'explicit default count has same acceptance');
-  const lower = compare('hunter-hardened', weaponId, { assume: { [`${weaponId}:${modeId}`]: { hitCount: 1 } } }, modeId);
-  eq([lower.assumption.count, lower.defaulted, lower.defaultAssumed, lower.status], [1, false, null, 'assume'], 'other count overrides without adopting default acceptance');
+  const otherCount = count === 1 ? 2 : 1;
+  const lower = compare('hunter-hardened', weaponId, { assume: { [`${weaponId}:${modeId}`]: { hitCount: otherCount } } }, modeId);
+  eq([lower.assumption.count, lower.defaulted, lower.defaultAssumed, lower.status], [otherCount, false, null, 'assume'], 'other count overrides without adopting default acceptance');
   const invalid = compare('hunter-hardened', weaponId, { assume: { hitCount: max + 1 } }, modeId);
   eq([invalid.defaulted, invalid.defaultAssumed, invalid.verified], [false, null, false]);
   eq(compare('hunter-hardened', weaponId, { assume: { hitCount: null } }, modeId).defaultAssumed, result.defaultAssumed, 'null restores configured default');

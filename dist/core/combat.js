@@ -85,7 +85,9 @@ export function hitDamage(attack, part, main, { directHit = true, excludeMainExp
 
 // Arcs and bomblets have no verified per-part hit count, so the user picks an
 // explicit assumption. Without one the matchup stays pending.
-export function withHitAssumption(mode, { hitCount = '', primaryHit = 'blast', bombletDirect = false } = {}) {
+export function withHitAssumption(mode, { hitCount = '',
+  primaryHit = mode?.hitCondition?.defaultPrimaryHit ?? 'blast',
+  bombletDirect = mode?.hitCondition?.defaultBombletDirect ?? false } = {}) {
   if (!mode?.hitCondition) return mode;
   const { kind, min, max } = mode.hitCondition;
   const count = typeof hitCount === 'number' || /^\d+$/.test(hitCount) ? Number(hitCount) : NaN;

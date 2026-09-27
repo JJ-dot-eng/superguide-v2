@@ -40,11 +40,25 @@ const view = row => ({
 });
 
 // --- Combat ------------------------------------------------------------------
+// These modes gained hit-count controls after the frozen legacy snapshot.
+// Preserve zero extra fragments for numeric legacy comparisons. In this actual
+// snapshot AC flak was entirely unsupported (there are no legacy flak numbers),
+// so preserve that explicit historical status. New flak arithmetic, including
+// count=0, is independently source-checked in test-personal.mjs.
+const addedHitConditions = new Set(['autocannon:flak']);
+const legacyUnsupported = {
+  'autocannon:flak': '근접 신관과 파편의 명중 수에 따라 피해가 크게 달라져 고정 탄수를 계산하지 않습니다.',
+};
+assert(!golden.combat.some(row => row.weapon === 'wasp'), 'W.A.S.P. had no legacy combat profile');
 let checked = 0;
 for (const expected of golden.combat) {
   const enemy = enemies.find(item => item.id === expected.enemy);
-  const mode = weaponProfiles[expected.weapon].modes.find(item => item.id === expected.mode);
-  const { rows, best } = solveMatchup(enemy, withHitAssumption(mode, expected.options), expected.options);
+  const currentMode = weaponProfiles[expected.weapon].modes.find(item => item.id === expected.mode);
+  const key = `${expected.weapon}:${expected.mode}`;
+  if (legacyUnsupported[key]) assert(expected.rows.every(row => row.h === null && row.o === 'unknown' && row.r === legacyUnsupported[key]), 'historical unsupported adapter must not bypass any numeric golden result');
+  const mode = legacyUnsupported[key] ? { ...currentMode, unsupported: legacyUnsupported[key] } : currentMode;
+  const options = addedHitConditions.has(key) ? { ...expected.options, hitCount: 0 } : expected.options;
+  const { rows, best } = solveMatchup(enemy, withHitAssumption(mode, options), options);
   const label = `${expected.enemy} × ${expected.weapon}/${expected.mode} ${JSON.stringify(expected.options)}`;
   assert.equal(best?.target.id ?? null, expected.best, `${label}: best route`);
   assert.deepEqual(rows.map(view), expected.rows, label);

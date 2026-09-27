@@ -26,7 +26,10 @@ function matchup(enemy, rawMode, options) {
   let values = modes.get(rawMode);
   if (!values) modes.set(rawMode, values = new Map());
   const assume = options.assume || {};
-  const key = JSON.stringify([options.shieldCleared === true, assume.hitCount ?? '', assume.primaryHit ?? 'blast', assume.bombletDirect ?? false]);
+  // Keep mode-specific delivery defaults distinct from explicit user overrides.
+  const key = JSON.stringify([options.shieldCleared === true, assume.hitCount ?? '',
+    assume.primaryHit === undefined ? rawMode.hitCondition?.defaultPrimaryHit ?? 'blast' : assume.primaryHit,
+    assume.bombletDirect === undefined ? rawMode.hitCondition?.defaultBombletDirect ?? false : assume.bombletDirect]);
   if (!values.has(key)) {
     if (values.size >= 64) values.delete(values.keys().next().value);
     const mode = withHitAssumption(rawMode, assume);

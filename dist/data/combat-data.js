@@ -382,8 +382,30 @@ export const weaponProfiles = {
   },
   'autocannon': profile('AC-8_Autocannon', [
     shot('aphet', '철갑고폭예광탄(APHET)', 325, 260, 4, 150, 3, { falloff: true }),
-    { id: 'flak', name: '대공포탄 모드', unsupported: '근접 신관과 파편의 명중 수에 따라 피해가 크게 달라져 고정 탄수를 계산하지 않습니다.' },
+    shot('flak', '대공포탄 모드', 150, 150, 2, 190, 3, {
+      source: wiki('Module:Decodedata-Attacks/weapons_data.json'), sourceRevision: 136739, checkedAt: '2026-09-27',
+      sourceRecords: { projectile: 'AC-8_P1', explosion: 'AC-8_P1_IE', fragment: 'AC-8_P2' },
+      delivery: 'explosive', directKind: 'none', explosionDurable: 190, innerRadius: 2, radius: 7,
+      hitCondition: { kind: 'shrapnel', min: 0, max: 30, default: 6, defaultPct: 20 },
+      bomblet: { standard: 110, durable: 35, ap: 3, explosion: 0, explosionAp: 0 },
+      note: '근접 기폭한 주폭발과 파편 피해를 계산하며, 주탄 직격은 제외합니다. 기본은 파편 30개 중 6개가 같은 부위에 맞는 가정입니다. 명중률을 바꿀 수 있으며, 0개를 고르면 파편 피해를 제외합니다. 폭발 중심부가 해당 부위에 닿는 조건이며, 여러 부위 동시 피해는 합치지 않습니다.',
+    }),
   ]),
+  'wasp': {
+    source: wiki('Module:Decodedata-Attacks/weapons_data.json'), sourceRevision: 136739, checkedAt: '2026-09-27',
+    sourceRecords: { weapon: 'STA-X3 W.A.S.P. LAUNCHER', projectile: 'StA-X3_P1', explosion: 'StA-X3_P1_IE', bomblet: 'StA-X3_P', bombletExplosion: 'StA-X3_P_IE' },
+    note: '분산탄 한 발에서 나온 작은 미사일이 같은 부위에 맞는다고 가정한 피해 계산입니다. 실제 유도 가능 대상이나 명중 부위를 보장하지 않습니다. 탄창 소모량과 여러 부위 동시 피해는 계산하지 않습니다.',
+    modes: [
+      shot('submunitions', '분산탄 · 명중 가정', 20, 2, 0, 600, 3, {
+        delivery: 'cluster', unit: '발', magazine: null, explosionDurable: 600, innerRadius: 3, radius: 5, coneAngle: 25,
+        hitCondition: { kind: 'bomblets', min: 0, max: 7, default: 1, defaultPct: 20,
+          defaultPrimaryHit: 'none', defaultBombletDirect: true },
+        bomblet: { standard: 200, durable: 200, ap: 6, explosion: 600, explosionDurable: 600, explosionAp: 3, innerRadius: 2.5, radius: 5 },
+        note: '기본은 작은 미사일 7개 중 1개의 직격과 폭발이 같은 부위에 맞는 가정입니다. 20%를 반올림한 개수이며, 실제 명중 비율은 약 14%에 해당합니다. 주탄은 12m 근접 기폭이고 피해 반경은 5m이므로 주탄 피해는 기본에서 제외합니다. 주탄 폭발이 실제로 닿는 경우에만 포함하세요. 분산 각도 25도만으로 명중률이나 명중 부위를 알 수는 없습니다.',
+      }),
+      { id: 'guided', name: '유도 사격 조건', unsupported: '어떤 적을 유도할 수 있고 어느 부위에 맞는지 확인되지 않아 실제 유도 사격의 처치 횟수는 계산하지 않습니다.' },
+    ],
+  },
   'anti-materiel': profile('Anti-Material_Rifle', [shot('standard', '기본 사격', 450, 225, 4, 0, 0, { falloff: true })], '헐크 눈은 근거리 이론값으로 1발이어도, 거리 감쇠가 생기면 2발 이상 필요할 수 있습니다.'),
   'machine-gun': profile('MG-43_Machine_Gun', [shot('standard', '기본 사격', 90, 23, 3, 0, 0, { falloff: true })]),
   'stalwart': profile('M-105_Stalwart', [shot('standard', '기본 사격', 90, 22, 2, 0, 0, { falloff: true })]),
@@ -407,6 +429,5 @@ export const unsupportedWeapons = {
   'flamethrower': '불길의 접촉 시간과 화상 지속 피해가 필요해 탄수로 환산하지 않습니다.',
   'cremator': '불길의 접촉 시간과 화상 지속 피해가 필요해 탄수로 환산하지 않습니다.',
   'laser-cannon': '광선의 접촉 시간과 화상을 따로 계산해야 하므로 발 단위 계산을 지원하지 않습니다.',
-  'wasp': '유도 모드별 명중 부위와 연속 폭발 조건을 아직 검증하지 않았습니다.',
   'sterilizer': '가스의 지속 시간과 대상별 피해 조건이 필요합니다.',
 };

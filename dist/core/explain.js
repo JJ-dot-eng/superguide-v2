@@ -99,7 +99,7 @@ export function assumptionText(mode) {
   if (mode?.hitCondition?.kind === 'pellets') return `기본은 ${mode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 계산합니다. 명중률을 낮춰 다시 계산할 수 있습니다.`;
   if (mode?.hitCondition?.kind === 'shrapnel') return `기본은 파편의 ${mode.hitCondition.defaultPct}%를 반올림한 개수가 같은 부위에 ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격·폭발'}과 함께 맞는 가정입니다. 명중률을 바꿀 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.`;
   if (mode?.hitCondition?.kind === 'arcs') return '기본은 전격이 모두 같은 부위에 맞는다고 가정합니다. 명중률을 낮춰 다시 계산할 수 있으며, 실제로 모두 맞는다는 보장은 없습니다.';
-  if (mode?.hitCondition?.kind === 'bomblets') return `기본은 자탄의 ${mode.hitCondition.defaultPct}%를 반올림한 개수의 폭발이 같은 부위에 맞는 가정입니다. 명중률과 주탄·자탄의 직격 여부를 바꿔 다시 계산할 수 있습니다. 여러 부위 동시 피해는 더하지 않습니다.`;
+  if (mode?.hitCondition?.kind === 'bomblets') return `기본은 자탄의 ${mode.hitCondition.defaultPct}%를 반올림한 개수의 ${mode.hitCondition.defaultBombletDirect ? '직격과 폭발' : '폭발'}이 같은 부위에 맞는 가정입니다.${mode.hitCondition.defaultPrimaryHit === 'none' ? ' 주탄 피해는 기본에서 제외합니다.' : ''} 명중률과 주탄·자탄의 직격 여부를 바꿔 다시 계산할 수 있습니다. 여러 부위 동시 피해는 더하지 않습니다.`;
   if (mode?.delivery === 'explosive') return '기폭 시 같은 부위에 최대 폭발 피해가 닿는 조건입니다. 여러 부위에 동시에 들어가는 피해는 더하지 않습니다.';
   if (mode?.beam) return '같은 부위에 광선을 계속 유지하는 조건. 한 발은 약 1.4초 분량으로 환산합니다.';
   if (mode?.hitCondition) return '선택한 명중 수가 모두 해당 부위에 최대 피해로 들어가는 가정. 여러 부위 동시 피해는 더하지 않습니다.';

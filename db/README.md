@@ -39,13 +39,26 @@
 
 명중 수 조건은 `hitCondition.kind`의 pellets(산탄), arcs(전격), bomblets(자탄), shrapnel(파편)으로 구분합니다. 모두 `defaultPct`(설정한 기본 백분율)와 `default = Math.max(min, Math.round(max * defaultPct / 100))`를 제공합니다. **산탄·전격은 100%, 자탄·파편은 20%**입니다. Blitzer는 5/5, De-Escalator는 10/10, Airburst의 flak/cluster는 각각 5/25, Eruptor는 6/30, Frag와 Lure Mine는 7/35, Pineapple은 4/18입니다. 산탄 전탄 기본값은 하부 산탄총, Halt의 두 탄종, 여러 총열 동시 사격과 Variable 일제 사격에도 적용됩니다. 이는 제품의 기본 가정이며 관측한 실제 명중률이 아닙니다.
 
-UI는 `withHitAssumption(mode,{hitCount:mode.hitCondition.default})`로 기본값을 적용할 수 있습니다. 10–100% 슬라이더의 선택도 같은 반올림 규칙으로 정수 hitCount를 전달하며 명시한 수가 기본값보다 우선합니다. 엔진의 raw 모드에는 자동으로 이벤트를 넣지 않으며 기존 호출 규칙을 유지합니다. 파편 0개를 명시하면 파편 피해만 제외하고, 양수면 그 수의 파편을 별도 피해 이벤트로 더합니다. 파편은 선택 모드가 아닙니다. 주탄 직격 여부는 투척 폭발은 false, Eruptor 탄체는 true이며 `primaryHit`/`bombletDirect` 선택은 자탄 모드에서만 사용합니다. 자탄의 기본 전달 조건은 주탄 폭발 포함·직격 제외, 자탄 폭발 포함·직격 제외입니다. 기본 명중 수 적용 시 명시한 전달 조건은 보존합니다. 같은 발의 남은 이벤트가 파괴된 장갑 뒤로 통과하는지는 기존 엔진처럼 보류합니다.
+UI는 `withHitAssumption(mode,{hitCount:mode.hitCondition.default})`로 기본값을 적용할 수 있습니다. 10–100% 슬라이더의 선택도 같은 반올림 규칙으로 정수 hitCount를 전달하며 명시한 수가 기본값보다 우선합니다. 엔진의 raw 모드에는 자동으로 이벤트를 넣지 않으며 기존 호출 규칙을 유지합니다. 파편 0개를 명시하면 파편 피해만 제외하고, 양수면 그 수의 파편을 별도 피해 이벤트로 더합니다. 파편은 선택 모드가 아닙니다. 주탄 직격 여부는 투척 폭발·오토캐넌 대공포탄의 근접 기폭은 false, Eruptor 탄체는 true이며 `primaryHit`/`bombletDirect` 선택은 자탄 모드에서만 사용합니다. 자탄의 기본 전달 조건은 주탄 폭발 포함·직격 제외, 자탄 폭발 포함·직격 제외이며, 아래의 W.A.S.P.처럼 모드별 기본값을 명시할 수 있습니다. 기본 명중 수 적용 시 명시한 전달 조건은 보존합니다. 같은 발의 남은 이벤트가 파괴된 장갑 뒤로 통과하는지는 기존 엔진처럼 보류합니다.
 
 `dist/core/explain.js`의 `assumptionSummary(withHitAssumption(mode,{hitCount}))`는 전탄이면 '펠릿 11개가 모두 이 부위에 명중 (전탄 명중 가정)', 부분 명중이면 '펠릿 11개 중 6개 명중 (약 55%)'로 표시합니다. 전격·자탄·파편도 개수와 비율을 표시하고 설정 기본값과 같으면 '(기본 가정)'을 붙입니다. 예: '전격 5회 모두 이 부위에 명중 (기본 가정)', '파편 35개 중 7개(20%)가 이 부위에 명중 (기본 가정) + 주폭발'. 비율은 정수 명중 수 / 최대 개수이며, Pineapple 4/18은 약 22%로 표시하되 기본 슬라이더 값 `defaultPct`는 20입니다. Eruptor는 주탄 직격도 표시하고, 파편 0개는 피해 제외를 명시합니다. 미적용/잘못된 명중 수는 종류별 선택 안내를 표시합니다. `assumptionTag`는 산탄 전탄이면 '전탄 명중 가정', 그 외 기본값이면 '파편 20% 기본 가정' 같은 태그를 반환합니다. Variable 일제 사격에는 `hitCondition.projectileName='탄환'`이 있어 산탄 펠릿으로 부르지 않습니다.
 
 개인 투척물 모드는 표시용 `unitLabel`을 추가 제공합니다. 수류탄은 '수류탄', 두 지뢰는 '지뢰', Dynamite는 '다이너마이트'입니다. `unitOf(mode)`는 `{unit:'개',noun:'수류탄 개수',one:'수류탄 1개'}`, `countText({hits:2},mode)`는 '수류탄 2개'를 반환합니다. 기존 C4의 장약 단위와 기존 지원 무기의 숫자/단위 표시는 유지합니다. 이 표시 필드는 계산에는 영향을 주지 않습니다.
 
 Arbitrator/One-Two/Stoker는 하부 무기가 별도 `underbarrel` 모드이며 Stoker 분사는 모드 미지원입니다. Halt는 독립 8발 탄창의 `flechette`/`stun`입니다. Bushwhacker/Double Freedom의 `all-barrels`는 각각 3/2발, Variable `volley`는 7발 소비를 명시하고 명중 수를 가정합니다. Variable `total`은 잔탄 수 미확인으로 모드 미지원입니다. Warrant/Missile Pistol은 `unguided`를 계산하며 유도 착탄 제한이 미검증인 `guided`는 미지원입니다. 피해가 같은 자동·반자동·점사는 기본 모드에서 탄체 1발 단위로 계산하며 UI 표시용 `fireModes`는 원본을 유지합니다.
+
+### 오토캐넌 대공포탄·W.A.S.P. 명중 가정
+
+두 지원 무기는 `db/source/weapons_data.json` revision 136739(수집일 2026-09-27)의 연결을 검증해 `combat-data.js`에 반영합니다. 브라우저에서 DB JSON을 읽지 않으며 `scripts/test-personal.mjs`가 매번 주탄→폭발→파편/하위 탄→폭발의 수치와 연결을 원본에 대조합니다. 프로필 또는 모드에 `source`, `sourceRevision`, `checkedAt`, `sourceRecords`를 보존합니다.
+
+- `weaponProfiles.autocannon.modes`의 기존 `flak`: `AC-8_P1` 직격 150/150·AP2, `AC-8_P1_IE` 폭발 190/190·AP3·중심 2m/외곽 7m, `AC-8_P2` 파편 110/35·AP3×30개입니다. 파편에는 연결된 폭발이 없습니다. `hitCondition={kind:'shrapnel',min:0,max:30,default:6,defaultPct:20}`이며 **근접 기폭 계산은 주탄 직격을 제외하고 주폭발과 파편만 반영**합니다. 직격 원본 수치는 보존하되 `delivery:'explosive'`, `directKind:'none'`으로 계산·표시에서 제외합니다. APHET 모드는 변경하지 않습니다.
+- `weaponProfiles.wasp.modes[0]`의 ID는 **`submunitions`**입니다. `StA-X3_P1` 주탄 20/2·AP0, 주폭발 `StA-X3_P1_IE` 600/600·AP3·중심 3m/외곽 5m, 하위 미사일 `StA-X3_P` 200/200·AP6×7개, 각 하위 폭발 `StA-X3_P_IE` 600/600·AP3·중심 2.5m/외곽 5m입니다. 분산 각도 25도는 `coneAngle`로 보존하며 명중률로 환산하지 않습니다. `hitCondition={kind:'bomblets',min:0,max:7,default:1,defaultPct:20,defaultPrimaryHit:'none',defaultBombletDirect:true}`입니다. 20%를 반올림한 1/7이므로 실제 개수 비율은 약 14%입니다.
+- W.A.S.P. 기본 계산은 **하위 미사일 1개의 직격+폭발**, 주탄 피해 제외입니다. 주탄의 근접 기폭 거리 12m가 피해 반경 5m보다 커 주탄 폭발이 같은 부위에 닿는다고 기본 가정하지 않습니다. `primaryHit`을 명시하면 주탄 포함 조건을 선택할 수 있습니다. `hits`는 주탄 발사 횟수이고 탄창 소모량은 확인하지 않아 `magazine`/`magazinesNeeded`는 null입니다.
+- W.A.S.P.는 전체 미지원 목록에서 제거하고 모드별로 구분합니다. `submunitions`는 명중을 가정한 피해 계산이며 실제 유도 가능 대상을 보장하지 않습니다. `guided`는 한국어 이유를 가진 미지원 모드입니다. 확인되지 않은 유도 대상 목록에 Spear의 제한을 재사용하거나 특정 게임 내 사격 모드/탄약 소비량을 추정하지 않습니다.
+
+**프런트엔드 연결:** `withHitAssumption`은 인수가 생략된 경우 `hitCondition.defaultPrimaryHit ?? 'blast'`, `hitCondition.defaultBombletDirect ?? false`를 사용합니다. 비교·편성도 동일합니다. 따라서 UI의 모드별 초기 상태도 이 값을 읽거나 해당 옵션을 생략해야 합니다. 공통 `'blast'/false`를 명시하면 실제 사용자 선택으로 취급되어 W.A.S.P.의 기본값을 덮어씁니다. 숫자 기본값 자체는 기존처럼 호출자가 적용합니다. Airburst 등 기존 모드는 전달 기본값이 바뀌지 않습니다. 비교 캐시는 생략된 모드별 기본값과 명시적 반대값을 구분합니다.
+
+**Legacy 검증 범위:** 현재 golden에서 오토캐넌 flak은 수치가 없는 미지원 모드였고, W.A.S.P. 전투 프로필은 존재하지 않았습니다. golden 파일은 수정하지 않습니다. `test-parity.mjs`는 추가 명중 조건에 0개를 적용하고 flak의 당시 미지원 상태를 명시적으로 재현하며, 모든 해당 golden 행이 실제 미지원 상태인지 검사하여 수치 결과를 우회하지 못하게 합니다. W.A.S.P.가 golden에 없다는 것도 검사합니다. 새 flak은 파편 0개일 때의 순수 폭발 계산을 84개 적×보호막 2조건에서 별도로 대조합니다. 새 모드의 원본 수치, 기본 경로, 명중 수 및 전달 조건 변경은 개인 무기 테스트에 추가하여 비교·편성·뷰까지 검사합니다.
 
 ### 비교: `dist/core/compare.js`
 
