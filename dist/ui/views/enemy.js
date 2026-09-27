@@ -144,7 +144,7 @@ function rankRow(entry, selected, large = false) {
   } else {
     part = html`<span class="faint">정밀 계산 미지원</span>`; tag = badge('미지원', 'unknown');
   }
-  if (single) hits = html`<span class="hits one-shot-hits"><span>1<small>${unit}</small></span><em>한 발 처치</em></span>`;
+  if (single) hits = html`<span class="hits one-shot-hits" title="한 발 처치">1<small>${unit}</small></span>`;
   return html`<button class="rank-row ${single ? 'one-shot' : ''}" type="button" data-weapon="${weapon.id}" data-mode="${entry.mode?.id || ''}" aria-current="${selected}" aria-expanded="${selected}">
     ${weaponIcon(weapon.id)}
     <span class="w"><b>${weapon.name}</b><small>${multi || entry.mode?.id !== 'standard' ? entry.mode?.name || '' : weapon.code || ''}</small></span>

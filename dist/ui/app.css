@@ -534,8 +534,7 @@ dialog { color: var(--text); }
 .enemy-hero .size-tag { margin-left: 8px; }
 .rank-row.one-shot { background: color-mix(in srgb, var(--kill) 9%, transparent); }
 .rank-row.one-shot[aria-current="true"] { background: var(--accent-soft); }
-.one-shot-hits { display: grid; justify-items: end; line-height: 1.1; color: var(--kill); }
-.one-shot-hits em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .02em; }
+.rank-row .one-shot-hits { color: var(--kill); }
 .one-shot-note { margin: -2px 0 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; color: var(--text-2); background: var(--kill-soft); border: 1px solid color-mix(in srgb, var(--kill) 30%, var(--line)); }
 .one-shot-note.none { background: var(--bleed-soft); border-color: color-mix(in srgb, var(--bleed) 35%, var(--line)); }
 .one-shot-note b { color: var(--text); }
