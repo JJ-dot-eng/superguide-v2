@@ -12,6 +12,15 @@
 - `dist/data/personal-weapons.js`: `personalWeaponsCheckedAt`, `personalWeaponsSource`, `personalWeapons`. 표시용 103종이며 공격 트리·충전 원문은 제외합니다. `image`는 인포박스 파일명이며 `{{PAGENAME}}`만 실제 위키 제목으로 치환합니다. `sourceRevision`은 페이지 revision입니다. 개별 사양과 variant의 null은 원본 공백 그대로입니다.
 - `dist/data/personal-profiles.js`: 생성된 `personalProfiles`, `personalUnsupported`. 공개 진입점 `dist/core/personal-combat.js`에서 재수출하며 `personalGroups = [{id:'primary',name:'주무기'}, {id:'secondary',name:'보조무기'}, {id:'throwable',name:'투척물'}]`도 제공합니다.
 
+### 플레이어 표시 필드
+
+`personalWeapons`의 각 항목은 추가로 다음 필드를 제공합니다. **UI 설명에는 `playerNotes`, 변형 제목에는 `variant.displayName`을 사용하세요.** 기존 `notes`와 variant `name`은 개발자 검증·원본 추적용으로 보존하며 화면에 그대로 출력하지 않습니다.
+
+- `playerNotes: string[]`: 필요한 플레이어 설명만 담은 짧은 한국어 문장입니다. 수치 충돌, 충돌/근접/시간 선택 신관, 파편·산탄 명중, 분사·빔·충전 한계, 하부 무기 전환을 안내합니다. 평범한 무기는 빈 배열입니다. 재장전 필드명·원본 연결·분류 보정 같은 개발자 메모는 전달하지 않습니다.
+- `fuseType: 'timed'|'impact'|'proximity'|'selectable'|'none'|null`: 투척물 인포박스의 명시된 표현만 해석합니다. `N/A`는 none, 미제공/해석 불가는 null입니다. 총기류는 null입니다. Shield의 `0s`는 timed/0이며 none으로 바꾸지 않습니다.
+- `fuseOptions: number[]`: selectable일 때 선택 가능한 초 단위 값입니다. Dynamite는 `[5,15,60]`이며 단일 `fuse`는 여전히 null입니다. 다른 종류는 빈 배열이며 timed 시간은 기존 `fuse`를 사용합니다. 범위나 모호한 복수값의 양 끝을 선택 시간으로 추정하지 않습니다.
+- `variants[].displayName: string`: '기본 사격', '파편', '폭발', '하부 유탄 발사기', '기절탄' 등의 표시명입니다. 원본 탄체와 선택 모드의 연결을 확인하지 못한 경우 '탄체 피해 1'처럼 중립적인 이름을 사용합니다. 이를 독립적인 선택 모드라는 뜻으로 해석하지 마세요. 선택 가능한 계산 모드는 `personalProfiles[id].modes`입니다.
+
 전투 프로필은 `{source, sourceRevision, note, checkedAt, modes}`이며 기존 `solveMatchup`에 그대로 전달합니다. 모드는 `{id,name,standard,durable,ap,explosion,explosionDurable,explosionAp,innerRadius,radius,delivery,unit,magazine,ammoPerShot}` 또는 `{id,name,unsupported}`입니다. 숫자를 확인하지 못한 모드를 정상 피해로 추정하지 않습니다. 원본에 충돌 폭발 연결 자체가 없는 탄체만 엔진상 폭발 0으로 표현하며, 폭발 연결은 있지만 수치가 없으면 미지원입니다.
 
 지원 86종에는 명중 수 조건이 필요한 무기도 포함됩니다. 미지원 17종은 다음과 같습니다.
@@ -49,6 +58,51 @@ Arbitrator/One-Two/Stoker는 하부 무기가 별도 `underbarrel` 모드이며 
 - `loadoutCoverage(loadout,factionId,options) → {faction,rows,gaps,notComputable}`. row는 `{enemyId,enemyName,enemy,best,status,perSlot,reason}`이고 status는 route/gap입니다. best는 비교 결과에 `{slot,slotIndex,weaponId,modeId,partId,partName,modeName,unit}`를 더합니다. perSlot의 각 항목은 `{slot,slotIndex,weaponId,best,modes}`입니다. gaps는 검증된 치명 경로가 없는 row 목록, notComputable은 `{slot,slotIndex,weaponId,id,reason}` 목록입니다. 다른 무기나 부위 피해를 합산하지 않습니다.
 - `suggestFixes(loadout,factionId,options) → [{enemyId,enemyName,replacements}]`. 공백마다 같은 종류의 각 슬롯 위치에 최대 `options.limit`개(기본 3, 최대 20; `maxPerSlot` 별칭)의 교체안을 줍니다. 스트라타젬은 지원 무기만 추천합니다. 각 후보는 비교 결과 + slot/slotIndex/replaces이며 hits, 경로 단계 등 조건의 단순성, 즉사 여부, 안정적인 ID 순으로 정렬합니다. 이미 편성한 스트라타젬은 중복 추천하지 않습니다. 가정·조건부·재생 하한값은 추천으로 공백을 메우지 않습니다.
 - `loadoutView(loadout,factionId,options)`는 프런트엔드 연결용 추가 API입니다. coverage row에 fixes를 붙이고 교체 슬롯 키만 p/s/g/st0..st3으로 바꿉니다.
+
+편성 UI에서 사용하는 정확한 반환 구조는 아래와 같습니다. 빈 슬롯은 perSlot에 없고, 알려진 미지원 장비는 perSlot과 notComputable에 모두 있습니다. 일부 모드만 미지원인 장비는 notComputable에 넣지 않고 `perSlot[].modes`에 모드별 이유를 남깁니다. `row.best`는 검증된 대응만 반환하며, `perSlot[].best`는 검증 경로가 없으면 설명용 가정/보류/미지원 결과일 수 있습니다.
+
+```ts
+type Slot = 'primary' | 'secondary' | 'throwable' | 'stratagems';
+type Position = { slot: Slot; slotIndex: null | 0 | 1 | 2 | 3; weaponId: string };
+// slotIndex: 개인 무기는 null, 스트라타젬은 0부터 시작하는 칸 번호.
+type Answer = Position & {
+  weapon: object | null; kind: 'personal' | 'support' | null;
+  profile: object | null; unsupported: string | null;
+  mode: object | null; modeId: string | null;
+  weaponLabel: string; modeLabel: string | null; modeName: string | null;
+  status: 'route' | 'assume' | 'none' | 'unsupported';
+  reason: string | null; reasonCode?: string | null;
+  route: CombatRoute | null; best: CombatRoute | null; rows: CombatRoute[];
+  hits: number | null; outcome: string | null; part: object | null;
+  partId: string | null; partName: string | null; resultLabel: string | null;
+  unit: string; conditional: boolean; lowerBound: boolean;
+  assumption: { count: number; primaryHit: string; bombletDirect: boolean } | null;
+  shieldCleared: boolean; shieldAssumed: boolean; verified: boolean;
+  magazinesNeeded: number | null;
+};
+// CombatRoute는 solveMatchup의 원본 부위 경로:
+// {target, stages, hits, outcome, conditional, notes, via?, reason?, detail?, lowerBound?}.
+type CoverageRow = {
+  enemyId: string; enemyName: string; enemy: object;
+  best: Answer | null; status: 'route' | 'gap'; reason: string | null;
+  perSlot: (Position & { best: Answer; modes: Answer[] })[];
+};
+type Coverage = {
+  faction: {id: string; name: string; enemyIds: string[]} | null;
+  rows: CoverageRow[];
+  gaps: CoverageRow[]; // ID 목록이 아닌 공백 row 목록
+  notComputable: (Position & {id: string; reason: string})[];
+  reason?: string; // 알 수 없는 진영이면 rows/gaps=[] 및 reason 제공
+};
+// loadoutCoverage(loadout, factionId?, options?) => Coverage
+// suggestFixes(loadout, factionId?, options?) => 다음 배열:
+type Fixes = {
+  enemyId: string; enemyName: string;
+  replacements: (Answer & {replaces: string | null})[];
+}[];
+```
+
+`options`는 `{partId?, shieldCleared?, assume?, limit?, maxPerSlot?}`입니다. `limit`는 공백 하나의 각 슬롯 위치별 상한이므로 기본 3개일 때 전체 replacements는 최대 21개입니다. 교체 시 개인 무기는 `loadout[fix.slot] = fix.weaponId`, 스트라타젬은 `loadout.stratagems[fix.slotIndex] = fix.weaponId`를 적용합니다. modeId는 추천의 계산 근거이며 편성 URL에는 무기 ID만 저장합니다. 원본 coverage에는 fixes가 없으므로 UI가 `enemyId`로 합치거나 `loadoutView` 어댑터를 사용할 수 있습니다. 어댑터의 `rows[].fixes`만 슬롯 키가 p/s/g/st0..st3이며, `gaps` 및 `perSlot`은 정규 슬롯명을 유지합니다.
 
 `dist/core/route.js`는 gear 뷰와 경로 주석을 추가하고 기존 hash 변환을 유지합니다. 검사에는 수계산(Liberator/헌터 머리, Senator/데바스테이터 머리, Frag/헌터 본체 폭발), 산탄 가정, 탄창 경계, 원본 대응, URL 왕복·잘못된 입력, 편성 공백, 추천 재적용·결정성, 생성물 최신성 및 기존 legacy parity가 포함됩니다.
 

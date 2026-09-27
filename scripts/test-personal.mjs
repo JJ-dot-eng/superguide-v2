@@ -14,6 +14,7 @@ import { parseRoute, formatRoute } from '../dist/core/route.js';
 import { parseInfobox } from './build-weapons.mjs';
 import { buildPersonalProfiles } from './personal-profiles.mjs';
 import { assumptionSummary } from '../dist/core/explain.js';
+import { fuseDetails } from './personal-display.mjs';
 
 const root = new URL('../', import.meta.url);
 let checked = 0;
@@ -30,9 +31,37 @@ eq(new Set([...personalWeapons, ...stratagems].map(w => w.id)).size, personalWea
 eq(personalGroups.map(g => g.id), ['primary', 'secondary', 'throwable']);
 ok(/^\d{4}-\d{2}-\d{2}$/.test(personalWeaponsCheckedAt), 'checkedAt format');
 eq(personalWeaponsSource.attacksRevision, 136739);
+const weaponOf = id => personalWeapons.find(w => w.id === id);
+eq([weaponOf('dynamite').fuseType, weaponOf('dynamite').fuseOptions, weaponOf('dynamite').fuse], ['selectable', [5, 15, 60], null], 'selectable fuse never chooses a single time');
+eq([weaponOf('impact').fuseType, weaponOf('impact').fuse], ['impact', null]);
+eq(weaponOf('melta-mine').fuseType, 'proximity');
+eq([weaponOf('shield').fuseType, weaponOf('shield').fuse], ['timed', 0], 'explicit zero seconds is not no fuse');
+eq(weaponOf('throwing-knife').fuseType, 'none');
+eq(weaponOf('liberator').fuseType, null, 'no inferred fuse for firearms');
+eq(fuseDetails('5s / unknown', 'throwable'), { fuseType: null, fuseOptions: [] });
+eq(fuseDetails('5-15s', 'throwable'), { fuseType: null, fuseOptions: [] }, 'range is not selectable options');
+eq(fuseDetails('', 'throwable'), { fuseType: null, fuseOptions: [] }, 'absent is not none');
+eq(fuseDetails('0s', 'throwable'), { fuseType: 'timed', fuseOptions: [] });
+eq(weaponOf('frag').variants.find(v => v.id === 'shrapnel').displayName, '파편');
+eq(weaponOf('frag').variants[0].displayName, '폭발');
+eq(weaponOf('one-two').variants[1].displayName, '하부 유탄 발사기');
+eq(weaponOf('arbitrator').variants[1].displayName, '하부 산탄총');
+eq(weaponOf('stoker').variants[1].displayName, '하부 화염방사기');
+eq(weaponOf('liberator').playerNotes, [], 'ordinary weapon has no noisy developer commentary');
+ok(weaponOf('accelerator-rifle').playerNotes.some(note => note.includes('8개') && note.includes('12개')), 'conflict communicated to player');
+ok(weaponOf('thermite').playerNotes.some(note => note.includes('2m') && note.includes('1.5m') && note.includes('2.5m')), 'radius conflict preserves both boundaries');
+for (const id of ['frag', 'torcher', 'scythe', 'purifier', 'one-two']) ok(weaponOf(id).playerNotes.length > 0, `${id}: relevant caveat`);
 for (const weapon of personalWeapons) {
   const source = weapons.find(w => w.id === weapon.id);
   const profile = personalProfiles[weapon.id], reason = personalUnsupported[weapon.id];
+  ok(Array.isArray(weapon.playerNotes) && weapon.playerNotes.every(note => typeof note === 'string' && /[가-힣]/.test(note)), 'player notes are Korean sentences');
+  ok(weapon.playerNotes.every(note => !/인포박스|데이터마이닝|\bDB\b|variants|tac_reload_time|revision|null|damage_id|sourceRevision/.test(note)), 'no developer jargon in player notes');
+  ok([null, 'timed', 'impact', 'proximity', 'selectable', 'none'].includes(weapon.fuseType), 'fuse enum');
+  ok(Array.isArray(weapon.fuseOptions) && weapon.fuseOptions.every(v => Number.isFinite(v) && v >= 0), 'numeric fuse options');
+  for (const variant of weapon.variants) {
+    ok(variant.displayName && /[가-힣]/.test(variant.displayName) && !/[A-Z]|_/.test(variant.displayName), 'friendly variant label, no raw attack keys');
+    eq(variant.name, source.variants.find(v => v.id === variant.id).name, 'raw variant name retained');
+  }
   ok(Boolean(profile) !== Boolean(reason), `${weapon.id}: exactly profile or reason`);
   eq(weapon.image, parseInfobox(pages[weapon.en].wikitext).image?.replace(/\{\{\s*PAGENAME\s*\}\}/gi, weapon.en) || null, `${weapon.id}: source image`);
   for (const field of ['direct', 'durable', 'ap', 'splash', 'splashDurable', 'pellets', 'magazine', 'dot', 'notes', 'infoboxConflicts']) eq(weapon[field], source[field], `${weapon.id}.${field}`);
