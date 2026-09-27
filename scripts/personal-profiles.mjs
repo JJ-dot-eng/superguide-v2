@@ -3,15 +3,15 @@
 export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
   const personalProfiles = {}, personalUnsupported = {};
   const finite = value => Number.isFinite(value) && value >= 0;
-  const sprayReason = '분사 입자 명중 빈도와 접촉 시간이 미확인이라 발 단위로 환산하지 않습니다.';
+  const sprayReason = '불꽃이 몇 번 닿는지 확인되지 않아 발 단위로 계산하지 않습니다.';
   const specialReasons = {
-    'double-edge-sickle': '열 단계별 탄체 연결과 전환 조건이 미확인입니다. 열 상태를 선택 가능한 탄종으로 취급하지 않습니다.',
-    arc: '투척 후 전격의 반복 횟수와 부위별 명중 수가 미확인입니다.',
-    'throwing-knife': '원본 damage 항목의 타격 단위와 투척 연결이 미확인입니다.',
-    'stim-pistol': '치료 장비이며 공격 피해 레코드가 없습니다.',
-    smoke: '연막 지원 장비이며 공격 피해 레코드가 없습니다.',
-    smokescreen: '연막 지원 장비이며 공격 피해 레코드가 없습니다.',
-    shield: '방어막 지원 장비이며 공격 목록이 없습니다.',
+    'double-edge-sickle': '총이 뜨거워지면 피해가 달라집니다. 피해가 바뀌는 정확한 조건을 확인하지 못해 계산하지 않습니다.',
+    arc: '던진 뒤 전격이 몇 번 발생하고 같은 부위에 몇 번 맞는지 확인되지 않아 계산하지 않습니다.',
+    'throwing-knife': '칼 한 개를 던져 맞혔을 때의 정확한 피해를 확인하지 못해 계산하지 않습니다.',
+    'stim-pistol': '치료용 장비입니다. 적에게 주는 피해를 확인하지 못해 처치 횟수는 계산하지 않습니다.',
+    smoke: '연막을 펼치는 장비입니다. 적에게 주는 피해를 확인하지 못해 처치 횟수는 계산하지 않습니다.',
+    smokescreen: '연막을 펼치는 장비입니다. 적에게 주는 피해를 확인하지 못해 처치 횟수는 계산하지 않습니다.',
+    shield: '방어막을 만드는 장비로, 처치 횟수는 계산하지 않습니다.',
   };
   const makeMode = (weapon, stats, id = 'standard', name = '기본 사격', magazine = weapon.magazine) => {
     const pureBlast = stats.delivery === 'explosion';
@@ -28,12 +28,13 @@ export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
       innerRadius: stats.innerRadius, radius: stats.radius,
       delivery: pureBlast ? 'explosive' : stats.delivery,
       unit: weapon.category === 'throwable' ? '개' : stats.delivery === 'melee' ? '회' : '발',
+      ...(weapon.category === 'throwable' ? { unitLabel: ['melta-mine', 'lure-mine'].includes(weapon.id) ? '지뢰' : weapon.id === 'dynamite' ? '다이너마이트' : '수류탄' } : {}),
       magazine: weapon.category === 'throwable' ? null : magazine,
       ammoPerShot: 1,
     };
     if (stats.delivery === 'spray') return { id, name, unsupported: sprayReason };
     if (stats.pellets > 1) mode.hitCondition = { kind: 'pellets', min: 1, max: stats.pellets };
-    if (stats.delivery === 'melee') mode.note = '일반 타격 1회입니다. 접근 가능 여부·방어구 보너스·상태이상은 계산하지 않습니다.';
+    if (stats.delivery === 'melee') mode.note = '한 번 휘둘러 맞혔을 때의 피해입니다. 실제로 그 부위에 닿을 수 있는지, 방어구로 늘어나는 피해와 기절 같은 효과는 반영하지 않습니다.';
     if (weapon.id === 'blitzer') {
       if (!/five arcs with damage of 50/.test(pages[weapon.en].wikitext)) throw new Error('Blitzer arc evidence changed');
       mode.hitCondition = { kind: 'arcs', min: 1, max: 5 };
@@ -42,8 +43,8 @@ export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
   };
   for (const weapon of weapons) {
     let reason = specialReasons[weapon.id];
-    if (weapon.charge) reason = '충전 상태별 최종 직격·내구·폭발·관통 수치와 배율 적용 규칙이 모두 검증되지 않았습니다.';
-    if (weapon.delivery === 'beam') reason = '빔 1회 노출 시간과 발 단위 유효 피해가 미확인입니다.';
+    if (weapon.charge) reason = '충전했을 때의 정확한 피해가 확인되지 않아 계산하지 않습니다.';
+    if (weapon.delivery === 'beam') reason = '광선을 얼마나 오래 비추는지에 따라 피해가 달라져 발 단위로 계산하지 않습니다.';
     if (weapon.delivery === 'spray') reason = sprayReason;
     if (reason) { personalUnsupported[weapon.id] = reason; continue; }
     let modes = [makeMode(weapon, weapon, 'standard', weapon.category === 'throwable' ? '폭발 1회' : '기본 사격')];
@@ -58,36 +59,36 @@ export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
       }
     }
     if (['missile-pistol', 'warrant'].includes(weapon.id)) {
-      modes = [makeMode(weapon, weapon, 'unguided', '비유도 · 탄체 1발'),
-        { id: 'guided', name: '유도 사격', unsupported: '유도 모드의 표적·착탄 부위 제한을 검증하지 않아 자유 조준 경로로 계산하지 않습니다.' }];
+      modes = [makeMode(weapon, weapon, 'unguided', '비유도 · 한 발'),
+        { id: 'guided', name: '유도 사격', unsupported: '어떤 적을 겨냥할 수 있고 어느 부위에 맞는지 확인되지 않아 유도 사격은 계산하지 않습니다.' }];
     }
     if (['bushwhacker', 'double-freedom'].includes(weapon.id)) modes.push({ ...makeMode(weapon, weapon, 'all-barrels', '모든 총열 동시 발사'), ammoPerShot: weapon.barrels, hitCondition: { kind: 'pellets', min: 1, max: weapon.pellets * weapon.barrels } });
     if (weapon.id === 'variable') modes.push(
-      { ...makeMode(weapon, weapon, 'volley', '일곱 총열 일제 사격'), ammoPerShot: 7, hitCondition: { kind: 'pellets', min: 1, max: 7 } },
-      { id: 'total', name: '잔탄 전체 발사', unsupported: '현재 잔탄 수를 알 수 없어 일제 발사당 소비 탄수와 명중 수를 고정하지 않습니다.' },
+      { ...makeMode(weapon, weapon, 'volley', '일곱 총열 일제 사격'), ammoPerShot: 7, hitCondition: { kind: 'pellets', min: 1, max: 7, projectileName: '탄환' } },
+      { id: 'total', name: '잔탄 전체 발사', unsupported: '총에 남아 있는 탄약 수를 알 수 없어 한꺼번에 쐈을 때의 피해를 계산하지 않습니다.' },
     );
     // Shrapnel is part of this shot, never a selectable standalone mode.
     if (weapon.shrapnelCount > 0) {
       const fragment = weapon.variants.find(v => v.id === 'shrapnel');
       if (!fragment) throw new Error(`Missing shrapnel: ${weapon.id}`);
       const fragmentMode = makeMode(weapon, fragment);
-      modes[0].hitCondition = { kind: 'shrapnel', min: 0, max: weapon.shrapnelCount };
+      modes[0].hitCondition = { kind: 'shrapnel', min: 0, max: weapon.shrapnelCount, default: 0 };
       modes[0].bomblet = fragmentMode;
-      modes[0].note = '파편 명중 수를 명시해야 합니다. 0개는 주탄·폭발만 계산하며 파편 피해를 자동 합산하지 않습니다.';
+      modes[0].note = `기본 계산에서는 파편을 빼고 ${weapon.delivery === 'explosion' ? '폭발 피해만' : '직접 맞혔을 때의 피해와 폭발 피해만'} 반영합니다. 파편 피해도 넣으려면 같은 부위에 맞는 파편 수를 고르세요.`;
     }
     // Breacher's delayed explosion is linked, not another firing mode. Keep
     // only the known impact here; do not invent timing/attachment success.
-    if (weapon.id === 'breacher') modes[0].note = '직격·충돌 피해만 계산합니다. 지연 폭발·테르밋 지속 피해와 부착 성공 여부는 제외합니다.';
-    if (['pyrotech', 'melta-mine'].includes(weapon.id)) modes[0].note = '확인된 주폭발만 계산합니다. 분사·화염벽의 지속 피해와 반복 횟수는 제외합니다.';
+    if (weapon.id === 'breacher') modes[0].note = '맞는 순간의 피해만 계산합니다. 붙은 뒤에 터지는 폭발과 계속 타는 피해는 빼며, 실제로 잘 붙는지는 반영하지 않습니다.';
+    if (['pyrotech', 'melta-mine'].includes(weapon.id)) modes[0].note = '처음 터지는 폭발만 계산합니다. 남은 불길에 계속 닿아서 받는 피해는 더하지 않습니다.';
     for (const mode of modes) {
       if (mode.unsupported) continue;
-      if (![mode.standard, mode.durable, mode.ap, mode.explosion, mode.explosionDurable, mode.explosionAp].every(finite)) mode.unsupported = '공격의 직격·내구·폭발·관통 수치 일부가 미확인입니다.';
-      else if (mode.standard + mode.durable + mode.explosion + mode.explosionDurable === 0) mode.unsupported = '확인된 직접 피해가 0인 지원 장비입니다. 상태이상을 처치 피해로 환산하지 않습니다.';
+      if (![mode.standard, mode.durable, mode.ap, mode.explosion, mode.explosionDurable, mode.explosionAp].every(finite)) mode.unsupported = '피해량이나 장갑을 뚫는 능력이 정확히 확인되지 않아 계산하지 않습니다.';
+      else if (mode.standard + mode.durable + mode.explosion + mode.explosionDurable === 0) mode.unsupported = '직접 주는 피해가 없는 지원 장비입니다. 적을 기절시키는 등의 효과를 피해로 바꿔 계산하지 않습니다.';
     }
     if (modes.every(mode => mode.unsupported)) personalUnsupported[weapon.id] = modes[0].unsupported;
     else personalProfiles[weapon.id] = {
       source: weapon.source, checkedAt, sourceRevision: pages[weapon.en].revision,
-      note: '동일 부위 최대 피해 기준입니다. AP는 원본 ap1이며 각도·거리 감쇠·도탄·지속 피해·상태이상·다른 부위 동시 명중은 제외합니다. 연사/점사는 탄체 1발 단위입니다. 산탄·전격·파편은 명중 수 가정이 필요합니다.',
+      note: '같은 부위를 최대 피해로 계속 맞혔을 때의 횟수입니다. 거리와 맞는 각도에 따른 피해 변화, 도탄, 화상 같은 지속 피해와 기절 같은 효과는 빼고 계산합니다. 여러 부위에 동시에 들어가는 피해는 합치지 않습니다. 연사와 점사는 한 발씩 계산하며, 산탄과 전격은 같은 부위에 맞는 수를 골라야 합니다. 파편은 기본적으로 제외합니다.',
       modes,
     };
   }

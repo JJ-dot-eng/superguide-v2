@@ -2039,7 +2039,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: null,
     fuseOptions: [],
-    playerNotes: ['파편이 한 적에게 모두 맞는 것은 아닙니다. 처치 계산에서는 맞는 파편 수를 직접 골라야 합니다.'],
+    playerNotes: ['기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
     image: 'R-36 Eruptor Primary Render.png',
     sourceRevision: 135041,
     variants: [
@@ -5623,7 +5623,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: 'timed',
     fuseOptions: [],
-    playerNotes: ['파편이 한 적에게 모두 맞는 것은 아닙니다. 처치 계산에서는 맞는 파편 수를 직접 골라야 합니다.'],
+    playerNotes: ['기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
     image: 'G-6 Frag Throwable Render.png',
     sourceRevision: 126327,
     variants: [
@@ -5770,7 +5770,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: 'timed',
     fuseOptions: [],
-    playerNotes: ['파편이 한 적에게 모두 맞는 것은 아닙니다. 처치 계산에서는 맞는 파편 수를 직접 골라야 합니다.'],
+    playerNotes: ['기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
     image: 'G-7 Pineapple Throwable Render.png',
     sourceRevision: 134063,
     variants: [
@@ -6211,7 +6211,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: 'proximity',
     fuseOptions: [],
-    playerNotes: ['가까운 대상을 감지하면 작동합니다.', '파편이 한 적에게 모두 맞는 것은 아닙니다. 처치 계산에서는 맞는 파편 수를 직접 골라야 합니다.'],
+    playerNotes: ['가까운 대상을 감지하면 작동합니다.', '기본 처치 계산은 파편 피해를 제외합니다. 파편 피해를 포함하려면 맞는 수를 직접 고르세요.'],
     image: 'TM-1 Lure Mine Throwable Render.png',
     sourceRevision: 136571,
     variants: [

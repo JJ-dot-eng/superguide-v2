@@ -8,6 +8,8 @@ export const pct = value => Number.isFinite(value) ? `${num(value)}%` : '미확�
 // --- Units -------------------------------------------------------------------
 
 export function unitOf(mode) {
+  if (mode?.unit === '개' && mode.unitLabel) return { unit: '개', noun: `${mode.unitLabel} 개수`, one: `${mode.unitLabel} 1개` };
+  if (mode?.unit === '개' && mode.delivery === 'explosive') return { unit: '개', noun: '투척물 개수', one: '투척물 1개' };
   if (mode?.unit === '개') return { unit: '개', noun: '장약 수', one: '장약 1개' };
   if (mode?.unit === '회') return { unit: '회', noun: '타격 수', one: '타격 1회' };
   return { unit: '발', noun: '탄수', one: '1발' };
@@ -31,7 +33,8 @@ export const outcomeOf = (row) => row.outcome === 'break' && row.target.resultLa
 /** "3발", "2개 이상" … A floor is marked when the count ignores regeneration. */
 export function countText(row, mode) {
   if (row.hits == null) return null;
-  return `${num(row.hits)}${unitOf(mode).unit}${row.lowerBound ? ' 이상' : ''}`;
+  const label = mode?.unit === '개' && mode.unitLabel ? `${mode.unitLabel} ` : '';
+  return `${label}${num(row.hits)}${unitOf(mode).unit}${row.lowerBound ? ' 이상' : ''}`;
 }
 
 // --- Reasons -----------------------------------------------------------------
@@ -56,6 +59,8 @@ export const reasonText = row => ['unsupported', 'shield', 'part-unknown'].inclu
 // --- Attack description --------------------------------------------------------
 
 export function deliveryOf(mode) {
+  if (mode?.hitCondition?.kind === 'pellets') return { hit: `${mode.hitCondition.projectileName || '펠릿'} 1개`, verb: '명중' };
+  if (mode?.delivery === 'explosive') return { hit: '폭발', verb: '기폭' };
   if (mode?.beam) return { hit: '광선', verb: '광선 유지' };
   if (mode?.delivery === 'arc') return { hit: '전격', verb: '전격 명중' };
   if (mode?.delivery === 'guided') return { hit: '착탄', verb: '착탄' };
@@ -81,13 +86,19 @@ export function attackStats(mode) {
   }
   if (mode.bomblet) {
     const b = mode.bomblet;
-    stats.push({ label: '자탄 1개', value: `${num(b.standard)} + 폭발 ${num(b.explosion)}`, note: `AP ${b.ap}/${b.explosionAp} · 중심 ${num(b.innerRadius)}m / 외곽 ${num(b.radius)}m` });
+    if (mode.hitCondition?.kind === 'shrapnel') {
+      stats.push({ label: '파편 1개', value: `${num(b.standard)}${b.explosion > 0 ? ` + 폭발 ${num(b.explosion)}` : ''}`,
+        note: `내구 ${num(b.durable)} · AP ${num(b.ap)}${b.explosion > 0 ? ` · 폭발 AP ${num(b.explosionAp)}` : ''}` });
+    } else stats.push({ label: '자탄 1개', value: `${num(b.standard)} + 폭발 ${num(b.explosion)}`, note: `AP ${b.ap}/${b.explosionAp} · 중심 ${num(b.innerRadius)}m / 외곽 ${num(b.radius)}m` });
   }
   return stats;
 }
 
 /** One-line statement of what the count assumes for this kind of attack. */
 export function assumptionText(mode) {
+  if (mode?.hitCondition?.kind === 'pellets') return `한 발에서 선택한 수의 ${mode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는 가정입니다. 전부 명중한다고 자동 계산하지 않습니다.`;
+  if (mode?.hitCondition?.kind === 'shrapnel') return `같은 부위에 ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격·폭발'}과 선택한 수의 파편이 맞는 가정입니다. 파편 0개를 고르면 파편 피해는 제외합니다.`;
+  if (mode?.delivery === 'explosive') return '기폭 시 같은 부위에 최대 폭발 피해가 닿는 조건입니다. 여러 부위에 동시에 들어가는 피해는 더하지 않습니다.';
   if (mode?.beam) return '같은 부위에 광선을 계속 유지하는 조건. 한 발은 약 1.4초 분량으로 환산합니다.';
   if (mode?.hitCondition) return '선택한 명중 수가 모두 해당 부위에 최대 피해로 들어가는 가정. 여러 부위 동시 피해는 더하지 않습니다.';
   if (mode?.delivery === 'adhesive') return '장약 하나하나가 해당 부위에 최대 폭발 피해를 주는 조건. 여러 부위 동시 피해는 더하지 않습니다.';
@@ -104,13 +115,14 @@ export function assumptionText(mode) {
 export function aimText(row, mode) {
   const target = row.target;
   const lines = [target.tip];
+  if (['pellets', 'shrapnel'].includes(mode?.hitCondition?.kind)) lines.push(assumptionSummary(mode));
   const radius = explosionsOf(mode || {}).map(blast => blast.innerRadius).filter(Number.isFinite);
   if (mode?.delivery === 'adhesive' && radius.length) lines.push(`기폭 시 이 부위가 폭발 중심 ${num(Math.min(...radius))}m 안에 들어오게 붙이세요.`);
-  else if (radius.length && !mode?.hitCondition) lines.push(`이 부위가 폭발 중심 ${num(Math.min(...radius))}m 안에 들어와야 최대 피해입니다.`);
+  else if (radius.length && (!mode?.hitCondition || mode.hitCondition.kind === 'shrapnel')) lines.push(`이 부위가 폭발 중심 ${num(Math.min(...radius))}m 안에 들어와야 최대 피해입니다.`);
   if (target.exdr === 100 && radius.length) {
     lines.push(target.partOnly ? '이 장치는 폭발에 면역이라 폭발 피해는 장치 파괴에 더하지 않습니다.' : '이 부위는 폭발에 면역이라 폭발 피해는 본체 장갑·저항으로 따로 계산합니다.');
   }
-  if (target.next && row.stages.length > 1) lines.push(`장갑이 깨지면 다음 ${unitOf(mode).unit}부터 ${josa(target.next.name, ['을', '를'])} 노리세요. 초과 피해는 넘어가지 않습니다.`);
+  if (target.next && row.stages.length > 1) lines.push(`장갑이 깨지면 다음 ${mode?.unitLabel || unitOf(mode).unit}부터 ${josa(target.next.name, ['을', '를'])} 노리세요. 초과 피해는 넘어가지 않습니다.`);
   return lines.filter(Boolean);
 }
 
@@ -118,7 +130,11 @@ export function routeNotes(row, mode) {
   const { noun } = unitOf(mode);
   const target = row.target;
   const notes = [];
-  if (row.reason && (row.hits == null || row.reason === 'beam-armor-only')) notes.push(reasonText(row));
+  if (row.reason && (row.hits == null || row.reason === 'beam-armor-only')) {
+    const multi = ['pellets', 'shrapnel'].includes(mode?.hitCondition?.kind);
+    notes.push(multi && row.reason === 'assumption-needed' ? assumptionSummary(mode)
+      : multi && row.reason === 'leftover-events' ? '장갑이 깨진 뒤 같은 발의 남은 탄체·펠릿·파편이 안쪽에 닿는지 확인되지 않아 처치 횟수를 계산하지 않습니다.' : reasonText(row));
+  }
   notes.push(...row.notes);
   if (target.followupNote) notes.push(target.followupNote);
   if (target.destroyMainDamage) notes.push(`부위가 파괴되면 본체에 ${num(target.destroyMainDamage)} 피해가 한 번 더 들어갑니다.`);
@@ -139,10 +155,14 @@ export function routeNotes(row, mode) {
 
 export function assumptionSummary(mode) {
   if (!mode?.hitCondition) return '';
-  if (!mode.assumption) return '한 발에서 이 부위에 맞는 개수를 고르세요.';
+  if (!mode.assumption) {
+    if (mode.hitCondition.kind === 'pellets') return `한 발에서 이 부위에 맞는 ${mode.hitCondition.projectileName || '펠릿'} 수를 고르세요.`;
+    if (mode.hitCondition.kind === 'shrapnel') return '폭발 1회에서 이 부위에 맞는 파편 수를 고르세요. 0개는 파편 피해를 제외합니다.';
+    return '한 발에서 이 부위에 맞는 개수를 고르세요.';
+  }
   const { count, primaryHit, bombletDirect } = mode.assumption;
-  if (mode.hitCondition.kind === 'pellets') return `한 발사마다 탄체·펠릿 ${count}개가 이 부위에 명중`;
-  if (mode.hitCondition.kind === 'shrapnel') return `${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격 + 폭발'} · 파편 ${count}개 명중`;
+  if (mode.hitCondition.kind === 'pellets') return `한 발에 ${mode.hitCondition.projectileName || '펠릿'} ${count}개가 이 부위에 명중`;
+  if (mode.hitCondition.kind === 'shrapnel') return `폭발 1회당 파편 ${count}개가 이 부위에 명중 + ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격 + 폭발'}${count === 0 ? ' (파편 피해 제외)' : ''}`;
   if (mode.hitCondition.kind === 'arcs') return `한 발마다 전격 ${count}회가 이 부위에 명중 (유탄 직격 제외)`;
   const primary = { none: '주탄 피해 제외', blast: '주탄 폭발만', direct: '주탄 직격 + 폭발' }[primaryHit];
   return `${primary} · 자탄 ${count}개 ${bombletDirect && count > 0 ? '직격 + 폭발' : '폭발'} 명중`;
@@ -157,6 +177,9 @@ export function josa(word, [withFinal, withoutFinal]) {
 
 /** Short tag for counts that rest on an assumption rather than plain aiming. */
 export function assumptionTag(mode) {
+  if (mode?.hitCondition?.kind === 'pellets') return `${mode.hitCondition.projectileName || '펠릿'} 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
+  if (mode?.hitCondition?.kind === 'shrapnel') return mode.assumption?.count === 0
+    ? `파편 제외 · ${mode.delivery === 'explosive' ? '폭발만' : '직격·폭발만'}` : `파편 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
   if (!mode?.conditionalImpact) return '';
   if (mode.beam) return '광선 유지 가정';
   if (mode.delivery === 'arc') return '전격 명중 가정 · 부위 조준 불가';
