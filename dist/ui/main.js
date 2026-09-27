@@ -5,11 +5,12 @@ import { initAnalytics } from './analytics.js';
 
 const VIEW_MODULES = {
   arsenal: () => import('./views/arsenal.js'),
+  gear: () => import('./views/gear.js'),
   enemy: () => import('./views/enemy.js'),
   demolition: () => import('./views/demolition.js'),
   factions: () => import('./views/factions.js'),
 };
-const TITLES = { arsenal: '스트라타젬', enemy: '적 대응', demolition: '철거', factions: '팩션 추천' };
+const TITLES = { arsenal: '스트라타젬', gear: '장비', enemy: '적 대응', demolition: '철거', factions: '팩션 추천' };
 
 const root = $('#view');
 const loaded = new Map();

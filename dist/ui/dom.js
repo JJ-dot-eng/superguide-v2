@@ -20,6 +20,7 @@ const ICONS = {
   enemy: '<circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2"/><path d="M12 1.5v5M12 17.5v5M1.5 12h5M17.5 12h5"/>',
   demolition: '<path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="m9 13 3 3 3-3M12 16V9"/>',
   factions: '<path d="M5 21V3.5M5 4h12.5l-2.5 4.5 2.5 4.5H5"/>',
+  gear: '<path d="M3 10.5h13.5l1.5-2h3v4h-4l-1 1.5H9.5l-1.5 5h-3l1-5H3z"/><path d="M11 14v2.5"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
   close: '<path d="M6 6l12 12M18 6 6 18"/>',

@@ -1,11 +1,16 @@
-// Enemy-first combat view: pick an enemy, see every support weapon ranked by
-// its quickest verified route, then open any weapon for part-by-part detail.
+// Enemy-first combat view: pick an enemy, see every weapon of a group (support,
+// primary, secondary, throwable) ranked by its quickest verified route, then open
+// any weapon for part-by-part detail.
 import { enemies, weaponProfiles, unsupportedWeapons, combatCheckedAt, damageSource } from '../../data/combat-data.js';
+import { personalProfiles, personalUnsupported } from '../../core/personal-combat.js';
+import { personalWeapons } from '../../data/personal-weapons.js';
+import { weaponImages } from '../../data/weapon-images.js';
 import { pickerEnemyImages } from '../../data/selector-images.js';
 import { combatImages } from '../../data/combat-images.js';
 import { wikiIcons } from '../../data/wiki-icons.js';
 import { stratagems, stratagemById } from '../../core/catalog.js';
 import { solveMatchup, withHitAssumption, spearCannotLock, partPool } from '../../core/combat.js';
+import { compareAttacks } from '../../core/compare.js';
 import { wikiReference } from '../../core/factions.js';
 import { search } from '../../core/search.js';
 import { num, pct, unitOf, outcomeOf, countText, attackStats, assumptionText, aimText, routeNotes, assumptionSummary, assumptionTag, deliveryOf } from '../../core/explain.js';
@@ -14,24 +19,49 @@ import { html, raw, render, $, $$, icon, badge, external } from '../dom.js';
 const FACTIONS = ['테르미니드', '오토마톤', '일루미닛'];
 const DEFAULT_ENEMY = 'charger';
 const supportWeapons = stratagems.filter(item => item.category === 'support' && (weaponProfiles[item.id] || unsupportedWeapons[item.id]));
+const GROUPS = [
+  { id: 'support', name: '지원 무기', link: id => `#/arsenal/${id}`, linkLabel: '도감에서 보기' },
+  { id: 'primary', name: '주무기', link: id => `#/gear/${id}`, linkLabel: '장비에서 보기' },
+  { id: 'secondary', name: '보조무기', link: id => `#/gear/${id}`, linkLabel: '장비에서 보기' },
+  { id: 'throwable', name: '투척', link: id => `#/gear/${id}`, linkLabel: '장비에서 보기' },
+];
+const personalEntry = w => ({ id: w.id, name: w.name || w.en, code: w.code, source: w.source, group: w.category });
+const weaponsOf = {
+  support: supportWeapons.map(item => ({ ...item, group: 'support' })),
+  ...Object.fromEntries(['primary', 'secondary', 'throwable'].map(group => [group, personalWeapons.filter(w => w.category === group && (personalProfiles[w.id] || personalUnsupported[w.id])).map(personalEntry)])),
+};
+const weaponById = new Map(Object.values(weaponsOf).flat().map(weapon => [weapon.id, weapon]));
+const profileOf = id => weaponProfiles[id] || personalProfiles[id];
+const unsupportedOf = id => unsupportedWeapons[id] || personalUnsupported[id];
+const groupOf = id => GROUPS.find(group => group.id === id);
 const enemyById = new Map(enemies.map(enemy => [enemy.id, enemy]));
 
 let root, ctx;
-const state = { enemy: DEFAULT_ENEMY, weapon: null, mode: null, shield: true, faction: '', q: '', assume: { hitCount: '', primaryHit: 'blast', bombletDirect: false }, pickerOpen: false };
+const MAX_COMPARE = 3;
+const compare = { picks: [], part: '' }; // [{ weaponId, modeId }] kept across enemies
+const DEFAULT_ASSUME = { hitCount: '', primaryHit: 'blast', bombletDirect: false };
+const state = { enemy: DEFAULT_ENEMY, group: 'support', weapon: null, mode: null, shield: true, faction: '', q: '', assume: { ...DEFAULT_ASSUME }, pickerOpen: false };
+// Until the player picks a count, modes with a conservative default use it.
+const effectiveAssume = mode => state.assume.hitCount === '' && mode?.hitCondition?.default != null
+  ? { ...state.assume, hitCount: String(mode.hitCondition.default) } : state.assume;
+const defaultLabel = mode => mode?.hitCondition?.kind === 'shrapnel' ? '파편 제외 · 직격·폭발만' : '기본 명중 수 가정';
 
 // --- Ranking ----------------------------------------------------------------------
 const rankCache = new Map();
-function rankWeapons(enemy, shieldCleared) {
-  const key = `${enemy.id}|${shieldCleared}`;
+function rankWeapons(enemy, shieldCleared, group = state.group) {
+  const key = `${enemy.id}|${shieldCleared}|${group}`;
   if (rankCache.has(key)) return rankCache.get(key);
-  const entries = supportWeapons.map((weapon, order) => {
-    const profile = weaponProfiles[weapon.id];
-    if (!profile) return { weapon, order, status: 'unsupported', reason: unsupportedWeapons[weapon.id] };
+  const entries = weaponsOf[group].map((weapon, order) => {
+    const profile = profileOf(weapon.id);
+    if (!profile) return { weapon, order, status: 'unsupported', reason: unsupportedOf(weapon.id) };
     const tries = profile.modes.map(mode => {
       if (mode.unsupported) return { mode, status: 'unsupported', reason: mode.unsupported };
-      if (mode.hitCondition) return { mode, status: 'assume' };
-      const { best, rows } = solveMatchup(enemy, mode, { shieldCleared });
-      return { mode, status: best ? 'route' : 'none', best, rows };
+      // A conservative default (e.g. no fragments) still ranks; others wait for a choice.
+      const fallback = mode.hitCondition?.default;
+      if (mode.hitCondition && fallback == null) return { mode, status: 'assume' };
+      const solved = fallback == null ? mode : withHitAssumption(mode, { ...DEFAULT_ASSUME, hitCount: String(fallback) });
+      const { best, rows } = solveMatchup(enemy, solved, { shieldCleared });
+      return { mode, status: best ? 'route' : 'none', best, rows, defaulted: fallback != null };
     });
     const routes = tries.filter(item => item.status === 'route').sort((a, b) => a.best.hits - b.best.hits || Number(a.best.outcome !== 'kill') - Number(b.best.outcome !== 'kill'));
     const pick = routes[0] || tries.find(item => item.status === 'assume') || tries.find(item => item.status === 'none') || tries[0];
@@ -48,7 +78,9 @@ const portrait = (enemy, cls = '', eager = false) => {
   const image = pickerEnemyImages[enemy.id];
   return image?.src ? html`<img class="${cls}" src="${image.src}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async">` : html`<span class="${cls}"></span>`;
 };
-const weaponIcon = (id, size = 34) => html`<img class="strat-icon" style="width:${size}px;height:${size}px" src="${wikiIcons[id]?.src}" alt="" width="${size}" height="${size}" loading="lazy">`;
+const weaponIcon = (id, size = 34) => weaponImages[id]
+  ? html`<span class="w-thumb" style="width:${size}px;height:${size}px"><img src="${weaponImages[id].src}" alt="" loading="lazy" decoding="async"></span>`
+  : html`<img class="strat-icon" style="width:${size}px;height:${size}px" src="${wikiIcons[id]?.src}" alt="" width="${size}" height="${size}" loading="lazy">`;
 
 function renderPicker() {
   const q = state.q;
@@ -91,7 +123,7 @@ function rankRow(entry, selected) {
     const outcome = outcomeOf(entry.best);
     const aside = entry.reference ? `위키 전술: ${entry.reference.target} ${entry.reference.hits}${unit}`
       : entry.spear ? '직접 락온 불가 · 참고값'
-      : assumptionTag(entry.mode);
+      : entry.defaulted ? defaultLabel(entry.mode) : assumptionTag(entry.mode);
     part = html`<span>${entry.best.target.name}</span>${aside ? html`<small>${aside}</small>` : ''}`;
     hits = html`<span class="hits">${num(entry.best.hits)}<small>${unit}${entry.best.lowerBound ? '+' : ''}</small></span>`;
     tag = badge(outcome.label, outcome.tone);
@@ -113,7 +145,8 @@ function rankRow(entry, selected) {
 function ranking(enemy, entries, selectedId) {
   const main = entries.filter(entry => entry.status === 'route' || entry.status === 'assume');
   const rest = entries.filter(entry => !main.includes(entry));
-  return html`<div class="section-title"><h2>무기별 최소 횟수</h2><p>지원 무기 ${entries.length}종 · 가장 빠른 확인된 경로 기준. 연사력·재장전·조준 난도는 반영하지 않습니다.</p></div>
+  return html`<div class="section-title"><h2>무기별 최소 횟수</h2><p>${groupOf(state.group).name} ${entries.length}종 · 가장 빠른 확인된 경로 기준. 연사력·재장전·조준 난도는 반영하지 않습니다.</p></div>
+  <div class="segmented group-tabs" role="group" aria-label="무기 분류">${GROUPS.map(group => html`<button type="button" data-group-pick="${group.id}" aria-pressed="${group.id === state.group}">${group.name} <span class="count">${weaponsOf[group.id].length}</span></button>`)}</div>
   <div class="panel ranking">
     <div class="rank-head" aria-hidden="true"><span></span><span>무기</span><span>노릴 부위</span><span>횟수</span><span>결과</span></div>
     ${main.map(entry => rankRow(entry, entry.weapon.id === selectedId))}
@@ -196,14 +229,15 @@ function assumptionControls(mode) {
   const c = mode.hitCondition;
   if (!c) return '';
   const unit = c.kind === 'arcs' ? '회' : '개';
+  const label = { arcs: '한 발당 이 부위 전격 명중 수', bomblets: '한 발당 이 부위 자탄 명중 수', pellets: '한 발당 이 부위 펠릿 명중 수', shrapnel: '폭발 1회당 이 부위 파편 명중 수' }[c.kind] || '이 부위 명중 수';
   const options = Array.from({ length: c.max - c.min + 1 }, (_, i) => c.min + i);
   return html`<div class="assumptions">
-    <label>${c.kind === 'arcs' ? '한 발당 이 부위 전격 명중 수' : '한 발당 이 부위 자탄 명중 수'}
-      <select class="select" data-assume="hitCount"><option value="">선택하세요</option>${options.map(n => html`<option value="${n}" ${String(n) === String(state.assume.hitCount) ? raw('selected') : ''}>${n}${unit}</option>`)}</select></label>
+    <label>${label}
+      <select class="select" data-assume="hitCount"><option value="">선택하세요</option>${options.map(n => html`<option value="${n}" ${String(n) === String(effectiveAssume(mode).hitCount) ? raw('selected') : ''}>${n}${unit}</option>`)}</select></label>
     ${c.kind === 'bomblets' ? html`<label>주탄
       <select class="select" data-assume="primaryHit">${[['blast', '주탄 폭발만'], ['direct', '주탄 직격 + 폭발'], ['none', '주탄 피해 없음']].map(([value, name]) => html`<option value="${value}" ${state.assume.primaryHit === value ? raw('selected') : ''}>${name}</option>`)}</select></label>
       <label class="check"><input type="checkbox" data-assume="bombletDirect" ${state.assume.bombletDirect ? raw('checked') : ''} ${Number(state.assume.hitCount) > 0 ? '' : raw('disabled')}> 자탄 직격도 포함</label>` : ''}
-    <p>실제 명중 수는 확인된 자료가 없어 직접 고르는 가정입니다. ${assumptionSummary(withHitAssumption(mode, state.assume))}</p>
+    <p>실제 명중 수는 확인된 자료가 없어 직접 고르는 가정입니다.${c.default != null && state.assume.hitCount === '' ? ` 고르기 전에는 ${c.default}${unit}로 계산합니다.` : ''} ${assumptionSummary(withHitAssumption(mode, effectiveAssume(mode)))}</p>
   </div>`;
 }
 
@@ -211,7 +245,7 @@ function verdict(enemy, weapon, mode, matchup, reference) {
   const unit = unitOf(mode).unit;
   const label = html`<span class="label">${enemy.name} × ${weapon.name}${mode ? ` · ${mode.name}` : ''}</span>`;
   if (!mode || mode.unsupported) {
-    return html`<div class="verdict">${label}<h3>이 ${mode ? '모드' : '무기'}는 정밀 계산을 지원하지 않습니다</h3><p>${mode?.unsupported || unsupportedWeapons[weapon.id] || '이 무기의 부위별 피해 조건을 아직 검증하지 않았습니다.'} 처치할 수 없다는 뜻은 아닙니다.</p></div>`;
+    return html`<div class="verdict">${label}<h3>이 ${mode ? '모드' : '무기'}는 정밀 계산을 지원하지 않습니다</h3><p>${mode?.unsupported || unsupportedOf(weapon.id) || '이 무기의 부위별 피해 조건을 아직 검증하지 않았습니다.'} 처치할 수 없다는 뜻은 아닙니다.</p></div>`;
   }
   if (mode.hitCondition && !mode.assumption) return html`<div class="verdict">${label}<h3>명중 수 가정을 먼저 고르세요</h3><p>${assumptionText(mode)}</p></div>`;
   const spear = spearCannotLock(enemy, mode);
@@ -233,11 +267,12 @@ function verdict(enemy, weapon, mode, matchup, reference) {
 }
 
 function matchupSection(enemy, entries) {
-  const weapon = stratagemById.get(state.weapon) || entries[0].weapon;
-  const profile = weaponProfiles[weapon.id];
+  const weapon = weaponById.get(state.weapon) || entries[0].weapon;
+  const profile = profileOf(weapon.id);
+  const group = groupOf(weapon.group);
   // An explicit mode wins; otherwise show the weapon's best-ranked mode.
   const rawMode = profile?.modes.find(mode => mode.id === state.mode) || entries.find(entry => entry.weapon.id === weapon.id)?.mode || profile?.modes[0];
-  const mode = withHitAssumption(rawMode, state.assume);
+  const mode = withHitAssumption(rawMode, effectiveAssume(rawMode));
   const matchup = solveMatchup(enemy, mode, { shieldCleared: state.shield });
   const reference = wikiReference(enemy, weapon.id, mode);
   const stats = attackStats(mode);
@@ -245,7 +280,8 @@ function matchupSection(enemy, entries) {
   return html`<section class="matchup" id="matchup">
     <div class="section-title" style="margin-bottom:0"><h2>부위별 계산</h2><p>${assumptionText(mode)}</p></div>
     <div class="panel" style="padding:16px;display:grid;gap:12px">
-      <div class="matchup-head">${weaponIcon(weapon.id, 44)}<div><h2>${weapon.name}</h2><a class="ext" href="#/arsenal/${weapon.id}">도감에서 보기</a></div>
+      <div class="matchup-head">${weaponIcon(weapon.id, 44)}<div><h2>${weapon.name}</h2><a class="ext" href="${group.link(weapon.id)}">${group.linkLabel}</a></div>
+        ${compareToggle(weapon, rawMode)}
         ${profile?.modes.length > 1 ? html`<div class="segmented" role="group" aria-label="${profile.modes.some(item => item.beam) ? '거리' : '발사 모드'}">${profile.modes.map(item => html`<button type="button" data-mode-pick="${item.id}" aria-pressed="${item.id === rawMode?.id}">${item.name}</button>`)}</div>` : ''}</div>
       ${stats.length ? html`<div class="stat-chips">${stats.map(stat => html`<div class="stat-chip"><span>${stat.label}</span><b>${stat.value}</b>${stat.note ? html`<small>${stat.note}</small>` : ''}</div>`)}</div>` : ''}
       ${notes.length ? html`<ul class="notes">${notes.map(note => html`<li>${note}</li>`)}</ul>` : ''}
@@ -259,17 +295,92 @@ function matchupSection(enemy, entries) {
   </section>`;
 }
 
+// --- Comparison: the same enemy (and optionally the same part) for up to three weapons ---
+const pickKey = pick => `${pick.weaponId}:${pick.modeId || ''}`;
+const isPicked = (weaponId, modeId) => compare.picks.some(pick => pick.weaponId === weaponId && (pick.modeId || '') === (modeId || ''));
+function compareToggle(weapon, mode) {
+  const picked = isPicked(weapon.id, mode?.id);
+  return html`<button type="button" class="button small ${picked ? 'primary' : 'ghost'} compare-add" data-compare-add="${weapon.id}" data-compare-mode="${mode?.id || ''}" aria-pressed="${picked}">${icon(picked ? 'check' : 'compare', 16)} ${picked ? '비교에 담김' : '비교에 담기'}</button>`;
+}
+
+function togglePick(weaponId, modeId) {
+  const index = compare.picks.findIndex(pick => pick.weaponId === weaponId && (pick.modeId || '') === (modeId || ''));
+  if (index >= 0) compare.picks.splice(index, 1);
+  else if (compare.picks.length >= MAX_COMPARE) { ctx.toast(`비교는 최대 ${MAX_COMPARE}개까지입니다. 하나를 빼 주세요.`); return; }
+  else compare.picks.push({ weaponId, modeId: modeId || undefined });
+  renderMain();
+}
+
+function renderTray() {
+  const tray = $('#enemy-tray', root);
+  if (!tray) return;
+  tray.hidden = !compare.picks.length;
+  if (!compare.picks.length) return;
+  const label = pick => { const weapon = weaponById.get(pick.weaponId); const mode = profileOf(pick.weaponId)?.modes.find(item => item.id === pick.modeId); return `${weapon?.name || pick.weaponId}${mode && profileOf(pick.weaponId).modes.length > 1 ? ` · ${mode.name}` : ''}`; };
+  render(tray, html`<span class="names">${icon('compare', 18)} ${compare.picks.map(label).join(' · ')}</span>
+    <span class="faint num">${compare.picks.length}/${MAX_COMPARE}</span>
+    <button class="button small" type="button" data-compare-clear>비우기</button>
+    <button class="button small primary" type="button" data-compare-open ${compare.picks.length < 2 ? raw('disabled title="2개 이상 담으면 비교할 수 있습니다"') : ''}>${enemyById.get(state.enemy).name} 기준 비교</button>`);
+}
+
+// Assumed counts: the current weapon keeps the player's choice; others use their default.
+function compareAssumptions() {
+  return Object.fromEntries(compare.picks.map(pick => {
+    const mode = profileOf(pick.weaponId)?.modes.find(item => item.id === pick.modeId) || profileOf(pick.weaponId)?.modes[0];
+    const own = pick.weaponId === state.weapon && state.assume.hitCount !== '';
+    const fallback = mode?.hitCondition?.default;
+    return [pickKey({ ...pick, modeId: pick.modeId || mode?.id }), own ? state.assume : fallback != null ? { ...DEFAULT_ASSUME, hitCount: String(fallback) } : DEFAULT_ASSUME];
+  }));
+}
+
+function compareContent() {
+  const enemy = enemyById.get(state.enemy);
+  const result = compareAttacks(enemy, compare.picks, { partId: compare.part || undefined, shieldCleared: state.shield, assume: compareAssumptions() });
+  const routes = result.entries.filter(entry => entry.status === 'route' && entry.hits != null);
+  const fewest = routes.length > 1 ? Math.min(...routes.map(entry => entry.hits)) : null;
+  const partName = entry => entry.part?.name || entry.route?.target?.name || entry.best?.target?.name || '';
+  const unit = entry => unitOf(profileOf(entry.weaponId)?.modes.find(item => item.id === entry.modeId)).unit;
+  const cell = entry => {
+    if (entry.status === 'route') {
+      const outcome = outcomeOf({ outcome: entry.outcome, target: {} });
+      return html`<td class="${entry.hits === fewest ? 'best' : ''}"><b class="compare-hits">${num(entry.hits)}${unit(entry)}${entry.lowerBound ? '+' : ''}</b> ${badge(outcome.label, outcome.tone)}<small>${partName(entry)}${entry.conditional ? ' · 선행 조건' : ''}${entry.assumption ? ' · 명중 수 가정' : ''}</small></td>`;
+    }
+    const label = { assume: '명중 수 가정 필요', none: '처치 경로 없음', unsupported: '계산 미지원' }[entry.status] || '계산 보류';
+    return html`<td><span class="faint">${label}</span>${entry.reason ? html`<small>${entry.reason}</small>` : ''}</td>`;
+  };
+  return html`<div class="sheet-top"><span>같은 적 기준 비교</span><button class="icon-button" type="button" data-close aria-label="닫기">${icon('close', 18)}</button></div>
+  <div class="sheet-content">
+    <h2 id="sheet-title" style="font-size:22px">${enemy.name} · 무기 ${result.entries.length}개 비교</h2>
+    <div class="segmented" role="group" aria-label="비교할 부위"><button type="button" data-compare-part="" aria-pressed="${!compare.part}">각자 가장 빠른 부위</button>${result.parts.map(part => html`<button type="button" data-compare-part="${part.id}" aria-pressed="${compare.part === part.id}">${part.name}</button>`)}</div>
+    <div class="compare-scroll" role="region" aria-label="비교표" tabindex="0"><table class="compare-table enemy-compare">
+      <thead><tr><th></th>${result.entries.map(entry => html`<th scope="col"><div class="compare-weapon">${weaponIcon(entry.weaponId, 36)}<div>${entry.weaponLabel}<small>${entry.modeLabel}</small></div></div></th>`)}</tr></thead>
+      <tbody>
+        <tr><th scope="row">${compare.part ? '이 부위 횟수' : '최소 횟수'}</th>${result.entries.map(cell)}</tr>
+        <tr><th scope="row">필요 탄창</th>${result.entries.map(entry => html`<td>${entry.magazinesNeeded != null ? html`${num(entry.magazinesNeeded)}개${profileOf(entry.weaponId)?.modes.find(item => item.id === entry.modeId)?.magazine ? html`<small>탄창 ${num(profileOf(entry.weaponId).modes.find(item => item.id === entry.modeId).magazine)}발 기준</small>` : ''}` : html`<span class="faint">—</span>`}</td>`)}</tr>
+      </tbody>
+    </table></div>
+    <p class="faint" style="font-size:12.5px">노란 값이 가장 적은 횟수입니다. 연사력·재장전·조준 난도는 반영하지 않으므로 처치 속도 순위가 아닙니다. ${state.shield && enemy.shield ? '방패·보호막을 피한 상태 기준입니다.' : ''} 명중 수를 골라야 하는 무기는 부위별 계산에서 가정을 고른 뒤 다시 비교하세요.</p>
+  </div>`;
+}
+
+function openCompare() {
+  if (compare.picks.length < 2) return;
+  ctx.openSheet(compareContent(), { wide: true, label: '같은 적 기준 무기 비교' });
+}
+let sheetListener = null;
+
 function renderMain({ scrollToMatchup = false } = {}) {
   const enemy = enemyById.get(state.enemy);
   const entries = rankWeapons(enemy, state.shield);
   const selected = state.weapon || entries[0].weapon.id;
   render($('#enemy-main', root), html`${hero(enemy)}${ranking(enemy, entries, selected)}${matchupSection(enemy, entries)}`);
+  renderTray();
   renderPicker();
   if (scrollToMatchup) $('#matchup', root)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function syncUrl() {
-  ctx.replace({ view: 'enemy', id: state.enemy, query: { w: state.weapon, m: state.weapon ? state.mode : null, shield: state.shield ? null : '0' } });
+  ctx.replace({ view: 'enemy', id: state.enemy, query: { g: state.group === 'support' ? null : state.group, w: state.weapon, m: state.weapon ? state.mode : null, shield: state.shield ? null : '0' } });
 }
 
 function openPhotos(targetId) {
@@ -286,8 +397,8 @@ function openPhotos(targetId) {
 export function mount(container, context) {
   root = container; ctx = context;
   const families = new Set(enemies.map(enemy => enemy.family || enemy.id)).size;
-  render(root, html`<div class="page-head"><div><div class="eyebrow">Target Analysis</div><h1>적 대응</h1><p>적을 고르면 지원 무기 전체를 필요 횟수 순으로 비교합니다. 무기를 누르면 부위별 계산이 열립니다.</p></div>
-    <span class="badge outline">적 ${families}종 · 계산 무기 ${Object.keys(weaponProfiles).length}종</span></div>
+  render(root, html`<div class="page-head"><div><div class="eyebrow">Target Analysis</div><h1>적 대응</h1><p>적을 고르면 지원 무기·주무기·보조무기·투척을 필요 횟수 순으로 비교합니다. 무기를 누르면 부위별 계산이 열립니다.</p></div>
+    <span class="badge outline">적 ${families}종 · 계산 무기 ${Object.keys(weaponProfiles).length + Object.keys(personalProfiles).length}종</span></div>
   <div class="enemy-layout">
     <aside class="panel picker" aria-label="적 선택">
       <div class="picker-head">
@@ -298,8 +409,10 @@ export function mount(container, context) {
       <div class="picker-list" id="enemy-list"></div>
     </aside>
     <div id="enemy-main"></div>
-  </div>`);
+  </div>
+  <div id="enemy-tray" class="tray" hidden></div>`);
 
+  listenToSheet();
   const input = $('#enemy-q', root);
   input.addEventListener('input', () => { state.q = input.value; renderPicker(); });
   input.addEventListener('keydown', event => {
@@ -320,7 +433,11 @@ export function mount(container, context) {
     if (!target) return;
     if (target.dataset.enemy) {
       state.pickerOpen = false;
-      ctx.go({ view: 'enemy', id: target.dataset.enemy, query: { w: state.weapon, m: state.weapon ? state.mode : null, shield: state.shield ? null : '0' } });
+      ctx.go({ view: 'enemy', id: target.dataset.enemy, query: { g: state.group === 'support' ? null : state.group, w: state.weapon, m: state.weapon ? state.mode : null, shield: state.shield ? null : '0' } });
+    } else if (target.dataset.groupPick) {
+      state.group = target.dataset.groupPick;
+      if (weaponById.get(state.weapon)?.group !== state.group) { state.weapon = null; state.mode = null; resetAssumption(); }
+      renderMain(); syncUrl();
     } else if (target.dataset.factionFilter != null) { state.faction = target.dataset.factionFilter; renderPicker(); }
     else if (target.hasAttribute('data-picker-toggle')) { state.pickerOpen = !state.pickerOpen; target.setAttribute('aria-expanded', String(state.pickerOpen)); renderPicker(); if (state.pickerOpen) input.focus(); }
     else if (target.dataset.weapon) {
@@ -330,15 +447,31 @@ export function mount(container, context) {
     } else if (target.dataset.modePick) {
       state.weapon ||= selectedWeaponId(); state.mode = target.dataset.modePick; resetAssumption(); renderMain(); syncUrl();
     } else if (target.dataset.photo) openPhotos(target.dataset.photo);
+    else if (target.dataset.compareAdd) togglePick(target.dataset.compareAdd, target.dataset.compareMode);
+    else if (target.hasAttribute('data-compare-clear')) { compare.picks = []; compare.part = ''; renderMain(); }
+    else if (target.hasAttribute('data-compare-open')) { compare.part = ''; openCompare(); }
   });
 }
-const resetAssumption = () => { state.assume = { hitCount: '', primaryHit: 'blast', bombletDirect: false }; };
+const resetAssumption = () => { state.assume = { ...DEFAULT_ASSUME }; };
+function listenToSheet() {
+  if (sheetListener) return;
+  sheetListener = event => {
+    if (document.body.dataset.view !== 'enemy') return;
+    const pick = event.target.closest('[data-compare-part]');
+    if (!pick) return;
+    compare.part = pick.dataset.comparePart;
+    ctx.openSheet(compareContent(), { wide: true, label: '같은 적 기준 무기 비교' });
+  };
+  $('#sheet').addEventListener('click', sheetListener);
+}
 const selectedWeaponId = () => rankWeapons(enemyById.get(state.enemy), state.shield)[0].weapon.id;
 
 export function update(route) {
   const enemy = enemyById.has(route.id) ? route.id : state.enemy || DEFAULT_ENEMY;
-  const weapon = supportWeapons.some(item => item.id === route.query.w) ? route.query.w : null;
-  const modes = weaponProfiles[weapon]?.modes || [];
+  const weapon = weaponById.has(route.query.w) ? route.query.w : null;
+  const modes = profileOf(weapon)?.modes || [];
+  // A linked weapon decides its group; otherwise the query (or support) does.
+  state.group = weapon ? weaponById.get(weapon).group : GROUPS.some(group => group.id === route.query.g) ? route.query.g : 'support';
   if (weapon !== state.weapon) resetAssumption();
   const switched = state.shown && enemy !== state.enemy;
   Object.assign(state, {
