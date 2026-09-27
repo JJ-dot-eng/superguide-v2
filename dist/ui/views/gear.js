@@ -224,8 +224,10 @@ async function renderLoadout() {
 }
 
 // --- View lifecycle -------------------------------------------------------------------
+const LEDES = { browse: '', loadout: '무기와 스트라타젬을 담고 팩션을 고르면, 주요 적마다 무엇으로 몇 번 만에 처치하는지와 대응 공백을 보여 줍니다.' };
 function showTab() {
   for (const button of $$('[data-tab-pick]', root)) button.setAttribute('aria-pressed', String(button.dataset.tabPick === state.tab));
+  $('#gear-lede', root).textContent = LEDES[state.tab];
   $('#gear-browse', root).hidden = state.tab !== 'browse';
   $('#gear-loadout', root).hidden = state.tab !== 'loadout';
   if (state.tab === 'browse') renderBrowse(); else renderLoadout().catch(error => { console.error(error); ctx.toast('편성 점검 도구를 불러오지 못했습니다.'); });
@@ -234,8 +236,11 @@ function showTab() {
 export function mount(container, context) {
   root = container; ctx = context;
   const count = id => personalWeapons.filter(w => w.category === id).length;
-  render(root, html`<div class="page-head"><div><div class="eyebrow">Armory</div><h1>장비</h1><p>주무기 ${count('primary')}종 · 보조무기 ${count('secondary')}종 · 투척 ${count('throwable')}종. 카드를 누르면 자세한 수치가 열리고, 편성을 짜서 적 대응 공백을 점검할 수 있습니다.</p></div>
-    <div class="segmented" role="group" aria-label="보기 선택"><button type="button" data-tab-pick="browse">${icon('gear', 16)} 장비 둘러보기</button><button type="button" data-tab-pick="loadout">${icon('check', 16)} 편성 점검</button></div></div>
+  LEDES.browse = `주무기 ${count('primary')}종 · 보조무기 ${count('secondary')}종 · 투척 ${count('throwable')}종의 수치. 카드를 누르면 자세한 기준이 열립니다.`;
+  render(root, html`<div class="page-head gear-head"><div><div class="eyebrow">Armory</div>
+    <h1 class="sr-only">장비</h1>
+    <div class="gear-tabs" role="group" aria-label="장비 보기"><button type="button" data-tab-pick="browse">장비 둘러보기</button><button type="button" data-tab-pick="loadout">편성 점검</button></div>
+    <p id="gear-lede"></p></div></div>
   <div id="gear-browse">
     <div class="arsenal-tools">
       <div class="row">
