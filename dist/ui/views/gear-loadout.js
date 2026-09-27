@@ -128,13 +128,14 @@ function setSlot(slot, id) {
 // --- Coverage ----------------------------------------------------------------------
 const hitsText = (answer) => answer?.hits != null ? `${num(answer.hits)}${answer.unit || '발'}${answer.lowerBound ? '+' : ''}` : '';
 const SLOT_NAMES = { primary: '주무기', secondary: '보조', throwable: '투척', stratagems: '스트라타젬' };
+const ASSUMED_NOUN = { pellets: '펠릿', arcs: '전격', bomblets: '자탄', shrapnel: '파편' };
 const magsText = answer => answer?.magazinesNeeded > 1 ? `탄창 ${num(answer.magazinesNeeded)}개` : '';
 
 function answerLine(answer) {
   if (!answer) return html`<span class="faint">—</span>`;
   const outcome = answer.outcome ? outcomeOf({ outcome: answer.outcome, target: { resultLabel: answer.resultLabel } }) : null;
   return html`<span class="lo-answer">${thumb(answer.weaponId, 28)}<span><b>${nameOf(answer.weaponId)}</b>${answer.modeName ? html` <small>${answer.modeName}</small>` : ''}<br>
-    <small>${answer.partName || ''}${answer.hits != null ? ` · ${hitsText(answer)}` : ''}${magsText(answer) ? ` · ${magsText(answer)}` : ''}${answer.fragmentsExcluded ? ' · 파편 제외' : answer.allPelletsAssumed ? ' · 펠릿 전부 명중' : answer.assumption ? ' · 명중 수 가정' : ''}</small></span>${outcome ? badge(outcome.label, outcome.tone) : ''}${answer.conditional ? badge('조건부', 'conditional') : ''}</span>`;
+    <small>${answer.partName || ''}${answer.hits != null ? ` · ${hitsText(answer)}` : ''}${magsText(answer) ? ` · ${magsText(answer)}` : ''}${answer.fragmentsExcluded ? ' · 파편 제외' : answer.defaultAssumed ? ` · ${ASSUMED_NOUN[answer.defaultAssumed.kind] || '명중'} ${answer.defaultAssumed.pct ?? Math.round(answer.defaultAssumed.count / answer.defaultAssumed.max * 100)}% 가정` : answer.allPelletsAssumed ? ' · 펠릿 전부 명중' : answer.assumption ? ' · 명중 수 가정' : ''}</small></span>${outcome ? badge(outcome.label, outcome.tone) : ''}${answer.conditional ? badge('조건부', 'conditional') : ''}</span>`;
 }
 
 function coverageSection(result, faction) {
