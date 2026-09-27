@@ -628,6 +628,15 @@ dialog { color: var(--text); }
   .pick-body { padding-left: 16px; }
 }
 @media (max-width: 480px) {
+  .gear-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .gear-card { padding: 10px; }
+  .gear-card .gear-art { height: 70px; }
+  .gear-card .gear-art img { max-height: 56px; }
+  .gear-title h3 { font-size: 15px; }
+  .gear-card .en { font-size: 11.5px; }
+  .gear-card .stat-row dd { font-size: 13.5px; }
+  .gear-traits .badge { height: 20px; padding: 0 6px; font-size: 11px; }
+  .lo-slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat-row { grid-template-columns: repeat(2, 1fr); }
   .stat-row > div:nth-child(3) { border-left: 0; }
   .stat-row > div:nth-child(n+3) { border-top: 1px solid var(--line); }

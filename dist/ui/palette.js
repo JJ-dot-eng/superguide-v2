@@ -6,12 +6,15 @@ import { html, render, $ } from './dom.js';
 const LIMIT = 8;
 
 export async function createPalette(ctx) {
-  const [{ enemies }, { structures }, { factionGuides, factionSides }, { pickerEnemyImages, pickerStructureImages }, { wikiIcons }] = await Promise.all([
+  const [{ enemies }, { structures }, { factionGuides, factionSides }, { pickerEnemyImages, pickerStructureImages }, { wikiIcons }, { personalWeapons }, { weaponImages }] = await Promise.all([
     import('../data/combat-data.js'), import('../data/demolition-data.js'), import('../data/faction-data.js'),
     import('../data/selector-images.js'), import('../data/wiki-icons.js'),
+    import('../data/personal-weapons.js'), import('../data/weapon-images.js'),
   ]);
+  const GEAR_GROUP = { primary: '주무기', secondary: '보조무기', throwable: '투척' };
   const groups = [
     { name: '스트라타젬', items: stratagems.map(item => ({ fields: stratagemFields(item), label: item.name, sub: `${categoryOf(item.category).name} · ${item.en}`, image: wikiIcons[item.id]?.src, route: { view: 'arsenal', id: item.id } })) },
+    { name: '장비', items: personalWeapons.map(item => ({ fields: { names: [item.name, item.en, item.code].filter(Boolean), text: [GEAR_GROUP[item.category]] }, label: item.name || item.en, sub: `${GEAR_GROUP[item.category]} · ${item.en}`, image: weaponImages[item.id]?.src, route: { view: 'gear', id: item.id } })) },
     { name: '적', items: enemies.map(item => ({ fields: { names: [item.name, item.id.replaceAll('-', ' ')], text: [item.faction] }, label: item.name, sub: `${item.faction} · 무기별 탄수 비교`, image: pickerEnemyImages[item.id]?.src, route: { view: 'enemy', id: item.id } })) },
     { name: '시설', items: structures.map(item => ({ fields: { names: [item.name], text: [item.faction, item.tip] }, label: item.name, sub: `${item.faction} · 철거 방법`, image: pickerStructureImages[item.id]?.src, route: { view: 'demolition', query: { s: item.id } } })) },
     { name: '팩션', items: factionGuides.map(item => ({ fields: { names: [item.name, item.en], text: [item.intro] }, label: item.name, sub: `${factionSides.find(side => side.id === item.side).name} · 추천 장비`, image: factionSides.find(side => side.id === item.side).icon, route: { view: 'factions', id: item.id } })) },
