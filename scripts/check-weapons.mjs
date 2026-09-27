@@ -3,11 +3,15 @@ import { readFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { weapons, weaponsSource } from '../db/weapons.js';
+import { parseInfobox, plainWiki, seconds, chargeDamage, reloadTimes, koreanMatches } from './build-weapons.mjs';
+import { extractHeadings, compactKoreanPage, matchKoreanNames, normalizeCode } from './fetch-weapons-source.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = async path => JSON.parse(await readFile(new URL(path, root), 'utf8'));
 const source = await read('db/source/weapons_data.json');
 const categorySource = await read('db/source/wiki_categories.json');
+const pageSource = await read('db/source/wiki_pages.json');
+const koreanSource = await read('db/source/korean_names.json');
 const data = source.data;
 const categories = categorySource.categories;
 const roster = { primary: 'Primary Weapons', secondary: 'Secondary Weapons', throwable: 'Throwables' };
@@ -15,7 +19,7 @@ const typeNames = ['Assault Rifles', 'Marksman Rifles', 'Shotguns', 'Submachine 
 const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const normalize = value => value.toUpperCase().replace(/[^A-Z0-9]/g, '');
 const numericStats = ['direct', 'durable', 'ap', 'splash', 'splashDurable', 'splashAp', 'radius', 'innerRadius', 'pellets', 'shrapnelCount', 'demolition', 'stun', 'push'];
-const handling = ['magazine', 'spareMags', 'rpm', 'ergonomics', 'fuse', 'spareRounds', 'beamFireRate', 'beams', 'barrels', 'throwableCapacity', 'throwableStart'];
+const handling = ['magazine', 'spareMags', 'rpm', 'ergonomics', 'fuse', 'reload', 'reloadTactical', 'spareRounds', 'beamFireRate', 'beams', 'barrels', 'throwableCapacity', 'throwableStart'];
 const perHit = [...numericStats, 'apAll', 'splashApAll', 'delivery', 'element', 'statuses', 'splashElement', 'splashStatuses', 'damageKind', 'unit'];
 const count = (items, field) => Object.fromEntries([...new Set(items.map(item => item[field] ?? 'null'))].sort().map(value => [value, items.filter(item => (item[field] ?? 'null') === value).length]));
 const finite = (value, path) => assert(value === null || typeof value === 'number' && Number.isFinite(value) && value >= 0, path);
@@ -63,6 +67,59 @@ function checkProjection(item, attack, type) {
 }
 
 assert.equal(weapons.length, 103);
+// Real-snapshot regression expectations, independent of the parser's own projection.
+const byCode = code => weapons.find(w => w.code === code);
+for (const [code, type] of Object.entries({ 'CB-9': 'explosives', 'GL-15': 'explosives', 'JAR-5': 'special', 'R-36': 'explosives', 'VG-70': 'special', 'FLAM-66': 'special' })) assert.equal(byCode(code).type, type);
+const fuseExpected = { 'G-10': 2.9, 'G-109': 2.9, 'G-12': 3.5, 'G-123': 2.9, 'G-13': null, 'G-142': 2.9, 'G-16': null, 'G-23': 1.8, 'G-3': 2.4, 'G-31': 3, 'G-4': 2.9, 'G-48': null, 'G-50': null, 'G-6': 2.4, 'G-60': null, 'G-7': 2.4, 'G-8': null, 'G-89': null, 'G/40-K': null, 'G/SH-39': 0, 'K-2': null, 'TED-63': null, 'TM-1': null };
+assert.equal(Object.keys(fuseExpected).length, 23);
+for (const [code, value] of Object.entries(fuseExpected)) {
+  const weapon = byCode(code);
+  assert.equal(weapon.fuse, value, `${code}: real fuse regression`);
+  if (value === null) assert(weapon.notes.some(n => n.includes(`fuse=${parseInfobox(pageSource.pages[weapon.en].wikitext).fuse}`)));
+}
+assert.deepEqual(byCode('PLAS-101').variants.filter(v => v.id.startsWith('wiki-')).map(v => [v.chargeState, v.direct, v.splash]), [['uncharged', 100, 75], ['charged', 200, 300]]);
+for (const code of ['PLAS-39', 'PLAS-15']) {
+  const weapon = byCode(code);
+  assert.equal(weapon.variants.filter(v => v.id.startsWith('wiki-')).length, 0);
+  assert(weapon.notes.some(n => n.startsWith('인포박스 충전 피해 공백:') && n.includes(parseInfobox(pageSource.pages[weapon.en].wikitext).damage)));
+}
+for (const [code, reload, tactical] of [['AR-2', 3, 2], ['AR-23A', 2.5, null], ['AR-32', 3, 1.85], ['M90A', 3.6, null], ['GL-15', 2.75, null], ['AR/GL-21', 3.33, 1.95], ['SMG/FLAM-34', 2.8, 1.73], ['R-36', 4.67, 2.75]]) {
+  assert.equal(byCode(code).reload, reload, `${code}: reload regression`);
+  assert.equal(byCode(code).reloadTactical, tactical, `${code}: tactical reload regression`);
+}
+assert.equal(byCode('AR/GL-21').reloadDetails.find(d => d.field === 'reload_time').values[1].seconds, 2.5);
+assert.equal(byCode('SMG/FLAM-34').reloadDetails.find(d => d.field === 'reload_time').values[1].seconds, 2.3);
+assert.equal(byCode('AR/GL-21').name, '원-투');
+assert.equal(byCode('MA5C').name, '어썰트 라이플');
+assert.equal(byCode('SMG/FLAM-34').name, '스토커');
+assert.deepEqual(koreanMatches.unmatchedRoster.map(w => w.code).sort(), ['AR-32', 'CQC-73']);
+for (const page of koreanSource.pages) {
+  assert.deepEqual(Object.keys(page).sort(), ['headings', 'modifiedAt', 'retrievedAt', 'source', 'status']);
+  assert.deepEqual(compactKoreanPage(page), page);
+  assert(page.headings.every(h => !/<[^>]*>|&#\d+;|\[편집\]|^\d+\./.test(h)));
+}
+// Synthetic parser cases are validation only, never database sources.
+for (const template of ['Weapon', 'Infobox_Weapon', 'Infobox Weapon', 'Infobox Throwable']) {
+  for (const field of ['|weapon_type=Explosives', '| weapon_type = Explosives', '|   weapon_type   =   Explosives']) assert.equal(parseInfobox(`{{${template}\n${field}\n}}`).weapon_type, 'Explosives');
+}
+assert.deepEqual(extractHeadings('<h3>2.1. <a>STA-52</a> 어썰트 Mk.2&#91;편집&#93;</h3><h2>3. A &amp; B &#x5b;편집&#x5d;</h2>'), ['STA-52 어썰트 Mk.2', 'A & B']);
+const testPage = headings => [{ source: 'fixture', status: 200, retrievedAt: 'fixture', modifiedAt: null, headings }];
+assert.equal(matchKoreanNames(testPage(['STA - 52 어썰트 Mk.2']), ['StA-52 Assault Rifle']).names['StA-52'].name, '어썰트 Mk.2');
+assert.equal(Object.keys(matchKoreanNames(testPage(['STA-52 이름', 'StA-52 이름']), ['StA-52 Assault Rifle']).names).length, 0);
+assert.equal(Object.keys(matchKoreanNames(testPage(['STA-52 이름']), ['StA-52 Assault Rifle', 'STA-52 Other']).names).length, 0);
+assert.equal(Object.keys(matchKoreanNames(testPage(['AR-23P 이름']), ['AR-23 Liberator']).names).length, 0);
+assert.equal(reloadTimes({ reload_time: '2.5s-3s' }).reload, null);
+assert.deepEqual(parseInfobox('{{Infobox Weapon\n|weapon_type=[[Weapons|Explosives]]\n|damage={{value|100}}\n|fuse=2.4s<!--x-->\n}}'), { weapon_type: '[[Weapons|Explosives]]', damage: '{{value|100}}', fuse: '2.4s' });
+assert.equal(seconds('2.4s'), 2.4);
+assert.equal(seconds('0 seconds'), 0);
+for (const text of ['Impact', '2–3s', '-1s', '2s / 3s', '{{time|2}}', '', undefined]) assert.equal(seconds(text), null);
+assert.deepEqual(chargeDamage('100 (Uncharged Bolt)<br>75 (Explosion)<br>200 (Charged Bolt)<br>300 (Explosion)').map(({ state, direct, splash }) => ({ state, direct, splash })), [{ state: 'uncharged', direct: 100, splash: 75 }, { state: 'charged', direct: 200, splash: 300 }]);
+assert.deepEqual(chargeDamage('100 bolt + 75 explosion'), []);
+assert.deepEqual(chargeDamage('100 (Bolt, uncharged)<br>75 (Explosion, uncharged)<br>200 (Bolt, charged)<br>300 (Explosion, charged)').map(v => [v.state, v.direct, v.splash]), [['uncharged', 100, 75], ['charged', 200, 300]]);
+assert.deepEqual(chargeDamage('Uncharged: 100 bolt + 75 explosion; Charged: 200 bolt + 300 explosion').map(v => [v.state, v.direct, v.splash]), [['uncharged', 100, 75], ['charged', 200, 300]]);
+assert.deepEqual(chargeDamage('Charged: 100–200 bolt'), []);
+assert.throws(() => chargeDamage('Charged: 100 bolt<br>200 bolt'), /Conflicting/);
+assert.deepEqual(Object.keys(pageSource.pages).sort(), weapons.map(w => w.en).sort());
 assert.equal(new Set(weapons.map(w => w.id)).size, 103);
 assert.deepEqual(count(weapons, 'category'), { primary: 55, secondary: 25, throwable: 23 });
 assert.match(weaponsSource.retrievedAt, /^\d{4}-\d{2}-\d{2}$/);
@@ -76,13 +133,36 @@ for (const [category, name] of Object.entries(roster)) assert.deepEqual(weapons.
 for (const weapon of weapons) {
   assert.match(weapon.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
   assert(Object.hasOwn(roster, weapon.category));
-  assert(weapon.type === null || typeNames.map(slug).includes(weapon.type));
+  assert(weapon.type !== null && /^[a-z]+(?:-[a-z]+)*$/.test(weapon.type));
+  const page = pageSource.pages[weapon.en];
+  if (page.wikitext === null) { assert(page.error); assert.equal(page.revision, null); }
+  else { assert(typeof page.wikitext === 'string' && page.wikitext.length > 0); assert(Number.isInteger(page.revision) && page.revision > 0); assert(page.retrievedAt); }
+  const box = parseInfobox(page.wikitext);
   const subtypes = typeNames.filter(name => categories[name].some(m => m.title === weapon.en));
-  assert.equal(weapon.type, subtypes.length ? slug(subtypes[0]) : null);
+  const boxType = plainWiki(box.weapon_type);
+  assert.equal(weapon.type, boxType ? slug(boxType) : subtypes.length ? slug(subtypes[0]) : null);
+  if (subtypes.length && boxType && slug(subtypes[0]) !== weapon.type) assert(weapon.notes.some(n => n.startsWith('유형 불일치:')));
   assert(typeof weapon.en === 'string' && weapon.en.length > 0);
   assert.equal(weapon.source, `https://helldivers.wiki.gg/wiki/${encodeURIComponent(weapon.en.replaceAll(' ', '_'))}`);
   assert.equal(weapon.sourceRevision, categories[roster[weapon.category]].find(m => m.title === weapon.en).revision);
-  assert.equal(weapon.name, null);
+  assert(weapon.name === null || typeof weapon.name === 'string' && weapon.name.trim().length > 0);
+  const korean = koreanMatches.names[weapon.code];
+  assert.equal(weapon.name, korean?.name ?? null);
+  if (weapon.name !== null) {
+    assert.deepEqual(weapon.nameSource, { file: 'db/source/korean_names.json', code: weapon.code, ...korean });
+    assert(normalizeCode(korean.evidence).startsWith(normalizeCode(weapon.code)) && korean.evidence.includes(weapon.name));
+    assert(koreanSource.pages.some(p => p.source === korean.source && p.retrievedAt === korean.retrievedAt && p.status === 200 && p.headings.includes(korean.evidence)));
+  } else assert.equal(weapon.nameSource, null);
+  const reloading = reloadTimes(box);
+  assert.deepEqual(weapon.reloadDetails, reloading.details);
+  for (const [field, sourceField, value] of [['fuse', 'fuse', weapon.category === 'throwable' ? seconds(box.fuse) : null], ['reload', reloading.reload?.field, reloading.reload?.value ?? null], ['reloadTactical', 'tac_reload_time', reloading.tactical?.value ?? null]]) {
+    assert.equal(weapon[field], value, `${weapon.id}.${field}: infobox source`);
+    if (weapon[field] !== null) assert.deepEqual(weapon.fieldSources[field], { file: 'db/source/wiki_pages.json', title: weapon.en, field: `infobox.${sourceField}`, revision: page.revision, source: page.source, retrievedAt: page.retrievedAt });
+    else assert.equal(weapon.fieldSources[field], null);
+  }
+  if (boxType) assert.deepEqual(weapon.fieldSources.type, { file: 'db/source/wiki_pages.json', title: weapon.en, field: 'infobox.weapon_type', revision: page.revision, source: page.source, retrievedAt: page.retrievedAt });
+  else if (subtypes.length) assert.deepEqual(weapon.fieldSources.type, { file: 'db/source/wiki_categories.json', category: subtypes[0] });
+  else assert.equal(weapon.fieldSources.type, null);
   const designation = weapon.en.match(/^(\S*\d\S*)\s+(.+)$/);
   assert.equal(weapon.code, designation?.[1] ?? null);
   const baseId = slug(designation?.[2] ?? weapon.en);
@@ -96,17 +176,32 @@ for (const weapon of weapons) {
   assert.deepEqual(weapon.attacks, raw.attacks ?? []);
   assert.deepEqual(weapon.charge, raw.charge ?? null);
   assert.deepEqual(weapon.fireModes, raw.fire_modes ?? []);
-  for (const [field, sourceField] of Object.entries({ magazine: 'cap', spareMags: 'mags', rpm: 'rpm', ergonomics: 'ergonomics', fuse: 'fuse', spareRounds: 'rounds', beamFireRate: 'beam_fire_rate', beams: 'beams', barrels: 'barrels', throwableCapacity: 'max', throwableStart: 'start' })) assert.equal(weapon[field], raw[sourceField] ?? null);
+  for (const [field, sourceField] of Object.entries({ magazine: 'cap', spareMags: 'mags', rpm: 'rpm', ergonomics: 'ergonomics', spareRounds: 'rounds', beamFireRate: 'beam_fire_rate', beams: 'beams', barrels: 'barrels', throwableCapacity: 'max', throwableStart: 'start' })) assert.equal(weapon[field], raw[sourceField] ?? null);
   assert(Array.isArray(weapon.notes) && weapon.notes.every(note => typeof note === 'string'));
   for (const field of handling) finite(weapon[field], `${weapon.id}.${field}`);
   allNumbers(weapon, weapon.id);
   checkStats(weapon, weapon.id);
   checkProjection(weapon, raw.attacks.find(a => a.level === 1) ?? raw.attacks[0], weapon.type);
   assert.equal(new Set(weapon.variants.map(v => v.id)).size, weapon.variants.length);
+  const wikiVariants = weapon.variants.filter(v => v.id.startsWith('wiki-'));
+  const expectedCharge = chargeDamage(box.damage);
+  assert.equal(wikiVariants.length, expectedCharge.length);
+  if ((raw.charge || /\bcharged\b/i.test(box.damage ?? '')) && wikiVariants.length !== 2) assert(weapon.notes.some(n => n.startsWith('인포박스 충전 피해 공백:')), `${weapon.id}: undocumented charge gap`);
   for (const variant of weapon.variants) {
     assert.match(variant.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
     assert(typeof variant.name === 'string' && variant.name.length > 0);
     checkStats(variant, `${weapon.id}.${variant.id}`);
+    if (variant.id.startsWith('wiki-')) {
+      const expected = expectedCharge.find(v => v.state === variant.chargeState);
+      assert(expected);
+      assert.equal(variant.direct, expected.direct);
+      assert.equal(variant.splash, expected.splash);
+      assert.deepEqual(variant.evidence, expected.evidence);
+      assert.equal(variant.attack, null);
+      assert.deepEqual(variant.source, { file: 'db/source/wiki_pages.json', title: weapon.en, field: 'infobox.damage', revision: page.revision, source: page.source, retrievedAt: page.retrievedAt });
+      for (const field of numericStats.filter(f => !['direct', 'splash'].includes(f))) assert.equal(variant[field], null);
+      continue;
+    }
     checkProjection(variant, variant.attack, weapon.type);
     const burst = variant.attack.type === 'projectile' ? data.explosion[variant.attack.parent] : null;
     if (burst?.shrapnel === variant.attack.name) {
@@ -118,7 +213,7 @@ for (const weapon of weapons) {
   const expanded = raw.attacks.flatMap(a => a.type === 'weapons' ? data.weapons[a.name].attacks : [a]);
   const impacts = new Set(expanded.map(a => data[a.type]?.[a.name]?.explode_on_impact_id).filter(Boolean));
   const modes = expanded.filter(a => a.type !== 'status' && !(a.type === 'explosion' && impacts.has(a.name)));
-  const attackVariants = weapon.variants.filter(v => !v.id.startsWith('charge-stage-'));
+  const attackVariants = weapon.variants.filter(v => !v.id.startsWith('charge-stage-') && !v.id.startsWith('wiki-'));
   assert.deepEqual(attackVariants.map(v => v.attack), modes.length > 1 || raw.charge ? modes : []);
   if (raw.charge) {
     const stages = weapon.variants.filter(v => v.id.startsWith('charge-stage-'));
@@ -156,3 +251,9 @@ console.log(`Underbarrels: ${list(w => w.linkedAttacks.length > 0)}`);
 console.log(`Multiple attack components/modes: ${list(w => w.variants.length > 0)}`);
 console.log(`Beam/spray/arc units: ${list(w => [w, ...w.variants].some(v => ['beam', 'spray', 'arc'].includes(v.delivery)))}`);
 console.log(`Uncertain damage-only units: ${list(w => [w, ...w.variants].some(v => v.delivery === 'damage'))}`);
+console.log(`Gap fills: fuse ${weapons.filter(w => w.fuse !== null).length}/23; infobox type ${weapons.filter(w => w.fieldSources.type?.field === 'infobox.weapon_type').length}/103; names ${weapons.filter(w => w.name !== null).length}/103; reload ${weapons.filter(w => w.reload !== null).length}/103; tactical reload ${weapons.filter(w => w.reloadTactical !== null).length}/103`);
+console.log(`Unmatched Korean roster: ${koreanMatches.unmatchedRoster.map(w => `${w.title} (${w.reason})`).join('; ') || '(none)'}`);
+for (const page of koreanSource.pages) console.log(`Unmapped Namu headings [${decodeURIComponent(page.source).split('/w/')[1]}]: ${koreanMatches.unmappedHeadings.filter(h => h.source === page.source).map(h => h.heading).join('; ') || '(none)'}`);
+console.log(`Infobox charged variants: ${list(w => w.variants.some(v => v.id.startsWith('wiki-')))}`);
+console.log(`Unavailable page sources: ${Object.values(pageSource.pages).filter(p => p.wikitext === null).length}/103`);
+console.log(`Type disagreements: ${list(w => w.notes.some(n => n.startsWith('유형 불일치:')))}`);
