@@ -529,6 +529,20 @@ dialog { color: var(--text); }
 .rank-detail { padding: 2px 14px 18px; background: var(--bg-raise); border-bottom: 1px solid var(--line); box-shadow: inset 3px 0 0 var(--accent); }
 .rank-detail .matchup { display: grid; gap: 12px; }
 .rank-detail .matchup > .section-title { margin: 10px 0 0; }
+.size-tag { display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 4px; font-style: normal; font-size: 11px; font-weight: 750; vertical-align: 1px; background: var(--bleed-soft); color: var(--bleed); }
+.size-tag[data-size="massive"] { background: var(--blocked-soft); color: var(--blocked); }
+.enemy-hero .size-tag { margin-left: 8px; }
+.rank-row.one-shot { background: color-mix(in srgb, var(--kill) 9%, transparent); }
+.rank-row.one-shot[aria-current="true"] { background: var(--accent-soft); }
+.one-shot-hits { display: grid; justify-items: end; line-height: 1.1; color: var(--kill); }
+.one-shot-hits em { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .02em; }
+.one-shot-note { margin: -2px 0 10px; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; color: var(--text-2); background: var(--kill-soft); border: 1px solid color-mix(in srgb, var(--kill) 30%, var(--line)); }
+.one-shot-note.none { background: var(--bleed-soft); border-color: color-mix(in srgb, var(--bleed) 35%, var(--line)); }
+.one-shot-note b { color: var(--text); }
+.lo-row.heavy { border-color: color-mix(in srgb, var(--bleed) 45%, var(--line)); background: var(--bleed-soft); }
+.lo-row.one-shot { border-color: color-mix(in srgb, var(--kill) 40%, var(--line)); }
+.one-shot-badge { justify-self: start; padding: 2px 8px; border-radius: 5px; font-size: 11.5px; font-weight: 800; color: var(--kill); background: var(--kill-soft); }
+.lo-enemy .size-tag { margin: 0; }
 .compare-add { margin-left: auto; }
 .matchup.flash > .section-title + .panel { animation: matchup-flash 1.6s ease-out; }
 @keyframes matchup-flash { 0%, 35% { box-shadow: 0 0 0 2px var(--accent), 0 0 0 7px var(--accent-soft); border-color: var(--accent); } 100% { box-shadow: 0 0 0 0 transparent; } }

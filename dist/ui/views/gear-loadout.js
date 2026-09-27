@@ -5,6 +5,7 @@ import { personalWeapons } from '../../data/personal-weapons.js';
 import { weaponImages } from '../../data/weapon-images.js';
 import { wikiIcons } from '../../data/wiki-icons.js';
 import { pickerEnemyImages } from '../../data/selector-images.js';
+import { SIZE_NAMES } from '../../core/enemy-size.js';
 import { stratagems, stratagemById, categories, categoryOf } from '../../core/catalog.js';
 import { search, stratagemFields } from '../../core/search.js';
 import { num, outcomeOf } from '../../core/explain.js';
@@ -139,13 +140,17 @@ function answerLine(answer) {
 function coverageSection(result, faction) {
   const rows = result.rows || [];
   const gaps = rows.filter(row => row.status !== 'route');
-  const covered = rows.filter(row => row.status === 'route');
+  // Large enemies the loadout cannot finish in one hit come right after the gaps.
+  const heavy = rows.filter(row => row.status === 'route' && row.isLarge && !row.oneShot);
+  const covered = rows.filter(row => row.status === 'route' && !heavy.includes(row));
   return html`<div class="lo-summary">
-      <div class="lo-score"><b>${covered.length}</b><span>/ ${rows.length} 대응</span></div>
-      <p>${faction.name} 주요 적 ${rows.length}종 중 <b>${covered.length}종</b>은 현재 편성으로 확인된 처치 경로가 있습니다.${gaps.length ? html` <b style="color:var(--blocked)">${gaps.length}종</b>은 현재 계산 범위에서 처치 경로가 없습니다.` : ' 공백이 없습니다.'}</p>
+      <div class="lo-score"><b>${covered.length + heavy.length}</b><span>/ ${rows.length} 대응</span></div>
+      <p>${faction.name} 주요 적 ${rows.length}종 중 <b>${covered.length + heavy.length}종</b>은 현재 편성으로 확인된 처치 경로가 있습니다.${gaps.length ? html` <b style="color:var(--blocked)">${gaps.length}종</b>은 현재 계산 범위에서 처치 경로가 없습니다.` : ' 공백이 없습니다.'}${heavy.length ? html` 대형 적 <b style="color:var(--bleed)">${heavy.length}종</b>은 한 발에 처치하지 못합니다.` : ''}</p>
     </div>
     ${gaps.length ? html`<div class="section-title"><h2>대응 공백</h2><p>편성 안의 계산 가능한 무기로는 확인된 처치 경로가 없는 적입니다.</p></div>
       <div class="lo-rows">${gaps.map(row => gapCard(row))}</div>` : ''}
+    ${heavy.length ? html`<div class="section-title"><h2>대형 적 · 한 발에 처치 불가</h2><p>처치는 되지만 여러 발이 필요한 대형·초대형 적입니다. 한 발에 처치하는 장비가 있으면 훨씬 안전합니다.</p></div>
+      <div class="lo-rows">${heavy.map(row => html`<article class="panel lo-row heavy">${enemyHead(row)}<div class="lo-row-body">${answerLine(row.best)}${alsoLine(row)}</div></article>`)}</div>` : ''}
     <div class="section-title"><h2>적별 대응</h2><p>각 적을 가장 적은 횟수로 처치하는 편성 속 무기입니다. 연사력·재장전·조준 난도는 반영하지 않습니다.</p></div>
     <div class="lo-rows">${covered.map(row => coveredCard(row))}</div>
     ${result.notComputable?.length ? html`<p class="faint" style="font-size:13px;margin-top:12px">계산하지 않은 편성 항목: ${result.notComputable.map(item => `${nameOf(item.id)}${item.reason ? ` (${item.reason})` : ''}`).join(' · ')}</p>` : ''}`;
@@ -153,7 +158,8 @@ function coverageSection(result, faction) {
 
 function enemyHead(row) {
   const image = pickerEnemyImages[row.enemyId]?.src;
-  return html`<a class="lo-enemy" href="#/enemy/${row.enemyId}" title="적 대응에서 자세히 보기">${image ? html`<img src="${image}" alt="" loading="lazy" decoding="async">` : html`<span></span>`}<b>${row.enemyName}</b></a>`;
+  const size = row.isLarge ? html`<em class="size-tag" data-size="${row.size}">${SIZE_NAMES[row.size]}</em>` : '';
+  return html`<a class="lo-enemy" href="#/enemy/${row.enemyId}" title="적 대응에서 자세히 보기">${image ? html`<img src="${image}" alt="" loading="lazy" decoding="async">` : html`<span></span>`}<b>${row.enemyName}</b>${size}</a>`;
 }
 
 // Other loadout slots that also answer this enemy, so a rifle that handles
@@ -167,7 +173,8 @@ function alsoLine(row) {
 }
 
 function coveredCard(row) {
-  return html`<article class="panel lo-row">${enemyHead(row)}<div class="lo-row-body">${answerLine(row.best)}${alsoLine(row)}</div></article>`;
+  const single = row.isLarge && row.oneShot;
+  return html`<article class="panel lo-row ${single ? 'one-shot' : ''}">${enemyHead(row)}<div class="lo-row-body">${single ? html`<span class="one-shot-badge">한 발 처치</span>` : ''}${answerLine(row.best)}${alsoLine(row)}</div></article>`;
 }
 
 // Suggestions arrive per slot; a stratagem appears once, aimed at the first

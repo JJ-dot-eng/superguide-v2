@@ -9,8 +9,9 @@ import { pickerEnemyImages } from '../../data/selector-images.js';
 import { combatImages } from '../../data/combat-images.js';
 import { wikiIcons } from '../../data/wiki-icons.js';
 import { stratagems, stratagemById } from '../../core/catalog.js';
-import { solveMatchup, withHitAssumption, spearCannotLock, partPool } from '../../core/combat.js';
+import { solveMatchup, withHitAssumption, spearCannotLock, partPool, isFatal } from '../../core/combat.js';
 import { compareAttacks } from '../../core/compare.js';
+import { enemySize, isLargeEnemy, SIZE_NAMES } from '../../core/enemy-size.js';
 import { wikiReference } from '../../core/factions.js';
 import { search } from '../../core/search.js';
 import { num, pct, unitOf, outcomeOf, countText, attackStats, assumptionText, aimText, routeNotes, assumptionSummary, assumptionTag, deliveryOf } from '../../core/explain.js';
@@ -34,6 +35,9 @@ const weaponById = new Map(Object.values(weaponsOf).flat().map(weapon => [weapon
 const profileOf = id => weaponProfiles[id] || personalProfiles[id];
 const unsupportedOf = id => unsupportedWeapons[id] || personalUnsupported[id];
 const groupOf = id => GROUPS.find(group => group.id === id);
+// Large and massive enemies call out weapons that finish them in a single hit.
+const oneShot = entry => entry.status === 'route' && entry.best?.hits === 1 && isFatal(entry.best) && !entry.best.lowerBound;
+const sizeTag = enemy => { const size = enemySize(enemy); return size === 'large' || size === 'massive' ? html`<em class="size-tag" data-size="${size}">${SIZE_NAMES[size]}</em>` : ''; };
 const enemyById = new Map(enemies.map(enemy => [enemy.id, enemy]));
 
 let root, ctx;
@@ -93,7 +97,7 @@ function renderPicker() {
   const groups = q ? [['검색 결과', list]] : FACTIONS.map(faction => [faction, list.filter(enemy => enemy.faction === faction)]).filter(([, items]) => items.length);
   render($('#enemy-list', root), groups.length && list.length ? groups.map(([name, items]) => html`
     <div class="picker-group" data-faction="${name}">${name} · ${items.length}</div>
-    ${items.map(enemy => html`<button class="picker-item" type="button" data-enemy="${enemy.id}" aria-current="${enemy.id === state.enemy}">${portrait(enemy)}<span>${enemy.name}${enemy.id.startsWith('voteless-') ? html`<small>체형별 수치 · 공통 이미지</small>` : ''}</span></button>`)}`)
+    ${items.map(enemy => html`<button class="picker-item" type="button" data-enemy="${enemy.id}" aria-current="${enemy.id === state.enemy}">${portrait(enemy)}<span>${enemy.name}${sizeTag(enemy)}${enemy.id.startsWith('voteless-') ? html`<small>체형별 수치 · 공통 이미지</small>` : ''}</span></button>`)}`)
     : html`<p class="empty" style="padding:24px 8px">찾는 적이 없습니다.</p>`);
   for (const button of $$('[data-faction-filter]', root)) button.setAttribute('aria-pressed', String(button.dataset.factionFilter === state.faction));
   $('.picker', root).classList.toggle('collapsed', !state.pickerOpen);
@@ -108,7 +112,7 @@ function hero(enemy) {
   ];
   return html`<section class="panel enemy-hero" data-faction="${enemy.faction}">
     ${portrait(enemy, '', true)}
-    <div><span class="faction-tag">${enemy.faction}</span><h1>${enemy.name}</h1>
+    <div><span class="faction-tag">${enemy.faction}</span>${sizeTag(enemy)}<h1>${enemy.name}</h1>
       <div class="vitals">${vitals.map(([label, value]) => html`<span>${label}<b>${value}</b></span>`)}</div>
       <p class="note">${enemy.note}</p>
     </div>
@@ -118,8 +122,9 @@ function hero(enemy) {
     <span>${enemy.shield.kind === 'energy' ? '보호막' : '방패'} ${enemy.shield.infiniteHealth ? '파괴 불가' : `체력 ${num(enemy.shield.hp)}`}${Number.isFinite(enemy.shield.armor) ? ` · 장갑 ${enemy.shield.armor}` : ''}. ${enemy.shield.note} 제거·우회에 드는 공격은 횟수에 포함하지 않습니다.</span></div></label>` : ''}`;
 }
 
-function rankRow(entry, selected) {
+function rankRow(entry, selected, large = false) {
   const { weapon, status } = entry;
+  const single = large && oneShot(entry);
   const unit = unitOf(entry.mode).unit;
   const multi = entry.profile?.modes.length > 1;
   let part = '', hits = html`<span class="hits dim">—</span>`, tag = '';
@@ -139,7 +144,8 @@ function rankRow(entry, selected) {
   } else {
     part = html`<span class="faint">정밀 계산 미지원</span>`; tag = badge('미지원', 'unknown');
   }
-  return html`<button class="rank-row" type="button" data-weapon="${weapon.id}" data-mode="${entry.mode?.id || ''}" aria-current="${selected}" aria-expanded="${selected}">
+  if (single) hits = html`<span class="hits one-shot-hits"><span>1<small>${unit}</small></span><em>한 발 처치</em></span>`;
+  return html`<button class="rank-row ${single ? 'one-shot' : ''}" type="button" data-weapon="${weapon.id}" data-mode="${entry.mode?.id || ''}" aria-current="${selected}" aria-expanded="${selected}">
     ${weaponIcon(weapon.id)}
     <span class="w"><b>${weapon.name}</b><small>${multi || entry.mode?.id !== 'standard' ? entry.mode?.name || '' : weapon.code || ''}</small></span>
     <span class="part">${part}</span>${hits}${tag}
@@ -150,10 +156,13 @@ function rankRow(entry, selected) {
 function ranking(enemy, entries, selectedId, detail) {
   const main = entries.filter(entry => entry.status === 'route' || entry.status === 'assume');
   const rest = entries.filter(entry => !main.includes(entry));
+  const large = isLargeEnemy(enemy);
+  const singles = large ? entries.filter(oneShot).length : 0;
   const row = entry => entry.weapon.id === selectedId
-    ? html`${rankRow(entry, true)}<div class="rank-detail">${detail}</div>`
-    : rankRow(entry, false);
+    ? html`${rankRow(entry, true, large)}<div class="rank-detail">${detail}</div>`
+    : rankRow(entry, false, large);
   return html`<div class="section-title"><h2>무기별 최소 횟수</h2><p>${groupOf(state.group).name} ${entries.length}종 · 가장 빠른 확인된 경로 기준. 연사력·재장전·조준 난도는 반영하지 않습니다. 무기를 누르면 바로 아래에 부위별 계산이 열립니다.</p></div>
+  ${large ? html`<div class="one-shot-note ${singles ? '' : 'none'}">${singles ? html`<b>${SIZE_NAMES[enemySize(enemy)]} 적</b> · ${groupOf(state.group).name} 중 <b>${singles}종</b>이 한 발에 처치합니다. 강조된 줄을 먼저 보세요.` : html`<b>${SIZE_NAMES[enemySize(enemy)]} 적</b> · ${groupOf(state.group).name} 중 한 발에 처치하는 무기가 없습니다. 여러 발이 필요하니 주의하세요.`}</div>` : ''}
   <div class="segmented group-tabs" role="group" aria-label="무기 분류">${GROUPS.map(group => html`<button type="button" data-group-pick="${group.id}" aria-pressed="${group.id === state.group}">${group.name} <span class="count">${weaponsOf[group.id].length}</span></button>`)}</div>
   <div class="panel ranking">
     <div class="rank-head" aria-hidden="true"><span></span><span>무기</span><span>노릴 부위</span><span>횟수</span><span>결과</span></div>
