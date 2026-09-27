@@ -55,7 +55,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       route: null, best: null, rows: [], hits: null, outcome: null, part: null,
       conditional: false, assumption: null, lowerBound: false, shieldCleared: options.shieldCleared === true,
       defaulted: false, fragmentsExcluded: false, allPelletsAssumed: false,
-      shieldAssumed: Boolean(enemy?.shield && options.shieldCleared), verified: false, magazinesNeeded: null,
+      shieldAssumed: Boolean(enemy?.shield && options.shieldCleared), verified: false, oneShot: false, magazinesNeeded: null,
     };
     if (!rawMode || rawMode.unsupported || !resolved.profile) return { ...base, reason: base.reason || '선택한 발사 모드를 찾을 수 없습니다.' };
     if (!enemy?.parts?.length || !enemy.main) return { ...base, reason: '적의 부위·본체 수치가 없어 계산하지 못합니다.' };
@@ -84,13 +84,14 @@ export function compareAttacks(enemy, entries = [], options = {}) {
             : allPelletsAssumed ? `${rawMode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 가정한 결과입니다.` : null;
     const magazine = Object.hasOwn(rawMode, 'magazine') ? rawMode.magazine : resolved.weapon?.magazine;
     const shotsPerMagazine = Number.isFinite(magazine) && magazine > 0 ? Math.floor(magazine / (rawMode.ammoPerShot || 1)) : null;
+    const verified = Boolean(route && isFatal(route) && !route.lowerBound && !needsAssumption);
     return {
       ...base, mode: result.mode, status, reason, reasonCode: route?.reason || null,
       route: route || null, best: result.best, rows: result.rows,
       hits: route?.hits ?? null, outcome: route?.outcome ?? null, part: route?.target ?? null,
       conditional: Boolean(route?.conditional), assumption: result.mode.assumption || null, lowerBound: Boolean(route?.lowerBound),
       defaulted, fragmentsExcluded, allPelletsAssumed,
-      verified: Boolean(route && isFatal(route) && !route.lowerBound && !needsAssumption),
+      verified, oneShot: verified && route.hits === 1,
       magazinesNeeded: route?.hits != null && shotsPerMagazine > 0 ? Math.ceil(route.hits / shotsPerMagazine) : null,
     };
   });

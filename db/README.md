@@ -82,7 +82,7 @@ type Answer = Position & {
   partId: string | null; partName: string | null; resultLabel: string | null;
   unit: string; conditional: boolean; lowerBound: boolean;
   assumption: { count: number; primaryHit: string; bombletDirect: boolean } | null;
-  shieldCleared: boolean; shieldAssumed: boolean; verified: boolean;
+  shieldCleared: boolean; shieldAssumed: boolean; verified: boolean; oneShot: boolean;
   defaulted: boolean; fragmentsExcluded: boolean; allPelletsAssumed: boolean;
   magazinesNeeded: number | null;
 };
@@ -90,6 +90,8 @@ type Answer = Position & {
 // {target, stages, hits, outcome, conditional, notes, via?, reason?, detail?, lowerBound?}.
 type CoverageRow = {
   enemyId: string; enemyName: string; enemy: object;
+  size: 'small' | 'medium' | 'large' | 'massive' | null;
+  isLarge: boolean; oneShot: boolean;
   best: Answer | null; status: 'route' | 'gap'; reason: string | null;
   perSlot: (Position & { best: Answer; modes: Answer[] })[];
 };
@@ -108,9 +110,31 @@ type Fixes = {
 }[];
 ```
 
-`options`는 `{partId?, shieldCleared?, assume?, limit?, maxPerSlot?}`입니다. `limit`는 공백 하나의 각 슬롯 위치별 상한이므로 기본 3개일 때 전체 replacements는 최대 21개입니다. 교체 시 개인 무기는 `loadout[fix.slot] = fix.weaponId`, 스트라타젬은 `loadout.stratagems[fix.slotIndex] = fix.weaponId`를 적용합니다. modeId는 추천의 계산 근거이며 편성 URL에는 무기 ID만 저장합니다. 원본 coverage에는 fixes가 없으므로 UI가 `enemyId`로 합치거나 `loadoutView` 어댑터를 사용할 수 있습니다. 어댑터의 `rows[].fixes`만 슬롯 키가 p/s/g/st0..st3이며, `gaps` 및 `perSlot`은 정규 슬롯명을 유지합니다.
+`options`는 `{partId?, shieldCleared?, assume?, limit?, maxPerSlot?, prioritizeLarge?}`입니다. `limit`는 공백 하나의 각 슬롯 위치별 상한이므로 기본 3개일 때 전체 replacements는 최대 21개입니다. 교체 시 개인 무기는 `loadout[fix.slot] = fix.weaponId`, 스트라타젬은 `loadout.stratagems[fix.slotIndex] = fix.weaponId`를 적용합니다. modeId는 추천의 계산 근거이며 편성 URL에는 무기 ID만 저장합니다. 원본 coverage에는 fixes가 없으므로 UI가 `enemyId`로 합치거나 `loadoutView` 어댑터를 사용할 수 있습니다. 어댑터의 `rows[].fixes`만 슬롯 키가 p/s/g/st0..st3이며, `gaps` 및 `perSlot`은 정규 슬롯명을 유지합니다.
+
+비교의 모든 `entries`와 편성의 모든 `Answer`(슬롯별 모드·교체 추천 포함)는 `oneShot: boolean`을 제공합니다. 정확한 조건은 `verified && hits === 1`입니다. 발·개·회 등 단위와 무관하며, 엔진이 치명 경로로 인정하는 출혈·격추도 포함하므로 즉사만 뜻하지는 않습니다. 한 번의 비치명 부위 파괴, 미지원·미선택 가정·재생 하한 결과는 false입니다. 승인된 전탄 명중 기본값은 포함하되 `allPelletsAssumed`를 함께 표시해야 하며, 보호막 해제 가정도 기존 `shieldAssumed`에 남습니다. CoverageRow의 `oneShot`은 `best?.oneShot ?? false`입니다.
+
+`loadoutCoverage`와 `loadoutView`의 `options.prioritizeLarge === true`는 **대형/초대형이면서 oneShot=false인 행**을 먼저 둡니다. 대응 무기가 없는 gap도 이 우선 그룹에 포함합니다. 우선 그룹 내부와 나머지 그룹 내부는 각각 기존 가이드 순서를 유지하며, 크기 등급이나 타격 수로 추가 정렬하지 않습니다. 생략/false면 전체 기존 순서를 그대로 유지합니다. `gaps`와 `suggestFixes`도 해당 행 순서를 따릅니다. 가이드 원본 배열은 변경하지 않습니다.
 
 `dist/core/route.js`는 gear 뷰와 경로 주석을 추가하고 기존 hash 변환을 유지합니다. 검사에는 수계산(Liberator/헌터 머리, Senator/데바스테이터 머리, Frag/헌터 본체 폭발), 산탄 가정, 탄창 경계, 원본 대응, URL 왕복·잘못된 입력, 편성 공백, 추천 재적용·결정성, 생성물 최신성 및 기존 legacy parity가 포함됩니다.
+
+## 적 크기 분류 API
+
+`node scripts/build-enemy-sizes.mjs`는 제공된 `db/source/wiki_enemy_sizes.json`만 읽어 `dist/data/enemy-sizes.js`를 생성합니다. `--stdout`은 파일을 쓰지 않고 같은 모듈을 출력합니다. 생성 헤더와 LF를 유지하며 시각·네트워크에 의존하지 않습니다. 수집기 `scripts/fetch-enemy-sizes.mjs`는 별도이며 오프라인 빌드나 검사에서는 실행하지 않습니다.
+
+전투 데이터 각 적의 `source` URL에서 위키 페이지 제목을 추출하고 URL 인코딩 및 밑줄만 해제한 뒤, Small/Medium/Large/Massive Enemies 분류의 제목과 정확히 대조합니다. 이름·체형으로 추정하거나 별칭을 보정하지 않으며 중복 분류 제목은 빌드 오류입니다. 현재 전투 항목은 **84개, 서로 다른 출처 페이지는 82개**입니다. 이 중 **81개 항목(79개 페이지)**을 연결하고, `obtruder`, `veracitor`, `gatekeeper` 3개는 분류에 없어 null과 한국어 이유를 기록합니다. Bile Titan은 massive, Hulk Scorcher는 large입니다.
+
+생성 모듈의 export:
+
+- `enemySizesCheckedAt`: 스냅샷의 retrievedAt.
+- `enemySizesSource`: `{source, file, categories}`. categories는 크기 키와 위키 분류명 대응입니다.
+- `enemySizes`: 모든 전투 적 ID를 키로 하는 `{[id]: 'small'|'medium'|'large'|'massive'|null}`.
+- `enemySizeEvidence`: `{[id]: {title,source,category,pageid,revision}}`. 미분류도 title/source를 보존하고 category/pageid/revision은 null입니다.
+- `unmappedEnemySizes`: 미분류 ID별 한국어 이유. 분류에 없다는 것은 크기 미확인이며 소형이라는 뜻이 아닙니다.
+
+브라우저 공개 진입점 `dist/core/enemy-size.js`는 `enemySize(enemyOrId)`와 `isLargeEnemy(enemyOrId)`, `SIZE_NAMES = {small:'소형',medium:'중형',large:'대형',massive:'초대형'}`를 제공합니다. 인수는 적 ID 문자열 또는 id를 가진 적 객체입니다. 미분류/알 수 없는 입력은 각각 null/false이며, isLargeEnemy는 large 또는 massive일 때만 true입니다. `enemySizesCheckedAt`, `enemySizesSource`, `unmappedEnemySizes`도 재수출합니다. 편성 행의 `size`, `isLarge`는 이 함수를 사용합니다.
+
+이미 `scripts/check.mjs`에 연결된 `scripts/test-personal.mjs`가 모든 적의 분류 또는 명시적 미분류, 원본 제목·분류·revision 대응, 중복 거부, 입력 순서 무관성, 생성 파일 LF 및 두 번의 바이트 동일성을 검사합니다. 한 번 공격의 판정과 편성 우선 순서도 여기서 검증합니다.
 
 ## 출처와 재생성
 
@@ -133,6 +157,7 @@ node scripts/build-weapons.mjs
 ```sh
 node scripts/build-weapons.mjs
 node scripts/check-weapons.mjs
+node scripts/build-enemy-sizes.mjs
 npm run check
 ```
 

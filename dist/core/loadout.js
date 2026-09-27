@@ -3,6 +3,7 @@ import { enemies } from '../data/combat-data.js';
 import { factionSides, factionGuides } from '../data/faction-data.js';
 import { stratagems, stratagemById } from './catalog.js';
 import { compareAttacks, resolveAttack } from './compare.js';
+import { enemySize, isLargeEnemy } from './enemy-size.js';
 
 // Common light/medium/heavy/air threats, plus the final (usually heavy) unit
 // in each existing variant guide. This is a documented checklist, not spawn odds.
@@ -78,6 +79,7 @@ function answers(enemy, slot, options) {
  * that prerequisite. Each answer uses one weapon/mode on one part route only.
  */
 export function loadoutCoverage(loadout, factionId, options = {}) {
+  options ||= {};
   const value = normalize(loadout);
   const faction = loadoutFactions.find(f => f.id === (factionId || value.faction));
   const slots = slotsOf(value);
@@ -95,8 +97,12 @@ export function loadoutCoverage(loadout, factionId, options = {}) {
     const verified = perSlot.flatMap(slot => slot.modes.filter(mode => mode.verified)).sort(rank);
     const best = verified[0] || null;
     return { enemyId, enemyName: enemy?.name || enemyId, enemy, best, status: best ? 'route' : 'gap', perSlot,
+      size: enemySize(enemyId), isLarge: isLargeEnemy(enemyId), oneShot: best?.oneShot ?? false,
       reason: best ? null : '편성 내 단일 무기의 확인된 처치 경로가 없습니다. 가정·자료 미확인 결과는 공백으로 남깁니다.' };
   });
+  // Stable partition: large/massive enemies without a one-hit answer first;
+  // keep guide order within both groups and preserve it entirely by default.
+  if (options.prioritizeLarge === true) rows.sort((a, b) => Number(b.isLarge && !b.oneShot) - Number(a.isLarge && !a.oneShot));
   return { faction, rows, gaps: rows.filter(row => row.status === 'gap'), notComputable };
 }
 

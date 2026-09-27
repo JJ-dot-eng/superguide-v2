@@ -15,6 +15,9 @@ import { parseInfobox } from './build-weapons.mjs';
 import { buildPersonalProfiles } from './personal-profiles.mjs';
 import { assumptionSummary, assumptionTag, assumptionText, unitOf, countText, aimText, attackStats, deliveryOf, routeNotes } from '../dist/core/explain.js';
 import { fuseDetails } from './personal-display.mjs';
+import { enemySize, isLargeEnemy, SIZE_NAMES } from '../dist/core/enemy-size.js';
+import { enemySizes, enemySizeEvidence, unmappedEnemySizes, enemySizesCheckedAt } from '../dist/data/enemy-sizes.js';
+import { buildEnemySizes } from './build-enemy-sizes.mjs';
 
 const root = new URL('../', import.meta.url);
 let checked = 0;
@@ -24,6 +27,37 @@ const pages = JSON.parse(await readFile(new URL('db/source/wiki_pages.json', roo
 const enemy = id => enemies.find(item => item.id === id);
 const mode = id => personalProfiles[id].modes[0];
 const head = (target, attack) => solveMatchup(enemy(target), attack).rows.find(row => row.target.id === 'head');
+
+// Size labels come only from exact source page titles, never anatomy or names.
+const sizeSnapshot = JSON.parse(await readFile(new URL('db/source/wiki_enemy_sizes.json', root), 'utf8'));
+const sizePages = Object.entries(sizeSnapshot.categories).flatMap(([size, category]) => category.members.map(page => ({ ...page, size, category: category.category })));
+eq(enemySizesCheckedAt, sizeSnapshot.retrievedAt);
+eq(Object.keys(enemySizes).sort(), enemies.map(e => e.id).sort(), 'every roster entry has a size decision');
+eq(Object.keys(enemySizeEvidence).sort(), Object.keys(enemySizes).sort(), 'every size decision has provenance');
+eq(Object.keys(unmappedEnemySizes).sort(), ['gatekeeper', 'obtruder', 'veracitor']);
+eq(SIZE_NAMES, { small: '소형', medium: '중형', large: '대형', massive: '초대형' });
+for (const e of enemies) {
+  const title = decodeURIComponent(new URL(e.source).pathname.slice('/wiki/'.length)).replaceAll('_', ' ');
+  const matches = sizePages.filter(page => page.title === title);
+  ok(matches.length <= 1, 'size source has no ambiguous membership');
+  const page = matches[0];
+  eq(enemySize(e), page?.size ?? null, `${e.id}: size follows source category`);
+  eq(enemySize(e.id), enemySize(e), 'ID/object overload');
+  eq(enemySizeEvidence[e.id], { title, source: e.source, category: page?.category ?? null, pageid: page?.pageid ?? null, revision: page?.revision ?? null }, 'source title and revision retained');
+  eq(isLargeEnemy(e), Boolean(page && ['large', 'massive'].includes(page.size)));
+  ok(page ? !Object.hasOwn(unmappedEnemySizes, e.id) : typeof unmappedEnemySizes[e.id] === 'string' && /[가-힣]/.test(unmappedEnemySizes[e.id]), 'exactly mapped or explicitly explained');
+}
+eq(enemySize('bile-titan'), 'massive');
+eq(enemySize('hulk'), 'large');
+eq(enemySize('obtruder'), null);
+eq(isLargeEnemy('obtruder'), false, 'unmapped is never inferred large');
+for (const value of [null, undefined, {}, '__proto__', 'toString', 'unknown']) eq(enemySize(value), null, 'unknown input stays null');
+const shuffledSizeSnapshot = structuredClone(sizeSnapshot);
+for (const category of Object.values(shuffledSizeSnapshot.categories)) category.members.reverse();
+eq(buildEnemySizes(shuffledSizeSnapshot, [...enemies].reverse()), { enemySizes, enemySizeEvidence, unmappedEnemySizes }, 'size projection independent of input order');
+const ambiguousSizeSnapshot = structuredClone(sizeSnapshot);
+ambiguousSizeSnapshot.categories.large.members.push(ambiguousSizeSnapshot.categories.small.members[0]);
+assert.throws(() => buildEnemySizes(ambiguousSizeSnapshot, enemies), /Duplicate or ambiguous/);
 
 eq(personalWeapons.map(w => w.id), weapons.map(w => w.id), 'complete source roster and stable order');
 eq(personalWeapons.length, 103);
@@ -180,6 +214,13 @@ eq(compare('hunter-hardened', 'torcher').status, 'unsupported');
 eq(compare('hunter-hardened', 'liberator', {}, 'not-a-mode').status, 'unsupported');
 eq(compare('hunter-hardened', 'liberator', { partId: 'not-a-part' }).status, 'none');
 const defaultBreaker = compare('hunter-hardened', 'breaker');
+eq(compare('hunter-hardened', 'liberator').oneShot, true, 'one bullet fatal answer');
+eq(compare('hunter-hardened', 'frag').oneShot, true, 'one grenade fatal answer');
+eq(compare('hunter-hardened', 'saber').oneShot, true, 'one melee hit fatal answer');
+eq(compare('hunter-hardened', 'senator', { partId: 'claw' }).oneShot, false, 'one-hit nonfatal break is not oneShot');
+eq(compare('hunter-hardened', 'torcher').oneShot, false, 'unsupported is not oneShot');
+eq(compare('harvester', 'recoilless').oneShot, false, 'blocked shield is not oneShot');
+eq(compare('hunter-hardened', 'breaker', { assume: { hitCount: 2 } }).oneShot, false, 'nonaccepted assumption is not oneShot even if hits is 1');
 eq([defaultBreaker.status, defaultBreaker.hits, defaultBreaker.verified, defaultBreaker.defaulted, defaultBreaker.allPelletsAssumed, defaultBreaker.assumption.count], ['route', 1, true, true, true, 11]);
 const fewerBreaker = compare('hunter-hardened', 'breaker', { assume: { hitCount: 1 } });
 eq([fewerBreaker.hits, fewerBreaker.defaulted, fewerBreaker.allPelletsAssumed, fewerBreaker.status], [2, false, false, 'assume'], 'lower explicit count overrides and increases hits');
@@ -237,6 +278,24 @@ eq(coverage.gaps.length, 0, 'fixed loadout covers Terminid checklist');
 const charger = coverage.rows.find(row => row.enemyId === 'charger');
 eq([charger.best.weaponId, charger.best.modeId, charger.best.hits], ['recoilless', 'heat', 1]);
 ok(coverage.rows.every(row => row.best.verified && row.perSlot.length === 5), 'per-slot evidence');
+for (const row of coverage.rows) {
+  eq(row.size, enemySize(row.enemyId));
+  eq(row.isLarge, isLargeEnemy(row.enemyId));
+  eq(row.oneShot, Boolean(row.best?.verified && row.best.hits === 1), 'row reflects best answer');
+  for (const slot of row.perSlot) for (const answer of slot.modes) eq(answer.oneShot, answer.verified && answer.hits === 1, 'every Answer carries oneShot');
+}
+const impaler = coverage.rows.find(row => row.enemyId === 'impaler');
+ok(impaler.isLarge && !impaler.oneShot, 'fixed loadout has a large non-one-shot priority target');
+const prioritized = loadoutCoverage(fixed, 'terminid', { prioritizeLarge: true });
+eq(prioritized.rows[0].enemyId, 'impaler');
+eq(prioritized.rows.filter(r => r.isLarge && !r.oneShot).map(r => r.enemyId), coverage.rows.filter(r => r.isLarge && !r.oneShot).map(r => r.enemyId), 'priority group remains stable');
+eq(prioritized.rows.filter(r => !(r.isLarge && !r.oneShot)).map(r => r.enemyId), coverage.rows.filter(r => !(r.isLarge && !r.oneShot)).map(r => r.enemyId), 'remaining group remains stable');
+eq(loadoutCoverage(fixed, 'terminid', { prioritizeLarge: false }).rows.map(r => r.enemyId), coverage.rows.map(r => r.enemyId), 'default guide order unchanged');
+eq(loadoutView(fixed, 'terminid', { prioritizeLarge: true, limit: 0 }).rows.map(r => r.enemyId), prioritized.rows.map(r => r.enemyId), 'view forwards priority option');
+const emptyPrioritized = loadoutCoverage({}, 'illuminate', { prioritizeLarge: true });
+ok(emptyPrioritized.rows[0].isLarge && !emptyPrioritized.rows[0].oneShot, 'large gaps are also prioritized');
+eq(emptyPrioritized.rows.find(r => r.enemyId === 'gatekeeper').size, null, 'unmapped size retained in coverage');
+ok(emptyPrioritized.rows.every(r => r.oneShot === false), 'empty loadout has no one-shot answers');
 eq(loadoutCoverage({}, 'automaton').gaps.length, loadoutFactions.find(f => f.id === 'automaton').enemyIds.length, 'empty loadout gaps');
 eq(loadoutCoverage({ primary: 'breaker' }, 'terminid', { assume: { hitCount: 1 } }).gaps.length, 11, 'lower explicit hit assumption retains existing gap policy');
 for (const loadout of [{ primary: 'eruptor' }, { throwable: 'frag' }]) {
@@ -282,4 +341,8 @@ for (const path of ['db/weapons.js', 'dist/data/personal-weapons.js', 'dist/data
     eq(rebuilt, saved, `${path}: stale or nondeterministic generated output`);
   }
 }
+const sizesOutput = await readFile(new URL('dist/data/enemy-sizes.js', root), 'utf8');
+ok(sizesOutput.startsWith('// Generated by scripts/build-enemy-sizes.mjs'), 'size generated header');
+ok(!sizesOutput.includes('\r'), 'size output LF only');
+for (let run = 0; run < 2; run++) eq(execFileSync(process.execPath, [fileURLToPath(new URL('scripts/build-enemy-sizes.mjs', root)), '--stdout'], { encoding: 'utf8' }), sizesOutput, 'size output is current and deterministic');
 console.log(`PASS personal: ${checked} assertions; ${personalWeapons.length} weapons (${Object.keys(personalProfiles).length} supported / ${Object.keys(personalUnsupported).length} unsupported); comparison, loadout, suggestions and two byte-identical builds per output.`);
