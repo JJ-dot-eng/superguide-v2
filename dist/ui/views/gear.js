@@ -37,6 +37,8 @@ const apText = w => {
   if (ap == null) return null;
   return w.ap != null && w.splashAp != null && w.splashAp !== w.ap ? `AP ${w.ap}/${w.splashAp}` : `AP ${ap}`;
 };
+// How a throwable goes off: timer, impact, proximity or a choice of timers.
+export const fuseText = w => w.fuseType === 'impact' ? '충격식' : w.fuseType === 'proximity' ? '근접 감지' : w.fuseType === 'selectable' && w.fuseOptions?.length ? `${w.fuseOptions.map(num).join('/')}초 선택` : w.fuse != null ? `${num(w.fuse)}초` : null;
 const isUtility = w => w.direct == null && w.splash == null && w.dot?.perSecond == null;
 
 // Four headline numbers, chosen for what matters on that kind of item.
@@ -53,7 +55,7 @@ export function gearStats(w) {
   if (w.category === 'throwable') {
     return [damage, pen,
       w.radius != null ? { label: '반경', text: num(w.radius), unit: 'm', caption: w.innerRadius != null ? `중심 ${num(w.innerRadius)}m` : '' } : { label: '반경', ...dim('—') },
-      { label: '소지', ...value(w.throwableCapacity, '개'), caption: w.fuse != null ? `신관 ${num(w.fuse)}초` : '' }];
+      { label: '소지', ...value(w.throwableCapacity, '개'), caption: fuseText(w) ? `신관 ${fuseText(w)}` : '' }];
   }
   const ammo = w.heatCapacity?.seconds != null ? { label: '과열까지', text: num(w.heatCapacity.seconds), unit: '초', caption: w.heatCapacity.shots ? `약 ${w.heatCapacity.shots}발` : '무한 탄약' }
     : w.swingsPerMinute != null ? { label: '휘두르기', text: num(w.swingsPerMinute), unit: '/분', caption: '근접' }
@@ -136,6 +138,7 @@ function detailRows(w) {
   if (w.reload != null) add('재장전', num(w.reload), '초', w.reloadTactical != null ? `탄이 남았을 때 ${num(w.reloadTactical)}초` : '탄창을 비웠을 때');
   if (w.throwableCapacity != null) add('소지 수', num(w.throwableCapacity), '개', w.throwableStart != null ? `출격 시 ${w.throwableStart}개` : '');
   if (w.fuse != null) add('신관', num(w.fuse), '초', '던진 뒤 폭발까지');
+  else if (fuseText(w)) add('신관', fuseText(w), '', { impact: '닿는 순간 폭발', proximity: '적이 가까이 오면 폭발', selectable: '던지기 전에 시간 선택' }[w.fuseType] || '');
   if (w.radius != null) add('폭발 반경', num(w.radius), 'm', w.innerRadius != null ? `중심 ${num(w.innerRadius)}m까지 최대 피해` : '외곽');
   return rows;
 }

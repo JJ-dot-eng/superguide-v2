@@ -343,7 +343,7 @@ function compareContent() {
   const cell = entry => {
     if (entry.status === 'route') {
       const outcome = outcomeOf({ outcome: entry.outcome, target: {} });
-      return html`<td class="${entry.hits === fewest ? 'best' : ''}"><b class="compare-hits">${num(entry.hits)}${unit(entry)}${entry.lowerBound ? '+' : ''}</b> ${badge(outcome.label, outcome.tone)}<small>${partName(entry)}${entry.conditional ? ' · 선행 조건' : ''}${entry.assumption ? ' · 명중 수 가정' : ''}</small></td>`;
+      return html`<td class="${entry.hits === fewest ? 'best' : ''}"><b class="compare-hits">${num(entry.hits)}${unit(entry)}${entry.lowerBound ? '+' : ''}</b> ${badge(outcome.label, outcome.tone)}<small>${partName(entry)}${entry.conditional ? ' · 선행 조건' : ''}${entry.fragmentsExcluded ? ' · 파편 제외' : entry.assumption ? ' · 명중 수 가정' : ''}</small></td>`;
     }
     const label = { assume: '명중 수 가정 필요', none: '처치 경로 없음', unsupported: '계산 미지원' }[entry.status] || '계산 보류';
     return html`<td><span class="faint">${label}</span>${entry.reason ? html`<small>${entry.reason}</small>` : ''}</td>`;
