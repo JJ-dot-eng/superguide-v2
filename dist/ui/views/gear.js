@@ -176,7 +176,7 @@ function detailContent(w) {
     ${w.playerNotes?.length ? html`<section class="block"><h3>알아 둘 점</h3><ul class="notes">${w.playerNotes.map(note => html`<li>${note}</li>`)}</ul></section>` : ''}
     <div class="links">
       ${w.category !== 'throwable' || w.splash != null ? html`<a class="button primary" href="#/enemy?w=${w.id}">${icon('enemy', 18)} 적 대응 계산</a>` : ''}
-      <a class="button" href="${raw(loadoutHref({ [slotOf(w)]: w.id }))}">${icon('gear', 18)} 편성에 넣기</a>
+      <a class="button" href="${raw(loadoutHref({ [slotOf(w)]: w.id }))}">${icon('gear', 18)} 로드아웃에 넣기</a>
     </div>
     <div class="sources">
       <span>자료 확인 ${personalWeaponsCheckedAt}</span>
@@ -215,7 +215,7 @@ let loadoutUi = null;
 async function renderLoadout() {
   const panel = $('#gear-loadout', root);
   if (!loadoutUi) {
-    render(panel, html`<p class="faint" style="padding:24px 0">편성 점검 도구를 불러오는 중…</p>`);
+    render(panel, html`<p class="faint" style="padding:24px 0">로드아웃 점검 도구를 불러오는 중…</p>`);
     loadoutUi = import('./gear-loadout.js');
   }
   const module = await loadoutUi;
@@ -230,7 +230,7 @@ function showTab() {
   $('#gear-lede', root).textContent = LEDES[state.tab];
   $('#gear-browse', root).hidden = state.tab !== 'browse';
   $('#gear-loadout', root).hidden = state.tab !== 'loadout';
-  if (state.tab === 'browse') renderBrowse(); else renderLoadout().catch(error => { console.error(error); ctx.toast('편성 점검 도구를 불러오지 못했습니다.'); });
+  if (state.tab === 'browse') renderBrowse(); else renderLoadout().catch(error => { console.error(error); ctx.toast('로드아웃 점검 도구를 불러오지 못했습니다.'); });
 }
 
 export function mount(container, context) {
@@ -239,7 +239,7 @@ export function mount(container, context) {
   LEDES.browse = `주무기 ${count('primary')}종 · 보조무기 ${count('secondary')}종 · 투척 ${count('throwable')}종의 수치. 카드를 누르면 자세한 기준이 열립니다.`;
   render(root, html`<div class="page-head gear-head"><div><div class="eyebrow">Armory</div>
     <h1 class="sr-only">장비</h1>
-    <div class="gear-tabs" role="group" aria-label="장비 보기"><button type="button" data-tab-pick="browse">장비 둘러보기</button><button type="button" data-tab-pick="loadout">편성 점검</button></div>
+    <div class="gear-tabs" role="group" aria-label="장비 보기"><button type="button" data-tab-pick="browse">장비 둘러보기</button><button type="button" data-tab-pick="loadout">로드아웃 점검</button></div>
     <p id="gear-lede"></p></div></div>
   <div id="gear-browse">
     <div class="arsenal-tools">

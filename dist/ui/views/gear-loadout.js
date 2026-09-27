@@ -91,7 +91,7 @@ function openPicker(slot) {
   ctx.openSheet(html`<div class="sheet-top"><span>${slot.label} 고르기</span><button class="icon-button" type="button" data-close aria-label="닫기">${icon('close', 18)}</button></div>
     <div class="sheet-content lo-picker">
       <h2 id="sheet-title" style="font-size:20px">${slot.label}</h2>
-      ${slot.stratagem != null ? html`<p class="muted">지원 무기 스트라타젬만 적 대응 계산에 들어갑니다. 나머지는 편성에 담기만 합니다.</p>` : ''}
+      ${slot.stratagem != null ? html`<p class="muted">지원 무기 스트라타젬만 적 대응 계산에 들어갑니다. 나머지는 로드아웃에 담기만 합니다.</p>` : ''}
       <label class="field">${icon('search', 16)}<span class="sr-only">검색</span><input class="input" id="lo-q" type="search" placeholder="이름·코드 검색 — 초성도 됩니다" autocomplete="off"></label>
       <div class="chips lo-kinds" id="lo-kinds" role="group" aria-label="종류">${kindChips(slot)}</div>
       <div class="lo-choices" id="lo-choices">${pickerList(slot, '')}</div>
@@ -146,15 +146,15 @@ function coverageSection(result, faction) {
   const covered = rows.filter(row => row.status === 'route' && !heavy.includes(row));
   return html`<div class="lo-summary">
       <div class="lo-score"><b>${covered.length + heavy.length}</b><span>/ ${rows.length} 대응</span></div>
-      <p>${faction.name} 주요 적 ${rows.length}종 중 <b>${covered.length + heavy.length}종</b>은 현재 편성으로 확인된 처치 경로가 있습니다.${gaps.length ? html` <b style="color:var(--blocked)">${gaps.length}종</b>은 현재 계산 범위에서 처치 경로가 없습니다.` : ' 공백이 없습니다.'}${heavy.length ? html` 대형 적 <b style="color:var(--bleed)">${heavy.length}종</b>은 한 발에 처치하지 못합니다.` : ''}</p>
+      <p>${faction.name} 주요 적 ${rows.length}종 중 <b>${covered.length + heavy.length}종</b>은 현재 로드아웃으로 확인된 처치 경로가 있습니다.${gaps.length ? html` <b style="color:var(--blocked)">${gaps.length}종</b>은 현재 계산 범위에서 처치 경로가 없습니다.` : ' 공백이 없습니다.'}${heavy.length ? html` 대형 적 <b style="color:var(--bleed)">${heavy.length}종</b>은 한 발에 처치하지 못합니다.` : ''}</p>
     </div>
-    ${gaps.length ? html`<div class="section-title"><h2>대응 공백</h2><p>편성 안의 계산 가능한 무기로는 확인된 처치 경로가 없는 적입니다.</p></div>
+    ${gaps.length ? html`<div class="section-title"><h2>대응 공백</h2><p>로드아웃 안의 계산 가능한 무기로는 확인된 처치 경로가 없는 적입니다.</p></div>
       <div class="lo-rows">${gaps.map(row => gapCard(row))}</div>` : ''}
     ${heavy.length ? html`<div class="section-title"><h2>대형 적 · 한 발에 처치 불가</h2><p>처치는 되지만 여러 발이 필요한 대형·초대형 적입니다. 한 발에 처치하는 장비가 있으면 훨씬 안전합니다.</p></div>
       <div class="lo-rows">${heavy.map(row => html`<article class="panel lo-row heavy">${enemyHead(row)}<div class="lo-row-body">${answerLine(row.best)}${alsoLine(row)}</div></article>`)}</div>` : ''}
-    <div class="section-title"><h2>적별 대응</h2><p>각 적을 가장 적은 횟수로 처치하는 편성 속 무기입니다. 연사력·재장전·조준 난도는 반영하지 않습니다.</p></div>
+    <div class="section-title"><h2>적별 대응</h2><p>각 적을 가장 적은 횟수로 처치하는 로드아웃 속 무기입니다. 연사력·재장전·조준 난도는 반영하지 않습니다.</p></div>
     <div class="lo-rows">${covered.map(row => coveredCard(row))}</div>
-    ${result.notComputable?.length ? html`<p class="faint" style="font-size:13px;margin-top:12px">계산하지 않은 편성 항목: ${result.notComputable.map(item => `${nameOf(item.id)}${item.reason ? ` (${item.reason})` : ''}`).join(' · ')}</p>` : ''}`;
+    ${result.notComputable?.length ? html`<p class="faint" style="font-size:13px;margin-top:12px">계산하지 않은 로드아웃 항목: ${result.notComputable.map(item => `${nameOf(item.id)}${item.reason ? ` (${item.reason})` : ''}`).join(' · ')}</p>` : ''}`;
 }
 
 function enemyHead(row) {
@@ -200,7 +200,7 @@ function gapCard(row) {
   const groups = fixGroups(row);
   return html`<article class="panel lo-row gap">${enemyHead(row)}
     <div class="lo-gap-body"><span class="badge blocked">처치 경로 없음</span>
-      ${groups.length ? html`<div class="lo-fixes"><small>이렇게 바꾸면 대응 — 누르면 편성에 반영됩니다</small>${groups.map(([title, fixes]) => html`<div class="lo-fix-group"><span>${title}</span>${fixes.map(fix => html`<button type="button" class="chip lo-fix" data-fix-slot="${fix.slot}" data-fix-id="${fix.weaponId}">${thumb(fix.weaponId, 20)} ${nameOf(fix.weaponId)} <span class="count">${fix.partName ? `${fix.partName} ` : ''}${hitsText(fix)}</span></button>`)}</div>`)}</div>`
+      ${groups.length ? html`<div class="lo-fixes"><small>이렇게 바꾸면 대응 — 누르면 로드아웃에 반영됩니다</small>${groups.map(([title, fixes]) => html`<div class="lo-fix-group"><span>${title}</span>${fixes.map(fix => html`<button type="button" class="chip lo-fix" data-fix-slot="${fix.slot}" data-fix-id="${fix.weaponId}">${thumb(fix.weaponId, 20)} ${nameOf(fix.weaponId)} <span class="count">${fix.partName ? `${fix.partName} ` : ''}${hitsText(fix)}</span></button>`)}</div>`)}</div>`
         : html`<small class="faint">같은 칸에서 바꿔 끼워 해결되는 후보가 없습니다.</small>`}
     </div></article>`;
 }
@@ -221,11 +221,11 @@ export async function renderLoadout(panel, options) {
         <div class="segmented" role="group" aria-label="팩션">${factions.map(f => html`<button type="button" data-lo-faction="${f.id}" aria-pressed="${f.id === faction.id}" data-side="${f.id}">${f.name}</button>`)}</div>
         <label class="check lo-shield"><input type="checkbox" data-lo-shield ${env.loadout.shield !== false ? raw('checked') : ''}> 방패·보호막을 피한 상태로 계산</label>
         <span style="flex:1"></span>
-        <button type="button" class="button small" data-lo-share ${anyPicked ? '' : 'disabled'}>${icon('arrow', 16)} 편성 링크 복사</button>
+        <button type="button" class="button small" data-lo-share ${anyPicked ? '' : 'disabled'}>${icon('arrow', 16)} 로드아웃 링크 복사</button>
         <button type="button" class="button small ghost" data-lo-reset ${anyPicked ? '' : 'disabled'}>비우기</button>
       </div>
     </section>
-    ${result ? coverageSection(result, faction) : html`<div class="empty lo-empty"><h3>장비를 골라 편성을 시작하세요</h3><p>칸을 눌러 무기와 스트라타젬을 담으면, ${faction.name} 주요 적마다 어떤 장비로 몇 번 만에 처치할 수 있는지와 대응 공백을 보여 줍니다.</p></div>`}
+    ${result ? coverageSection(result, faction) : html`<div class="empty lo-empty"><h3>장비를 골라 로드아웃을 짜 보세요</h3><p>칸을 눌러 무기와 스트라타젬을 담으면, ${faction.name} 주요 적마다 어떤 장비로 몇 번 만에 처치할 수 있는지와 대응 공백을 보여 줍니다.</p></div>`}
     <p class="faint" style="font-size:12.5px;margin-top:14px">서로 다른 무기를 섞어 쓰는 연계는 계산하지 않습니다. "처치 경로 없음"은 현재 계산 범위의 결과이며, 실제로 처치할 수 없다는 뜻은 아닙니다.</p>`);
   bind(panel);
 }
@@ -248,7 +248,7 @@ function bind(panel) {
     else if (target.dataset.loFaction) { env.loadout.f = target.dataset.loFaction; env.onChange(); }
     else if (target.hasAttribute('data-lo-reset')) { Object.assign(env.loadout, { p: '', s: '', g: '', st: ['', '', '', ''] }); env.onChange(); }
     else if (target.hasAttribute('data-lo-share')) {
-      navigator.clipboard?.writeText(location.href).then(() => env.ctx.toast('편성 링크를 복사했습니다.'), () => env.ctx.toast('주소창의 링크를 복사해 공유하세요.'));
+      navigator.clipboard?.writeText(location.href).then(() => env.ctx.toast('로드아웃 링크를 복사했습니다.'), () => env.ctx.toast('주소창의 링크를 복사해 공유하세요.'));
     }
   });
 }
