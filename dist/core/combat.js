@@ -93,13 +93,18 @@ export function withHitAssumption(mode, { hitCount = '', primaryHit = 'blast', b
     && ['none', 'blast', 'direct'].includes(primaryHit) && typeof bombletDirect === 'boolean';
   if (!valid) return { ...mode, events: undefined, assumption: undefined };
   const event = (name, attack, times, directHit) => ({ name, attack, times, directHit });
-  const events = kind === 'arcs'
-    ? [event('전격', mode, count, true)]
+  const events = ['arcs', 'pellets'].includes(kind)
+    ? [event(kind === 'arcs' ? '전격' : '명중 탄체·펠릿', mode, count, true)]
+    : kind === 'shrapnel'
+      ? [event('주탄·폭발', mode, 1, mode.delivery !== 'explosive'),
+        ...(count === 0 ? [] : [event('명중 파편', mode.bomblet, count, true)])]
     : [
       ...(primaryHit === 'none' ? [] : [event('주탄', mode, 1, primaryHit === 'direct')]),
       ...(count === 0 ? [] : [event('자탄', mode.bomblet, count, bombletDirect)]),
     ];
-  return { ...mode, events, assumption: { count, primaryHit, bombletDirect } };
+  return { ...mode, events, assumption: { count,
+    primaryHit: kind === 'shrapnel' ? mode.delivery === 'explosive' ? 'blast' : 'direct' : primaryHit,
+    bombletDirect: kind === 'shrapnel' ? true : bombletDirect } };
 }
 
 // --- Routes ------------------------------------------------------------------

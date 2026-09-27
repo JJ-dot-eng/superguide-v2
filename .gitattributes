@@ -5,3 +5,5 @@
 /dist/assets/stratagems/meltagun-stratagem-icon-background.svg whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Generated weapon DB is compared byte-for-byte with a fresh build; keep LF everywhere.
 /db/weapons.js text eol=lf
+/dist/data/personal-weapons.js text eol=lf
+/dist/data/personal-profiles.js text eol=lf

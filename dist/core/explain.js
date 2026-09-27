@@ -141,6 +141,8 @@ export function assumptionSummary(mode) {
   if (!mode?.hitCondition) return '';
   if (!mode.assumption) return '한 발에서 이 부위에 맞는 개수를 고르세요.';
   const { count, primaryHit, bombletDirect } = mode.assumption;
+  if (mode.hitCondition.kind === 'pellets') return `한 발사마다 탄체·펠릿 ${count}개가 이 부위에 명중`;
+  if (mode.hitCondition.kind === 'shrapnel') return `${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격 + 폭발'} · 파편 ${count}개 명중`;
   if (mode.hitCondition.kind === 'arcs') return `한 발마다 전격 ${count}회가 이 부위에 명중 (유탄 직격 제외)`;
   const primary = { none: '주탄 피해 제외', blast: '주탄 폭발만', direct: '주탄 직격 + 폭발' }[primaryHit];
   return `${primary} · 자탄 ${count}개 ${bombletDirect && count > 0 ? '직격 + 폭발' : '폭발'} 명중`;

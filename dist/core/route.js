@@ -1,9 +1,10 @@
 // Every screen state lives in the URL hash, so any view can be linked or shared:
 //   #/arsenal[/<stratagem>]?c=<category>&ap=<band>&q=<text>
+//   #/gear[/<weapon>]?cat=<group>&type=<type>&q=<text> | #/gear?tab=loadout&p=&s=&g=&st=&f=
 //   #/enemy[/<enemy>]?w=<weapon>&m=<mode>&shield=1
 //   #/demolition?s=<structure> | #/demolition?w=<stratagem>&m=<mode>
 //   #/factions[/<guide>]
-export const VIEWS = ['arsenal', 'enemy', 'demolition', 'factions'];
+export const VIEWS = ['arsenal', 'gear', 'enemy', 'demolition', 'factions'];
 // Hashes used by the previous site keep working.
 const LEGACY = { catalog: 'arsenal', combat: 'enemy', demolition: 'demolition', factions: 'factions' };
 

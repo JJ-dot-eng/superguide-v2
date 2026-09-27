@@ -2,7 +2,55 @@
 
 주무기 55종·보조무기 25종·투척물 23종, 총 103종의 독립 ES 모듈입니다.
 `weapons.js`는 `scripts/build-weapons.mjs`가 로컬 JSON만 읽어 생성합니다.
-`weapons`와 `weaponsSource`를 export하며, 배포용 `dist/`에는 연결하지 않았습니다.
+`weapons`와 `weaponsSource`를 export합니다. 같은 생성기가 배포용 `dist/data/`의 개인 무기 표시 데이터와 전투 프로필도 생성하며, 브라우저는 `db/` 원본을 가져오지 않습니다.
+
+## 개인 무기 전투·비교·편성 API (단계 1–3)
+
+생성 명령은 `node scripts/build-weapons.mjs`입니다. 아래 세 파일은 로컬 원본만으로 생성되고 LF·생성 헤더를 유지합니다. `--stdout <경로>`로 파일을 쓰지 않고 해당 출력만 재생성할 수 있습니다. 경로 생략 시 기존처럼 `db/weapons.js`를 출력합니다. `npm run check`의 `test-personal.mjs`가 세 출력 모두를 두 번 바이트 비교합니다.
+
+- `db/weapons.js`: 기존 전체 사양과 원본 연결을 보존합니다. 기존 출력 바이트는 바꾸지 않았습니다.
+- `dist/data/personal-weapons.js`: `personalWeaponsCheckedAt`, `personalWeaponsSource`, `personalWeapons`. 표시용 103종이며 공격 트리·충전 원문은 제외합니다. `image`는 인포박스 파일명이며 `{{PAGENAME}}`만 실제 위키 제목으로 치환합니다. `sourceRevision`은 페이지 revision입니다. 개별 사양과 variant의 null은 원본 공백 그대로입니다.
+- `dist/data/personal-profiles.js`: 생성된 `personalProfiles`, `personalUnsupported`. 공개 진입점 `dist/core/personal-combat.js`에서 재수출하며 `personalGroups = [{id:'primary',name:'주무기'}, {id:'secondary',name:'보조무기'}, {id:'throwable',name:'투척물'}]`도 제공합니다.
+
+전투 프로필은 `{source, sourceRevision, note, checkedAt, modes}`이며 기존 `solveMatchup`에 그대로 전달합니다. 모드는 `{id,name,standard,durable,ap,explosion,explosionDurable,explosionAp,innerRadius,radius,delivery,unit,magazine,ammoPerShot}` 또는 `{id,name,unsupported}`입니다. 숫자를 확인하지 못한 모드를 정상 피해로 추정하지 않습니다. 원본에 충돌 폭발 연결 자체가 없는 탄체만 엔진상 폭발 0으로 표현하며, 폭발 연결은 있지만 수치가 없으면 미지원입니다.
+
+지원 86종에는 명중 수 조건이 필요한 무기도 포함됩니다. 미지원 17종은 다음과 같습니다.
+
+| 이유 | 무기 ID |
+| --- | --- |
+| 분사 빈도·접촉 시간 미확인 | torcher, crisper |
+| 빔 노출 시간·발 단위 미확인 | trident, scythe, dagger |
+| 충전별 최종 내구·관통·배율 미확인 | purifier, accelerator-rifle, loyalist |
+| 열 단계 전환·탄체 연결 미확인 | double-edge-sickle |
+| 피해 없는 지원 장비 또는 공격 레코드 없음 | stim-pistol, urchin, stun, smoke, smokescreen, shield |
+| 전격 반복·부위 명중 수 미확인 | arc |
+| damage 항목의 투척 연결·타격 단위 미확인 | throwing-knife |
+
+모든 피해는 동일 부위에 최대 피해가 닿는 이론값이며 AP는 ap1을 사용합니다. 거리·입사각·도탄·접근 가능성·시간·DoT·상태이상·여러 부위 동시 피해는 계산하지 않습니다. 근접은 엔진이 일반 타격을 표현할 수 있어 6종을 지원하되, 높은 부위/비행 적에게 실제 접근 가능한지는 보장하지 않습니다. Thermite 등은 확인된 폭발만, Breacher는 직격·충돌만, Pyrotech/Melta Mine는 주폭발만 계산하며 제외 성분은 모드 note에 명시합니다.
+
+산탄은 `hitCondition.kind='pellets'`, Blitzer는 `'arcs'`(최대 5개), 파편은 `'shrapnel'`입니다. 기존 `withHitAssumption(mode, {hitCount})`로 가정해야 계산하며 기본 전탄 명중은 없습니다. 파편 0개를 명시하면 주탄·폭발만, 양수면 그 수의 파편을 별도 피해 이벤트로 더합니다. 파편은 선택 모드가 아닙니다. 주탄 직격 여부는 투척 폭발은 false, Eruptor 탄체는 true이며 `primaryHit`/`bombletDirect` 선택은 기존 자탄 모드에서만 사용합니다. 같은 발의 남은 이벤트가 파괴된 장갑 뒤로 통과하는지는 기존 엔진처럼 보류합니다.
+
+Arbitrator/One-Two/Stoker는 하부 무기가 별도 `underbarrel` 모드이며 Stoker 분사는 모드 미지원입니다. Halt는 독립 8발 탄창의 `flechette`/`stun`입니다. Bushwhacker/Double Freedom의 `all-barrels`는 각각 3/2발, Variable `volley`는 7발 소비를 명시하고 명중 수를 가정합니다. Variable `total`은 잔탄 수 미확인으로 모드 미지원입니다. Warrant/Missile Pistol은 `unguided`를 계산하며 유도 착탄 제한이 미검증인 `guided`는 미지원입니다. 피해가 같은 자동·반자동·점사는 기본 모드에서 탄체 1발 단위로 계산하며 UI 표시용 `fireModes`는 원본을 유지합니다.
+
+### 비교: `dist/core/compare.js`
+
+- `resolveAttack(weaponId) → {weapon, kind, profile, unsupported}`. kind는 `personal`/`support`, 알 수 없는 ID는 null입니다. 비지원 무기 스트라타젬도 보존하되 profile=null과 한국어 이유를 제공합니다.
+- `compareAttacks(enemy, [{weaponId,modeId}], {partId,shieldCleared,assume}) → {entries,parts}`. modeId 생략은 첫 모드, 잘못된 ID는 미지원입니다. parts는 공통 `{id,name,conditional}` 목록입니다.
+- entries에는 `weaponId,modeId,weaponLabel,modeLabel,weapon,kind,profile,mode,status,reason,route,best,rows,hits,outcome,part,conditional,assumption,lowerBound,shieldCleared,shieldAssumed,verified,magazinesNeeded`가 있습니다. status는 `route`/`assume`/`none`/`unsupported`입니다. 특정 부위의 파괴 경로도 route로 반환하지만 `verified`는 조건 없는 치명 경로에서만 true입니다. 명중 수를 입력한 뒤에도 가정 결과는 assume이며 verified=false입니다. 재생을 무시한 하한값도 verified=false입니다.
+- `assume`는 기존 명중 조건 객체 또는 `{'weaponId:modeId': 조건객체}`입니다. 방패/보호막은 기본적으로 미해제이며 명시적인 `shieldCleared:true`는 prerequisite를 별도 `shieldAssumed`로 표시합니다. Spear가 락온하지 못하는 적은 계산 미지원입니다.
+- hits는 펠릿 수가 아닌 발사 횟수입니다. `magazinesNeeded = ceil(hits / floor(magazine / ammoPerShot))`; 산탄 한 발은 탄약 한 발, 다중 총열은 명시된 탄약 소비량을 사용합니다. 열 무기·투척물·지원 무기의 미제공 탄창은 null이며 추정하지 않습니다. 첫 탄창을 포함한 필요 탄창 수이며 재장전 횟수와 다릅니다.
+- 적 객체/프로필 모드별 WeakMap과 최대 64가지 조건 캐시를 사용하고 반환 경로를 복제하여 호출자 변경이 캐시를 오염시키지 않게 합니다.
+
+### 편성: `dist/core/loadout.js`
+
+- 편성 정규형은 `{primary,secondary,throwable,stratagems:[id,id,id,id],faction}`입니다. 빈 칸은 `''`입니다. UI 축약형 `{p,s,g,st,f}`도 입력 가능합니다.
+- `encodeLoadout(loadout) → string`: `?` 없는 URL query. `decodeLoadout(query) → 정규형`: query 문자열, 전체 `#/gear?...`, URLSearchParams, route.query 객체를 허용합니다. 잘못된 슬롯 분류·알 수 없는 ID·중복 스트라타젬·5번째 이후 칸을 버리며 빈 칸 위치를 보존합니다. 진영 생략/오류는 terminid입니다.
+- `loadoutFactions = [{id,name,enemyIds}]`: 기존 factionSides의 한국어 이름, 기본 경/중/중장갑·공중 위협 8종, 기존 각 변종 가이드의 마지막 유닛(대개 상위 위협)을 중복 제거해 선택합니다. 테르미니드 11종, 오토마톤 11종, 일루미닛 10종입니다. 출현 확률·난이도별 구성의 추정이 아닌 점검 목록입니다.
+- `loadoutCoverage(loadout,factionId,options) → {faction,rows,gaps,notComputable}`. row는 `{enemyId,enemyName,enemy,best,status,perSlot,reason}`이고 status는 route/gap입니다. best는 비교 결과에 `{slot,slotIndex,weaponId,modeId,partId,partName,modeName,unit}`를 더합니다. perSlot의 각 항목은 `{slot,slotIndex,weaponId,best,modes}`입니다. gaps는 검증된 치명 경로가 없는 row 목록, notComputable은 `{slot,slotIndex,weaponId,id,reason}` 목록입니다. 다른 무기나 부위 피해를 합산하지 않습니다.
+- `suggestFixes(loadout,factionId,options) → [{enemyId,enemyName,replacements}]`. 공백마다 같은 종류의 각 슬롯 위치에 최대 `options.limit`개(기본 3, 최대 20; `maxPerSlot` 별칭)의 교체안을 줍니다. 스트라타젬은 지원 무기만 추천합니다. 각 후보는 비교 결과 + slot/slotIndex/replaces이며 hits, 경로 단계 등 조건의 단순성, 즉사 여부, 안정적인 ID 순으로 정렬합니다. 이미 편성한 스트라타젬은 중복 추천하지 않습니다. 가정·조건부·재생 하한값은 추천으로 공백을 메우지 않습니다.
+- `loadoutView(loadout,factionId,options)`는 프런트엔드 연결용 추가 API입니다. coverage row에 fixes를 붙이고 교체 슬롯 키만 p/s/g/st0..st3으로 바꿉니다.
+
+`dist/core/route.js`는 gear 뷰와 경로 주석을 추가하고 기존 hash 변환을 유지합니다. 검사에는 수계산(Liberator/헌터 머리, Senator/데바스테이터 머리, Frag/헌터 본체 폭발), 산탄 가정, 탄창 경계, 원본 대응, URL 왕복·잘못된 입력, 편성 공백, 추천 재적용·결정성, 생성물 최신성 및 기존 legacy parity가 포함됩니다.
 
 ## 출처와 재생성
 
