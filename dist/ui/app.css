@@ -542,6 +542,7 @@ dialog { color: var(--text); }
 .lo-row.one-shot { border-color: color-mix(in srgb, var(--kill) 40%, var(--line)); }
 .one-shot-badge { justify-self: start; padding: 2px 8px; border-radius: 5px; font-size: 11.5px; font-weight: 800; color: var(--kill); background: var(--kill-soft); }
 .lo-enemy .size-tag { margin: 0; }
+.acc-steps { margin: 8px 0; padding-left: 20px; display: grid; gap: 3px; font-size: 14px; }
 .compare-add { margin-left: auto; }
 .matchup.flash > .section-title + .panel { animation: matchup-flash 1.6s ease-out; }
 @keyframes matchup-flash { 0%, 35% { box-shadow: 0 0 0 2px var(--accent), 0 0 0 7px var(--accent-soft); border-color: var(--accent); } 100% { box-shadow: 0 0 0 0 transparent; } }

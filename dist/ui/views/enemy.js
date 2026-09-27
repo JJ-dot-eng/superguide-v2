@@ -12,9 +12,10 @@ import { stratagems, stratagemById } from '../../core/catalog.js';
 import { solveMatchup, withHitAssumption, spearCannotLock, partPool, isFatal } from '../../core/combat.js';
 import { compareAttacks } from '../../core/compare.js';
 import { enemySize, isLargeEnemy, SIZE_NAMES } from '../../core/enemy-size.js';
+import { solveAccumulation, noFatalPart } from '../../core/accumulate.js';
 import { wikiReference } from '../../core/factions.js';
 import { search } from '../../core/search.js';
-import { num, pct, unitOf, outcomeOf, countText, attackStats, assumptionText, aimText, routeNotes, assumptionSummary, assumptionTag, deliveryOf } from '../../core/explain.js';
+import { num, pct, unitOf, outcomeOf, countText, attackStats, assumptionText, aimText, routeNotes, assumptionSummary, assumptionTag, deliveryOf, josa } from '../../core/explain.js';
 import { html, raw, render, $, $$, icon, badge, external } from '../dom.js';
 
 const FACTIONS = ['테르미니드', '오토마톤', '일루미닛'];
@@ -37,6 +38,10 @@ const unsupportedOf = id => unsupportedWeapons[id] || personalUnsupported[id];
 const groupOf = id => GROUPS.find(group => group.id === id);
 // Large and massive enemies call out weapons that finish them in a single hit.
 const oneShot = entry => entry.status === 'route' && entry.best?.hits === 1 && isFatal(entry.best) && !entry.best.lowerBound;
+// Enemies without a fatal part die from damage piled onto the main body across
+// several parts; such routes come from solveAccumulation (parts one after another).
+const stepsLabel = acc => acc.steps.map(step => `${step.partName.replace(/ 한 ?(개|쪽)$/, '')} ${step.instances}개`).join(' → ');
+const accumulatedBest = acc => ({ hits: acc.hits, outcome: acc.outcome, target: { name: stepsLabel(acc) }, stages: [], notes: [], accumulated: acc });
 const sizeTag = enemy => { const size = enemySize(enemy); return size === 'large' || size === 'massive' ? html`<em class="size-tag" data-size="${size}">${SIZE_NAMES[size]}</em>` : ''; };
 const enemyById = new Map(enemies.map(enemy => [enemy.id, enemy]));
 
@@ -69,6 +74,10 @@ function rankWeapons(enemy, shieldCleared, group = state.group) {
       if (mode.hitCondition && fallback == null) return { mode, status: 'assume' };
       const solved = fallback == null ? mode : withHitAssumption(mode, { ...DEFAULT_ASSUME, hitCount: String(fallback) });
       const { best, rows } = solveMatchup(enemy, solved, { shieldCleared });
+      if (!best && noFatalPart(enemy)) {
+        const acc = solveAccumulation(enemy, solved, { shieldCleared });
+        if (acc) return { mode, status: 'route', best: accumulatedBest(acc), rows, defaulted: fallback != null };
+      }
       return { mode, status: best ? 'route' : 'none', best, rows, defaulted: fallback != null };
     });
     const routes = tries.filter(item => item.status === 'route').sort((a, b) => a.best.hits - b.best.hits || Number(a.best.outcome !== 'kill') - Number(b.best.outcome !== 'kill'));
@@ -122,7 +131,7 @@ function hero(enemy) {
     <span>${enemy.shield.kind === 'energy' ? '보호막' : '방패'} ${enemy.shield.infiniteHealth ? '파괴 불가' : `체력 ${num(enemy.shield.hp)}`}${Number.isFinite(enemy.shield.armor) ? ` · 장갑 ${enemy.shield.armor}` : ''}. ${enemy.shield.note} 제거·우회에 드는 공격은 횟수에 포함하지 않습니다.</span></div></label>` : ''}`;
 }
 
-function rankRow(entry, selected, large = false) {
+function rankRow(entry, selected, large = false, noFatal = false) {
   const { weapon, status } = entry;
   const single = large && oneShot(entry);
   const unit = unitOf(entry.mode).unit;
@@ -132,6 +141,7 @@ function rankRow(entry, selected, large = false) {
     const outcome = outcomeOf(entry.best);
     const aside = entry.reference ? `위키 전술: ${entry.reference.target} ${entry.reference.hits}${unit}`
       : entry.spear ? '직접 락온 불가 · 참고값'
+      : entry.best.accumulated ? '누적 처치 · 덩어리를 차례로 터뜨림'
       : entry.defaulted ? defaultLabel(entry.mode) : assumptionTag(entry.mode);
     part = html`<span>${entry.best.target.name}</span>${aside ? html`<small>${aside}</small>` : ''}`;
     hits = html`<span class="hits">${num(entry.best.hits)}<small>${unit}${entry.best.lowerBound ? '+' : ''}</small></span>`;
@@ -140,7 +150,9 @@ function rankRow(entry, selected, large = false) {
     part = html`<span class="faint">명중 수 가정 필요</span>`; tag = badge('가정 선택', 'unknown');
   } else if (status === 'none') {
     const blocked = entry.rows.every(row => ['blocked', 'shield'].includes(row.outcome) || row.hits != null);
-    part = html`<span class="faint">${blocked ? '확인된 처치 경로 없음' : '일부 부위 자료 미확인'}</span>`; tag = badge(blocked ? '처치 경로 없음' : '계산 보류', blocked ? 'blocked' : 'unknown');
+    const pierces = entry.rows.some(row => row.hits != null);
+    if (noFatal && pierces) { part = html`<span class="faint">치명 부위 없음 · 여러 부위에 피해를 쌓아야 함</span>`; tag = badge('누적 필요', 'conditional'); }
+    else { part = html`<span class="faint">${blocked ? '확인된 처치 경로 없음' : '일부 부위 자료 미확인'}</span>`; tag = badge(blocked ? '처치 경로 없음' : '계산 보류', blocked ? 'blocked' : 'unknown'); }
   } else {
     part = html`<span class="faint">정밀 계산 미지원</span>`; tag = badge('미지원', 'unknown');
   }
@@ -157,10 +169,11 @@ function ranking(enemy, entries, selectedId, detail) {
   const main = entries.filter(entry => entry.status === 'route' || entry.status === 'assume');
   const rest = entries.filter(entry => !main.includes(entry));
   const large = isLargeEnemy(enemy);
+  const noFatal = noFatalPart(enemy);
   const singles = large ? entries.filter(oneShot).length : 0;
   const row = entry => entry.weapon.id === selectedId
-    ? html`${rankRow(entry, true, large)}<div class="rank-detail">${detail}</div>`
-    : rankRow(entry, false, large);
+    ? html`${rankRow(entry, true, large, noFatal)}<div class="rank-detail">${detail}</div>`
+    : rankRow(entry, false, large, noFatal);
   return html`<div class="section-title"><h2>무기별 최소 횟수</h2><p>${groupOf(state.group).name} ${entries.length}종 · 가장 빠른 확인된 경로 기준. 연사력·재장전·조준 난도는 반영하지 않습니다. 무기를 누르면 바로 아래에 부위별 계산이 열립니다.</p></div>
   ${large ? html`<div class="one-shot-note ${singles ? '' : 'none'}">${singles ? html`<b>${SIZE_NAMES[enemySize(enemy)]} 적</b> · ${groupOf(state.group).name} 중 <b>${singles}종</b>이 한 발에 처치합니다. 강조된 줄을 먼저 보세요.` : html`<b>${SIZE_NAMES[enemySize(enemy)]} 적</b> · ${groupOf(state.group).name} 중 한 발에 처치하는 무기가 없습니다. 여러 발이 필요하니 주의하세요.`}</div>` : ''}
   <div class="segmented group-tabs" role="group" aria-label="무기 분류">${GROUPS.map(group => html`<button type="button" data-group-pick="${group.id}" aria-pressed="${group.id === state.group}">${group.name} <span class="count">${weaponsOf[group.id].length}</span></button>`)}</div>
@@ -291,6 +304,18 @@ function verdict(enemy, weapon, mode, matchup, reference) {
   const allShield = matchup.rows.every(row => row.outcome === 'shield');
   if (allShield) return html`<div class="verdict">${label}<h3>보호막(방패)을 먼저 처리해야 합니다</h3><p>${enemy.shield.note} 위의 체크를 켜면 제거한 뒤의 횟수를 보여 줍니다.</p></div>`;
   const pending = matchup.rows.some(row => row.outcome === 'unknown');
+  const acc = !pending && noFatalPart(enemy) ? solveAccumulation(enemy, mode, { shieldCleared: state.shield }) : null;
+  if (acc) {
+    return html`<div class="verdict" data-tone="kill">${label}
+      <h3><span class="big">${num(acc.hits)}${unit}</span> · 누적 처치</h3>
+      <p>치명 부위가 없어 여러 부위에 피해를 쌓아 본체 체력 ${num(enemy.main.hp)}을 깎는 경로입니다. 부위를 하나씩 부수며 이 순서로 맞히세요.</p>
+      <ol class="acc-steps">${acc.steps.map(step => html`<li><b>${step.partName.replace(/ 한 ?(개|쪽)$/, '')} ${step.instances}개</b> · 하나당 ${num(step.hitsPerInstance)}${unit} → ${num(step.hits)}${unit} <span class="faint">(본체 ${num(step.mainDamage)})</span></li>`)}</ol>
+      <p class="faint">폭발이 여러 부위에 동시에 닿는 피해는 빼고 계산한 보수적인 값입니다. 실제로는 더 적게 들 수 있습니다.</p></div>`;
+  }
+  if (!pending && noFatalPart(enemy) && matchup.rows.some(row => row.hits != null)) {
+    return html`<div class="verdict">${label}<h3>치명 부위가 없어 여러 부위에 피해를 쌓아야 합니다</h3>
+      <p>${josa(enemy.name, ['은', '는'])} 한 부위를 부숴도 죽지 않고, 여러 부위를 통해 본체 체력 ${num(enemy.main.hp)}을 모두 깎아야 처치됩니다. 한 부위만 계속 맞히는 계산으로는 경로가 나오지 않을 뿐, 처치할 수 없다는 뜻은 아닙니다. 아래에서 부위별 파괴 횟수와 본체 전달 비율을 확인하세요.</p></div>`;
+  }
   return html`<div class="verdict">${label}<h3>${pending ? '일부 부위는 자료가 없어 계산을 보류했습니다' : reference ? '단일 부위로는 처치 경로가 없습니다' : '확인된 부위에서 바로 처치하는 경로가 없습니다'}</h3>
     <p>${matchup.rows.some(row => row.conditional && row.outcome === 'kill') ? '아래에서 선행 조건이 붙은 경로를 확인하세요.' : '아래에서 관통 가능한 부위와 부위 파괴 결과를 확인하세요.'} 이 결과만으로 처치 불가능하다고 단정하지는 않습니다.</p></div>`;
 }
