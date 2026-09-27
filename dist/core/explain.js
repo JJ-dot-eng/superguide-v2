@@ -96,7 +96,7 @@ export function attackStats(mode) {
 
 /** One-line statement of what the count assumes for this kind of attack. */
 export function assumptionText(mode) {
-  if (mode?.hitCondition?.kind === 'pellets') return `한 발에서 선택한 수의 ${mode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는 가정입니다. 전부 명중한다고 자동 계산하지 않습니다.`;
+  if (mode?.hitCondition?.kind === 'pellets') return `기본은 ${mode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 계산합니다. 명중률을 낮춰 다시 계산할 수 있습니다.`;
   if (mode?.hitCondition?.kind === 'shrapnel') return `같은 부위에 ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격·폭발'}과 선택한 수의 파편이 맞는 가정입니다. 파편 0개를 고르면 파편 피해는 제외합니다.`;
   if (mode?.delivery === 'explosive') return '기폭 시 같은 부위에 최대 폭발 피해가 닿는 조건입니다. 여러 부위에 동시에 들어가는 피해는 더하지 않습니다.';
   if (mode?.beam) return '같은 부위에 광선을 계속 유지하는 조건. 한 발은 약 1.4초 분량으로 환산합니다.';
@@ -161,7 +161,11 @@ export function assumptionSummary(mode) {
     return '한 발에서 이 부위에 맞는 개수를 고르세요.';
   }
   const { count, primaryHit, bombletDirect } = mode.assumption;
-  if (mode.hitCondition.kind === 'pellets') return `한 발에 ${mode.hitCondition.projectileName || '펠릿'} ${count}개가 이 부위에 명중`;
+  if (mode.hitCondition.kind === 'pellets') {
+    const { max, projectileName = '펠릿' } = mode.hitCondition;
+    return count === max ? `${projectileName} ${max}개가 모두 이 부위에 명중 (전탄 명중 가정)`
+      : `${projectileName} ${max}개 중 ${count}개 명중 (약 ${Math.round(count / max * 100)}%)`;
+  }
   if (mode.hitCondition.kind === 'shrapnel') return `폭발 1회당 파편 ${count}개가 이 부위에 명중 + ${mode.delivery === 'explosive' ? '주폭발' : '주탄 직격 + 폭발'}${count === 0 ? ' (파편 피해 제외)' : ''}`;
   if (mode.hitCondition.kind === 'arcs') return `한 발마다 전격 ${count}회가 이 부위에 명중 (유탄 직격 제외)`;
   const primary = { none: '주탄 피해 제외', blast: '주탄 폭발만', direct: '주탄 직격 + 폭발' }[primaryHit];
@@ -177,7 +181,8 @@ export function josa(word, [withFinal, withoutFinal]) {
 
 /** Short tag for counts that rest on an assumption rather than plain aiming. */
 export function assumptionTag(mode) {
-  if (mode?.hitCondition?.kind === 'pellets') return `${mode.hitCondition.projectileName || '펠릿'} 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
+  if (mode?.hitCondition?.kind === 'pellets') return mode.assumption?.count === mode.hitCondition.max
+    ? '전탄 명중 가정' : `${mode.hitCondition.projectileName || '펠릿'} 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
   if (mode?.hitCondition?.kind === 'shrapnel') return mode.assumption?.count === 0
     ? `파편 제외 · ${mode.delivery === 'explosive' ? '폭발만' : '직격·폭발만'}` : `파편 명중 수 ${mode.assumption ? '가정' : '선택 필요'}`;
   if (!mode?.conditionalImpact) return '';

@@ -54,7 +54,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       status: 'unsupported', reason: resolved.unsupported || rawMode?.unsupported || null,
       route: null, best: null, rows: [], hits: null, outcome: null, part: null,
       conditional: false, assumption: null, lowerBound: false, shieldCleared: options.shieldCleared === true,
-      defaulted: false, fragmentsExcluded: false,
+      defaulted: false, fragmentsExcluded: false, allPelletsAssumed: false,
       shieldAssumed: Boolean(enemy?.shield && options.shieldCleared), verified: false, magazinesNeeded: null,
     };
     if (!rawMode || rawMode.unsupported || !resolved.profile) return { ...base, reason: base.reason || '선택한 발사 모드를 찾을 수 없습니다.' };
@@ -70,12 +70,18 @@ export function compareAttacks(enemy, entries = [], options = {}) {
     // positive hit-count assumption and can be a verified conservative route.
     // Keep the underlying count=0 object so the UI can explain the exclusion.
     const fragmentsExcluded = rawMode.hitCondition?.kind === 'shrapnel' && rawMode.hitCondition.default === 0 && result.mode.assumption?.count === 0;
-    const needsAssumption = Boolean(rawMode.hitCondition) && !fragmentsExcluded;
+    // Full pellet hits are an explicit product default, not a guarantee of
+    // real-world accuracy. Carry the flag even when max was selected manually.
+    const allPelletsAssumed = rawMode.hitCondition?.kind === 'pellets'
+      && rawMode.hitCondition.default === rawMode.hitCondition.max
+      && result.mode.assumption?.count === rawMode.hitCondition.max;
+    const needsAssumption = Boolean(rawMode.hitCondition) && !fragmentsExcluded && !allPelletsAssumed;
     const status = needsAssumption ? 'assume' : route?.hits != null ? 'route' : 'none';
     const reason = needsAssumption ? result.mode.assumption ? '선택한 명중 수 가정에 따른 결과입니다.' : '부위에 맞는 탄체·펠릿·파편 수를 먼저 선택하세요.'
       : route?.reason ? route.detail || '부위 조건 또는 일부 수치가 미확인입니다.'
         : !route ? result.rows.find(row => row.detail)?.detail || '확인된 처치 경로가 없습니다.'
-          : fragmentsExcluded ? `파편 피해를 제외한 ${rawMode.delivery === 'explosive' ? '폭발' : '직격·폭발'}만으로 계산합니다.` : null;
+          : fragmentsExcluded ? `파편 피해를 제외한 ${rawMode.delivery === 'explosive' ? '폭발' : '직격·폭발'}만으로 계산합니다.`
+            : allPelletsAssumed ? `${rawMode.hitCondition.projectileName || '펠릿'}이 모두 같은 부위에 맞는다고 가정한 결과입니다.` : null;
     const magazine = Object.hasOwn(rawMode, 'magazine') ? rawMode.magazine : resolved.weapon?.magazine;
     const shotsPerMagazine = Number.isFinite(magazine) && magazine > 0 ? Math.floor(magazine / (rawMode.ammoPerShot || 1)) : null;
     return {
@@ -83,7 +89,7 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       route: route || null, best: result.best, rows: result.rows,
       hits: route?.hits ?? null, outcome: route?.outcome ?? null, part: route?.target ?? null,
       conditional: Boolean(route?.conditional), assumption: result.mode.assumption || null, lowerBound: Boolean(route?.lowerBound),
-      defaulted, fragmentsExcluded,
+      defaulted, fragmentsExcluded, allPelletsAssumed,
       verified: Boolean(route && isFatal(route) && !route.lowerBound && !needsAssumption),
       magazinesNeeded: route?.hits != null && shotsPerMagazine > 0 ? Math.ceil(route.hits / shotsPerMagazine) : null,
     };

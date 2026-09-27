@@ -71,8 +71,9 @@ function answers(enemy, slot, options) {
   })).sort(rank);
 }
 
-/** A gap has no unconditional, non-regenerating fatal route without positive
- * hit-count assumptions. Excluding all fragments is conservative and allowed.
+/** A gap has no unconditional, non-regenerating fatal route under the accepted
+ * defaults. Zero fragments and full pellet hits are allowed; full pellets keep
+ * allPelletsAssumed=true and the existing assumption simplicity penalty.
  * Explicit shieldCleared may unlock routes; shieldAssumed reports
  * that prerequisite. Each answer uses one weapon/mode on one part route only.
  */
