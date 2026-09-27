@@ -48,7 +48,9 @@ const enemyById = new Map(enemies.map(enemy => [enemy.id, enemy]));
 let root, ctx;
 const MAX_COMPARE = 3;
 const compare = { picks: [], part: '' }; // [{ weaponId, modeId }] kept across enemies
-const DEFAULT_ASSUME = { hitCount: '', primaryHit: 'blast', bombletDirect: false };
+// Only the hit count starts blank; primary-hit options fall back to each mode's
+// own defaults (e.g. W.A.S.P. counts sub-missile hits, not the parent blast).
+const DEFAULT_ASSUME = { hitCount: '' };
 const state = { enemy: DEFAULT_ENEMY, group: 'support', weapon: null, mode: null, shield: true, faction: '', q: '', assume: { ...DEFAULT_ASSUME }, pickerOpen: false };
 // Until the player picks a count, modes with a conservative default use it.
 // Every multi-hit attack shows a hit-rate slider. Aimed hits (pellets, arcs)
@@ -61,7 +63,15 @@ const HIT_KINDS = {
   shrapnel: { noun: '파편', unit: '개', per: '폭발 1회에', pct: 20, why: '파편은 사방으로 흩어져 기본은 20%로 계산합니다. 0%로 두면 파편을 빼고 직격·폭발만 계산합니다.' },
 };
 const hitCount = (c, pct) => pct <= 0 && c.min === 0 ? 0 : Math.max(c.min, Math.round(c.max * pct / 100));
-const hitPct = (c, count) => Math.min(100, Math.max(c.min === 0 ? 0 : 10, Math.round(Number(count) / c.max * 10) * 10));
+// The slider shows the 10 % step that yields this count, preferring the data's
+// default percentage (7 sub-missiles at 20 % is 1, which is also what 10 % gives).
+const hitPct = (c, count) => {
+  const n = Number(count), low = c.min === 0 ? 0 : 10;
+  const pctDefault = c.defaultPct ?? HIT_KINDS[c.kind]?.pct;
+  if (pctDefault != null && hitCount(c, pctDefault) === n) return pctDefault;
+  const steps = Array.from({ length: (100 - low) / 10 + 1 }, (_, i) => low + i * 10).filter(pct => hitCount(c, pct) === n);
+  return steps.length ? steps[0] : Math.min(100, Math.max(low, Math.round(n / c.max * 10) * 10));
+};
 const defaultCount = mode => {
   const c = mode?.hitCondition;
   if (!c) return null;
@@ -281,15 +291,16 @@ function wikiReferenceBlock(reference, unit) {
 function hitRateControls(mode, c) {
   const kind = HIT_KINDS[c.kind];
   const count = Number(effectiveAssume(mode).hitCount);
-  const pct = hitPct(c, count);
+  // Keep the percentage the player picked; several steps can round to one count.
+  const pct = state.assume.pct != null && hitCount(c, state.assume.pct) === count ? state.assume.pct : hitPct(c, count);
   const low = c.min === 0 ? 0 : 10;
   return html`<div class="assumptions pellet-range">
     <label for="hit-pct">명중률 <b data-pct-label>${pct}%</b> <span class="faint" data-pct-count>${countLine(c, count)}</span></label>
     <input id="hit-pct" type="range" min="${low}" max="100" step="10" value="${pct}" data-assume-pct data-kind="${c.kind}" data-min="${c.min}" data-max="${c.max}" aria-valuetext="${pct}%, ${kind.noun} ${count}${kind.unit}">
     <div class="range-scale" aria-hidden="true"><span>${low}%</span><span>50%</span><span>100%</span></div>
     ${c.kind === 'bomblets' ? html`<div class="bomblet-extra"><label>주탄
-      <select class="select" data-assume="primaryHit">${[['blast', '주탄 폭발만'], ['direct', '주탄 직격 + 폭발'], ['none', '주탄 피해 없음']].map(([value, name]) => html`<option value="${value}" ${state.assume.primaryHit === value ? raw('selected') : ''}>${name}</option>`)}</select></label>
-      <label class="check"><input type="checkbox" data-assume="bombletDirect" ${state.assume.bombletDirect ? raw('checked') : ''} ${count > 0 ? '' : raw('disabled')}> 자탄 직격도 포함</label></div>` : ''}
+      <select class="select" data-assume="primaryHit">${[['blast', '주탄 폭발만'], ['direct', '주탄 직격 + 폭발'], ['none', '주탄 피해 없음']].map(([value, name]) => html`<option value="${value}" ${(state.assume.primaryHit ?? mode.hitCondition.defaultPrimaryHit ?? 'blast') === value ? raw('selected') : ''}>${name}</option>`)}</select></label>
+      <label class="check"><input type="checkbox" data-assume="bombletDirect" ${(state.assume.bombletDirect ?? mode.hitCondition.defaultBombletDirect ?? false) ? raw('checked') : ''} ${count > 0 ? '' : raw('disabled')}> 자탄 직격도 포함</label></div>` : ''}
     <p>${kind.why} ${assumptionSummary(withHitAssumption(mode, effectiveAssume(mode)))}</p>
   </div>`;
 }
@@ -506,6 +517,7 @@ export function mount(container, context) {
     if (target.matches('[data-shield]')) { state.shield = target.checked; renderMain(); syncUrl(); }
     if (target.matches('[data-assume-pct]')) {
       state.assume.hitCount = String(hitCount({ min: Number(target.dataset.min), max: Number(target.dataset.max) }, Number(target.value)));
+      state.assume.pct = Number(target.value);
       renderMain();
       $('[data-assume-pct]', root)?.focus({ preventScroll: true });
     }
