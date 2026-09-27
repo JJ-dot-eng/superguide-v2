@@ -328,11 +328,13 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
 if (process.argv.includes('--stdout')) {
   const target = process.argv[process.argv.indexOf('--stdout') + 1] || 'db/weapons.js';
   if (!Object.hasOwn(outputs, target)) throw new Error(`Unknown generated output: ${target}`);
+  // No process.exit here: on Linux, stdout to a pipe is asynchronous and
+  // exiting early truncates large outputs. Let the process end naturally.
   process.stdout.write(outputs[target]);
-  process.exit(0);
-}
+} else {
 for (const [path, content] of Object.entries(outputs)) await writeFile(new URL(path, root), content, 'utf8');
 console.log(`Generated ${Object.keys(outputs).join(', ')} (local sources only).`);
 console.log(`Weapons: ${weapons.length} (primary: ${weapons.filter(w => w.category === 'primary').length}, secondary: ${weapons.filter(w => w.category === 'secondary').length}, throwable: ${weapons.filter(w => w.category === 'throwable').length})`);
 console.log(`Attack revision: ${weaponsSource.attacksRevision}; retrieved: ${weaponsSource.retrievedAt}`);
+}
 }
