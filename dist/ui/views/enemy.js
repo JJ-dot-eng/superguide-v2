@@ -135,22 +135,26 @@ function rankRow(entry, selected) {
   } else {
     part = html`<span class="faint">정밀 계산 미지원</span>`; tag = badge('미지원', 'unknown');
   }
-  return html`<button class="rank-row" type="button" data-weapon="${weapon.id}" data-mode="${entry.mode?.id || ''}" aria-current="${selected}">
+  return html`<button class="rank-row" type="button" data-weapon="${weapon.id}" data-mode="${entry.mode?.id || ''}" aria-current="${selected}" aria-expanded="${selected}">
     ${weaponIcon(weapon.id)}
     <span class="w"><b>${weapon.name}</b><small>${multi || entry.mode?.id !== 'standard' ? entry.mode?.name || '' : weapon.code || ''}</small></span>
     <span class="part">${part}</span>${hits}${tag}
   </button>`;
 }
 
-function ranking(enemy, entries, selectedId) {
+// The selected weapon's part-by-part calculation opens right under its row.
+function ranking(enemy, entries, selectedId, detail) {
   const main = entries.filter(entry => entry.status === 'route' || entry.status === 'assume');
   const rest = entries.filter(entry => !main.includes(entry));
-  return html`<div class="section-title"><h2>무기별 최소 횟수</h2><p>${groupOf(state.group).name} ${entries.length}종 · 가장 빠른 확인된 경로 기준. 연사력·재장전·조준 난도는 반영하지 않습니다.</p></div>
+  const row = entry => entry.weapon.id === selectedId
+    ? html`${rankRow(entry, true)}<div class="rank-detail">${detail}</div>`
+    : rankRow(entry, false);
+  return html`<div class="section-title"><h2>무기별 최소 횟수</h2><p>${groupOf(state.group).name} ${entries.length}종 · 가장 빠른 확인된 경로 기준. 연사력·재장전·조준 난도는 반영하지 않습니다. 무기를 누르면 바로 아래에 부위별 계산이 열립니다.</p></div>
   <div class="segmented group-tabs" role="group" aria-label="무기 분류">${GROUPS.map(group => html`<button type="button" data-group-pick="${group.id}" aria-pressed="${group.id === state.group}">${group.name} <span class="count">${weaponsOf[group.id].length}</span></button>`)}</div>
   <div class="panel ranking">
     <div class="rank-head" aria-hidden="true"><span></span><span>무기</span><span>노릴 부위</span><span>횟수</span><span>결과</span></div>
-    ${main.map(entry => rankRow(entry, entry.weapon.id === selectedId))}
-    ${rest.length ? html`<details class="rank-more" ${rest.some(entry => entry.weapon.id === selectedId) ? raw('open') : ''}><summary>처치 경로가 없거나 계산하지 않은 무기 ${rest.length}종</summary>${rest.map(entry => rankRow(entry, entry.weapon.id === selectedId))}</details>` : ''}
+    ${main.map(row)}
+    ${rest.length ? html`<details class="rank-more" ${rest.some(entry => entry.weapon.id === selectedId) ? raw('open') : ''}><summary>처치 경로가 없거나 계산하지 않은 무기 ${rest.length}종</summary>${rest.map(row)}</details>` : ''}
   </div>`;
 }
 
@@ -372,11 +376,11 @@ let sheetListener = null;
 function renderMain({ scrollToMatchup = false } = {}) {
   const enemy = enemyById.get(state.enemy);
   const entries = rankWeapons(enemy, state.shield);
-  const selected = state.weapon || entries[0].weapon.id;
-  render($('#enemy-main', root), html`${hero(enemy)}${ranking(enemy, entries, selected)}${matchupSection(enemy, entries)}`);
+  const selected = weaponsOf[state.group].some(weapon => weapon.id === state.weapon) ? state.weapon : null;
+  render($('#enemy-main', root), html`${hero(enemy)}${ranking(enemy, entries, selected, selected ? matchupSection(enemy, entries) : '')}`);
   renderTray();
   renderPicker();
-  if (scrollToMatchup) $('#matchup', root)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (scrollToMatchup) $('.rank-row[aria-expanded="true"]', root)?.scrollIntoView({ block: 'start' });
 }
 
 function syncUrl() {
@@ -441,7 +445,11 @@ export function mount(container, context) {
       renderMain(); syncUrl();
     } else if (target.dataset.factionFilter != null) { state.faction = target.dataset.factionFilter; renderPicker(); }
     else if (target.hasAttribute('data-picker-toggle')) { state.pickerOpen = !state.pickerOpen; target.setAttribute('aria-expanded', String(state.pickerOpen)); renderPicker(); if (state.pickerOpen) input.focus(); }
-    else if (target.dataset.weapon) {
+    else if (target.dataset.weapon && target.dataset.weapon === state.weapon) {
+      // A second tap on the open row folds it away.
+      state.weapon = null; state.mode = null; resetAssumption();
+      renderMain(); syncUrl();
+    } else if (target.dataset.weapon) {
       if (state.weapon !== target.dataset.weapon) resetAssumption();
       state.weapon = target.dataset.weapon; state.mode = target.dataset.mode || null;
       renderMain({ scrollToMatchup: true }); syncUrl();
@@ -491,11 +499,11 @@ export function update(route) {
   else if (switched && main.getBoundingClientRect().top < 0) main.scrollIntoView({ block: 'start' });
 }
 
-// Scroll the selected weapon's calculation into view and flash it once.
+// Scroll the selected weapon's row (with its calculation below) into view and flash it once.
 function showMatchup() {
   const section = $('#matchup', root);
   if (!section) return;
-  section.scrollIntoView({ block: 'start' });
+  ($('.rank-row[aria-expanded="true"]', root) || section).scrollIntoView({ block: 'start' });
   section.classList.add('flash');
   section.addEventListener('animationend', () => section.classList.remove('flash'), { once: true });
 }
