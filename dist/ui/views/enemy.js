@@ -42,9 +42,13 @@ const compare = { picks: [], part: '' }; // [{ weaponId, modeId }] kept across e
 const DEFAULT_ASSUME = { hitCount: '', primaryHit: 'blast', bombletDirect: false };
 const state = { enemy: DEFAULT_ENEMY, group: 'support', weapon: null, mode: null, shield: true, faction: '', q: '', assume: { ...DEFAULT_ASSUME }, pickerOpen: false };
 // Until the player picks a count, modes with a conservative default use it.
-const effectiveAssume = mode => state.assume.hitCount === '' && mode?.hitCondition?.default != null
-  ? { ...state.assume, hitCount: String(mode.hitCondition.default) } : state.assume;
-const defaultLabel = mode => mode?.hitCondition?.kind === 'shrapnel' ? '파편 제외 · 직격·폭발만' : '기본 명중 수 가정';
+const defaultCount = mode => mode?.hitCondition?.default ?? (mode?.hitCondition?.kind === 'pellets' ? mode.hitCondition.max : null);
+const effectiveAssume = mode => state.assume.hitCount === '' && defaultCount(mode) != null
+  ? { ...state.assume, hitCount: String(defaultCount(mode)) } : state.assume;
+const defaultLabel = mode => mode?.hitCondition?.kind === 'shrapnel' ? '파편 제외 · 직격·폭발만' : mode?.hitCondition?.kind === 'pellets' ? '펠릿 전부 명중 가정' : '기본 명중 수 가정';
+// Pellet hit rate in 10 % steps, shown on a slider.
+const pelletCount = (c, pct) => Math.max(c.min, Math.round(c.max * pct / 100));
+const pelletPct = (c, count) => Math.min(100, Math.max(10, Math.round(Number(count) / c.max * 10) * 10));
 
 // --- Ranking ----------------------------------------------------------------------
 const rankCache = new Map();
@@ -57,7 +61,7 @@ function rankWeapons(enemy, shieldCleared, group = state.group) {
     const tries = profile.modes.map(mode => {
       if (mode.unsupported) return { mode, status: 'unsupported', reason: mode.unsupported };
       // A conservative default (e.g. no fragments) still ranks; others wait for a choice.
-      const fallback = mode.hitCondition?.default;
+      const fallback = defaultCount(mode);
       if (mode.hitCondition && fallback == null) return { mode, status: 'assume' };
       const solved = fallback == null ? mode : withHitAssumption(mode, { ...DEFAULT_ASSUME, hitCount: String(fallback) });
       const { best, rows } = solveMatchup(enemy, solved, { shieldCleared });
@@ -229,9 +233,21 @@ function wikiReferenceBlock(reference, unit) {
   </div>`;
 }
 
+function pelletControls(mode, c) {
+  const count = Number(effectiveAssume(mode).hitCount);
+  const pct = pelletPct(c, count);
+  return html`<div class="assumptions pellet-range">
+    <label for="pellet-pct">명중률 <b data-pct-label>${pct}%</b> <span class="faint" data-pct-count>펠릿 ${c.max}개 중 ${count}개가 이 부위에 명중</span></label>
+    <input id="pellet-pct" type="range" min="10" max="100" step="10" value="${pct}" data-assume-pct data-min="${c.min}" data-max="${c.max}" aria-valuetext="${pct}%, 펠릿 ${count}개">
+    <div class="range-scale" aria-hidden="true"><span>10%</span><span>50%</span><span>100%</span></div>
+    <p>기본은 펠릿이 모두 맞는다고 계산합니다. 거리가 멀거나 조준이 어긋나면 일부만 맞으니, 명중률을 낮춰 다시 볼 수 있습니다. ${assumptionSummary(withHitAssumption(mode, effectiveAssume(mode)))}</p>
+  </div>`;
+}
+
 function assumptionControls(mode) {
   const c = mode.hitCondition;
   if (!c) return '';
+  if (c.kind === 'pellets') return pelletControls(mode, c);
   const unit = c.kind === 'arcs' ? '회' : '개';
   const label = { arcs: '한 발당 이 부위 전격 명중 수', bomblets: '한 발당 이 부위 자탄 명중 수', pellets: '한 발당 이 부위 펠릿 명중 수', shrapnel: '폭발 1회당 이 부위 파편 명중 수' }[c.kind] || '이 부위 명중 수';
   const options = Array.from({ length: c.max - c.min + 1 }, (_, i) => c.min + i);
@@ -332,7 +348,7 @@ function compareAssumptions() {
   return Object.fromEntries(compare.picks.map(pick => {
     const mode = profileOf(pick.weaponId)?.modes.find(item => item.id === pick.modeId) || profileOf(pick.weaponId)?.modes[0];
     const own = pick.weaponId === state.weapon && state.assume.hitCount !== '';
-    const fallback = mode?.hitCondition?.default;
+    const fallback = defaultCount(mode);
     return [pickKey({ ...pick, modeId: pick.modeId || mode?.id }), own ? state.assume : fallback != null ? { ...DEFAULT_ASSUME, hitCount: String(fallback) } : DEFAULT_ASSUME];
   }));
 }
@@ -347,7 +363,7 @@ function compareContent() {
   const cell = entry => {
     if (entry.status === 'route') {
       const outcome = outcomeOf({ outcome: entry.outcome, target: {} });
-      return html`<td class="${entry.hits === fewest ? 'best' : ''}"><b class="compare-hits">${num(entry.hits)}${unit(entry)}${entry.lowerBound ? '+' : ''}</b> ${badge(outcome.label, outcome.tone)}<small>${partName(entry)}${entry.conditional ? ' · 선행 조건' : ''}${entry.fragmentsExcluded ? ' · 파편 제외' : entry.assumption ? ' · 명중 수 가정' : ''}</small></td>`;
+      return html`<td class="${entry.hits === fewest ? 'best' : ''}"><b class="compare-hits">${num(entry.hits)}${unit(entry)}${entry.lowerBound ? '+' : ''}</b> ${badge(outcome.label, outcome.tone)}<small>${partName(entry)}${entry.conditional ? ' · 선행 조건' : ''}${entry.fragmentsExcluded ? ' · 파편 제외' : entry.allPelletsAssumed ? ' · 펠릿 전부 명중' : entry.assumption ? ' · 명중 수 가정' : ''}</small></td>`;
     }
     const label = { assume: '명중 수 가정 필요', none: '처치 경로 없음', unsupported: '계산 미지원' }[entry.status] || '계산 보류';
     return html`<td><span class="faint">${label}</span>${entry.reason ? html`<small>${entry.reason}</small>` : ''}</td>`;
@@ -426,12 +442,24 @@ export function mount(container, context) {
   root.addEventListener('change', event => {
     const target = event.target;
     if (target.matches('[data-shield]')) { state.shield = target.checked; renderMain(); syncUrl(); }
+    if (target.matches('[data-assume-pct]')) {
+      state.assume.hitCount = String(pelletCount({ min: Number(target.dataset.min), max: Number(target.dataset.max) }, Number(target.value)));
+      renderMain();
+      $('[data-assume-pct]', root)?.focus({ preventScroll: true });
+    }
     if (target.dataset.assume) {
       const key = target.dataset.assume;
       state.assume[key] = target.type === 'checkbox' ? target.checked : target.value;
       if (key === 'hitCount' && !(Number(target.value) > 0)) state.assume.bombletDirect = false;
       renderMain();
     }
+  });
+  root.addEventListener('input', event => {
+    const range = event.target.closest('[data-assume-pct]');
+    if (!range) return;
+    const count = pelletCount({ min: Number(range.dataset.min), max: Number(range.dataset.max) }, Number(range.value));
+    $('[data-pct-label]', root).textContent = `${range.value}%`;
+    $('[data-pct-count]', root).textContent = `펠릿 ${range.dataset.max}개 중 ${count}개가 이 부위에 명중`;
   });
   root.addEventListener('click', event => {
     const target = event.target.closest('button');

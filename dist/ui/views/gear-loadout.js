@@ -103,7 +103,7 @@ function answerLine(answer) {
   if (!answer) return html`<span class="faint">—</span>`;
   const outcome = answer.outcome ? outcomeOf({ outcome: answer.outcome, target: { resultLabel: answer.resultLabel } }) : null;
   return html`<span class="lo-answer">${thumb(answer.weaponId, 28)}<span><b>${nameOf(answer.weaponId)}</b>${answer.modeName ? html` <small>${answer.modeName}</small>` : ''}<br>
-    <small>${answer.partName || ''}${answer.hits != null ? ` · ${hitsText(answer)}` : ''}${magsText(answer) ? ` · ${magsText(answer)}` : ''}${answer.fragmentsExcluded ? ' · 파편 제외' : answer.assumption ? ' · 명중 수 가정' : ''}</small></span>${outcome ? badge(outcome.label, outcome.tone) : ''}${answer.conditional ? badge('조건부', 'conditional') : ''}</span>`;
+    <small>${answer.partName || ''}${answer.hits != null ? ` · ${hitsText(answer)}` : ''}${magsText(answer) ? ` · ${magsText(answer)}` : ''}${answer.fragmentsExcluded ? ' · 파편 제외' : answer.allPelletsAssumed ? ' · 펠릿 전부 명중' : answer.assumption ? ' · 명중 수 가정' : ''}</small></span>${outcome ? badge(outcome.label, outcome.tone) : ''}${answer.conditional ? badge('조건부', 'conditional') : ''}</span>`;
 }
 
 function coverageSection(result, faction) {
