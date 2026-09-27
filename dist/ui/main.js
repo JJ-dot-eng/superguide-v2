@@ -105,6 +105,29 @@ for (const link of $$('[data-tab]')) {
   }
 }
 
+// --- Theme -----------------------------------------------------------------------
+// Follows the system until the header toggle picks one; the choice is remembered
+// in this browser only (index.html applies it before the stylesheet paints).
+const THEME_KEY = 'hd2-theme';
+const THEME_COLORS = { dark: '#101211', light: '#f4f5f6' };
+const systemTheme = () => (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+const currentTheme = () => document.documentElement.dataset.theme || systemTheme();
+function showTheme() {
+  const theme = currentTheme();
+  const button = $('[data-action="theme"]');
+  button?.setAttribute('aria-label', theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+  button?.setAttribute('title', theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+  for (const meta of $$('meta[name="theme-color"]')) meta.content = document.documentElement.dataset.theme ? THEME_COLORS[theme] : meta.media.includes('light') ? THEME_COLORS.light : THEME_COLORS.dark;
+}
+function toggleTheme() {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem(THEME_KEY, next); } catch {}
+  showTheme();
+}
+showTheme();
+matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', showTheme);
+
 // --- Global actions -------------------------------------------------------------
 document.addEventListener('click', event => {
   // The skip link must move focus, not change the routed hash.
@@ -112,6 +135,7 @@ document.addEventListener('click', event => {
   const action = event.target.closest('[data-action]')?.dataset.action;
   if (action === 'palette') openPalette();
   if (action === 'method') import('./views/method.js').then(module => module.openMethod(ctx));
+  if (action === 'theme') toggleTheme();
 });
 document.addEventListener('keydown', event => {
   const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
