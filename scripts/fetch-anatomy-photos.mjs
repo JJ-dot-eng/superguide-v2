@@ -24,11 +24,17 @@ const snapshot = JSON.parse(await readFile(new URL('db/source/wiki_anatomy.json'
 const manifestUrl = new URL('scripts/anatomy-webp.json', root);
 const manifest = JSON.parse(await readFile(manifestUrl, 'utf8'));
 
-const get = async (url, as = 'json') => {
-  const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(30000) });
-  if (!res.ok) throw new Error(`${res.status} ${url}`);
-  await new Promise(resolve => setTimeout(resolve, 250));
-  return as === 'json' ? res.json() : Buffer.from(await res.arrayBuffer());
+const get = async (url, as = 'json', tries = 3) => {
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(30000) });
+    if (!res.ok) throw new Error(`${res.status} ${url}`);
+    await new Promise(resolve => setTimeout(resolve, 250));
+    return as === 'json' ? await res.json() : Buffer.from(await res.arrayBuffer());
+  } catch (error) {
+    if (tries <= 1) throw error;
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    return get(url, as, tries - 1);
+  }
 };
 const imageInfo = async (file, width) => {
   const params = new URLSearchParams({ action: 'query', format: 'json', formatversion: '2', prop: 'imageinfo', iiprop: 'url|size', iiurlwidth: String(width), titles: `File:${file}` });

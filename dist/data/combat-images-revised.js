@@ -1572,5 +1572,368 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "veracitor": {
+    "carapace": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-carapace.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-carapace-thumb.webp",
+        "title": "Veracitor Carapace Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Carapace_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Carapace_Front.png?cc27e3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Carapace_Front.png/800px-Veracitor_Carapace_Front.png?cc27e3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Carapace_Front.png/320px-Veracitor_Carapace_Front.png?cc27e3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "5edd1147b0d671f0b888d9cd71a3f2f481b29832dff6785eb5a0c0664ed0db7f",
+        "thumbnailSha256": "c49eccf624d9a05144fcbcdf736606dbd03e98d8f4529c89725a83bf2f2e6fde",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "cockpit": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-cockpit.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-cockpit-thumb.webp",
+        "title": "Veracitor Cockpit Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Cockpit_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Cockpit_Front.png?e21649",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Cockpit_Front.png/800px-Veracitor_Cockpit_Front.png?e21649",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Cockpit_Front.png/320px-Veracitor_Cockpit_Front.png?e21649",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "5613aa0a15203cf9c92fed1ad41acff9c10a922f0a92190ceaf6eaa86756452d",
+        "thumbnailSha256": "173043501421cc9d98472ace7f7503bb4e90cc706a3e1c0f228c0e7d515a0d6a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-shoulder-thumb.webp",
+        "title": "Veracitor Shoulders Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Shoulders_Front.png?437ea8",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Shoulders_Front.png/800px-Veracitor_Shoulders_Front.png?437ea8",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Shoulders_Front.png/320px-Veracitor_Shoulders_Front.png?437ea8",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "316bb3aa4d7b1a6c2ab8728f0579cd63824831328d50818185415dc625b548b8",
+        "thumbnailSha256": "05f79323d74e54a00a8dfadd3be24f168f161ecddc04df8aad9c48477608a1b5",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "upper-arm": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-upper-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-upper-arm-thumb.webp",
+        "title": "Veracitor Upper Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Upper_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Upper_Arms_Front.png?ef45be",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Upper_Arms_Front.png/800px-Veracitor_Upper_Arms_Front.png?ef45be",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Upper_Arms_Front.png/320px-Veracitor_Upper_Arms_Front.png?ef45be",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "900010b53ded4ef34650eedbfc5be01a2368fe8e75b9ae7277c7e165a0d497e0",
+        "thumbnailSha256": "dc60030a73cfa8b8dd100775d2b55f989489d50fdf872f49f38234fcc5095e2c",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "lower-arm": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-lower-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-lower-arm-thumb.webp",
+        "title": "Veracitor Lower Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Lower_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Lower_Arms_Front.png?6bd2f5",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Lower_Arms_Front.png/800px-Veracitor_Lower_Arms_Front.png?6bd2f5",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Lower_Arms_Front.png/320px-Veracitor_Lower_Arms_Front.png?6bd2f5",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "651a93a97ca6c939b6ef192bd8c2aa9587a96f91cd64f15b7b246ae42edcd6ba",
+        "thumbnailSha256": "9672389cd1545eef05d6369add6a78b0df41ea570ce17713d8d5656e41294218",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm-weakspot": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-arm-weakspot.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-arm-weakspot-thumb.webp",
+        "title": "Veracitor Arm Weakspots.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Arm_Weakspots.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Arm_Weakspots.png?66fcd7",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Arm_Weakspots.png/800px-Veracitor_Arm_Weakspots.png?66fcd7",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Arm_Weakspots.png/320px-Veracitor_Arm_Weakspots.png?66fcd7",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "fe6c3416986ea697b2389e744da2b849e7239d6d5f7d30652bbca94bd08f2ed8",
+        "thumbnailSha256": "b1700819180411385dd9d96aa869aa453aa6bfc47ff00b83f7ba24e5aeac6309",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-hip": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-rear-hip.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-rear-hip-thumb.webp",
+        "title": "Veracitor Hips Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Hips_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Hips_Side.png?2c2490",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Hips_Side.png/800px-Veracitor_Hips_Side.png?2c2490",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Hips_Side.png/320px-Veracitor_Hips_Side.png?2c2490",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6411396d735347248b745b7659cc8c83834807ee7f75d5f309e4d10038e47cd3",
+        "thumbnailSha256": "32597888aa55b9341bb6ed1016acd659dbc0303c942e4f2bf182c1d956c51372",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "upper-leg": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-upper-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-upper-leg-thumb.webp",
+        "title": "Veracitor Upper Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Upper_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Upper_Legs_Front.png?8e9feb",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Upper_Legs_Front.png/800px-Veracitor_Upper_Legs_Front.png?8e9feb",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Upper_Legs_Front.png/320px-Veracitor_Upper_Legs_Front.png?8e9feb",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "7515d877682ac8df4bbd86312bfd55c41afcef44e841e85b9377f07796ec1bc0",
+        "thumbnailSha256": "da2de74bf076aef3746580779291935039a9a98a3419ad6b6919c47d20ba2254",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "lower-leg": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-lower-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-lower-leg-thumb.webp",
+        "title": "Veracitor Lower Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Lower_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Lower_Legs_Front.png?a7a3b9",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Lower_Legs_Front.png/800px-Veracitor_Lower_Legs_Front.png?a7a3b9",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Lower_Legs_Front.png/320px-Veracitor_Lower_Legs_Front.png?a7a3b9",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "1c1a808023760b51dd414d4edc9e235b5ba06d47bbbec257b0e5b40d3f5d8551",
+        "thumbnailSha256": "5d43f42be522334d38ed0f485b4ebe3085a60ff1fdfe8e58c2d64958df321aaa",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-veracitor-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-veracitor-rear-leg-thumb.webp",
+        "title": "Veracitor Rear Leg Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Veracitor_Rear_Leg_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Veracitor_Rear_Leg_Front.png?bf7fad",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Rear_Leg_Front.png/800px-Veracitor_Rear_Leg_Front.png?bf7fad",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Veracitor_Rear_Leg_Front.png/320px-Veracitor_Rear_Leg_Front.png?bf7fad",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "428f1412267b02365158876626ee87f3fa5e4ffeb933f037556141e1bd51b438",
+        "thumbnailSha256": "17d463809b462a83753f06b8730032ad521b05ca5b04d49c5d189ee100313a5f",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "gatekeeper": {
+    "carapace": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-carapace.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-carapace-thumb.webp",
+        "title": "Gatekeeper Carapace Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Carapace_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Carapace_Front.png?fa323d",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Carapace_Front.png/800px-Gatekeeper_Carapace_Front.png?fa323d",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Carapace_Front.png/320px-Gatekeeper_Carapace_Front.png?fa323d",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "44036c84592f7f3bf2a336f33f4823e24d64ce1a4d2a4d8b054356b7c60685b0",
+        "thumbnailSha256": "5d85bd09ed27817606c387666afeace2cf347ddcb9b872ece32c8df93565c1ff",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "cockpit": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-cockpit.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-cockpit-thumb.webp",
+        "title": "Gatekeeper Cockpit Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Cockpit_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Cockpit_Front.png?4f9706",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Cockpit_Front.png/800px-Gatekeeper_Cockpit_Front.png?4f9706",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Cockpit_Front.png/320px-Gatekeeper_Cockpit_Front.png?4f9706",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "956514475949718da46328a5c2751a595786090985a2bcf82c48cf4b151fb4e0",
+        "thumbnailSha256": "f8fa74a036963c05d2f0fbf76a125476e89542af0fa73f32606932d6d2953f3a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "shoulder-armor": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-shoulder-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-shoulder-armor-thumb.webp",
+        "title": "Gatekeeper Shoulders Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Shoulders_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Shoulders_Armor_Front.png?a312e6",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Shoulders_Armor_Front.png/800px-Gatekeeper_Shoulders_Armor_Front.png?a312e6",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Shoulders_Armor_Front.png/320px-Gatekeeper_Shoulders_Armor_Front.png?a312e6",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "53b65abec37f89ab13f6fc140777a546fb498e7fad6aef133389054f7b552673",
+        "thumbnailSha256": "d988e21545024f62106ae3cab2899feaa339783079635e66489a96ffb14d3d9a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm-armor": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-arm-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-arm-armor-thumb.webp",
+        "title": "Gatekeeper Arms Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Arms_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Arms_Armor_Front.png?82f97e",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Arms_Armor_Front.png/800px-Gatekeeper_Arms_Armor_Front.png?82f97e",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Arms_Armor_Front.png/320px-Gatekeeper_Arms_Armor_Front.png?82f97e",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "e8861023b4e5e55d21ea085a651585051de5a607e510dc3ebfea467e5edfd5ad",
+        "thumbnailSha256": "00ac76e8045678a9a34a0f8eb9c283ae155117410f12417d9ef05101d2b45726",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-arm-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-arm-armor-exposed-thumb.webp",
+        "title": "Gatekeeper Armor Broken Arms Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Armor_Broken_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Armor_Broken_Arms_Front.png?c5b1e4",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Armor_Broken_Arms_Front.png/800px-Gatekeeper_Armor_Broken_Arms_Front.png?c5b1e4",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Armor_Broken_Arms_Front.png/320px-Gatekeeper_Armor_Broken_Arms_Front.png?c5b1e4",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "eb998c2067c8179fd5816c7059a2e4f646df4a5ff81045d864b18088e1d1f5b1",
+        "thumbnailSha256": "07adee7be0f9fd23ccec76da34c4661bbf722cee4e2bd765211a45e2314bf770",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "gun": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-gun.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-gun-thumb.webp",
+        "title": "Gatekeeper Guns Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Guns_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Guns_Front.png?1b2a80",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Guns_Front.png/800px-Gatekeeper_Guns_Front.png?1b2a80",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Guns_Front.png/320px-Gatekeeper_Guns_Front.png?1b2a80",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "5583580d56fe95226fbbd69fdbba55c9ba98f84e4b5bead5c44444c175423c7d",
+        "thumbnailSha256": "c4f3d436810db5ced0cbe7a74bf61f7fa92957d2898c43acafbc4912f18eff53",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "gun-weakspot": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-gun-weakspot.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-gun-weakspot-thumb.webp",
+        "title": "Gatekeeper Gun Weakspots Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Gun_Weakspots_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Gun_Weakspots_Front.png?6e46ec",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Gun_Weakspots_Front.png/800px-Gatekeeper_Gun_Weakspots_Front.png?6e46ec",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Gun_Weakspots_Front.png/320px-Gatekeeper_Gun_Weakspots_Front.png?6e46ec",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8ea0070ef7dea9a9a3b9dcb1a1df1ef4d0748937d313f819f441e4af6d31f32d",
+        "thumbnailSha256": "22caf5798e03b2f79d131d43fd08edc91fe8920fd5593e4aaa23c4ae8daca0f3",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "hip": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-hip.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-hip-thumb.webp",
+        "title": "Gatekeeper Hips Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Hips_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Hips_Front.png?a0c392",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Hips_Front.png/800px-Gatekeeper_Hips_Front.png?a0c392",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Hips_Front.png/320px-Gatekeeper_Hips_Front.png?a0c392",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d6ad71d0d4a00051108e538d1f03bf26503b41c4f5c3034b71d7a6c3f89c9451",
+        "thumbnailSha256": "9f5cada9ff986be12ac27e64980a4d9eed28ddd6d4e736e203829fbc46a8c7b7",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "internals": [
+      {
+        "src": "./assets/anatomy/revised-gatekeeper-internals.webp",
+        "thumbnail": "./assets/anatomy/revised-gatekeeper-internals-thumb.webp",
+        "title": "Gatekeeper Internals Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Gatekeeper_Internals_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Gatekeeper_Internals_Side.png?4e8d7f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Internals_Side.png/800px-Gatekeeper_Internals_Side.png?4e8d7f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Gatekeeper_Internals_Side.png/320px-Gatekeeper_Internals_Side.png?4e8d7f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0091761a619a7386dab19a668d127011fdf89527099834f6a9cb5b7f7d268554",
+        "thumbnailSha256": "4be0de1883a41acf27686dc506c9a0f2710d6cc5bcd7bb96c4cceaea0d8954c0",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

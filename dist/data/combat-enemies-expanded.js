@@ -3652,6 +3652,11 @@ export const expandedEnemies = [
       "armor": 2
     },
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135034,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyOmitted": {
+      "Shield": "The cockpit shield is the shield toggle (cleared before counting the pilot), not a part"
+    },
     "main": {
       "hp": 3000,
       "armor": 3,
@@ -3741,6 +3746,136 @@ export const expandedEnemies = [
         "prerequisiteNote": "외피 제거에 쓴 공격과 이전 본체 피해는 제외한 조건입니다.",
         "isolated": true,
         "sourcePart": "Internals (2)"
+      },
+      {
+        "id": "carapace",
+        "name": "외피 한 장",
+        "hp": 400,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 50,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "몸통을 덮은 외피 한 장입니다. 부숴도 죽지 않지만 그 아래 내부가 드러납니다.",
+        "sourcePart": "Carapace (2)"
+      },
+      {
+        "id": "cockpit",
+        "name": "조종석",
+        "hp": 1600,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "kill",
+        "tip": "조종사를 감싼 조종석 외벽을 맞히세요. 파괴하면 죽습니다.",
+        "sourcePart": "Cockpit"
+      },
+      {
+        "id": "shoulder",
+        "name": "어깨 한쪽",
+        "hp": 800,
+        "armor": 2,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "팔이 붙은 어깨 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Shoulders (2)"
+      },
+      {
+        "id": "upper-arm",
+        "name": "위팔 한쪽",
+        "hp": 800,
+        "armor": 2,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "팔 위쪽 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Upper Arms (2)"
+      },
+      {
+        "id": "lower-arm",
+        "name": "아래팔 한쪽",
+        "hp": 800,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 0,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "무기를 든 아래팔 하나입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.",
+        "sourcePart": "Lower Arms (2)"
+      },
+      {
+        "id": "arm-weakspot",
+        "name": "팔 약점 한 곳",
+        "hp": 800,
+        "armor": 1,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 0,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "팔의 얇은 약점입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.",
+        "sourcePart": "Arm Weakspots (2)"
+      },
+      {
+        "id": "rear-hip",
+        "name": "뒤쪽 고관절",
+        "hp": 1600,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "몸 뒤쪽의 고관절입니다. 앞쪽 고관절보다 장갑이 두껍고, 파괴하면 죽습니다.",
+        "sourcePart": "Rear Hip"
+      },
+      {
+        "id": "upper-leg",
+        "name": "윗다리 한쪽",
+        "hp": 1600,
+        "armor": 2,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "다리 위쪽 하나를 계속 맞히세요. 파괴하면 죽습니다.",
+        "sourcePart": "Upper Legs (2)"
+      },
+      {
+        "id": "lower-leg",
+        "name": "아랫다리 한쪽",
+        "hp": 1600,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "다리 아래쪽 하나를 계속 맞히세요. 파괴하면 죽습니다.",
+        "sourcePart": "Lower Legs (2)"
+      },
+      {
+        "id": "rear-leg",
+        "name": "뒷다리",
+        "hp": 1600,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "몸 뒤쪽의 다리를 계속 맞히세요. 파괴하면 죽습니다.",
+        "sourcePart": "Rear Leg"
       }
     ],
     "spearLock": true
@@ -3761,6 +3896,15 @@ export const expandedEnemies = [
       "armor": 2
     },
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135035,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyMerged": {
+      "Legs (3)": "leg",
+      "Arms (2)": "exposed-arm"
+    },
+    "anatomyOmitted": {
+      "Shield": "The cockpit shield is the shield toggle (cleared before counting the pilot), not a part"
+    },
     "main": {
       "hp": 2500,
       "armor": 4,
@@ -3857,9 +4001,129 @@ export const expandedEnemies = [
           "overflowCap": false,
           "effect": "kill",
           "tip": "벗겨진 다리에 다음 공격을 맞히세요.",
-          "sourcePart": "Legs (Broken Armor) (3)"
+          "sourcePart": "Broken: Legs (Broken Armor) (3)"
         },
         "sourcePart": "Leg Armor (6)"
+      },
+      {
+        "id": "carapace",
+        "name": "외피 한 장",
+        "hp": 400,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 20,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "몸통을 덮은 외피 한 장입니다. 부숴도 죽지 않지만 그 아래 내부가 드러납니다.",
+        "sourcePart": "Carapace (2)"
+      },
+      {
+        "id": "cockpit",
+        "name": "조종석",
+        "hp": 1200,
+        "armor": 4,
+        "durability": 80,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": true,
+        "effect": "kill",
+        "tip": "조종사를 감싼 조종석 외벽을 맞히세요. 파괴하면 죽습니다.",
+        "sourcePart": "Cockpit"
+      },
+      {
+        "id": "shoulder-armor",
+        "name": "어깨 장갑 한쪽",
+        "hp": 200,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 20,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "어깨를 덮은 장갑 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Shoulder Armor (2)"
+      },
+      {
+        "id": "arm-armor",
+        "name": "팔 장갑 → 팔",
+        "hp": 200,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 20,
+        "overflowCap": false,
+        "effect": "armor",
+        "tip": "팔을 덮은 장갑을 벗긴 뒤 드러난 팔을 맞히세요. 팔은 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.",
+        "sourcePart": "Arm Armor (2)",
+        "next": {
+          "id": "exposed-arm",
+          "name": "노출된 팔",
+          "hp": 1600,
+          "armor": 3,
+          "durability": 50,
+          "exdr": 100,
+          "toMain": 100,
+          "overflowCap": false,
+          "effect": "break",
+          "tip": "장갑이 벗겨진 팔입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.",
+          "sourcePart": "Broken: Arms (Broken Armor) (2)"
+        }
+      },
+      {
+        "id": "gun",
+        "name": "팔 무기 한 정",
+        "hp": 800,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 0,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "팔 끝의 무기 하나입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.",
+        "sourcePart": "Guns (2)"
+      },
+      {
+        "id": "gun-weakspot",
+        "name": "무기 약점 한 곳",
+        "hp": 800,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 0,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "팔 무기의 약점입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.",
+        "sourcePart": "Gun Weakspots (2)"
+      },
+      {
+        "id": "hip",
+        "name": "고관절 한 곳",
+        "hp": 800,
+        "armor": 3,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "몸통과 다리가 이어지는 관절 하나입니다. 파괴하면 죽습니다.",
+        "sourcePart": "Hips (3)"
+      },
+      {
+        "id": "internals",
+        "name": "노출된 내부",
+        "hp": 800,
+        "armor": 2,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "외피가 벗겨져 보이는 내부입니다. 파괴하면 죽습니다.",
+        "prerequisite": "외피 제거 후",
+        "prerequisiteNote": "외피 제거에 쓴 공격과 이전 본체 피해는 제외한 조건입니다.",
+        "isolated": true,
+        "sourcePart": "Broken: Internals (2)"
       }
     ],
     "spearLock": true
