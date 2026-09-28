@@ -4,7 +4,7 @@
 
 **[사이트 바로가기](https://jj-dot-eng.github.io/superguide-v2/)** · **[English](https://jj-dot-eng.github.io/superguide-v2/?lang=en)**
 
-> An unofficial Helldivers 2 field guide: stratagem and weapon stats, shots to kill for every enemy part, what destroys each structure, and loadout picks per faction. Switch to English with the **EN** button in the header, or open the site with `?lang=en`.
+> An unofficial Helldivers 2 field guide: stratagem and weapon stats, shots to kill for every enemy part, what destroys each structure, and loadout picks per faction. Switch to English with the **언어** (Language) button in the header, or open the site with `?lang=en`.
 
 ## 네 가지 도구
 
@@ -19,7 +19,7 @@
 - 초성(`ㄱㄷㅈㅁ` → 궤도 정밀 타격)이나 글자 순서를 섞은 검색(`도밀타`)도 됩니다.
 - 보고 있는 화면은 주소에 그대로 담기므로, 링크를 보내면 같은 화면이 열립니다.
 - 휴대폰에서도 편하게 볼 수 있고, 기기 설정에 따라 다크·라이트 모드로 표시됩니다.
-- 머리글의 **EN / 한국어** 버튼으로 언어를 바꿉니다. 브라우저 언어에 한국어가 없으면 처음부터 영어로 열리고, 영어 화면의 주소에는 `?lang=en`이 붙어 링크를 보내도 영어로 열립니다.
+- 머리글의 **언어** 버튼(영어 화면에서는 **Language**)으로 한국어와 영어를 오갑니다. 브라우저 언어에 한국어가 없으면 처음부터 영어로 열리고, 영어 화면의 주소에는 `?lang=en`이 붙어 링크를 보내도 영어로 열립니다.
 
 ## 자료 기준
 
