@@ -1827,7 +1827,7 @@ export const expandedEnemies = [
       },
       {
         "id": "pelvis",
-        "name": "골반",
+        "name": "골반부",
         "hp": 500,
         "armor": 2,
         "durability": 0,
@@ -1977,7 +1977,7 @@ export const expandedEnemies = [
       },
       {
         "id": "pelvis",
-        "name": "골반",
+        "name": "골반부",
         "hp": 500,
         "armor": 2,
         "durability": 0,
@@ -2126,7 +2126,7 @@ export const expandedEnemies = [
       },
       {
         "id": "pelvis",
-        "name": "골반",
+        "name": "골반부",
         "hp": 500,
         "armor": 2,
         "durability": 0,

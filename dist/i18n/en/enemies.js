@@ -875,4 +875,5 @@ export default {
   "몸 아래로 돌출된 지느러미 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.": "The fin sticking out below the body. Breaking it doesn't kill, but all the damage passes to main.",
   "옆 지느러미 한쪽": "One Side Fin",
   "몸 옆의 작은 지느러미 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.": "One of the small fins on its sides. Breaking it doesn't kill, but all the damage passes to main.",
+  "골반부": "Pelvis",
 };
