@@ -272,7 +272,11 @@ npm run check
 
 ## 적 부위 재확인 (위키 Anatomy)
 
-초기 적 데이터 일부는 대표 부위만 담고 있습니다. 위키 부위 표와 다시 대조한 적은 `anatomyRevision`(대조한 위키 revision)과 `anatomyCheckedAt`을 가지며, 모든 부위에 위키 행 이름 `sourcePart`를 붙입니다. 같은 수치의 행을 한 부위로 합쳐 보여 주는 경우는 `anatomyMerged: {위키 행 이름: 부위 id}`로 명시합니다.
+초기 적 데이터 일부는 대표 부위만 담고 있습니다. 위키 부위 표와 다시 대조한 적은 `anatomyRevision`(대조한 위키 revision)과 `anatomyCheckedAt`을 가지며, 모든 부위에 위키 행 이름 `sourcePart`를 붙입니다. 2026-09-28 기준 대형·초대형 적은 위키의 치명 부위를 모두 담고 있습니다.
+
+- 위키 페이지에 탭이 여러 개면(예: 스카우트 스트라이더의 Pilot, 팩토리 스트라이더의 Armor Broken) 두 번째 탭부터 행 이름을 `탭: 부위`로 씁니다.
+- 본체 행이 `Main`이 아니면(전차의 `Hull Main`) 적에 `anatomyMain`을, 자체 체력 풀을 가진 부위(포탑, 조종사)에는 그 풀의 행 `sourceMain`을 적습니다.
+- 같은 수치의 행을 한 부위로 합쳐 보여 주면 `anatomyMerged: {위키 행 이름: 부위 id}`, 부위로 표현하지 않는 행(보호막 토글로 다루는 보호막 등)은 `anatomyOmitted: {위키 행 이름: 영문 사유}`로 명시합니다.
 
 - `node scripts/fetch-enemy-anatomy.mjs`: 모든 전투 적 페이지의 Anatomy 표를 `source/wiki_anatomy.json`에 저장합니다(네트워크 필요).
 - `node scripts/fetch-anatomy-photos.mjs`: 재확인한 적 중 사진이 없는 부위의 위키 사진을 받아 webp로 변환하고 `dist/data/combat-images-revised.js`와 `scripts/anatomy-webp.json`에 기록합니다(네트워크, Python Pillow 필요).
