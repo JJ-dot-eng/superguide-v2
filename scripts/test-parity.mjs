@@ -50,9 +50,27 @@ const legacyUnsupported = {
   'autocannon:flak': '근접 신관과 파편의 명중 수에 따라 피해가 크게 달라져 고정 탄수를 계산하지 않습니다.',
 };
 assert(!golden.combat.some(row => row.weapon === 'wasp'), 'W.A.S.P. had no legacy combat profile');
+// Deliberate data updates from a later anatomy check keep each replaced
+// value in anatomyLegacy ('main.armor', 'head.armor', 'leg.next.hp'). Legacy
+// results are replayed on those values, so the engine is still checked
+// exactly; test-anatomy.mjs checks the new values against the wiki.
+function legacyEnemy(enemy) {
+  if (!enemy.anatomyLegacy) return enemy;
+  const copy = structuredClone(enemy);
+  for (const [path, value] of Object.entries(enemy.anatomyLegacy)) {
+    const [first, ...rest] = path.split('.');
+    let target = first === 'main' ? copy.main : copy.parts.find(part => part.id === first);
+    while (rest.length > 1) target = target[rest.shift()];
+    assert(target && Object.hasOwn(target, rest[0]), `${enemy.id}: legacy path ${path}`);
+    target[rest[0]] = value;
+  }
+  legacyReplayed.add(enemy.id);
+  return copy;
+}
+const legacyReplayed = new Set();
 let checked = 0, beamCarried = 0, addedRows = 0;
 for (const expected of golden.combat) {
-  const enemy = enemies.find(item => item.id === expected.enemy);
+  const enemy = legacyEnemy(enemies.find(item => item.id === expected.enemy));
   const currentMode = weaponProfiles[expected.weapon].modes.find(item => item.id === expected.mode);
   const key = `${expected.weapon}:${expected.mode}`;
   if (legacyUnsupported[key]) assert(expected.rows.every(row => row.h === null && row.o === 'unknown' && row.r === legacyUnsupported[key]), 'historical unsupported adapter must not bypass any numeric golden result');
@@ -164,4 +182,4 @@ for (const expected of golden.defense) {
   assert.deepEqual([0, cap / 2, cap, -1, undefined].map(value => shieldRecovery(item.defense, value)), expected.recovery, expected.id);
 }
 
-console.log(`PASS parity: ${golden.combat.length} matchups (${beamCarried} beam routes now carry past armor, ${addedRows} rows for re-checked anatomy), ${golden.demolition.length} demolition cases, ${golden.selections.length} overviews, ${picks} faction picks match ${golden.generatedFrom}.`);
+console.log(`PASS parity: ${golden.combat.length} matchups (${beamCarried} beam routes now carry past armor, ${addedRows} rows for re-checked anatomy, ${legacyReplayed.size} enemies replayed on legacy values), ${golden.demolition.length} demolition cases, ${golden.selections.length} overviews, ${picks} faction picks match ${golden.generatedFrom}.`);

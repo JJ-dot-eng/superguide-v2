@@ -12,34 +12,46 @@ const ok = (test, message) => { assert(test, message); checked++; };
 const eq = (actual, expected, message) => { assert.deepEqual(actual, expected, message); checked++; };
 
 const clean = text => text.replace(/<!--[\s\S]*?-->/g, '').replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
-const number = text => Number(text.replace(/[,%]/g, ''));
+// Wiki numbers may list values per difficulty ("130 [Default]<br>160 at
+// {{Difficulty|4}}"); the site uses the highest-difficulty value, the last one.
+const number = text => Number(String(text).split(/<br\s*\/?>/i).at(-1).replace(/\s*at\s*\{\{.*$/, '').replace(/\[[^\]]*\]/g, '').replace(/[,%]/g, '').trim());
 const titleOf = enemy => decodeURIComponent(enemy.source.split('/wiki/')[1]).replaceAll('_', ' ');
 const partsOf = enemy => enemy.parts.flatMap(part => [part, ...(part.next ? [part.next] : [])]);
+const isPoolRow = name => /(^|\s)Main$/.test(name);
 
 // A part that shares the main pool is mainOnly, or (in legacy entries) a part
 // with the full main health that passes at least all of it on, so both run
 // out on the same hit.
 const sharesMain = (part, main) => part.mainOnly === true || part.hp === main.hp && part.toMain >= 100;
+const unknown = part => Boolean(part.unknownReason);
 
 function matches(part, row, label, main) {
   if (/^Main\b/.test(row.health)) ok(sharesMain(part, part.main || main), `${label}: health ${row.health} shares a main pool`);
+  else if (/^Infinite/i.test(row.health)) ok(part.hp === null && unknown(part), `${label}: infinite health is left uncalculated`);
   else eq(part.hp, number(row.health), `${label}: health`);
   eq(part.armor, number(row.av), `${label}: armor`);
   eq(part.durability, number(row.durability), `${label}: durability`);
   eq(part.exdr, number(row.exdr), `${label}: explosive resistance`);
-  // "-" means a separate pool that passes nothing on, so its cap is moot.
-  // A separate device (partOnly) is solved on its own and passes nothing on.
-  if (row.percent_to_main === '-') ok(part.toMain === 0 || part.partOnly === true, `${label}: separate pool passes nothing to main`);
+  // A main-pool row is the pool itself, so it has no transfer of its own.
+  // "-" means a separate pool that passes nothing on (0%, a separate device,
+  // or a transfer the site leaves unverified); some rows leave the cap empty.
+  if (isPoolRow(clean(row.part_name))) ok(part.toMain >= 100, `${label}: hits the main pool directly`);
+  else if (row.percent_to_main === '-') ok(part.toMain === 0 || part.partOnly === true || part.toMain === null && unknown(part), `${label}: separate pool passes nothing to main`);
   else {
     eq(part.toMain, number(row.percent_to_main), `${label}: % to main`);
-    // Some "Armor Broken" rows leave the cap column empty.
-    if (row.dmg_cap_main !== undefined) eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
+    if (!['-', undefined].includes(row.dmg_cap_main)) eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
+    else ok(part.overflowCap !== undefined, `${label}: cap left unverified`);
   }
-  // Some pages put "Yes (Downs)" in the bleed column instead of fatal.
-  const fatal = /^Yes/.test(row.fatal) || /Downs/.test(row.bleed);
+  // "(Downs)" marks the fatal flag, but some pages put it in the bleed cell:
+  // "Yes (Downs)" is fatal, "No (Downs)" only knocks it down. When the bleed
+  // cell holds that flag, the page gives no bleed amount.
+  const downs = [row.fatal, row.bleed].find(cell => /Downs/.test(cell ?? ''));
+  const fatal = downs ? /^Yes/.test(downs) : /^Yes/.test(row.fatal);
   ok(fatal ? ['kill', 'bleed', 'down'].includes(part.effect) : ['break', 'armor'].includes(part.effect), `${label}: fatal ${row.fatal} vs ${part.effect}`);
-  const bleed = row.bleed.match(/^([\d,]+) \[-([\d.]+)\/s\]$/);
-  if (['None', 'No'].includes(row.bleed) || /Downs/.test(row.bleed)) ok(!part.staticConstitution && !part.constitution, `${label}: no extra health`);
+  const bleedCell = /Downs/.test(row.bleed ?? '') ? null : row.bleed;
+  const bleed = bleedCell?.match(/^([\d,]+) \[-?([\d.]+)\/s\]$/);
+  if (bleedCell === null) return;
+  if (['None', 'No', '-'].includes(bleedCell)) ok(!part.staticConstitution && !part.constitution, `${label}: no extra health`);
   else if (bleed && Number(bleed[2]) === 0) eq(part.staticConstitution, number(bleed[1]), `${label}: extra health that never decays`);
   else if (bleed) eq(part.constitution, number(bleed[1]), `${label}: bleed-out health`);
   else assert.fail(`${label}: unreadable bleed ${row.bleed}`);

@@ -25,29 +25,40 @@ const hunter = (id, name, hp, limbHp) => ({
   id, name, faction: '테르미니드', source: wiki('Hunter'), sourceRevision: 135080, family: 'hunter',
   main: main(hp, 0, 0, 0),
   note: '난이도 4 이상 기준입니다. 머리 체력은 40이며, 한쪽 다리 파괴와 처치를 구분합니다.',
+  // Every part matches Wiki Anatomy revision 136565 at difficulty 4+ (checked
+  // 2026-09-28). The wing was added then.
+  anatomyRevision: 136565, anatomyCheckedAt: '2026-09-28',
   parts: [
-    part('head', '머리', 40, 0, 0, 100, 100, true, 'kill', '도약하기 전이나 착지한 순간 작은 머리를 맞히세요.'),
-    part('claw', '앞발 한쪽', limbHp, 0, 0, 100, 40, false, 'break', '몸 앞의 길게 뻗은 앞발 한쪽입니다. 앞발 하나를 부쉈다고 즉사하는 부위는 아닙니다.'),
-    part('leg', '다리 한쪽', limbHp, 0, 0, 100, 50, false, 'break', '같은 다리를 맞혀 움직임과 도약을 방해하세요. 다른 다리에 나눠 맞힌 피해는 합치지 않습니다.'),
+    part('head', '머리', 40, 0, 0, 100, 100, true, 'kill', '도약하기 전이나 착지한 순간 작은 머리를 맞히세요.', { sourcePart: 'Head' }),
+    part('claw', '앞발 한쪽', limbHp, 0, 0, 100, 40, false, 'break', '몸 앞의 길게 뻗은 앞발 한쪽입니다. 앞발 하나를 부쉈다고 즉사하는 부위는 아닙니다.', { sourcePart: 'Claws (2)' }),
+    part('leg', '다리 한쪽', limbHp, 0, 0, 100, 50, false, 'break', '같은 다리를 맞혀 움직임과 도약을 방해하세요. 다른 다리에 나눠 맞힌 피해는 합치지 않습니다.', { sourcePart: 'Legs (4)' }),
+    part('wing', '날개 한쪽', 20, 0, 0, 100, 30, false, 'break', '등의 날개 한쪽입니다. 날개 파괴는 치명 부위 파괴가 아닙니다.', { sourcePart: 'Wings (2)' }),
   ],
 });
 const warrior = (id, name, hp, headHp, limbHp) => ({
   id, name, faction: '테르미니드', source: wiki('Warrior'), sourceRevision: 135082, family: 'warrior',
   main: main(hp, 1, 20, 0),
   note: '난이도 4 이상 기준입니다. 머리를 잃어도 잠시 돌진·공격할 수 있어, 머리 파괴는 출혈 시작과 즉사를 나눠 표시합니다.',
+  // Every part matches Wiki Anatomy revision 136532 at difficulty 4+ (checked 2026-09-28).
+  anatomyRevision: 136532, anatomyCheckedAt: '2026-09-28',
   parts: [
-    part('head', '머리', headHp, 1, 20, 100, 100, false, 'bleed', '정면 머리를 노리세요. 머리가 떨어진 뒤에도 다가올 수 있으니 거리를 두세요.', { constitution: 200 }),
-    part('claw', '앞발 한쪽', limbHp, 1, 0, 100, 40, false, 'break', '몸 앞의 집게 모양 앞발 하나를 노리는 조건입니다.'),
-    part('leg', '다리 한쪽', limbHp, 1, 0, 100, 40, false, 'break', '다리 하나를 끊어 이동을 방해할 수 있습니다. 절단 자체는 즉사 조건이 아닙니다.'),
+    part('head', '머리', headHp, 1, 20, 100, 100, false, 'bleed', '정면 머리를 노리세요. 머리가 떨어진 뒤에도 다가올 수 있으니 거리를 두세요.', { constitution: 200, sourcePart: 'Head' }),
+    part('claw', '앞발 한쪽', limbHp, 1, 0, 100, 40, false, 'break', '몸 앞의 집게 모양 앞발 하나를 노리는 조건입니다.', { sourcePart: 'Claws (2)' }),
+    part('leg', '다리 한쪽', limbHp, 1, 0, 100, 40, false, 'break', '다리 하나를 끊어 이동을 방해할 수 있습니다. 절단 자체는 즉사 조건이 아닙니다.', { sourcePart: 'Legs (4)' }),
   ],
 });
-const spewer = (id, name, page, armor, note, revision, family = id) => ({
+// Spewer parts match Wiki Anatomy (checked 2026-09-28); the spinal plates
+// and legs were added then. `anatomy` carries each page's revision.
+const spewer = (id, name, page, armor, note, revision, family = id, anatomy = {}) => ({
   id, name, faction: '테르미니드', source: wiki(page), sourceRevision: revision, family,
-  main: main(750, armor, 50, 0), note,
+  main: main(750, armor, 50, 0), note, ...anatomy, anatomyCheckedAt: '2026-09-28',
   parts: [
-    part('head', '머리', 300, armor, 0, 100, 100, true, 'kill', '앞쪽 머리 외피를 노리세요. 머리와 아래의 입은 장갑 수치가 다릅니다.'),
-    part('mouth', '입', 250, 0, 0, 100, 100, true, 'kill', '정면 아래쪽 입 자체를 직접 맞히세요. 위쪽 머리 장갑에 맞은 탄과 구분합니다.'),
-    part('butt', '후방 복부', 750, 0, 100, 0, 60, true, 'kill', '옆이나 뒤에서 부푼 복부를 쏘세요. 장갑은 없지만 내구도가 100%라 내구 피해가 중요합니다.'),
+    part('head', '머리', 300, armor, 0, 100, 100, true, 'kill', '앞쪽 머리 외피를 노리세요. 머리와 아래의 입은 장갑 수치가 다릅니다.', { sourcePart: 'Head' }),
+    part('mouth', '입', 250, 0, 0, 100, 100, true, 'kill', '정면 아래쪽 입 자체를 직접 맞히세요. 위쪽 머리 장갑에 맞은 탄과 구분합니다.', { sourcePart: 'Mouth' }),
+    part('butt', '후방 복부', 750, 0, 100, 0, 60, true, 'kill', '옆이나 뒤에서 부푼 복부를 쏘세요. 장갑은 없지만 내구도가 100%라 내구 피해가 중요합니다.', { sourcePart: 'Butt' }),
+    part('spinal-plates', '등 척추판', 500, 2, 80, 0, 20, true, 'kill', '등을 따라 난 척추판을 맞히세요. 파괴하면 죽지만 본체 전달은 20%뿐입니다.', { sourcePart: 'Spinal Plates' }),
+    part('front-leg', '앞다리 한쪽', 200, 2, 0, 100, 50, false, 'break', '몸 앞쪽 다리 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Front Legs (2)' }),
+    part('rear-leg', '뒷다리 한쪽', 250, 2, 30, 100, 50, false, 'break', '몸 뒤쪽 다리 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Rear Legs (2)' }),
   ],
 });
 const voteless = (id, name, hp, headHp, forearmHp) => ({
@@ -208,25 +219,32 @@ const originalEnemies = [
   {
     id: 'predator-hunter', name: '프레데터 헌터', faction: '테르미니드', family: 'predator-hunter',
     source: wiki('Predator_Hunter'), sourceRevision: 135098, checkedAt: '2026-09-17',
+    // Every part matches Wiki Anatomy revision 135098 (checked 2026-09-28).
+    anatomyRevision: 135098, anatomyCheckedAt: '2026-09-28',
     main: main(175, 0, 0, 0),
     note: '은신·담즙 발사·측면 도약을 사용하는 변종입니다. 본체 체력 175는 일반 고난이도 헌터 160과 다릅니다. 머리는 치명 부위이며 앞발·다리·날개 하나의 파괴는 처치가 아닙니다.',
     parts: [
-      part('body', '본체', 175, 0, 0, 0, 100, true, 'kill', '몸통 중앙에 집중하세요. 개별 부위 파괴 대신 본체 체력을 소진하는 경로입니다.', { mainOnly: true }),
-      part('head', '머리', 40, 0, 0, 100, 100, true, 'kill', '은신이 풀리거나 착지한 순간 작은 머리를 직접 맞히세요.'),
-      part('claw', '앞발 한쪽', 60, 0, 0, 100, 40, false, 'break', '길게 뻗은 앞발 한쪽입니다. 한쪽 파괴는 처치와 다릅니다.'),
-      part('leg', '다리 한쪽', 60, 0, 0, 100, 50, false, 'break', '같은 다리를 맞혀 이동과 도약을 방해하세요. 한 다리 파괴만으로 죽지 않습니다.'),
-      part('wing', '날개 한쪽', 20, 0, 0, 100, 30, false, 'break', '등의 날개 한쪽입니다. 날개 파괴는 치명 부위 파괴가 아닙니다.'),
+      part('body', '본체', 175, 0, 0, 0, 100, true, 'kill', '몸통 중앙에 집중하세요. 개별 부위 파괴 대신 본체 체력을 소진하는 경로입니다.', { mainOnly: true, sourcePart: 'Main' }),
+      part('head', '머리', 40, 0, 0, 100, 100, true, 'kill', '은신이 풀리거나 착지한 순간 작은 머리를 직접 맞히세요.', { sourcePart: 'Head' }),
+      part('claw', '앞발 한쪽', 60, 0, 0, 100, 40, false, 'break', '길게 뻗은 앞발 한쪽입니다. 한쪽 파괴는 처치와 다릅니다.', { sourcePart: 'Claws (2)' }),
+      part('leg', '다리 한쪽', 60, 0, 0, 100, 50, false, 'break', '같은 다리를 맞혀 이동과 도약을 방해하세요. 한 다리 파괴만으로 죽지 않습니다.', { sourcePart: 'Legs (4)' }),
+      part('wing', '날개 한쪽', 20, 0, 0, 100, 30, false, 'break', '등의 날개 한쪽입니다. 날개 파괴는 치명 부위 파괴가 아닙니다.', { sourcePart: 'Wings (2)' }),
     ],
   },
   warrior('warrior-hardened', '워리어', 325, 150, 100),
   {
     id: 'hive-guard', name: '하이브 가드', faction: '테르미니드', source: wiki('Hive_Guard'), sourceRevision: 135085,
+    // Every part matches Wiki Anatomy revision 136682 (checked 2026-09-28).
+    // Parts after the first three were added then.
+    anatomyRevision: 136682, anatomyCheckedAt: '2026-09-28',
     main: main(500, 2, 30, 0),
     note: '머리 장갑은 3, 노출된 사지는 1입니다. 머리 파괴 후에도 출혈 중 공격할 수 있습니다. 사지 한쪽의 파괴를 처치와 구분합니다.',
     parts: [
-      part('head', '머리 장갑', 250, 3, 35, 100, 75, false, 'bleed', '정면의 넓은 머리 장갑을 뚫으려면 AP 3 이상이 필요합니다.', { constitution: 200 }),
-      part('claw', '앞발 한쪽', 100, 1, 0, 100, 25, false, 'break', '머리 아래의 노출된 앞발을 맞히세요. 장갑판에 빗맞으면 관통 조건이 달라집니다.'),
-      part('rear-leg', '뒷다리 한쪽', 125, 1, 0, 100, 35, false, 'break', '옆이나 뒤에서 장갑으로 가리지 않은 뒷다리를 노리세요.'),
+      part('head', '머리 장갑', 250, 3, 35, 100, 75, false, 'bleed', '정면의 넓은 머리 장갑을 뚫으려면 AP 3 이상이 필요합니다.', { constitution: 200, sourcePart: 'Head' }),
+      part('claw', '앞발 한쪽', 100, 1, 0, 100, 25, false, 'break', '머리 아래의 노출된 앞발을 맞히세요. 장갑판에 빗맞으면 관통 조건이 달라집니다.', { sourcePart: 'Claws (2)' }),
+      part('rear-leg', '뒷다리 한쪽', 125, 1, 0, 100, 35, false, 'break', '옆이나 뒤에서 장갑으로 가리지 않은 뒷다리를 노리세요.', { sourcePart: 'Rear Legs (2)' }),
+      part('front-tarsal-plate', '앞다리 족판 한쪽', 125, 3, 0, 100, 45, false, 'break', '앞다리 앞을 덮은 두꺼운 족판입니다. 장갑 3이며 부숴도 죽지 않습니다.', { sourcePart: 'Frontal Tarsal Plate Armor (2)' }),
+      part('front-leg', '앞다리 한쪽', 125, 1, 0, 100, 45, false, 'break', '족판에 가리지 않은 앞다리 부분입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Front Legs (2)' }),
     ],
   },
   {
@@ -241,8 +259,11 @@ const originalEnemies = [
       part('leg', '다리 한쪽', 170, 1, 40, 100, 60, false, 'break', '장갑이 얇은 옆 다리를 노려 이동과 돌진 속도를 낮추세요.', { sourcePart: 'Legs (4)' }),
     ],
   },
-  spewer('bile-spewer-armored', '바일 스퓨어', 'Bile_Spewer', 3, '난이도 6 이상 기준으로 본체·머리 장갑은 3입니다. 입과 후방 복부에는 장갑이 없습니다.', 135087, 'bile-spewer'),
-  spewer('nursing-spewer', '너싱 스퓨어', 'Nursing_Spewer', 2, '노란 복부의 너싱 스퓨어 기준입니다. 고난도 바일 스퓨어의 장갑 수치를 적용하지 않습니다.', 135086),
+  // The wiki table gives armor 2 for the main body and head, also at the
+  // reviewed revision 135087; the earlier 3 came from a difficulty 6+ remark.
+  spewer('bile-spewer-armored', '바일 스퓨어', 'Bile_Spewer', 2, '너싱 스퓨어의 무장 변종으로, 위키 부위 표 기준 본체·머리 장갑은 2입니다. 입과 후방 복부에는 장갑이 없습니다.', 135087, 'bile-spewer',
+    { anatomyRevision: 136689, anatomyLegacy: { 'main.armor': 3, 'head.armor': 3 } }),
+  spewer('nursing-spewer', '너싱 스퓨어', 'Nursing_Spewer', 2, '노란 복부의 너싱 스퓨어 기준입니다.', 135086, 'nursing-spewer', { anatomyRevision: 136685 }),
   {
     id: 'stalker', name: '스토커', faction: '테르미니드', source: wiki('Stalker'), sourceRevision: 135091,
     main: main(800, 1, 50, 0),
@@ -284,11 +305,15 @@ const originalEnemies = [
   },
   {
     id: 'shrieker', name: '슈리커', faction: '테르미니드', source: wiki('Shrieker'), sourceRevision: 135081,
+    // Every part matches Wiki Anatomy revision 136531 (checked 2026-09-28).
+    // The limbs were added then.
+    anatomyRevision: 136531, anatomyCheckedAt: '2026-09-28',
     main: main(80, 0, 0, 0),
     note: '머리 또는 날개 한쪽을 파괴하면 추락합니다. 날개는 체력은 낮지만 내구도가 100%입니다. 떨어지는 사체도 피하세요.',
     parts: [
-      part('head', '머리', 30, 0, 0, 100, 100, true, 'kill', '날개 사이의 작은 머리를 노리세요.'),
-      part('wing', '날개 한쪽', 20, 0, 100, 100, 30, true, 'kill', '좌우 중 한쪽 날개에 직접 맞히세요. 날개의 내구 피해 기준으로 계산합니다.'),
+      part('head', '머리', 30, 0, 0, 100, 100, true, 'kill', '날개 사이의 작은 머리를 노리세요.', { sourcePart: 'Head' }),
+      part('wing', '날개 한쪽', 20, 0, 100, 100, 30, true, 'kill', '좌우 중 한쪽 날개에 직접 맞히세요. 날개의 내구 피해 기준으로 계산합니다.', { sourcePart: 'Wings (2)' }),
+      part('limbs', '다리', 30, 0, 0, 100, 40, false, 'break', '몸 아래의 다리입니다. 부숴도 추락하지 않습니다.', { sourcePart: 'Limbs' }),
     ],
   },
   {

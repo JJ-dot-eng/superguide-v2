@@ -67,6 +67,8 @@ export const expandedEnemies = [
     "sourceRevision": 135084,
     "note": "알파 커맨더가 소환하는 빠른 워리어입니다. 머리의 본체 전달률은 50%, 사지는 각각 50%로 일반 고난도 워리어의 100%/40%와 다릅니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136683,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 325,
       "armor": 1,
@@ -126,6 +128,8 @@ export const expandedEnemies = [
     "sourceRevision": 135083,
     "note": "머리 파괴는 출혈을 유발합니다. 몸통·본체로 처치하면 담즙 폭발이 발생할 수 있지만 머리를 제거한 뒤 출혈로 죽으면 폭발하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136684,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 325,
       "armor": 1,
@@ -185,6 +189,8 @@ export const expandedEnemies = [
     "sourceRevision": 135102,
     "note": "본체 내구도 50%, 머리 40%, 앞발 25%, 다리 35%로 일반 워리어와 다릅니다. 머리 제거 후 출혈로 죽으면 포자 폭발이 발생하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135102,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 325,
       "armor": 1,
@@ -244,6 +250,8 @@ export const expandedEnemies = [
     "sourceRevision": 135105,
     "note": "본체 체력은 250이지만 머리·앞발 장갑은 3입니다. 지상으로 드러난 부위를 맞히는 조건이며 땅속에서는 동일한 직격 조준 조건을 적용하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135105,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 250,
       "armor": 1,
@@ -303,6 +311,8 @@ export const expandedEnemies = [
     "sourceRevision": 135107,
     "note": "머리 장갑은 3, 본체 장갑은 2입니다. 땅 위로 드러난 부위를 조준하는 조건입니다. 땅속 폭발·가스·화염 피해와 지상 직격 조준을 혼동하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135107,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 750,
       "armor": 2,
@@ -4136,6 +4146,8 @@ export const expandedEnemies = [
     "sourceRevision": 133907,
     "note": "머리 파괴는 즉사 조건이 아닙니다. 팔과 발톱 하나의 파괴도 처치와 구분하며, 다리를 통해 본체 체력을 소진할 수 있습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136548,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 450,
       "armor": 1,

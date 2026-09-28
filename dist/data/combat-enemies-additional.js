@@ -7,6 +7,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Scavenger",
     "sourceRevision": 135076,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 136260,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 60,
       "armor": 0,
@@ -66,6 +68,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Bile_Spitter",
     "sourceRevision": 135077,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 136488,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 60,
       "armor": 0,
@@ -125,6 +129,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Pouncer",
     "sourceRevision": 135078,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 136502,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 60,
       "armor": 0,
@@ -184,6 +190,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Spore_Burst_Scavenger",
     "sourceRevision": 135100,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135100,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 60,
       "armor": 0,
@@ -243,6 +251,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Spore_Burst_Hunter",
     "sourceRevision": 135101,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135101,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 160,
       "armor": 0,
@@ -328,6 +338,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Trooper",
     "sourceRevision": 135109,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135109,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -399,6 +411,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Brawler",
     "sourceRevision": 135110,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135110,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -484,6 +498,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Commissar",
     "sourceRevision": 135111,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135111,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 1,
@@ -555,6 +571,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Rocket_Raider",
     "sourceRevision": 135113,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135113,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -711,6 +729,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Marauder",
     "sourceRevision": 135115,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135115,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -876,6 +896,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Jet_Brigade_Commissar",
     "sourceRevision": 135135,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135135,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -961,6 +983,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Jet_Brigade_Trooper",
     "sourceRevision": 135136,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135136,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -1046,6 +1070,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Jet_Brigade_MG_Raider",
     "sourceRevision": 135137,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135137,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -1225,6 +1251,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Incendiary_Rocket_Raider",
     "sourceRevision": 135174,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135174,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -1296,6 +1324,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Obtruder",
     "sourceRevision": 135037,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135037,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 400,
       "armor": 0,

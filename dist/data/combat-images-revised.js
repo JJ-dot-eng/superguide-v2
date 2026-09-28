@@ -1935,5 +1935,205 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "hunter-hardened": {
+    "wing": [
+      {
+        "src": "./assets/anatomy/revised-hunter-hardened-wing.webp",
+        "thumbnail": "./assets/anatomy/revised-hunter-hardened-wing-thumb.webp",
+        "title": "Hunter_Wings_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Hunter_Wings_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Hunter_Wings_Front.png?ca3a07",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Hunter_Wings_Front.png/800px-Hunter_Wings_Front.png?ca3a07",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Hunter_Wings_Front.png/320px-Hunter_Wings_Front.png?ca3a07",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3064e22b7157938bae2be81f6a47b6c04fb640d4c6e1fdf1a8886b430c6e12ce",
+        "thumbnailSha256": "b66826c1976708fa6f2d5deb7756fddff15d0bd62baf6370899cc302d756a6f6",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "hive-guard": {
+    "front-tarsal-plate": [
+      {
+        "src": "./assets/anatomy/revised-hive-guard-front-tarsal-plate.webp",
+        "thumbnail": "./assets/anatomy/revised-hive-guard-front-tarsal-plate-thumb.webp",
+        "title": "Hive Guard Frontal Tarsal Plate Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Hive_Guard_Frontal_Tarsal_Plate_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Hive_Guard_Frontal_Tarsal_Plate_Armor_Front.png?74ae4b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Hive_Guard_Frontal_Tarsal_Plate_Armor_Front.png/800px-Hive_Guard_Frontal_Tarsal_Plate_Armor_Front.png?74ae4b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Hive_Guard_Frontal_Tarsal_Plate_Armor_Front.png/320px-Hive_Guard_Frontal_Tarsal_Plate_Armor_Front.png?74ae4b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9dc66569584199d19c5a042e52d0609c0799044689e76f7bf0207fa5fa0d705b",
+        "thumbnailSha256": "953be67512087f2d5f0e84af240c66e79045f6fce2e8c8b47b9c94ec1a792042",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "front-leg": [
+      {
+        "src": "./assets/anatomy/revised-hive-guard-front-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-hive-guard-front-leg-thumb.webp",
+        "title": "Hive Guard Front Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Hive_Guard_Front_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Hive_Guard_Front_Legs_Front.png?249990",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Hive_Guard_Front_Legs_Front.png/800px-Hive_Guard_Front_Legs_Front.png?249990",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Hive_Guard_Front_Legs_Front.png/320px-Hive_Guard_Front_Legs_Front.png?249990",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "12fc90420533dced442d4f51a540b2f91860f8b0a643548f314b9b581700ec1e",
+        "thumbnailSha256": "90fe6cfd34a0e07941ba476202cf4ad3fa2f2900cb99134af5ee9eea7b6bc2bc",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "nursing-spewer": {
+    "spinal-plates": [
+      {
+        "src": "./assets/anatomy/revised-nursing-spewer-spinal-plates.webp",
+        "thumbnail": "./assets/anatomy/revised-nursing-spewer-spinal-plates-thumb.webp",
+        "title": "Nursing_Spewer_Spinal_Plates_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Nursing_Spewer_Spinal_Plates_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Nursing_Spewer_Spinal_Plates_Front.png?f777c0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Nursing_Spewer_Spinal_Plates_Front.png/800px-Nursing_Spewer_Spinal_Plates_Front.png?f777c0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Nursing_Spewer_Spinal_Plates_Front.png/320px-Nursing_Spewer_Spinal_Plates_Front.png?f777c0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "21b36780ce50571cc2cdac6b3348bd019773f9e71db62f923ecdf8cf23858150",
+        "thumbnailSha256": "9346eb6cbd6b1e12662bb12655e4be040fdba44dca6f946d75f249a9f5919a18",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "front-leg": [
+      {
+        "src": "./assets/anatomy/revised-nursing-spewer-front-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-nursing-spewer-front-leg-thumb.webp",
+        "title": "Nursing_Spewer_Front_Legs_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Nursing_Spewer_Front_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Nursing_Spewer_Front_Legs_Front.png?b82c4a",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Nursing_Spewer_Front_Legs_Front.png/800px-Nursing_Spewer_Front_Legs_Front.png?b82c4a",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Nursing_Spewer_Front_Legs_Front.png/320px-Nursing_Spewer_Front_Legs_Front.png?b82c4a",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c05f55a847641d080e2184df2591b394e8b04938f18f276e4c6e9e4983316ad1",
+        "thumbnailSha256": "6bf03f750295cdfb24014e65cdccc2b7d323863b1e288a879fccd252d9ca98dc",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-nursing-spewer-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-nursing-spewer-rear-leg-thumb.webp",
+        "title": "Nursing Spewer Rear Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Nursing_Spewer_Rear_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Nursing_Spewer_Rear_Legs_Front.png?de1f5f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Nursing_Spewer_Rear_Legs_Front.png/800px-Nursing_Spewer_Rear_Legs_Front.png?de1f5f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Nursing_Spewer_Rear_Legs_Front.png/320px-Nursing_Spewer_Rear_Legs_Front.png?de1f5f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "bda7425584abc5be2c44ac05c382d44a8a9566bd4009b4926e22a0f76e8590d1",
+        "thumbnailSha256": "726b2e1baa22d5dd12a41dabd1e6087834f0556837b259f20e4e907825fec624",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "bile-spewer-armored": {
+    "spinal-plates": [
+      {
+        "src": "./assets/anatomy/revised-bile-spewer-armored-spinal-plates.webp",
+        "thumbnail": "./assets/anatomy/revised-bile-spewer-armored-spinal-plates-thumb.webp",
+        "title": "Bile Spewer Spinal Plates Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Bile_Spewer_Spinal_Plates_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Bile_Spewer_Spinal_Plates_Front.png?8fd4dc",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Bile_Spewer_Spinal_Plates_Front.png/800px-Bile_Spewer_Spinal_Plates_Front.png?8fd4dc",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Bile_Spewer_Spinal_Plates_Front.png/320px-Bile_Spewer_Spinal_Plates_Front.png?8fd4dc",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "bb586e849d5ef0de37f75cc7b2128dd0592823e6daac4883126df4473d96b1e4",
+        "thumbnailSha256": "f302246071bfc591271d8fdf53cb650005c47d6dbd40d1609a46bf00611553de",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "front-leg": [
+      {
+        "src": "./assets/anatomy/revised-bile-spewer-armored-front-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-bile-spewer-armored-front-leg-thumb.webp",
+        "title": "Bile Spewer Front Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Bile_Spewer_Front_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Bile_Spewer_Front_Legs_Front.png?3308a8",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Bile_Spewer_Front_Legs_Front.png/800px-Bile_Spewer_Front_Legs_Front.png?3308a8",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Bile_Spewer_Front_Legs_Front.png/320px-Bile_Spewer_Front_Legs_Front.png?3308a8",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "30e98801bbe8a54bdf3f3c677636cda170a6f7b5fab06aeb11d7eac044327d6f",
+        "thumbnailSha256": "3e53c79c9ddc865457ccbf903123b19e475a8dde2d0c638e997b46f31cecc6aa",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-bile-spewer-armored-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-bile-spewer-armored-rear-leg-thumb.webp",
+        "title": "Bile Spewer Hind Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Bile_Spewer_Hind_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Bile_Spewer_Hind_Legs_Front.png?ca0288",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Bile_Spewer_Hind_Legs_Front.png/800px-Bile_Spewer_Hind_Legs_Front.png?ca0288",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Bile_Spewer_Hind_Legs_Front.png/320px-Bile_Spewer_Hind_Legs_Front.png?ca0288",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "ec3573db557509098293bce967e495fcdf454494bf6a6aac1285813b65ea1a2f",
+        "thumbnailSha256": "a9a74051b457fdf90116f202bc4abfb07e77e6d8e18a1ed9f3764f0f22a1bb0a",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "shrieker": {
+    "limbs": [
+      {
+        "src": "./assets/anatomy/revised-shrieker-limbs.webp",
+        "thumbnail": "./assets/anatomy/revised-shrieker-limbs-thumb.webp",
+        "title": "Shrieker Limbs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Shrieker_Limbs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Shrieker_Limbs_Front.png?bae532",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Shrieker_Limbs_Front.png/800px-Shrieker_Limbs_Front.png?bae532",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Shrieker_Limbs_Front.png/320px-Shrieker_Limbs_Front.png?bae532",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6d903596c5e62a34c5c6bb9a809e9c0957816459d26391bd612e944cade00998",
+        "thumbnailSha256": "09e8ca931aef046582ca36b9f5ce28f0f0ef83c4fbe8512e487386e5c2858eb6",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };
