@@ -166,6 +166,7 @@ function hero(enemy) {
     <div><span class="faction-tag">${enemy.faction}</span>${sizeTag(enemy)}<h1>${enemy.name}</h1>
       <div class="vitals">${vitals.map(([label, value]) => html`<span>${label}<b>${value}</b></span>`)}</div>
       <p class="note">${enemy.note}</p>
+      <p class="sources">${external(enemy.source, L('위키 항목', 'Wiki page'))}</p>
     </div>
   </section>
   ${enemy.shield ? html`<label class="toggle" style="margin-top:12px"><input type="checkbox" data-shield ${state.shield ? raw('checked') : ''}>
