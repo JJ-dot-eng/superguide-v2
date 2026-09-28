@@ -2,4 +2,5 @@
 await import('./test-parity.mjs');
 await import('./test-units.mjs');
 await import('./test-personal.mjs');
+await import('./test-anatomy.mjs');
 await import('./test-i18n.mjs');

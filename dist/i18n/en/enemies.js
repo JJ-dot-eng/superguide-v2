@@ -715,4 +715,13 @@ export default {
   "파괴된 지느러미 안쪽입니다.": "The inside of the destroyed fin.",
   "앞쪽 중앙 척추 외피입니다. 이 구역만 파괴해도 함선 전체가 즉시 죽는 것은 아닙니다.": "The outer shell of the front center spine. Destroying just this section does not kill the whole ship instantly.",
   "하부 빔 포탑 하나를 노리세요. 파괴하면 공격을 줄일 수 있지만 본체 전달 비율은 미확인입니다.": "Aim for one of the lower beam turrets. Destroying it can cut down its attacks, but its transfer to main is unverified.",
+  "옆구리의 몸통 장갑판 하나를 벗긴 뒤 같은 자리의 속살을 계속 공격하세요.": "Strip one torso armor plate on its flank, then keep hitting the inner flesh in the same spot.",
+  "장갑을 벗긴 몸통 속살입니다. 장갑 0·내구 70%이며 본체 체력을 공유합니다.": "The inner flesh under the stripped torso armor. Armor 0, durability 70%, and it shares main health.",
+  "뒤로 돌아가 꼬리 쪽의 단단한 복부 장갑을 맞히세요. 담즙낭과 다른 치명 부위입니다.": "Get behind it and hit the hard butt armor at the tail end. It's a fatal part, unlike the bile sacs.",
+  "머리 앞의 집게 모양 앞발 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.": "One of the pincer-like claws in front of the head. Breaking it doesn't kill, but all the damage passes to main health.",
+  "왼앞다리 장갑 → 살점": "Front Left Leg Armor → Flesh",
+  "적 기준 왼앞다리의 장갑판 하나를 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.": "Strip one armor plate on its front left leg (its own left), then keep hitting the flesh in the same spot.",
+  "체력 2,000과 줄지 않는 추가 체력 1,500을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.": "It dies once its 2,000 health and 1,500 extra health that never goes down are both used up, or earlier if main health runs out first.",
+  "왼앞다리를 뺀 나머지 다리 하나의 장갑판을 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.": "Strip an armor plate on any leg other than the front left one, then keep hitting the flesh in the same spot.",
+  "체력 2,000과 줄지 않는 추가 체력 2,000을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.": "It dies once its 2,000 health and 2,000 extra health that never goes down are both used up, or earlier if main health runs out first.",
 };

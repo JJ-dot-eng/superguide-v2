@@ -2,7 +2,8 @@ import { expandedCombatImages } from './combat-images-expanded.js';
 // Wiki-rendered anatomy images, served as WebP (quality 90) encodings of the Wiki PNGs whose hashes are recorded in sha256. thumbnailCrop is only the CSS viewing window; the enlarged view shows the full image.
 import { predatorHunterAnatomy } from './predator-hunter-images.js';
 import { additionalCombatImages } from './enemy-images-additional.js';
-export const combatImages = {
+import { revisedCombatImages } from './combat-images-revised.js';
+export const baseCombatImages = {
   ...additionalCombatImages,
   'predator-hunter': predatorHunterAnatomy,
   ...expandedCombatImages,
@@ -2048,3 +2049,6 @@ export const combatImages = {
     ]
   }
 };
+// Photos of parts added on a later anatomy check join each enemy's list.
+export const combatImages = Object.fromEntries([...new Set([...Object.keys(baseCombatImages), ...Object.keys(revisedCombatImages)])]
+  .map(id => [id, { ...baseCombatImages[id], ...revisedCombatImages[id] }]));

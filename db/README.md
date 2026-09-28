@@ -269,3 +269,13 @@ npm run check
 - G/40-K Melta Mine의 FLAMEWALL, K-2 Throwing Knife의 damage 직접 참조는 시간 단위를 확정하지 않습니다. 상태 지속시간·파편 명중 수·총 피해·거리 감쇠 등도 추정하지 않습니다.
 
 필드 이름은 기존 support/catalog와 맞췄지만 전투 계산기에 바로 투입할 어댑터는 아닙니다. combat-data의 `standard`/`explosion`/`explosionDurable`로 변환하고 단위·복수 공격 조건을 정한 뒤 연결해야 합니다. 현재 DB의 null을 피해 0으로 취급하면 안 됩니다.
+
+## 적 부위 재확인 (위키 Anatomy)
+
+초기 적 데이터 일부는 대표 부위만 담고 있습니다. 위키 부위 표와 다시 대조한 적은 `anatomyRevision`(대조한 위키 revision)과 `anatomyCheckedAt`을 가지며, 모든 부위에 위키 행 이름 `sourcePart`를 붙입니다. 같은 수치의 행을 한 부위로 합쳐 보여 주는 경우는 `anatomyMerged: {위키 행 이름: 부위 id}`로 명시합니다.
+
+- `node scripts/fetch-enemy-anatomy.mjs`: 모든 전투 적 페이지의 Anatomy 표를 `source/wiki_anatomy.json`에 저장합니다(네트워크 필요).
+- `node scripts/fetch-anatomy-photos.mjs`: 재확인한 적 중 사진이 없는 부위의 위키 사진을 받아 webp로 변환하고 `dist/data/combat-images-revised.js`와 `scripts/anatomy-webp.json`에 기록합니다(네트워크, Python Pillow 필요).
+- `scripts/test-anatomy.mjs`(`npm run check`에 포함): 재확인한 적마다 스냅샷 revision 일치, 모든 위키 행의 반영 여부, 체력·장갑·내구도·폭발 저항·본체 전달률·전달 상한·치명 여부·추가 체력을 대조합니다.
+
+새 부위는 기존 부위 뒤에 덧붙입니다. `test-parity.mjs`는 기존 부위의 결과가 legacy와 같은지 계속 확인하고, 새 부위는 기존 최단 경로보다 빠를 때만 최단 경로가 될 수 있습니다.

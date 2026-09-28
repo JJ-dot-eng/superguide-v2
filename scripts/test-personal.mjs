@@ -255,6 +255,10 @@ const melta = weaponProfiles.meltagun.modes.find(m => m.id === 'near');
 const impalerLeg = solveMatchup(enemy('impaler'), melta).rows.find(row => row.target.id === 'leg-armor');
 eq([impalerLeg.hits, impalerLeg.outcome, impalerLeg.via, impalerLeg.stages.length], [1, 'kill', 'part', 2]);
 eq(impalerLeg.stages.map(stage => [stage.part.id, stage.hits, Math.round(stage.contactSeconds * 1000), Math.round(stage.mainTotal)]), [['leg-armor', 1, 385, 500], ['leg-flesh', 0, 385, 500]]);
+// Bile Titan leg: armor 1000 (0.2747 shot, 1000 to main) then flesh 2000 plus
+// 2000 extra health that never decays (1.0989 shots) → 1.37 → 2 shots.
+const titanLeg = solveMatchup(enemy('bile-titan'), melta).rows.find(row => row.target.id === 'leg');
+eq([titanLeg.hits, titanLeg.outcome, titanLeg.via], [2, 'kill', 'part']);
 // A layer the beam cannot hurt after the armor breaks stops as armor removal.
 const armoredFlesh = { main: { hp: 5000, armor: 0, durability: 0, exdr: 0 }, parts: [{ id: 'plate', name: 'plate', hp: 1000, armor: 4, durability: 0, exdr: 0, toMain: 0, overflowCap: false, effect: 'armor', next: { id: 'core', name: 'core', hp: 100, armor: 9, durability: 0, exdr: 0, toMain: 100, overflowCap: false, effect: 'kill' } }] };
 eq((({ hits, outcome, reason }) => ({ hits, outcome, reason }))(solveMatchup(armoredFlesh, melta).rows[0]), { hits: 1, outcome: 'armor', reason: 'no-damage-after-armor' });

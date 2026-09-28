@@ -1595,6 +1595,70 @@
     "sha256": "7bbf3446bf02b00a3ab4c45ed97417d20f3e316a8e3e5421802718de43bfcb35",
     "sourceSha256": "9e1106a44c5d696e4eab2419103b89da6a9c4337061a5007cd053eef5b24bccb"
   },
+  "./assets/anatomy/revised-bile-titan-butt-armor-thumb.webp": {
+    "sha256": "1bf1d0266cb529fd326e4fe1607d28215775f287b1621dc5ec1f6a3bba74d9e0",
+    "sourceSha256": "ebd31f69393f0bbee0682585dc522e4bd6acffc0770b6d1f21e0b8b738be6c26"
+  },
+  "./assets/anatomy/revised-bile-titan-butt-armor.webp": {
+    "sha256": "65a4ec9a6a8784826442bba1a5885dfe20f2c5e19eeaf5f189270413165e89e6",
+    "sourceSha256": "9f893d38399e274cbad779de96c5f9c363d24486a5f5106f86a66f812faef045"
+  },
+  "./assets/anatomy/revised-bile-titan-claw-thumb.webp": {
+    "sha256": "1c9943b651c5c15ba6ce3e975b7ea735b75a0d2366a540f19d652f8aabfa9288",
+    "sourceSha256": "2fc30094c9334fd2a84142fede1196d3c76f90aa7c93112c4f42d7d186dec2ab"
+  },
+  "./assets/anatomy/revised-bile-titan-claw.webp": {
+    "sha256": "48dad0f7bfa3c0867d9155331d28ace8e467d40504b2b13d53307c6d866a5cac",
+    "sourceSha256": "9744d73f1d410ea8298e2529c6db6e39f912af5bbcfa13c531111f92a59f4145"
+  },
+  "./assets/anatomy/revised-bile-titan-front-left-leg-exposed-thumb.webp": {
+    "sha256": "05c30c11e7a75960a0985a253dd6bee3ee0ff3e5e8d89d6190860afb5b6a7a98",
+    "sourceSha256": "6b97ef480b3a1a7bb83cc053558908fc63f8afb5dff6d459d6bd102f02c443a5"
+  },
+  "./assets/anatomy/revised-bile-titan-front-left-leg-exposed.webp": {
+    "sha256": "ba50a3467a42ecdf59e4616c8315832920034bfd6a74952cfdfb44f1bedaeb31",
+    "sourceSha256": "95ed5b38e82ad189ae2b0c18f7243e8a1fa70b51954ade85beea25f889981e8b"
+  },
+  "./assets/anatomy/revised-bile-titan-front-left-leg-thumb.webp": {
+    "sha256": "ea792cc5371f08acb28073143545a5e44afd112a62e832ab49058ef07949db56",
+    "sourceSha256": "041a02c3d26f392927fe2c17d1b53566fb0d5a91099cf186b96ee453c9b9de5b"
+  },
+  "./assets/anatomy/revised-bile-titan-front-left-leg.webp": {
+    "sha256": "dc56dd5d09957d4936ab5b62c9ed378cb3b08ae4aa658c67b17af40dba3680f9",
+    "sourceSha256": "fc9183ca8644610e35365ca4270e2124745aa4f3200a39a437f1d40b219c35d5"
+  },
+  "./assets/anatomy/revised-bile-titan-leg-exposed-thumb.webp": {
+    "sha256": "0bcb61262aafdccb5ab93c29adfdcbd829181917450b5e07c18837f03b428093",
+    "sourceSha256": "d0fc3f97f0409bcbafff5594f7a2dd33b294c53d8fedb0ac8edecd8ff9fa0d1d"
+  },
+  "./assets/anatomy/revised-bile-titan-leg-exposed.webp": {
+    "sha256": "80e32a6d08d58c5cad6d8e5085a4246641dfd37129bfc1ce1f2794a152ee624f",
+    "sourceSha256": "34d049d1c32dcdf363a648d1b2c7b5b00ee91f6a8aba2a1693eade02bd97de4d"
+  },
+  "./assets/anatomy/revised-bile-titan-leg-thumb.webp": {
+    "sha256": "ea792cc5371f08acb28073143545a5e44afd112a62e832ab49058ef07949db56",
+    "sourceSha256": "2f5b16ae76d401d58960d4a447f2a9674f091f175f83d9d91ce472ec313839d6"
+  },
+  "./assets/anatomy/revised-bile-titan-leg.webp": {
+    "sha256": "dc56dd5d09957d4936ab5b62c9ed378cb3b08ae4aa658c67b17af40dba3680f9",
+    "sourceSha256": "d6611c69ee5cc34126871085cc9eb3cb8498a1773700676d6cd7d912ab2c729f"
+  },
+  "./assets/anatomy/revised-bile-titan-torso-armor-exposed-thumb.webp": {
+    "sha256": "4da7959cd7f29cc62c680c33ac89b41ddcd797b7fa201c1d02659526a5a4a0e0",
+    "sourceSha256": "3073697c8a87fd479ea154aa816d17fa461a7e36f020ea95edcbbdee544cacd6"
+  },
+  "./assets/anatomy/revised-bile-titan-torso-armor-exposed.webp": {
+    "sha256": "5c0e027cad9558b48266b059b9e6116fb93ee2fb841d5ac2b514ee25d1fcffd9",
+    "sourceSha256": "ff61c6b51ea3f01f44b4b06798cbb0862c5a2b8a7418249187309b3be0c4aac7"
+  },
+  "./assets/anatomy/revised-bile-titan-torso-armor-thumb.webp": {
+    "sha256": "28b5254997194e684cc71373cf258c84aaccfaccd30ffcaf2f9a35f82ec3266e",
+    "sourceSha256": "5eaf017204dce8de09d705bf4dc22f42b21bea39b1544310d1dea30d52828261"
+  },
+  "./assets/anatomy/revised-bile-titan-torso-armor.webp": {
+    "sha256": "85dd959726c899588241d3b234901596cf300c51291c53fae6ca6c71b02cb15a",
+    "sourceSha256": "4ed24d6560c034b1887c322fc94b8ee04ae68457870880f6019e02c08effb6da"
+  },
   "./assets/anatomy/rocket-devastator-head-thumb.webp": {
     "sha256": "f9e4875094e061230053dbd70f36fb23f1b2e9cef1337b82b6897d48c5a402e4",
     "sourceSha256": "d0e78d29aa6c793e3fbfafe5c1e59378d0e777089316e53de87403dbad6cbd81"

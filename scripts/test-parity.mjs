@@ -50,7 +50,7 @@ const legacyUnsupported = {
   'autocannon:flak': '근접 신관과 파편의 명중 수에 따라 피해가 크게 달라져 고정 탄수를 계산하지 않습니다.',
 };
 assert(!golden.combat.some(row => row.weapon === 'wasp'), 'W.A.S.P. had no legacy combat profile');
-let checked = 0, beamCarried = 0;
+let checked = 0, beamCarried = 0, addedRows = 0;
 for (const expected of golden.combat) {
   const enemy = enemies.find(item => item.id === expected.enemy);
   const currentMode = weaponProfiles[expected.weapon].modes.find(item => item.id === expected.mode);
@@ -71,9 +71,15 @@ for (const expected of golden.combat) {
     assert.deepEqual([actual[i].t, actual[i].c, actual[i].s[0]], [row.t, row.c, row.s[0]], `${label}: ${row.t} armor stage unchanged`);
     assert(actual[i].s.length === 2 && actual[i].h >= row.h && actual[i].r !== row.r, `${label}: ${row.t} beam reaches the exposed layer`);
   });
-  assert.equal(actual.length, expected.rows.length, label);
+  // Deliberate change: enemies re-checked against a newer Wiki Anatomy
+  // revision (anatomyRevision) gain parts after the legacy ones. Legacy rows
+  // stay exact above; a new part may only become the best route if faster.
+  const added = new Set(actual.slice(expected.rows.length).map(row => row.t));
+  assert(actual.length === expected.rows.length || enemy.anatomyRevision && added.size, `${label}: part rows`);
+  if (added.size) addedRows += added.size;
   const legacyBest = expected.rows.find(row => row.t === expected.best);
-  assert((best?.target.id ?? null) === expected.best || carried.has(best?.target.id) && (!legacyBest || best.hits <= legacyBest.h), `${label}: best route`);
+  const improved = id => (carried.has(id) || added.has(id)) && (!legacyBest || best.hits <= legacyBest.h);
+  assert((best?.target.id ?? null) === expected.best || improved(best?.target.id), `${label}: best route`);
   checked++;
 }
 assert.equal(checked, golden.combat.length);
@@ -158,4 +164,4 @@ for (const expected of golden.defense) {
   assert.deepEqual([0, cap / 2, cap, -1, undefined].map(value => shieldRecovery(item.defense, value)), expected.recovery, expected.id);
 }
 
-console.log(`PASS parity: ${golden.combat.length} matchups (${beamCarried} beam routes now carry past armor), ${golden.demolition.length} demolition cases, ${golden.selections.length} overviews, ${picks} faction picks match ${golden.generatedFrom}.`);
+console.log(`PASS parity: ${golden.combat.length} matchups (${beamCarried} beam routes now carry past armor, ${addedRows} rows for re-checked anatomy), ${golden.demolition.length} demolition cases, ${golden.selections.length} overviews, ${picks} faction picks match ${golden.generatedFrom}.`);

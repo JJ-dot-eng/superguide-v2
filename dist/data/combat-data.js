@@ -75,10 +75,30 @@ const originalEnemies = [
     id: 'bile-titan', name: '바일 타이탄', faction: '테르미니드', source: wiki('Bile_Titan'),
     main: main(6500, 4, 100, 50),
     note: '담즙낭을 부수는 것과 처치는 다릅니다. 노출된 복부의 탄수에는 외피를 제거하는 공격이 포함되지 않습니다.',
+    // Every part matches Wiki Anatomy revision 136862 (checked 2026-09-28,
+    // compared by scripts/test-anatomy.mjs). Parts after the first three
+    // were added then, so legacy results keep their order.
+    anatomyRevision: 136862, anatomyCheckedAt: '2026-09-28',
+    // Both bile sacs have the same numbers and are shown as one part.
+    anatomyMerged: { 'Lower Sac': 'sac' },
     parts: [
-      part('head', '머리', 1500, 4, 95, 50, 100, false, 'kill', '정면 머리를 정확히 맞히세요. 목이나 몸통에 맞은 탄은 이 계산에 포함되지 않습니다.'),
-      part('sac', '담즙낭 한 개', 750, 0, 100, 50, 100, true, 'break', '아래쪽의 부푼 담즙낭입니다. 이 부위 하나의 파괴만으로 즉사하지 않습니다.'),
-      part('underside', '노출된 복부', 4000, 2, 80, 0, 60, false, 'kill', '외피가 파괴되어 드러난 복부를 계속 공격하는 조건입니다.', { prerequisite: '복부 외피 제거 후', isolated: true }),
+      part('head', '머리', 1500, 4, 95, 50, 100, false, 'kill', '정면 머리를 정확히 맞히세요. 목이나 몸통에 맞은 탄은 이 계산에 포함되지 않습니다.', { sourcePart: 'Head' }),
+      part('sac', '담즙낭 한 개', 750, 0, 100, 50, 100, true, 'break', '아래쪽의 부푼 담즙낭입니다. 이 부위 하나의 파괴만으로 즉사하지 않습니다.', { sourcePart: 'Upper Sac' }),
+      part('underside', '노출된 복부', 4000, 2, 80, 0, 60, false, 'kill', '외피가 파괴되어 드러난 복부를 계속 공격하는 조건입니다.', { prerequisite: '복부 외피 제거 후', isolated: true, sourcePart: 'Underside' }),
+      part('torso-armor', '몸통 장갑 → 내부 살점', 1500, 4, 100, 50, 100, false, 'armor', '옆구리의 몸통 장갑판 하나를 벗긴 뒤 같은 자리의 속살을 계속 공격하세요.', {
+        sourcePart: 'Torso Armor (2)',
+        next: part('inner-flesh', '노출된 몸통 살점', 6500, 0, 70, 50, 100, true, 'kill', '장갑을 벗긴 몸통 속살입니다. 장갑 0·내구 70%이며 본체 체력을 공유합니다.', { mainOnly: true, sourcePart: 'Inner Flesh' }),
+      }),
+      part('butt-armor', '후방 복부 장갑', 3500, 4, 100, 50, 100, true, 'kill', '뒤로 돌아가 꼬리 쪽의 단단한 복부 장갑을 맞히세요. 담즙낭과 다른 치명 부위입니다.', { sourcePart: 'Butt Armor' }),
+      part('claw', '앞발 한쪽', 1000, 4, 0, 50, 100, false, 'break', '머리 앞의 집게 모양 앞발 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.', { sourcePart: 'Claws (2)' }),
+      part('front-left-leg', '왼앞다리 장갑 → 살점', 1000, 4, 100, 50, 100, false, 'armor', '적 기준 왼앞다리의 장갑판 하나를 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.', {
+        sourcePart: 'Leg Armor (12)',
+        next: part('front-left-leg-flesh', '노출된 왼앞다리 살점', 2000, 4, 100, 50, 100, false, 'kill', '체력 2,000과 줄지 않는 추가 체력 1,500을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.', { staticConstitution: 1500, sourcePart: 'Front Left Leg Flesh' }),
+      }),
+      part('leg', '다리 장갑 → 살점', 1000, 4, 100, 50, 100, false, 'armor', '왼앞다리를 뺀 나머지 다리 하나의 장갑판을 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.', {
+        sourcePart: 'Leg Armor (12)',
+        next: part('leg-flesh', '노출된 나머지 다리 살점', 2000, 4, 100, 50, 100, false, 'kill', '체력 2,000과 줄지 않는 추가 체력 2,000을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.', { staticConstitution: 2000, sourcePart: 'Leg Flesh (3)' }),
+      }),
     ],
   },
   {
