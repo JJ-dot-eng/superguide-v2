@@ -148,19 +148,33 @@ const originalEnemies = [
   {
     id: 'devastator', name: '데바스테이터 · 기본형', faction: '오토마톤', source: wiki('Devastator'),
     main: main(750, 2, 0, 0), note: '머리와 복부가 흉부보다 얇습니다. 로켓형·중장갑형의 장비와 방패는 포함하지 않습니다.',
+    // Every part matches Wiki Anatomy revision 136811 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 136811, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '흉부 위로 드러난 작은 얼굴을 노리세요.'),
-      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '가슴 장갑 아래 허리의 노출 부위를 노리세요.'),
-      part('torso', '흉부 장갑', 425, 3, 30, 100, 100, true, 'kill', '넓어서 맞히기 쉽지만 머리·복부보다 높은 관통이 필요합니다.'),
+      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '흉부 위로 드러난 작은 얼굴을 노리세요.', { sourcePart: 'Head' }),
+      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '가슴 장갑 아래 허리의 노출 부위를 노리세요.', { sourcePart: 'Stomach' }),
+      part('torso', '흉부 장갑', 425, 3, 30, 100, 100, true, 'kill', '넓어서 맞히기 쉽지만 머리·복부보다 높은 관통이 필요합니다.', { sourcePart: 'Torso' }),
+      part('shoulder', '어깨 한쪽', 150, 2, 0, 100, 25, true, 'break', '팔이 붙은 어깨 장갑 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Shoulders (2)' }),
+      part('arm', '팔 한쪽', 260, 1, 0, 100, 50, false, 'break', '무기를 든 팔 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Arms (2)' }),
+      part('pelvis', '골반', 500, 2, 0, 100, 75, true, 'kill', '허리 아래 골반을 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Pelvis' }),
+      part('leg', '다리 한쪽', 500, 2, 30, 100, 60, true, 'kill', '다리 하나를 계속 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Legs (2)' }),
     ],
   },
   {
     id: 'berserker', name: '버서커', faction: '오토마톤', source: wiki('Berserker'),
     main: main(750, 0, 0, 0), note: '작은 머리나 허리의 복부를 노리세요. 각 부위의 체력은 서로 별개입니다.',
+    // Every part matches Wiki Anatomy revision 135118 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 135118, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '접근하는 적의 작은 머리를 직접 맞히세요.'),
-      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '움직이는 머리를 맞히기 어렵다면 복부를 노리세요.'),
-      part('chest', '흉부', 425, 2, 40, 100, 100, true, 'kill', '가슴은 내구도가 있어 표기 피해보다 적게 들어갑니다.'),
+      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '접근하는 적의 작은 머리를 직접 맞히세요.', { sourcePart: 'Head' }),
+      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '움직이는 머리를 맞히기 어렵다면 복부를 노리세요.', { sourcePart: 'Stomach' }),
+      part('chest', '흉부', 425, 2, 40, 100, 100, true, 'kill', '가슴은 내구도가 있어 표기 피해보다 적게 들어갑니다.', { sourcePart: 'Chest' }),
+      part('pelvis', '골반', 600, 1, 0, 100, 65, true, 'kill', '허리 아래 골반을 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Pelvis' }),
+      part('shoulder', '어깨 한쪽', 180, 0, 0, 100, 0, true, 'break', '어깨 부분입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.', { sourcePart: 'Shoulder (2)' }),
+      part('arm', '팔 한쪽', 260, 1, 30, 100, 50, true, 'break', '톱날이 달린 팔 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Arm (2)' }),
+      part('leg', '다리 한쪽', 750, 1, 30, 100, 0, true, 'kill', '다리 하나를 계속 맞히세요. 파괴하면 죽지만 본체에는 피해가 가지 않습니다.', { sourcePart: 'Leg (2)' }),
     ],
   },
   {
@@ -320,10 +334,19 @@ const originalEnemies = [
     id: 'rocket-devastator', name: '로켓 데바스테이터', faction: '오토마톤', source: wiki('Rocket_Devastator'), sourceRevision: 135121,
     main: main(750, 2, 0, 0),
     note: '머리·복부는 치명 부위입니다. 어깨 로켓 포드 파괴는 무장 제거이며 즉사와 다릅니다.',
+    // Every part matches Wiki Anatomy revision 136514 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 136514, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '어깨 로켓 포드 사이의 작은 얼굴을 직접 맞히세요.'),
-      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '가슴 장갑 아래의 얇은 허리를 노리세요.'),
-      part('rocket-pod', '로켓 포드', 300, 1, 100, 100, 30, true, 'break', '어깨 위 로켓 발사 장치입니다. 발사 장치를 부숴도 적은 살아 있을 수 있습니다.'),
+      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '어깨 로켓 포드 사이의 작은 얼굴을 직접 맞히세요.', { sourcePart: 'Head' }),
+      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '가슴 장갑 아래의 얇은 허리를 노리세요.', { sourcePart: 'Stomach' }),
+      part('rocket-pod', '로켓 포드', 300, 1, 100, 100, 30, true, 'break', '어깨 위 로켓 발사 장치입니다. 발사 장치를 부숴도 적은 살아 있을 수 있습니다.', { sourcePart: 'Rocket Pods' }),
+      part('torso', '흉부 장갑', 425, 3, 30, 100, 100, true, 'kill', '넓어서 맞히기 쉽지만 머리·복부보다 높은 관통이 필요합니다.', { sourcePart: 'Torso' }),
+      part('shoulder', '어깨 한쪽', 150, 2, 0, 100, 25, true, 'break', '팔이 붙은 어깨 장갑 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Shoulders (2)' }),
+      part('arm', '팔 한쪽', 260, 1, 0, 100, 50, false, 'break', '무기를 든 팔 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Arms (2)' }),
+      part('pelvis', '골반', 500, 1, 0, 100, 75, true, 'kill', '허리 아래 골반을 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Pelvis' }),
+      part('leg', '다리 한쪽', 500, 2, 30, 100, 60, true, 'kill', '다리 하나를 계속 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Legs (2)' }),
+      part('rockets', '로켓', 200, 0, 0, 100, 100, true, 'break', '로켓 포드에 실린 로켓입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.', { sourcePart: 'Rockets' }),
     ],
   },
   {
@@ -331,10 +354,19 @@ const originalEnemies = [
     main: main(750, 2, 0, 0),
     shield: { hp: 800, armor: 4, label: '방패에 가리지 않은 부위를 조준', note: '방패를 피해서 머리·복부·배낭에 직접 맞히는 조건입니다. 방패 파괴 탄수와 방패를 통한 폭발은 포함하지 않습니다.' },
     note: '방패 자체에 맞은 탄은 아래 부위의 직격 피해가 아닙니다. 작은 얼굴이나 측면·후방에서 드러나는 배낭을 노리세요.',
+    // Every part matches Wiki Anatomy revision 136516 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 136516, anatomyCheckedAt: '2026-09-28',
+    anatomyOmitted: { Shield: 'The arm shield is the shield toggle (hits that get past it), not a part' },
     parts: [
-      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '방패 위로 노출된 작은 얼굴을 맞히세요.'),
-      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '방패가 내려가거나 옆으로 돌아 복부가 실제로 보이는 때만 적용합니다.'),
-      part('backpack', '배낭', 600, 2, 0, 100, 40, true, 'kill', '뒤나 옆에서 커다란 배낭을 맞히세요. 배낭 파괴는 치명 판정입니다.'),
+      part('head', '머리', 110, 1, 0, 100, 100, true, 'kill', '방패 위로 노출된 작은 얼굴을 맞히세요.', { sourcePart: 'Head' }),
+      part('stomach', '복부', 350, 1, 0, 100, 100, true, 'kill', '방패가 내려가거나 옆으로 돌아 복부가 실제로 보이는 때만 적용합니다.', { sourcePart: 'Stomach' }),
+      part('backpack', '배낭', 600, 2, 0, 100, 40, true, 'kill', '뒤나 옆에서 커다란 배낭을 맞히세요. 배낭 파괴는 치명 판정입니다.', { sourcePart: 'Backpack' }),
+      part('torso', '흉부 장갑', 425, 3, 30, 100, 100, true, 'kill', '넓어서 맞히기 쉽지만 머리·복부보다 높은 관통이 필요합니다.', { sourcePart: 'Torso' }),
+      part('shoulder', '어깨 한쪽', 150, 2, 0, 100, 25, true, 'break', '팔이 붙은 어깨 장갑 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Shoulders (2)' }),
+      part('arm', '팔 한쪽', 260, 1, 0, 100, 50, false, 'break', '무기를 든 팔 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Arms (2)' }),
+      part('pelvis', '골반', 500, 2, 0, 100, 75, true, 'kill', '허리 아래 골반을 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Pelvis' }),
+      part('leg', '다리 한쪽', 500, 2, 30, 100, 60, true, 'kill', '다리 하나를 계속 맞히세요. 파괴하면 죽습니다.', { sourcePart: 'Legs (2)' }),
     ],
   },
   {

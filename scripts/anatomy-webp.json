@@ -1595,6 +1595,22 @@
     "sha256": "7bbf3446bf02b00a3ab4c45ed97417d20f3e316a8e3e5421802718de43bfcb35",
     "sourceSha256": "9e1106a44c5d696e4eab2419103b89da6a9c4337061a5007cd053eef5b24bccb"
   },
+  "./assets/anatomy/revised-agitator-forearm-thumb.webp": {
+    "sha256": "103a4550e159abe824e149688871039eea1a58891c0ccde52d4b7831c4529a6c",
+    "sourceSha256": "a4d9eae0503bf5b9a57b3c5bf1d7eccbadca9b3eac8b48d2c6d385e4b3e48efe"
+  },
+  "./assets/anatomy/revised-agitator-forearm.webp": {
+    "sha256": "54828d0eb27327c7547b949d228df3459112f1f1e2af589eadf7bdc042428c5d",
+    "sourceSha256": "3528e7b049535e301803a46691f29f32449d0167d16732882e00e4f11ed5a515"
+  },
+  "./assets/anatomy/revised-agitator-pauldron-thumb.webp": {
+    "sha256": "531c08f17ed4b1fb82cd12a049b8a0b96ba93f98f92b9c3ebfbd865a6e3184a8",
+    "sourceSha256": "de21ad146d7fda2b85fe739de6a7d02eda7796bd6f074f3210fcc73370d0d633"
+  },
+  "./assets/anatomy/revised-agitator-pauldron.webp": {
+    "sha256": "dac74e09e45ef43219b393a22ea50c83fa1aa4d7739354117d1b6775865c3026",
+    "sourceSha256": "d11a66b3b1992da218912e07152967c04996743ae6fec31e11b19f0d913fad6f"
+  },
   "./assets/anatomy/revised-annihilator-tank-hull-side-thumb.webp": {
     "sha256": "33403b71d4e016560eaa8e4d1eb57abd6237cede33cb178e1b9d1c9ca38652b4",
     "sourceSha256": "e3da30658fb57eebf10bf50545045ef83b5c02e25a49d6a6869b0a81b39a814e"
@@ -1666,6 +1682,38 @@
   "./assets/anatomy/revised-behemoth-underside.webp": {
     "sha256": "72da8ed63b9a5da989b10a3713c7c950a440472f0c8692aa056f989d25ea2b70",
     "sourceSha256": "23bb80a009fd28e0fb3b655adeac29182633f8ec3f16630f897fb1ff701a85cb"
+  },
+  "./assets/anatomy/revised-berserker-arm-thumb.webp": {
+    "sha256": "6ed04a52beb6c23e8fe690c5aab0027c82e98ba2928391270496432db4770894",
+    "sourceSha256": "c9103f60d6656882b5e502918da9aec120b2572274a9df46f2dd34894f5b51f7"
+  },
+  "./assets/anatomy/revised-berserker-arm.webp": {
+    "sha256": "6f8a2b14855ac603982c1c5a297183b6ffd0bd9cc8238f89a25f8261731ee9c6",
+    "sourceSha256": "b7f5ae846514e26c55f74594a6b7ca9d3f60ff2bbb4b975ae90a1cd39b756f2a"
+  },
+  "./assets/anatomy/revised-berserker-leg-thumb.webp": {
+    "sha256": "13ad5d019339c56fc89376fe63b28a32c03b27e25259b22c9755af326e88dece",
+    "sourceSha256": "df4520c7be7fded81329c5cdbca0493b4d70b1292bba56481015b6625387b9b7"
+  },
+  "./assets/anatomy/revised-berserker-leg.webp": {
+    "sha256": "debab89495315d833a835f40458a6ccf686d716384596eaffcf9963ffe1c4d01",
+    "sourceSha256": "1a1588db5fce1f0be3fabbe5b0a6e9aada2438d3f89223bd7a9b93d6278dc270"
+  },
+  "./assets/anatomy/revised-berserker-pelvis-thumb.webp": {
+    "sha256": "8992c4b8ae0119e4620b7426fc081c49e1d2699d59062ea0593baf3a51e574f9",
+    "sourceSha256": "1f7ebea0618fc69a1efdf92b7c97a860780e53bbcaa21c128b9f38adfa2ebfc7"
+  },
+  "./assets/anatomy/revised-berserker-pelvis.webp": {
+    "sha256": "5367c4c2d76e3100755f2379d0b212648480bbf426f2e64ae2cc9e4c072ccf5f",
+    "sourceSha256": "2e93415e498b74c52b12fb5b0685dda1403366f468b8f1170843615151960012"
+  },
+  "./assets/anatomy/revised-berserker-shoulder-thumb.webp": {
+    "sha256": "50ef60fdfb3837795d4e41cbdea97234b1aa55c6a28b0786302309c29eb785ec",
+    "sourceSha256": "04268fc37cd2b410bac32b4f259bdd25d7bfbdb139afb17c8d190f91885f09f1"
+  },
+  "./assets/anatomy/revised-berserker-shoulder.webp": {
+    "sha256": "53daa27c191e8a66a7fdcf815cdbc53d357c4b2761d07363145ff357a9f501be",
+    "sourceSha256": "5ab81654134e731865e734fc8b7168d26fd1b099e5f0e2dd60e8c9d18d0280e9"
   },
   "./assets/anatomy/revised-bile-spewer-armored-front-leg-thumb.webp": {
     "sha256": "373db3519a860b9a87aacd35f6a4bbb9550d1e0575ea434cac18a9bf979590e7",
@@ -1810,6 +1858,62 @@
   "./assets/anatomy/revised-charger-underside.webp": {
     "sha256": "4ceaf58db17bc95be180ef2cfac7dc97cb4e7605faf8b2e6c76aafa7c43dd4e5",
     "sourceSha256": "570682ca573cee1e16b0bb87063046cf02a06cf2afb07f3a88a5c1dba0f2b481"
+  },
+  "./assets/anatomy/revised-conflagration-devastator-leg-thumb.webp": {
+    "sha256": "09090082182bdcd01f37b5c84f5fe024c25a10c7e46899d387dafce657c86f2d",
+    "sourceSha256": "f4c092698b5db82a4f39a3b9fe14ef6055d1c4be20adb5daace486d7f6685f7f"
+  },
+  "./assets/anatomy/revised-conflagration-devastator-leg.webp": {
+    "sha256": "1a25bc73ab7c61b4285c211a041e60e300e0b49ae4479f33d6d313d73843ea39",
+    "sourceSha256": "cd073fcc87b8776d950d03e14f457326accf41458adfbb51e0bc88c4e8d76693"
+  },
+  "./assets/anatomy/revised-conflagration-devastator-pelvis-thumb.webp": {
+    "sha256": "e088786eb3996f37ed1fb8924f23342fd28ad27fa0e8ae100313e2706432ed3b",
+    "sourceSha256": "32dd1bfbe8bdba56e3b7a5b7514a705d448908fd3dcf3c6804b5f903cfa4beb6"
+  },
+  "./assets/anatomy/revised-conflagration-devastator-pelvis.webp": {
+    "sha256": "68e5ac5c07902f55656d10e86bf3072bc4d874f1a2c91b2e459cc2fd25b0fd7d",
+    "sourceSha256": "c85b66cbfe1202b34b6fde7707957cab30e59b8f45c10f92f450fb4508d9e2fb"
+  },
+  "./assets/anatomy/revised-conflagration-devastator-shoulder-thumb.webp": {
+    "sha256": "d2c3a58df363c089469e62497c430f05f792fcb976d4695f6b3473288dbde79a",
+    "sourceSha256": "e68a2dfa00dc9e1e71cd87e8dca2463a804746afb0eb59457cdf04678cce012f"
+  },
+  "./assets/anatomy/revised-conflagration-devastator-shoulder.webp": {
+    "sha256": "db8c1c1f182642167f0c72d12524d310441cd6fdb621d8f433f418c54df6278d",
+    "sourceSha256": "8d5649f2ce38f752f23a4d870668bd220ef380807121467822b076aa527ed00f"
+  },
+  "./assets/anatomy/revised-devastator-arm-thumb.webp": {
+    "sha256": "cdc8059a0e98654e3e658d59054c2ca42a36d151bcfcfbbcea29dc07d32211a4",
+    "sourceSha256": "472eef7c0e7e6e3d94b48b6c568b8a292b6a4f0ec6e54b0f0ce50b80670b84da"
+  },
+  "./assets/anatomy/revised-devastator-arm.webp": {
+    "sha256": "ac933d636db891fa4ae23189ef962d9a0dcb220d4cb0bdd5eb8e12428d852b48",
+    "sourceSha256": "7fddd6e3550d34bde1707861ab150f86b2ff881ffe941fe60e3c8758c5644884"
+  },
+  "./assets/anatomy/revised-devastator-leg-thumb.webp": {
+    "sha256": "fb266c839ef08f64d3d9361722a1845ce44e7e1c4993d096d523c9f063d93a71",
+    "sourceSha256": "52480db0f40b36b2a38054721f78c2113eb0a5d6461eedc35ade40211dbde2fa"
+  },
+  "./assets/anatomy/revised-devastator-leg.webp": {
+    "sha256": "6dd9d04a81ea57671a39f892c24949999cd93528ee2c95367d1861e00981a157",
+    "sourceSha256": "e82f4c3b5adfe8e2b449ff977922931bb27e37f1073c2e3b0566f28187d6ec3c"
+  },
+  "./assets/anatomy/revised-devastator-pelvis-thumb.webp": {
+    "sha256": "c34af270de35d056f3cb68e7a5e5739ffcf7d173c2aa7798c5615878182ac8d9",
+    "sourceSha256": "1964797ba20f123fda8c951ee918b83ac45074d884f196f743b36710801aef3c"
+  },
+  "./assets/anatomy/revised-devastator-pelvis.webp": {
+    "sha256": "137f0412ee627a5bb65b5776963103b4e61c9aa58abcc0799cf23d688e721786",
+    "sourceSha256": "8198362d4785a1667ba0834a35cb4cf01f4dbf96a49ae138ae277c27e3a01493"
+  },
+  "./assets/anatomy/revised-devastator-shoulder-thumb.webp": {
+    "sha256": "ea49527a9b120a695b8017973cec150406bbc31e6866104c1f09d3feac64c498",
+    "sourceSha256": "264cc4ddb94756c5ce7c58404aeb6c93d0beaa71e21a25e0e23cb40fa1db2348"
+  },
+  "./assets/anatomy/revised-devastator-shoulder.webp": {
+    "sha256": "5924abf5ca7a805fba72aa5b095b8b76b5dc836bfa3a94a06fa0a5aea7611252",
+    "sourceSha256": "c3fbdb7f6aab2aa948b27e10f2c39eac71bb9d969008bd7e72655a265e100671"
   },
   "./assets/anatomy/revised-dragonroach-abdomen-innards-thumb.webp": {
     "sha256": "062cdc4ae796f30ec810690974f2ba649e77949a564c5aa00a4386aee1f37f59",
@@ -2123,6 +2227,46 @@
     "sha256": "2a509238c29cee7b683c1021b5fa103902b65db6d76c8d73c557c02476dbe5d1",
     "sourceSha256": "b6f6b1ae79c2281bb871f060d8adde88ceb7ebc8deda2a4c1179e9d6dd56f430"
   },
+  "./assets/anatomy/revised-heavy-devastator-arm-thumb.webp": {
+    "sha256": "f576c9b3e0d5686eb265f87d04e7befbe751b1652a6e89fec35a0ac3973d23c3",
+    "sourceSha256": "9ed399dcf6900f2fedad9036b4fbb7c8c9649992c2d3cc3c8b763051ad29af3a"
+  },
+  "./assets/anatomy/revised-heavy-devastator-arm.webp": {
+    "sha256": "46c54d6dac62def20c3cdf982ba6ac4f39cd3b50e95616896408443bfd9661d7",
+    "sourceSha256": "27b2055da415fbf8b53888b13ec702c92bc6abe607bb8b500e5282c11fd1e29f"
+  },
+  "./assets/anatomy/revised-heavy-devastator-leg-thumb.webp": {
+    "sha256": "4c1fdf661c479339ab20717696a4beec4cc55b3705d7d910302cc6727419fc18",
+    "sourceSha256": "52421ac309261f24960d59c434328d2b2cb009ba078a6e4342a7982b9fcb6461"
+  },
+  "./assets/anatomy/revised-heavy-devastator-leg.webp": {
+    "sha256": "ca368cebd1d3bbb978aad668c3dae8c64cac0fff01e1f58194cd84ea9c6d5049",
+    "sourceSha256": "73a288bc052cc4e87c6672608af2cb5ee290869089c025d18a8d3d6a47fb6915"
+  },
+  "./assets/anatomy/revised-heavy-devastator-pelvis-thumb.webp": {
+    "sha256": "ac448257eba969ef86764191f1b0c563dbdfd0e9362caeda4b7932f4a03d1bce",
+    "sourceSha256": "34b1b33b2f04b90d70ed3c48af9ae4915f782366ea9061484d19ac3b8549136a"
+  },
+  "./assets/anatomy/revised-heavy-devastator-pelvis.webp": {
+    "sha256": "fdf66130801828094b7c67e275b1d4c657801ee0cee6f208ed8f980068287a04",
+    "sourceSha256": "e03f099e2df498e14562b8cca49731dc70b17ce4f82a6f632cd9216bd4d2cfc1"
+  },
+  "./assets/anatomy/revised-heavy-devastator-shoulder-thumb.webp": {
+    "sha256": "d7220c7118385b16cc338ac3ec91c0bda381464cf4813273b81ad21c08434821",
+    "sourceSha256": "1fb75042217a5cc1287dcb5fca2073d97062756492ad49121ed8fca293d2212d"
+  },
+  "./assets/anatomy/revised-heavy-devastator-shoulder.webp": {
+    "sha256": "c711226f55bc7ec5e7835693d7d743a4b90d9ade27a931c60ca8db0193f6df96",
+    "sourceSha256": "c16826a9b6007a1e85b65d81f896317a1dbcd528d9b44bb790c28c6a7a609d3a"
+  },
+  "./assets/anatomy/revised-heavy-devastator-torso-thumb.webp": {
+    "sha256": "137a0a9726661b62e6868421d7c743f8d8604e7a0c364d7647ed08fa56d9941e",
+    "sourceSha256": "328b4660c999b2f43b1e8967116173cee9e2aa9430f277462e86b4d394e356f5"
+  },
+  "./assets/anatomy/revised-heavy-devastator-torso.webp": {
+    "sha256": "1fc7ba524fad96a2a3b30a58f6cf09e72409a961f5622bdef1b8649a4fdab320",
+    "sourceSha256": "f69297c2dff66c55b6f8365a28e98d892d56366a9c486853cf20c0b44b159ce0"
+  },
   "./assets/anatomy/revised-hive-guard-front-leg-thumb.webp": {
     "sha256": "f59330e9bc48541b8147b502aaa78617d42ef383e56ed365de54b65f72c570a9",
     "sourceSha256": "90fe6cfd34a0e07941ba476202cf4ad3fa2f2900cb99134af5ee9eea7b6bc2bc"
@@ -2219,6 +2363,54 @@
     "sha256": "25cef40f53dbf84e881c56e40081986fa3d5a49bef9cc5c63617eaa85e8f3e81",
     "sourceSha256": "714a9a214548e9d40b3c28874eec4c6bf12d3b4801766a9a7410e7cde2188383"
   },
+  "./assets/anatomy/revised-incendiary-mg-devastator-leg-thumb.webp": {
+    "sha256": "09090082182bdcd01f37b5c84f5fe024c25a10c7e46899d387dafce657c86f2d",
+    "sourceSha256": "e5b2a3060c57950f7f487c2370dd7a0c6fadb1d12c3ea371bac719723437869a"
+  },
+  "./assets/anatomy/revised-incendiary-mg-devastator-leg.webp": {
+    "sha256": "1a25bc73ab7c61b4285c211a041e60e300e0b49ae4479f33d6d313d73843ea39",
+    "sourceSha256": "fcabfbe89b33abfeb1156723d44ae0f3363819e33dab1c83f1d4a466886bbef6"
+  },
+  "./assets/anatomy/revised-incendiary-mg-devastator-pelvis-thumb.webp": {
+    "sha256": "e088786eb3996f37ed1fb8924f23342fd28ad27fa0e8ae100313e2706432ed3b",
+    "sourceSha256": "9fc8239fea8d109d0496f85972357a1ba8c34f2a9152c18658e39274b08d6e09"
+  },
+  "./assets/anatomy/revised-incendiary-mg-devastator-pelvis.webp": {
+    "sha256": "68e5ac5c07902f55656d10e86bf3072bc4d874f1a2c91b2e459cc2fd25b0fd7d",
+    "sourceSha256": "3770238ac1ff1dbe2bbd68fe89854ee7ffc9e311edbff479033244d1e8b6e1f5"
+  },
+  "./assets/anatomy/revised-incendiary-mg-devastator-shoulder-thumb.webp": {
+    "sha256": "d2c3a58df363c089469e62497c430f05f792fcb976d4695f6b3473288dbde79a",
+    "sourceSha256": "87bbc66e03d48f1d3aaf7768c6694b48d1fdf157e1ac083571c3c7574146c1e0"
+  },
+  "./assets/anatomy/revised-incendiary-mg-devastator-shoulder.webp": {
+    "sha256": "db8c1c1f182642167f0c72d12524d310441cd6fdb621d8f433f418c54df6278d",
+    "sourceSha256": "b6ab86f1d16bdcd3241957bf0cad2c4420d47db953d8e0596f482eacc54d269f"
+  },
+  "./assets/anatomy/revised-jet-brigade-devastator-arm-thumb.webp": {
+    "sha256": "92b176bb886ce12bb22e131bc7d237ada7d986d4deb3dfd38b158466cee90b05",
+    "sourceSha256": "6768622cd9980fdded6fdd85ab28b635ea49731c4405f9bfba6977f7b751421e"
+  },
+  "./assets/anatomy/revised-jet-brigade-devastator-arm.webp": {
+    "sha256": "e922c79db29458ac2f2caca347e654e6b1bd944b88b2b882074ae54d2f9822ce",
+    "sourceSha256": "cb271b699836aec2c9534f45abcb30f74efd79352782cde7a0333d4c80ee5e19"
+  },
+  "./assets/anatomy/revised-jet-brigade-devastator-pelvis-thumb.webp": {
+    "sha256": "68156f8931ef977002346d7d23b46a344ef49ca184cb62b2927416b439ca0907",
+    "sourceSha256": "57adff1dc60cff484114867fc0e791d849be759898eeac7c852be7b3f3b5eefe"
+  },
+  "./assets/anatomy/revised-jet-brigade-devastator-pelvis.webp": {
+    "sha256": "0b0dd0f9f49a66ae12055df71d12e1b0596ed37a55eaacb439ca505cf3d0b844",
+    "sourceSha256": "885186b16e5f6794266542fedd5896ad7c6035f183b4760db7a811191b529445"
+  },
+  "./assets/anatomy/revised-jet-brigade-devastator-shoulder-thumb.webp": {
+    "sha256": "4e001feee21b99ad2700908044e7446d3f53f8bd5418ea07dc3b3335ad61950f",
+    "sourceSha256": "ec93eb2ac965825b9cf1a032efcef92f69c5640f72cee645c3a3965df41add0e"
+  },
+  "./assets/anatomy/revised-jet-brigade-devastator-shoulder.webp": {
+    "sha256": "4334d88fd535288fd00076c1029a4916e9ec3eacf7fb0e822605595f2e09e697",
+    "sourceSha256": "2161cea70d505cb1b1ee9beb1dfecf9ce2be4b131f23f9bdc4d65d63bb8f951d"
+  },
   "./assets/anatomy/revised-nursing-spewer-front-leg-thumb.webp": {
     "sha256": "664ab114f2ae5cc6b66cae814287fa6d61f7a4d7ce0c897ff63071d94dd22e02",
     "sourceSha256": "6bf03f750295cdfb24014e65cdccc2b7d323863b1e288a879fccd252d9ca98dc"
@@ -2243,6 +2435,22 @@
     "sha256": "c6db19d169666a82153ba00009e42030e6bb4984fbcdd4da3d6e3d52344844f8",
     "sourceSha256": "21b36780ce50571cc2cdac6b3348bd019773f9e71db62f923ecdf8cf23858150"
   },
+  "./assets/anatomy/revised-radical-forearm-thumb.webp": {
+    "sha256": "4b03b0c8ab0ef99e986d0ec7169058f8d2eeead88f35fb0b14b63ea57be05078",
+    "sourceSha256": "a50dbc0698fc0cefbdb344bb18d2b5246da797dc9f29926b6f72b0f18db08267"
+  },
+  "./assets/anatomy/revised-radical-forearm.webp": {
+    "sha256": "5839664e1fd9371136aef6444c89713d400b1cc8fdc561924db6aab816e14fa4",
+    "sourceSha256": "8ad71e024c5dc06b8c0d554e713faaba361c4f1f2586c8fe4d0777690b5faeb9"
+  },
+  "./assets/anatomy/revised-radical-pauldron-thumb.webp": {
+    "sha256": "1ccaa9ecedc848d38db8d2f371b43ccd74f5de531545359695c9d470a958f4aa",
+    "sourceSha256": "d311c0478514c84512aa50a3d7dadab08c46573f45e29ad8664d2221c8fb24c8"
+  },
+  "./assets/anatomy/revised-radical-pauldron.webp": {
+    "sha256": "89e6a4d3baefb8dbed517730ebc773a80e6cb011a6309edc943d8afed5509037",
+    "sourceSha256": "c263198e2ab4507bdc1e57ecef8cbcad281e26849ca07a100278689e184e34a1"
+  },
   "./assets/anatomy/revised-reinforced-strider-faceplate-thumb.webp": {
     "sha256": "1096e76f96d33e0743f549dd79a248a98a7a4c210a7a00eac77c9c5ae649687e",
     "sourceSha256": "127f370ba01839e7ff44590074aeab475154ad5ac48e4dd7ab074f4740af3e04"
@@ -2266,6 +2474,54 @@
   "./assets/anatomy/revised-reinforced-strider-rocket-rail.webp": {
     "sha256": "00315d720cba54b208d09238b5f464a576bbe8ecb42f9a61b69199ac7d9f2315",
     "sourceSha256": "6862d3e36b3d57d625e269bba1c3e0448565e2332afb6701ce167fb913330537"
+  },
+  "./assets/anatomy/revised-rocket-devastator-arm-thumb.webp": {
+    "sha256": "18eb03dd61278e054a06e297fc77826499ba7113866d7ab6530d247226684415",
+    "sourceSha256": "d3e984467819aab5d6458f77770919157c90c2adfdfd1883117fcda66c6d3ee4"
+  },
+  "./assets/anatomy/revised-rocket-devastator-arm.webp": {
+    "sha256": "f823c0a3157b851d452e1e60f474ffbce20712ff549cc59350ebaaa674ef338c",
+    "sourceSha256": "3fca152c34ef844e7024dd9bc8e77536a26315fc6ddad3b3d5d6b6989e1f101c"
+  },
+  "./assets/anatomy/revised-rocket-devastator-leg-thumb.webp": {
+    "sha256": "057295cfcaafe9204ebcd179be3af62651b4f060356653e42341c773f6fc4c48",
+    "sourceSha256": "fd8cb2dde78dbd4a8e3d9ac8d6d1d8869102998c6a3c9ae46321e639dbbfbae5"
+  },
+  "./assets/anatomy/revised-rocket-devastator-leg.webp": {
+    "sha256": "2a888f63d8a2201402189ebf4933eb96fd1ff6ce54ad59e594ff77b15adcd17b",
+    "sourceSha256": "2c4910f5b7f7cad227da7e65ad09a5d197a3c51aaebcb71625687dccaabb732f"
+  },
+  "./assets/anatomy/revised-rocket-devastator-pelvis-thumb.webp": {
+    "sha256": "5f70fb2c53dd9390cf12a1418b430f4e2d87b13fa16e3771ac0ffb78ce692816",
+    "sourceSha256": "781f29ed49aef2e62d554357680d466c9b45f529d700eed8d60638f1d33cf0cc"
+  },
+  "./assets/anatomy/revised-rocket-devastator-pelvis.webp": {
+    "sha256": "0083687f24c931f5b5766ef7876512b391584cea07e9ddf655a9dd089d64d2f9",
+    "sourceSha256": "4c8806fed372d0ce3b40ac027c5749039fc5630aebf605b99882726fa7ce6f16"
+  },
+  "./assets/anatomy/revised-rocket-devastator-rockets-thumb.webp": {
+    "sha256": "06fabecb8374d427a41a6fc41cb5563b0344b161c7af40b624689d1100b85788",
+    "sourceSha256": "6de080cf398584aa8e1ec2663ca747775961e8cab7ed19a4f26dd26c7802879e"
+  },
+  "./assets/anatomy/revised-rocket-devastator-rockets.webp": {
+    "sha256": "a47e6532a6eaa7175564215cbf5975beb841cdbf201305566b812f6455a4caf6",
+    "sourceSha256": "9862fb1fbb84c231899cad4f7e7ada1335998e71af0465d8f42a417d49b45eeb"
+  },
+  "./assets/anatomy/revised-rocket-devastator-shoulder-thumb.webp": {
+    "sha256": "92a18a80a5703fb836a627184fb214857acca80667babad0ada395fe3e52112a",
+    "sourceSha256": "8acedd003709469fa69756213e3fd7aa3f84ea4f3b497d9450762b284d136fd4"
+  },
+  "./assets/anatomy/revised-rocket-devastator-shoulder.webp": {
+    "sha256": "ef844e3e49336fed9988c24d2f487f574b88361cabbd5e1854b7e12cb6a7f194",
+    "sourceSha256": "83fc6211751be0061ed06722059dbdad8be60306dabee0672831f0a4ad855698"
+  },
+  "./assets/anatomy/revised-rocket-devastator-torso-thumb.webp": {
+    "sha256": "5c2c4879b4669937628a70fe7ff90e1acb32327752f172c134f7ff09a682415b",
+    "sourceSha256": "6f86d88037af4ff5da86eda0cb22e384280adc4581af426957fd8fcfbf4be3ab"
+  },
+  "./assets/anatomy/revised-rocket-devastator-torso.webp": {
+    "sha256": "f17aa34eb25f902e8f52666fbeb81f8ba58b94a864bc005f8a6e271d33017860",
+    "sourceSha256": "f46dfda1a166ae19698ff2d0f536bc63f65b28024791153345ef5eadfe74ac0f"
   },
   "./assets/anatomy/revised-rupture-charger-claw-thumb.webp": {
     "sha256": "3b7117accf4f51b9d5950b0fd8c073fb9afcb02d242f0e576c07c0c7544e7dbb",

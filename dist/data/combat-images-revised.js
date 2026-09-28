@@ -2135,5 +2135,631 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "berserker": {
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-berserker-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-berserker-pelvis-thumb.webp",
+        "title": "Berserker Pelvis.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Berserker_Pelvis.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Berserker_Pelvis.png?68e471",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Pelvis.png/800px-Berserker_Pelvis.png?68e471",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Pelvis.png/320px-Berserker_Pelvis.png?68e471",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2e93415e498b74c52b12fb5b0685dda1403366f468b8f1170843615151960012",
+        "thumbnailSha256": "1f7ebea0618fc69a1efdf92b7c97a860780e53bbcaa21c128b9f38adfa2ebfc7",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-berserker-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-berserker-shoulder-thumb.webp",
+        "title": "Berserker Shoulders.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Berserker_Shoulders.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Berserker_Shoulders.png?f78bb3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Shoulders.png/800px-Berserker_Shoulders.png?f78bb3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Shoulders.png/320px-Berserker_Shoulders.png?f78bb3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "5ab81654134e731865e734fc8b7168d26fd1b099e5f0e2dd60e8c9d18d0280e9",
+        "thumbnailSha256": "04268fc37cd2b410bac32b4f259bdd25d7bfbdb139afb17c8d190f91885f09f1",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm": [
+      {
+        "src": "./assets/anatomy/revised-berserker-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-berserker-arm-thumb.webp",
+        "title": "Berserker Arms.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Berserker_Arms.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Berserker_Arms.png?1e527c",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Arms.png/800px-Berserker_Arms.png?1e527c",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Arms.png/320px-Berserker_Arms.png?1e527c",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "b7f5ae846514e26c55f74594a6b7ca9d3f60ff2bbb4b975ae90a1cd39b756f2a",
+        "thumbnailSha256": "c9103f60d6656882b5e502918da9aec120b2572274a9df46f2dd34894f5b51f7",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-berserker-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-berserker-leg-thumb.webp",
+        "title": "Berserker Legs.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Berserker_Legs.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Berserker_Legs.png?6cc1fb",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Legs.png/800px-Berserker_Legs.png?6cc1fb",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Berserker_Legs.png/320px-Berserker_Legs.png?6cc1fb",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "1a1588db5fce1f0be3fabbe5b0a6e9aada2438d3f89223bd7a9b93d6278dc270",
+        "thumbnailSha256": "df4520c7be7fded81329c5cdbca0493b4d70b1292bba56481015b6625387b9b7",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "radical": {
+    "pauldron": [
+      {
+        "src": "./assets/anatomy/revised-radical-pauldron.webp",
+        "thumbnail": "./assets/anatomy/revised-radical-pauldron-thumb.webp",
+        "title": "Radical Pauldron Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Radical_Pauldron_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Radical_Pauldron_Front.png?f43795",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Radical_Pauldron_Front.png/800px-Radical_Pauldron_Front.png?f43795",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Radical_Pauldron_Front.png/320px-Radical_Pauldron_Front.png?f43795",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c263198e2ab4507bdc1e57ecef8cbcad281e26849ca07a100278689e184e34a1",
+        "thumbnailSha256": "d311c0478514c84512aa50a3d7dadab08c46573f45e29ad8664d2221c8fb24c8",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "forearm": [
+      {
+        "src": "./assets/anatomy/revised-radical-forearm.webp",
+        "thumbnail": "./assets/anatomy/revised-radical-forearm-thumb.webp",
+        "title": "Radical Forearms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Radical_Forearms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Radical_Forearms_Front.png?e22f24",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Radical_Forearms_Front.png/800px-Radical_Forearms_Front.png?e22f24",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Radical_Forearms_Front.png/320px-Radical_Forearms_Front.png?e22f24",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8ad71e024c5dc06b8c0d554e713faaba361c4f1f2586c8fe4d0777690b5faeb9",
+        "thumbnailSha256": "a50dbc0698fc0cefbdb344bb18d2b5246da797dc9f29926b6f72b0f18db08267",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "agitator": {
+    "pauldron": [
+      {
+        "src": "./assets/anatomy/revised-agitator-pauldron.webp",
+        "thumbnail": "./assets/anatomy/revised-agitator-pauldron-thumb.webp",
+        "title": "Agitator Pauldrons Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Agitator_Pauldrons_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Agitator_Pauldrons_Front.png?db4b22",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Agitator_Pauldrons_Front.png/800px-Agitator_Pauldrons_Front.png?db4b22",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Agitator_Pauldrons_Front.png/320px-Agitator_Pauldrons_Front.png?db4b22",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d11a66b3b1992da218912e07152967c04996743ae6fec31e11b19f0d913fad6f",
+        "thumbnailSha256": "de21ad146d7fda2b85fe739de6a7d02eda7796bd6f074f3210fcc73370d0d633",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "forearm": [
+      {
+        "src": "./assets/anatomy/revised-agitator-forearm.webp",
+        "thumbnail": "./assets/anatomy/revised-agitator-forearm-thumb.webp",
+        "title": "Agitator Forearms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Agitator_Forearms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Agitator_Forearms_Front.png?76acd5",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Agitator_Forearms_Front.png/800px-Agitator_Forearms_Front.png?76acd5",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Agitator_Forearms_Front.png/320px-Agitator_Forearms_Front.png?76acd5",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3528e7b049535e301803a46691f29f32449d0167d16732882e00e4f11ed5a515",
+        "thumbnailSha256": "a4d9eae0503bf5b9a57b3c5bf1d7eccbadca9b3eac8b48d2c6d385e4b3e48efe",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "devastator": {
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-devastator-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-devastator-shoulder-thumb.webp",
+        "title": "Devastator Shoulders Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Devastator_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Devastator_Shoulders_Front.png?62f6d8",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Shoulders_Front.png/800px-Devastator_Shoulders_Front.png?62f6d8",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Shoulders_Front.png/320px-Devastator_Shoulders_Front.png?62f6d8",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c3fbdb7f6aab2aa948b27e10f2c39eac71bb9d969008bd7e72655a265e100671",
+        "thumbnailSha256": "264cc4ddb94756c5ce7c58404aeb6c93d0beaa71e21a25e0e23cb40fa1db2348",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm": [
+      {
+        "src": "./assets/anatomy/revised-devastator-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-devastator-arm-thumb.webp",
+        "title": "Devastator Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Devastator_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Devastator_Arms_Front.png?d54eb9",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Arms_Front.png/800px-Devastator_Arms_Front.png?d54eb9",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Arms_Front.png/320px-Devastator_Arms_Front.png?d54eb9",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "7fddd6e3550d34bde1707861ab150f86b2ff881ffe941fe60e3c8758c5644884",
+        "thumbnailSha256": "472eef7c0e7e6e3d94b48b6c568b8a292b6a4f0ec6e54b0f0ce50b80670b84da",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-devastator-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-devastator-pelvis-thumb.webp",
+        "title": "Devastator Pelvis Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Devastator_Pelvis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Devastator_Pelvis_Front.png?e3122b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Pelvis_Front.png/800px-Devastator_Pelvis_Front.png?e3122b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Pelvis_Front.png/320px-Devastator_Pelvis_Front.png?e3122b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8198362d4785a1667ba0834a35cb4cf01f4dbf96a49ae138ae277c27e3a01493",
+        "thumbnailSha256": "1964797ba20f123fda8c951ee918b83ac45074d884f196f743b36710801aef3c",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-devastator-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-devastator-leg-thumb.webp",
+        "title": "Devastator Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Devastator_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Devastator_Legs_Front.png?f18873",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Legs_Front.png/800px-Devastator_Legs_Front.png?f18873",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Devastator_Legs_Front.png/320px-Devastator_Legs_Front.png?f18873",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "e82f4c3b5adfe8e2b449ff977922931bb27e37f1073c2e3b0566f28187d6ec3c",
+        "thumbnailSha256": "52480db0f40b36b2a38054721f78c2113eb0a5d6461eedc35ade40211dbde2fa",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "rocket-devastator": {
+    "torso": [
+      {
+        "src": "./assets/anatomy/revised-rocket-devastator-torso.webp",
+        "thumbnail": "./assets/anatomy/revised-rocket-devastator-torso-thumb.webp",
+        "title": "Rocket Devastator Torso Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rocket_Devastator_Torso_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rocket_Devastator_Torso_Front.png?475d29",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Torso_Front.png/800px-Rocket_Devastator_Torso_Front.png?475d29",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Torso_Front.png/320px-Rocket_Devastator_Torso_Front.png?475d29",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f46dfda1a166ae19698ff2d0f536bc63f65b28024791153345ef5eadfe74ac0f",
+        "thumbnailSha256": "6f86d88037af4ff5da86eda0cb22e384280adc4581af426957fd8fcfbf4be3ab",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-rocket-devastator-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-rocket-devastator-shoulder-thumb.webp",
+        "title": "Rocket Devastator Shoulders Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rocket_Devastator_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rocket_Devastator_Shoulders_Front.png?88b0d0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Shoulders_Front.png/800px-Rocket_Devastator_Shoulders_Front.png?88b0d0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Shoulders_Front.png/320px-Rocket_Devastator_Shoulders_Front.png?88b0d0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "83fc6211751be0061ed06722059dbdad8be60306dabee0672831f0a4ad855698",
+        "thumbnailSha256": "8acedd003709469fa69756213e3fd7aa3f84ea4f3b497d9450762b284d136fd4",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm": [
+      {
+        "src": "./assets/anatomy/revised-rocket-devastator-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-rocket-devastator-arm-thumb.webp",
+        "title": "Rocket Devastator Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rocket_Devastator_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rocket_Devastator_Arms_Front.png?8c8c74",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Arms_Front.png/800px-Rocket_Devastator_Arms_Front.png?8c8c74",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Arms_Front.png/320px-Rocket_Devastator_Arms_Front.png?8c8c74",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3fca152c34ef844e7024dd9bc8e77536a26315fc6ddad3b3d5d6b6989e1f101c",
+        "thumbnailSha256": "d3e984467819aab5d6458f77770919157c90c2adfdfd1883117fcda66c6d3ee4",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-rocket-devastator-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-rocket-devastator-pelvis-thumb.webp",
+        "title": "Rocket Devastator Pelvis Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rocket_Devastator_Pelvis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rocket_Devastator_Pelvis_Front.png?4f084e",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Pelvis_Front.png/800px-Rocket_Devastator_Pelvis_Front.png?4f084e",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Pelvis_Front.png/320px-Rocket_Devastator_Pelvis_Front.png?4f084e",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "4c8806fed372d0ce3b40ac027c5749039fc5630aebf605b99882726fa7ce6f16",
+        "thumbnailSha256": "781f29ed49aef2e62d554357680d466c9b45f529d700eed8d60638f1d33cf0cc",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-rocket-devastator-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-rocket-devastator-leg-thumb.webp",
+        "title": "Rocket Devastator Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rocket_Devastator_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rocket_Devastator_Legs_Front.png?8e3b7b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Legs_Front.png/800px-Rocket_Devastator_Legs_Front.png?8e3b7b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Legs_Front.png/320px-Rocket_Devastator_Legs_Front.png?8e3b7b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2c4910f5b7f7cad227da7e65ad09a5d197a3c51aaebcb71625687dccaabb732f",
+        "thumbnailSha256": "fd8cb2dde78dbd4a8e3d9ac8d6d1d8869102998c6a3c9ae46321e639dbbfbae5",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rockets": [
+      {
+        "src": "./assets/anatomy/revised-rocket-devastator-rockets.webp",
+        "thumbnail": "./assets/anatomy/revised-rocket-devastator-rockets-thumb.webp",
+        "title": "Rocket Devastator Rockets Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rocket_Devastator_Rockets_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rocket_Devastator_Rockets_Front.png?c14e5f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Rockets_Front.png/800px-Rocket_Devastator_Rockets_Front.png?c14e5f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rocket_Devastator_Rockets_Front.png/320px-Rocket_Devastator_Rockets_Front.png?c14e5f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9862fb1fbb84c231899cad4f7e7ada1335998e71af0465d8f42a417d49b45eeb",
+        "thumbnailSha256": "6de080cf398584aa8e1ec2663ca747775961e8cab7ed19a4f26dd26c7802879e",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "heavy-devastator": {
+    "torso": [
+      {
+        "src": "./assets/anatomy/revised-heavy-devastator-torso.webp",
+        "thumbnail": "./assets/anatomy/revised-heavy-devastator-torso-thumb.webp",
+        "title": "Heavy Devastator Torso Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Heavy_Devastator_Torso_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Heavy_Devastator_Torso_Front.png?d57c07",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Torso_Front.png/800px-Heavy_Devastator_Torso_Front.png?d57c07",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Torso_Front.png/320px-Heavy_Devastator_Torso_Front.png?d57c07",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f69297c2dff66c55b6f8365a28e98d892d56366a9c486853cf20c0b44b159ce0",
+        "thumbnailSha256": "328b4660c999b2f43b1e8967116173cee9e2aa9430f277462e86b4d394e356f5",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-heavy-devastator-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-heavy-devastator-shoulder-thumb.webp",
+        "title": "Heavy Devastator Shoulders Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Heavy_Devastator_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Heavy_Devastator_Shoulders_Front.png?2e698d",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Shoulders_Front.png/800px-Heavy_Devastator_Shoulders_Front.png?2e698d",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Shoulders_Front.png/320px-Heavy_Devastator_Shoulders_Front.png?2e698d",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c16826a9b6007a1e85b65d81f896317a1dbcd528d9b44bb790c28c6a7a609d3a",
+        "thumbnailSha256": "1fb75042217a5cc1287dcb5fca2073d97062756492ad49121ed8fca293d2212d",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm": [
+      {
+        "src": "./assets/anatomy/revised-heavy-devastator-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-heavy-devastator-arm-thumb.webp",
+        "title": "Heavy Devastator Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Heavy_Devastator_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Heavy_Devastator_Arms_Front.png?6e10d3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Arms_Front.png/800px-Heavy_Devastator_Arms_Front.png?6e10d3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Arms_Front.png/320px-Heavy_Devastator_Arms_Front.png?6e10d3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "27b2055da415fbf8b53888b13ec702c92bc6abe607bb8b500e5282c11fd1e29f",
+        "thumbnailSha256": "9ed399dcf6900f2fedad9036b4fbb7c8c9649992c2d3cc3c8b763051ad29af3a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-heavy-devastator-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-heavy-devastator-pelvis-thumb.webp",
+        "title": "Heavy Devastator Pelvis Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Heavy_Devastator_Pelvis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Heavy_Devastator_Pelvis_Front.png?8a7666",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Pelvis_Front.png/800px-Heavy_Devastator_Pelvis_Front.png?8a7666",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Pelvis_Front.png/320px-Heavy_Devastator_Pelvis_Front.png?8a7666",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "e03f099e2df498e14562b8cca49731dc70b17ce4f82a6f632cd9216bd4d2cfc1",
+        "thumbnailSha256": "34b1b33b2f04b90d70ed3c48af9ae4915f782366ea9061484d19ac3b8549136a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-heavy-devastator-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-heavy-devastator-leg-thumb.webp",
+        "title": "Heavy Devastator Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Heavy_Devastator_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Heavy_Devastator_Legs_Front.png?a5137f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Legs_Front.png/800px-Heavy_Devastator_Legs_Front.png?a5137f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Devastator_Legs_Front.png/320px-Heavy_Devastator_Legs_Front.png?a5137f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "73a288bc052cc4e87c6672608af2cb5ee290869089c025d18a8d3d6a47fb6915",
+        "thumbnailSha256": "52421ac309261f24960d59c434328d2b2cb009ba078a6e4342a7982b9fcb6461",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "conflagration-devastator": {
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-conflagration-devastator-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-conflagration-devastator-shoulder-thumb.webp",
+        "title": "Conflagration Devastator Shoulders Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Conflagration_Devastator_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Conflagration_Devastator_Shoulders_Front.png?5e37f1",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Shoulders_Front.png/800px-Conflagration_Devastator_Shoulders_Front.png?5e37f1",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Shoulders_Front.png/320px-Conflagration_Devastator_Shoulders_Front.png?5e37f1",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8d5649f2ce38f752f23a4d870668bd220ef380807121467822b076aa527ed00f",
+        "thumbnailSha256": "e68a2dfa00dc9e1e71cd87e8dca2463a804746afb0eb59457cdf04678cce012f",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-conflagration-devastator-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-conflagration-devastator-pelvis-thumb.webp",
+        "title": "Conflagration Devastator Pelvis Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Conflagration_Devastator_Pelvis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Conflagration_Devastator_Pelvis_Front.png?d5a091",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Pelvis_Front.png/800px-Conflagration_Devastator_Pelvis_Front.png?d5a091",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Pelvis_Front.png/320px-Conflagration_Devastator_Pelvis_Front.png?d5a091",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c85b66cbfe1202b34b6fde7707957cab30e59b8f45c10f92f450fb4508d9e2fb",
+        "thumbnailSha256": "32dd1bfbe8bdba56e3b7a5b7514a705d448908fd3dcf3c6804b5f903cfa4beb6",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-conflagration-devastator-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-conflagration-devastator-leg-thumb.webp",
+        "title": "Conflagration Devastator Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Conflagration_Devastator_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Conflagration_Devastator_Legs_Front.png?3124db",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Legs_Front.png/800px-Conflagration_Devastator_Legs_Front.png?3124db",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Legs_Front.png/320px-Conflagration_Devastator_Legs_Front.png?3124db",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "cd073fcc87b8776d950d03e14f457326accf41458adfbb51e0bc88c4e8d76693",
+        "thumbnailSha256": "f4c092698b5db82a4f39a3b9fe14ef6055d1c4be20adb5daace486d7f6685f7f",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "incendiary-mg-devastator": {
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-incendiary-mg-devastator-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-incendiary-mg-devastator-shoulder-thumb.webp",
+        "title": "Conflagration Devastator Shoulders Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Conflagration_Devastator_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Conflagration_Devastator_Shoulders_Front.png?5e37f1",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Shoulders_Front.png/800px-Conflagration_Devastator_Shoulders_Front.png?5e37f1",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Shoulders_Front.png/320px-Conflagration_Devastator_Shoulders_Front.png?5e37f1",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "b6ab86f1d16bdcd3241957bf0cad2c4420d47db953d8e0596f482eacc54d269f",
+        "thumbnailSha256": "87bbc66e03d48f1d3aaf7768c6694b48d1fdf157e1ac083571c3c7574146c1e0",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-incendiary-mg-devastator-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-incendiary-mg-devastator-pelvis-thumb.webp",
+        "title": "Conflagration Devastator Pelvis Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Conflagration_Devastator_Pelvis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Conflagration_Devastator_Pelvis_Front.png?d5a091",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Pelvis_Front.png/800px-Conflagration_Devastator_Pelvis_Front.png?d5a091",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Pelvis_Front.png/320px-Conflagration_Devastator_Pelvis_Front.png?d5a091",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3770238ac1ff1dbe2bbd68fe89854ee7ffc9e311edbff479033244d1e8b6e1f5",
+        "thumbnailSha256": "9fc8239fea8d109d0496f85972357a1ba8c34f2a9152c18658e39274b08d6e09",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-incendiary-mg-devastator-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-incendiary-mg-devastator-leg-thumb.webp",
+        "title": "Conflagration Devastator Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Conflagration_Devastator_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Conflagration_Devastator_Legs_Front.png?3124db",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Legs_Front.png/800px-Conflagration_Devastator_Legs_Front.png?3124db",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Conflagration_Devastator_Legs_Front.png/320px-Conflagration_Devastator_Legs_Front.png?3124db",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "fcabfbe89b33abfeb1156723d44ae0f3363819e33dab1c83f1d4a466886bbef6",
+        "thumbnailSha256": "e5b2a3060c57950f7f487c2370dd7a0c6fadb1d12c3ea371bac719723437869a",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "jet-brigade-devastator": {
+    "shoulder": [
+      {
+        "src": "./assets/anatomy/revised-jet-brigade-devastator-shoulder.webp",
+        "thumbnail": "./assets/anatomy/revised-jet-brigade-devastator-shoulder-thumb.webp",
+        "title": "Jet_Brigade_Devastator_Shoulders_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Jet_Brigade_Devastator_Shoulders_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Jet_Brigade_Devastator_Shoulders_Front.png?a8d355",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Jet_Brigade_Devastator_Shoulders_Front.png/800px-Jet_Brigade_Devastator_Shoulders_Front.png?a8d355",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Jet_Brigade_Devastator_Shoulders_Front.png/320px-Jet_Brigade_Devastator_Shoulders_Front.png?a8d355",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2161cea70d505cb1b1ee9beb1dfecf9ce2be4b131f23f9bdc4d65d63bb8f951d",
+        "thumbnailSha256": "ec93eb2ac965825b9cf1a032efcef92f69c5640f72cee645c3a3965df41add0e",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "arm": [
+      {
+        "src": "./assets/anatomy/revised-jet-brigade-devastator-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-jet-brigade-devastator-arm-thumb.webp",
+        "title": "Jet_Brigade_Devastator_Arms_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Jet_Brigade_Devastator_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Jet_Brigade_Devastator_Arms_Front.png?f65df0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Jet_Brigade_Devastator_Arms_Front.png/800px-Jet_Brigade_Devastator_Arms_Front.png?f65df0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Jet_Brigade_Devastator_Arms_Front.png/320px-Jet_Brigade_Devastator_Arms_Front.png?f65df0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "cb271b699836aec2c9534f45abcb30f74efd79352782cde7a0333d4c80ee5e19",
+        "thumbnailSha256": "6768622cd9980fdded6fdd85ab28b635ea49731c4405f9bfba6977f7b751421e",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pelvis": [
+      {
+        "src": "./assets/anatomy/revised-jet-brigade-devastator-pelvis.webp",
+        "thumbnail": "./assets/anatomy/revised-jet-brigade-devastator-pelvis-thumb.webp",
+        "title": "Jet_Brigade_Devastator_Pelvis_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Jet_Brigade_Devastator_Pelvis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Jet_Brigade_Devastator_Pelvis_Front.png?e9beb4",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Jet_Brigade_Devastator_Pelvis_Front.png/800px-Jet_Brigade_Devastator_Pelvis_Front.png?e9beb4",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Jet_Brigade_Devastator_Pelvis_Front.png/320px-Jet_Brigade_Devastator_Pelvis_Front.png?e9beb4",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "885186b16e5f6794266542fedd5896ad7c6035f183b4760db7a811191b529445",
+        "thumbnailSha256": "57adff1dc60cff484114867fc0e791d849be759898eeac7c852be7b3f3b5eefe",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

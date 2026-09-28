@@ -1725,6 +1725,8 @@ export const expandedEnemies = [
       "label": "방패를 우회해 선택한 부위에 공격이 닿는 상태"
     },
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136519,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 750,
       "armor": 2,
@@ -1807,6 +1809,51 @@ export const expandedEnemies = [
         "constitution": 0,
         "unknownReason": "방패 표는 체력 800·장갑 4·폭발 저항 0%이지만 본문은 실탄이 방패에 피해를 주지 않는다고 명시합니다. 직격 면역의 정확한 적용 조건이 불명확해 방패 직격 계산은 보류합니다.",
         "sourcePart": "Shield"
+      },
+      {
+        "id": "shoulder",
+        "name": "어깨 한쪽",
+        "hp": 150,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 25,
+        "overflowCap": null,
+        "effect": "break",
+        "tip": "팔이 붙은 어깨 장갑 하나입니다. 부숴도 죽지 않습니다.",
+        "constitution": 0,
+        "capUnverified": true,
+        "sourcePart": "Shoulders (2)"
+      },
+      {
+        "id": "pelvis",
+        "name": "골반",
+        "hp": 500,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": null,
+        "effect": "kill",
+        "tip": "허리 아래 골반을 맞히세요. 파괴하면 죽습니다.",
+        "constitution": 0,
+        "capUnverified": true,
+        "sourcePart": "Pelvis"
+      },
+      {
+        "id": "leg",
+        "name": "다리 한쪽",
+        "hp": 500,
+        "armor": 2,
+        "durability": 30,
+        "exdr": 100,
+        "toMain": 60,
+        "overflowCap": null,
+        "effect": "kill",
+        "tip": "다리 하나를 계속 맞히세요. 파괴하면 죽습니다.",
+        "constitution": 0,
+        "capUnverified": true,
+        "sourcePart": "Legs (2)"
       }
     ],
     "spearLock": false
@@ -1828,6 +1875,8 @@ export const expandedEnemies = [
       "label": "방패를 우회해 선택한 부위에 공격이 닿는 상태"
     },
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136517,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 750,
       "armor": 2,
@@ -1910,6 +1959,51 @@ export const expandedEnemies = [
         "constitution": 0,
         "unknownReason": "방패 체력이 무한로 표시되어 일반적인 체력 파괴 횟수를 계산하지 않습니다.",
         "sourcePart": "Shield"
+      },
+      {
+        "id": "shoulder",
+        "name": "어깨 한쪽",
+        "hp": 150,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 25,
+        "overflowCap": null,
+        "effect": "break",
+        "tip": "팔이 붙은 어깨 장갑 하나입니다. 부숴도 죽지 않습니다.",
+        "constitution": 0,
+        "capUnverified": true,
+        "sourcePart": "Shoulders (2)"
+      },
+      {
+        "id": "pelvis",
+        "name": "골반",
+        "hp": 500,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": null,
+        "effect": "kill",
+        "tip": "허리 아래 골반을 맞히세요. 파괴하면 죽습니다.",
+        "constitution": 0,
+        "capUnverified": true,
+        "sourcePart": "Pelvis"
+      },
+      {
+        "id": "leg",
+        "name": "다리 한쪽",
+        "hp": 500,
+        "armor": 2,
+        "durability": 30,
+        "exdr": 100,
+        "toMain": 60,
+        "overflowCap": null,
+        "effect": "kill",
+        "tip": "다리 하나를 계속 맞히세요. 파괴하면 죽습니다.",
+        "constitution": 0,
+        "capUnverified": true,
+        "sourcePart": "Legs (2)"
       }
     ],
     "spearLock": false
@@ -1922,6 +2016,8 @@ export const expandedEnemies = [
     "sourceRevision": 135138,
     "note": "제트팩 파괴는 점프 능력을 없애며 주변에 폭발·화염을 일으키지만, 표에서는 치명 부위가 아닙니다. 제트팩 자체 파괴와 처치를 구분합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136520,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 750,
       "armor": 2,
@@ -2001,6 +2097,45 @@ export const expandedEnemies = [
         "partOnly": true,
         "partOnlyNote": "독립 장치 자체의 파괴 기준입니다. 본체로 전달되는 피해와 후속 폭발에 의한 처치 횟수는 합산하지 않습니다.",
         "sourcePart": "Jetpack"
+      },
+      {
+        "id": "shoulder",
+        "name": "어깨 한쪽",
+        "hp": 150,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 25,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "팔이 붙은 어깨 장갑 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Shoulders (2)"
+      },
+      {
+        "id": "arm",
+        "name": "팔 한쪽",
+        "hp": 260,
+        "armor": 1,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 50,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "무기를 든 팔 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Arms (2)"
+      },
+      {
+        "id": "pelvis",
+        "name": "골반",
+        "hp": 500,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": true,
+        "effect": "kill",
+        "tip": "허리 아래 골반을 맞히세요. 파괴하면 죽습니다.",
+        "sourcePart": "Pelvis"
       }
     ],
     "spearLock": false
@@ -2849,6 +2984,8 @@ export const expandedEnemies = [
     "sourceRevision": 134991,
     "note": "몸통·다리의 개별 체력이 본체보다 높지만, 본체로 전달된 피해가 먼저 체력을 소진할 수 있습니다. 서로 다른 부위에 동시에 맞은 폭발 피해는 합치지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136549,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 750,
       "armor": 1,
@@ -2926,6 +3063,32 @@ export const expandedEnemies = [
         "tip": "오른다리는 본체 전달율75%로 왼다리와 다릅니다.",
         "constitution": 0,
         "sourcePart": "Right Leg"
+      },
+      {
+        "id": "pauldron",
+        "name": "어깨 보호대",
+        "hp": 200,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 65,
+        "toMain": 30,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "어깨를 덮은 보호대입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Pauldron"
+      },
+      {
+        "id": "forearm",
+        "name": "아래팔 한쪽",
+        "hp": 300,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "아래팔 하나입니다. 부숴도 죽지 않지만 피해의 75%가 본체로 전달됩니다.",
+        "sourcePart": "Forearms (2)"
       }
     ],
     "spearLock": false
@@ -2938,6 +3101,8 @@ export const expandedEnemies = [
     "sourceRevision": 134992,
     "note": "머리 투구와 흉부 장갑을 먼저 벗겨야 합니다. 장갑을 부수는 피해와 내부 부위 피해를 따로 계산합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136527,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 750,
       "armor": 1,
@@ -3043,6 +3208,32 @@ export const expandedEnemies = [
         "tip": "오른다리의 전달율은75%로 반대쪽과 다릅니다.",
         "constitution": 0,
         "sourcePart": "Right Leg"
+      },
+      {
+        "id": "pauldron",
+        "name": "어깨 보호대",
+        "hp": 200,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 65,
+        "toMain": 30,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "어깨를 덮은 보호대입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Pauldrons (2)"
+      },
+      {
+        "id": "forearm",
+        "name": "아래팔 한쪽",
+        "hp": 300,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 75,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "아래팔 하나입니다. 부숴도 죽지 않지만 피해의 75%가 본체로 전달됩니다.",
+        "sourcePart": "Forearms (2)"
       }
     ],
     "spearLock": false

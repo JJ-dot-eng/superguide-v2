@@ -644,6 +644,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Assault_Raider",
     "sourceRevision": 135114,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135114,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -802,6 +804,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/MG_Raider",
     "sourceRevision": 135117,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135117,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -833,7 +837,8 @@ export const additionalEnemies = [
           "constitution": 100,
           "name": "전원 팩 자체"
         },
-        "unknownReason": "전원 팩은 체력 10의 별도 본체와 체력 50의 피격 부위를 가집니다. 장치 폭발이 착용자에게 주는 피해·명중 조건은 자료 미확인이므로 이 경로의 처치에 필요한 공격 횟수는 계산 보류합니다. 머리·몸통·다리 경로는 계산할 수 있습니다."
+        "unknownReason": "전원 팩은 체력 10의 별도 본체와 체력 50의 피격 부위를 가집니다. 장치 폭발이 착용자에게 주는 피해·명중 조건은 자료 미확인이므로 이 경로의 처치에 필요한 공격 횟수는 계산 보류합니다. 머리·몸통·다리 경로는 계산할 수 있습니다.",
+        "sourceMain": "Backpack Main"
       },
       {
         "id": "head",
@@ -1157,6 +1162,8 @@ export const additionalEnemies = [
     "source": "https://helldivers.wiki.gg/wiki/Pyro_Trooper",
     "sourceRevision": 135173,
     "checkedAt": "2026-09-17",
+    "anatomyRevision": 135173,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 125,
       "armor": 0,
@@ -1240,7 +1247,8 @@ export const additionalEnemies = [
           "constitution": 100,
           "name": "연료통 자체"
         },
-        "unknownReason": "연료통은 체력 10의 별도 본체와 체력 200의 피격 부위를 가집니다. 장치 폭발이 착용자에게 주는 피해·명중 조건은 자료 미확인이므로 이 경로의 처치에 필요한 공격 횟수는 계산 보류합니다. 머리·몸통·다리 경로는 계산할 수 있습니다."
+        "unknownReason": "연료통은 체력 10의 별도 본체와 체력 200의 피격 부위를 가집니다. 장치 폭발이 착용자에게 주는 피해·명중 조건은 자료 미확인이므로 이 경로의 처치에 필요한 공격 횟수는 계산 보류합니다. 머리·몸통·다리 경로는 계산할 수 있습니다.",
+        "sourceMain": "Fuel Tanks Main"
       }
     ]
   },
