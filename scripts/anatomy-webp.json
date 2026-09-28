@@ -1595,6 +1595,22 @@
     "sha256": "7bbf3446bf02b00a3ab4c45ed97417d20f3e316a8e3e5421802718de43bfcb35",
     "sourceSha256": "9e1106a44c5d696e4eab2419103b89da6a9c4337061a5007cd053eef5b24bccb"
   },
+  "./assets/anatomy/revised-annihilator-tank-hull-side-thumb.webp": {
+    "sha256": "33403b71d4e016560eaa8e4d1eb57abd6237cede33cb178e1b9d1c9ca38652b4",
+    "sourceSha256": "e3da30658fb57eebf10bf50545045ef83b5c02e25a49d6a6869b0a81b39a814e"
+  },
+  "./assets/anatomy/revised-annihilator-tank-hull-side.webp": {
+    "sha256": "9bc42de8b2159758ffb13884e699f8306c08860422805cd8ce77cb627b25c4e6",
+    "sourceSha256": "e766bbb2f1feb87544101575e9322651270aa4c696b7f9ebbc7548a7b50b4693"
+  },
+  "./assets/anatomy/revised-annihilator-tank-track-thumb.webp": {
+    "sha256": "b822a61ceb5b3b8232d27764c4b2f9b4d587c4e55a4ff115fd7305d86d9c7363",
+    "sourceSha256": "9d8609480792a251494e2c85faf4a595a2deeb6df37f56561603804a5165e114"
+  },
+  "./assets/anatomy/revised-annihilator-tank-track.webp": {
+    "sha256": "d87927d534547a6612ea875cb0ddf3374bc6265bc246f052dc1fc620382aaf13",
+    "sourceSha256": "bf3993e57c8f05d746a6ba7ed6b6b2cde4808bd7a2f93dc71cdcaec5e541e789"
+  },
   "./assets/anatomy/revised-behemoth-claw-thumb.webp": {
     "sha256": "d2d3189bd4ee8c15ff5efcd05a90c5fc0b1efeeb49277d50a297c6f5e97c40ef",
     "sourceSha256": "c4361132942769086d75e1f92bc52973ef3adb0cd9b4b8666763459698388c9d"

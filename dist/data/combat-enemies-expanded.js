@@ -2155,6 +2155,9 @@ export const expandedEnemies = [
     "sourceRevision": 135130,
     "note": "포탑 체력2,100과 차체 체력4,000은 독립된 본체 풀입니다. 후방 엔진과 포탑 약점도 서로 다른 부위입니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135130,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyMain": "Hull Main",
     "main": {
       "hp": 4000,
       "armor": 5,
@@ -2184,7 +2187,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Turret Front and Sides"
+        "sourcePart": "Turret Front and Sides",
+        "sourceMain": "Turret Main"
       },
       {
         "id": "turret-heatsink",
@@ -2206,7 +2210,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Turret Heatsink"
+        "sourcePart": "Turret Heatsink",
+        "sourceMain": "Turret Main"
       },
       {
         "id": "hull-front",
@@ -2229,7 +2234,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Hull Front"
+        "sourcePart": "Hull Front",
+        "sourceMain": "Hull Main"
       },
       {
         "id": "hull-side",
@@ -2252,7 +2258,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Hull Side (2)"
+        "sourcePart": "Hull Side (2)",
+        "sourceMain": "Hull Main"
       },
       {
         "id": "engine",
@@ -2274,7 +2281,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Engine Bay"
+        "sourcePart": "Engine Bay",
+        "sourceMain": "Hull Main"
       },
       {
         "id": "track",
@@ -2296,7 +2304,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Tracks (2)"
+        "sourcePart": "Tracks (2)",
+        "sourceMain": "Hull Main"
       }
     ],
     "spearLock": true
@@ -2309,6 +2318,9 @@ export const expandedEnemies = [
     "sourceRevision": 135332,
     "note": "포탑 체력2,100과 차체 체력4,000은 독립된 본체 풀입니다. 후방 엔진과 포탑 약점도 서로 다른 부위입니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135332,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyMain": "Hull Main",
     "main": {
       "hp": 4000,
       "armor": 5,
@@ -2338,7 +2350,7 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Turret Main"
+        "sourceMain": "Turret Main"
       },
       {
         "id": "launch-tubes",
@@ -2361,7 +2373,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Launch Tubes"
+        "sourcePart": "Launch Tubes",
+        "sourceMain": "Turret Main"
       },
       {
         "id": "hull-front",
@@ -2384,7 +2397,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Hull Front"
+        "sourcePart": "Hull Front",
+        "sourceMain": "Hull Main"
       },
       {
         "id": "hull-side",
@@ -2407,7 +2421,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Hull Sides (2)"
+        "sourcePart": "Hull Sides (2)",
+        "sourceMain": "Hull Main"
       },
       {
         "id": "engine",
@@ -2429,7 +2444,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Engine Bay"
+        "sourcePart": "Engine Bay",
+        "sourceMain": "Hull Main"
       },
       {
         "id": "track",
@@ -2451,7 +2467,8 @@ export const expandedEnemies = [
           "exdr": 0,
           "constitution": 0
         },
-        "sourcePart": "Tracks (2)"
+        "sourcePart": "Tracks (2)",
+        "sourceMain": "Hull Main"
       }
     ],
     "spearLock": true

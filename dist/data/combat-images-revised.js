@@ -1048,5 +1048,45 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "annihilator-tank": {
+    "hull-side": [
+      {
+        "src": "./assets/anatomy/revised-annihilator-tank-hull-side.webp",
+        "thumbnail": "./assets/anatomy/revised-annihilator-tank-hull-side-thumb.webp",
+        "title": "Annihilator Hull Sides 1.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Annihilator_Hull_Sides_1.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Annihilator_Hull_Sides_1.png?93dabb",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Annihilator_Hull_Sides_1.png/800px-Annihilator_Hull_Sides_1.png?93dabb",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Annihilator_Hull_Sides_1.png/320px-Annihilator_Hull_Sides_1.png?93dabb",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "e766bbb2f1feb87544101575e9322651270aa4c696b7f9ebbc7548a7b50b4693",
+        "thumbnailSha256": "e3da30658fb57eebf10bf50545045ef83b5c02e25a49d6a6869b0a81b39a814e",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "track": [
+      {
+        "src": "./assets/anatomy/revised-annihilator-tank-track.webp",
+        "thumbnail": "./assets/anatomy/revised-annihilator-tank-track-thumb.webp",
+        "title": "Annihilator Tracks Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Annihilator_Tracks_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Annihilator_Tracks_Front.png?c015eb",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Annihilator_Tracks_Front.png/800px-Annihilator_Tracks_Front.png?c015eb",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Annihilator_Tracks_Front.png/320px-Annihilator_Tracks_Front.png?c015eb",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "bf3993e57c8f05d746a6ba7ed6b6b2cde4808bd7a2f93dc71cdcaec5e541e789",
+        "thumbnailSha256": "9d8609480792a251494e2c85faf4a595a2deeb6df37f56561603804a5165e114",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

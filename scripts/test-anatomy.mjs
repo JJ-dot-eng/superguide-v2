@@ -17,8 +17,9 @@ const titleOf = enemy => decodeURIComponent(enemy.source.split('/wiki/')[1]).rep
 const partsOf = enemy => enemy.parts.flatMap(part => [part, ...(part.next ? [part.next] : [])]);
 
 // A part that shares the main pool is mainOnly, or (in legacy entries) a part
-// with the full main health whose transfer is capped at that health.
-const sharesMain = (part, main) => part.mainOnly === true || part.hp === main.hp && part.toMain === 100 && part.overflowCap === true;
+// with the full main health that passes at least all of it on, so both run
+// out on the same hit.
+const sharesMain = (part, main) => part.mainOnly === true || part.hp === main.hp && part.toMain >= 100;
 
 function matches(part, row, label, main) {
   if (/^Main\b/.test(row.health)) ok(sharesMain(part, part.main || main), `${label}: health ${row.health} shares a main pool`);
@@ -54,17 +55,22 @@ for (const enemy of revised) {
   const tables = enemy.anatomyTables ?? [...new Set(page.rows.map(row => row.table ?? 0))];
   const nameOf = row => (row.table ?? 0) === home ? clean(row.part_name) : `${row.tab}: ${clean(row.part_name)}`;
   const byName = new Map(page.rows.filter(row => tables.includes(row.table ?? 0)).map(row => [nameOf(row), row]));
-  const mainOf = name => byName.get(name.includes(': ') ? `${name.split(': ')[0]}: Main` : 'Main');
-  const vitals = (main, row) => eq([main.hp, main.armor, main.exdr], [number(row.health), number(row.av), number(row.exdr)], `${enemy.id}: ${row.tab ?? ''} main`);
-  vitals(enemy.main, mainOf(''));
-  const parts = partsOf(enemy);
+  // The main pool is the "Main" row unless the page splits it (e.g. "Hull
+  // Main"); a part with its own pool (a turret, a pilot) names it in sourceMain.
   const covered = new Set();
+  const vitals = (main, name) => {
+    ok(main && byName.has(name), `${enemy.id}: main pool ${name}`);
+    const row = byName.get(name);
+    eq([main.hp, main.armor, main.exdr], [number(row.health), number(row.av), number(row.exdr)], `${enemy.id}: ${name}`);
+    covered.add(name);
+  };
+  vitals(enemy.main, enemy.anatomyMain ?? 'Main');
+  const parts = partsOf(enemy);
+  for (const part of parts.filter(part => part.sourceMain)) vitals(part.main, part.sourceMain);
   for (const part of parts.filter(part => part.sourcePart)) {
     const row = byName.get(part.sourcePart);
     ok(row, `${enemy.id}/${part.id}: wiki row ${part.sourcePart}`);
     matches(part, row, `${enemy.id}/${part.id}`, enemy.main);
-    // A part with its own health pool (a pilot, a turret) matches that tab's Main.
-    if (part.main && part.sourcePart.includes(': ')) { vitals(part.main, mainOf(part.sourcePart)); covered.add(`${part.sourcePart.split(': ')[0]}: Main`); }
     covered.add(part.sourcePart);
   }
   for (const [name, partId] of Object.entries(enemy.anatomyMerged || {})) {
@@ -77,7 +83,7 @@ for (const enemy of revised) {
     ok(byName.has(name) && !covered.has(name) && /^[ -~]{20,}$/.test(reason), `${enemy.id}: ${name} left out with an English reason`);
     covered.add(name);
   }
-  const uncovered = [...byName.keys()].filter(name => name !== 'Main' && !covered.has(name));
+  const uncovered = [...byName.keys()].filter(name => !covered.has(name));
   eq(uncovered, [], `${enemy.id}: every wiki anatomy row is a part`);
 }
 console.log(`PASS anatomy: ${checked} checks; ${revised.length} enemies match Wiki Anatomy snapshot ${snapshot.retrievedAt}.`);
