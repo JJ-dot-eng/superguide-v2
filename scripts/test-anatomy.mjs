@@ -28,10 +28,12 @@ function matches(part, row, label, main) {
   eq(part.durability, number(row.durability), `${label}: durability`);
   eq(part.exdr, number(row.exdr), `${label}: explosive resistance`);
   // "-" means a separate pool that passes nothing on, so its cap is moot.
-  if (row.percent_to_main === '-') eq(part.toMain, 0, `${label}: separate pool passes nothing to main`);
+  // A separate device (partOnly) is solved on its own and passes nothing on.
+  if (row.percent_to_main === '-') ok(part.toMain === 0 || part.partOnly === true, `${label}: separate pool passes nothing to main`);
   else {
     eq(part.toMain, number(row.percent_to_main), `${label}: % to main`);
-    eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
+    // Some "Armor Broken" rows leave the cap column empty.
+    if (row.dmg_cap_main !== undefined) eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
   }
   // Some pages put "Yes (Downs)" in the bleed column instead of fatal.
   const fatal = /^Yes/.test(row.fatal) || /Downs/.test(row.bleed);

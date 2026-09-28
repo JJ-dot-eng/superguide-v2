@@ -2481,6 +2481,8 @@ export const expandedEnemies = [
     "sourceRevision": 135134,
     "note": "눈과 머리 살점은 장갑4 치명 부위입니다. 복부 문·노출된 회로·다리 연결부의 0/s 추가 체력은 자연 감소하지 않으므로 끝까지 깎아야 합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135134,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 10000,
       "armor": 4,
@@ -2527,7 +2529,7 @@ export const expandedEnemies = [
           "effect": "kill",
           "tip": "머리 장갑 사이 작은 눈 부위를 정확히 맞히세요. 머리 장갑을 이미 벗겼다면 같은 살점 부위가 넓게 노출됩니다.",
           "constitution": 0,
-          "sourcePart": "Head Body"
+          "sourcePart": "Armor Broken: Head Body (Broken Head Armor)"
         },
         "sourcePart": "Head Armor"
       },
@@ -2586,7 +2588,7 @@ export const expandedEnemies = [
           "tip": "장갑판 사이 노출된 연결부나 발목을 노리세요. 자연감소 없는 추가 체력 2,000을 포함해 실질 3,500 피해가 필요합니다.",
           "constitution": 0,
           "staticConstitution": 2000,
-          "sourcePart": "Leg Assembly (4)"
+          "sourcePart": "Armor Broken: Leg Assembly (4) (Broken Leg Armor)"
         },
         "sourcePart": "Leg Armor (8)"
       },
@@ -2615,7 +2617,7 @@ export const expandedEnemies = [
           "tip": "같은 측면 장갑을 벗겨 노출된 내부를 계속 맞히세요. 추가 체력 1,200은 자연감소하지 않습니다.",
           "constitution": 0,
           "staticConstitution": 1200,
-          "sourcePart": "Side Circuits (2) (Broken Side Armor)"
+          "sourcePart": "Armor Broken: Side Circuits (2) (Broken Side Armor)"
         },
         "sourcePart": "Side Armor (2)"
       },
@@ -2664,6 +2666,167 @@ export const expandedEnemies = [
         "partOnly": true,
         "partOnlyNote": "독립 장치 자체의 파괴 기준입니다. 본체로 전달되는 피해와 후속 폭발에 의한 처치 횟수는 합산하지 않습니다.",
         "sourcePart": "Fusion Gatling Guns (2)"
+      },
+      {
+        "id": "scrambler",
+        "name": "전략 교란기",
+        "hp": 5000,
+        "armor": 0,
+        "durability": 0,
+        "exdr": 0,
+        "toMain": null,
+        "overflowCap": null,
+        "effect": "break",
+        "tip": "등에 달린 전략 교란 장치입니다. 파괴하면 교란만 풀리고 본체는 살아 있습니다.",
+        "constitution": 0,
+        "partOnly": true,
+        "partOnlyNote": "독립 장치 자체의 파괴 기준입니다. 본체로 전달되는 피해와 후속 폭발에 의한 처치 횟수는 합산하지 않습니다.",
+        "sourcePart": "Stratagem Scrambler"
+      },
+      {
+        "id": "neck",
+        "name": "목",
+        "hp": 2500,
+        "armor": 4,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "머리 아래 목이 드러난 틈을 직접 맞히세요. 파괴하면 즉사합니다.",
+        "sourcePart": "Neck"
+      },
+      {
+        "id": "neck-armor",
+        "name": "목 장갑 → 목",
+        "hp": 1500,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 30,
+        "overflowCap": true,
+        "effect": "armor",
+        "tip": "목을 덮은 장갑을 벗긴 뒤 같은 자리의 목을 계속 공격하세요.",
+        "sourcePart": "Neck Armor",
+        "next": {
+          "id": "exposed-neck",
+          "name": "노출된 목",
+          "hp": 2500,
+          "armor": 4,
+          "durability": 100,
+          "exdr": 40,
+          "toMain": 100,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "장갑을 벗긴 목입니다. 파괴하면 즉사합니다.",
+          "sourcePart": "Armor Broken: Neck"
+        }
+      },
+      {
+        "id": "front-top-armor",
+        "name": "정면 상단 장갑",
+        "hp": 2200,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 30,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "몸통 앞 위쪽의 두꺼운 장갑입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.",
+        "sourcePart": "Front Top Armor"
+      },
+      {
+        "id": "front-engine",
+        "name": "전방 엔진 약점",
+        "hp": 2000,
+        "armor": 4,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "몸통 앞의 엔진 약점입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.",
+        "sourcePart": "Front Engine Weakspot"
+      },
+      {
+        "id": "front-armor",
+        "name": "정면 장갑 → 회로",
+        "hp": 2200,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 30,
+        "overflowCap": true,
+        "effect": "armor",
+        "tip": "몸통 정면 장갑을 벗긴 뒤 드러난 회로를 계속 맞히세요.",
+        "sourcePart": "Front Armor",
+        "next": {
+          "id": "front-circuits",
+          "name": "노출된 정면 회로",
+          "hp": 1200,
+          "armor": 3,
+          "durability": 100,
+          "exdr": 40,
+          "toMain": 50,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "정면 장갑을 벗겨 드러난 회로입니다. 체력 1,200과 줄지 않는 추가 체력 1,200을 모두 깎으면 죽습니다.",
+          "staticConstitution": 1200,
+          "sourcePart": "Armor Broken: Circuits Front (Broken Front Armor)"
+        }
+      },
+      {
+        "id": "rear-engine-armor",
+        "name": "후방 엔진 장갑",
+        "hp": 2200,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 50,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "후방 엔진을 덮은 장갑입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.",
+        "sourcePart": "Rear Engine Armor"
+      },
+      {
+        "id": "rear-armor",
+        "name": "후방 장갑 → 회로",
+        "hp": 2200,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 30,
+        "overflowCap": true,
+        "effect": "armor",
+        "tip": "몸통 뒤 장갑을 벗긴 뒤 드러난 회로를 계속 맞히세요.",
+        "sourcePart": "Rear Armor",
+        "next": {
+          "id": "rear-circuits",
+          "name": "노출된 후방 회로",
+          "hp": 1200,
+          "armor": 3,
+          "durability": 100,
+          "exdr": 40,
+          "toMain": 100,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "후방 장갑을 벗겨 드러난 회로입니다. 체력 1,200과 줄지 않는 추가 체력 1,200을 모두 깎으면 죽습니다.",
+          "staticConstitution": 1200,
+          "sourcePart": "Armor Broken: Rear Circuits (Broken Rear Armor)"
+        }
+      },
+      {
+        "id": "knee-armor",
+        "name": "무릎 장갑 한 개",
+        "hp": 800,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 40,
+        "toMain": 20,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "다리 무릎의 장갑판 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Knee Armor (4)"
       }
     ],
     "spearLock": true

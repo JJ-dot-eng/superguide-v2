@@ -1819,6 +1819,94 @@
     "sha256": "266bf09dd69a2395f08bdfd66ac5b9f324764eabb66af4e0402c5eae30b6c599",
     "sourceSha256": "caf86f9e060d9569e294e4700dc2fb2e73971eece75bd2bc652b0b6a687f5823"
   },
+  "./assets/anatomy/revised-factory-strider-front-armor-exposed-thumb.webp": {
+    "sha256": "626281286fd10385fb6f625ac8d1e453e6de9c604e12399ca2ccfb716ab1dce6",
+    "sourceSha256": "b186d847220e62e54e7424fee7cd9f41c5c63a6b4bb5b5e34806fb3320680b63"
+  },
+  "./assets/anatomy/revised-factory-strider-front-armor-exposed.webp": {
+    "sha256": "6d46246687dffa9de764c9981eb7a882ed9dfbee52fddc0a7703cb926c9a5fc4",
+    "sourceSha256": "3865adbaf531a13f534fbe5e4a80e07b72e1f73166c13f7b9a194cc157fbecf7"
+  },
+  "./assets/anatomy/revised-factory-strider-front-armor-thumb.webp": {
+    "sha256": "77aed65edf6fd3eb25623aa13b3596bea080de27c00b9e9e8b718d361dc050a2",
+    "sourceSha256": "cd33197c9f0f7103fd85c827c5764477b8afcd1a07c7ab242535435d4cd351eb"
+  },
+  "./assets/anatomy/revised-factory-strider-front-armor.webp": {
+    "sha256": "a223139f9dfe51b87335215f62d63da32fb9edea51a85fe33353d87492dcb3d8",
+    "sourceSha256": "9bedbb2beb063692bddb0487473893ea18d5d565d9c3cf5f39f539b41e158bd6"
+  },
+  "./assets/anatomy/revised-factory-strider-front-engine-thumb.webp": {
+    "sha256": "4d9b8459d0dce83ca43f562ac56af82f9e9841545187192694cc6d1f18bf3b5d",
+    "sourceSha256": "8c94a6b8703408ff9cff60a62e625162e10585a13f61ada1c606617d3139e41b"
+  },
+  "./assets/anatomy/revised-factory-strider-front-engine.webp": {
+    "sha256": "c295ab4275635583d7eb109493ac5ecf3bd45ce44c96bd171edc487c9c8fb5b0",
+    "sourceSha256": "0b86abbec28ebf84c8ffae98cc21274bc476480bf2e8e19e703d498885811668"
+  },
+  "./assets/anatomy/revised-factory-strider-front-top-armor-thumb.webp": {
+    "sha256": "38b9a85e5fda239b551e0660aece82b083b6025c2d0e96d73ffe244d05629996",
+    "sourceSha256": "3445fe682433d9f4f3d71e301be31ba0352e695a1329140cb46e88ee71acaddc"
+  },
+  "./assets/anatomy/revised-factory-strider-front-top-armor.webp": {
+    "sha256": "fa1921e9344a8da6f0ecfb8769cb541dc0a09a8fc52579ac9988bd8c7da54634",
+    "sourceSha256": "9ad19928c0e990e16b7e696d34eba0014d371d3adf20ce9986a79da9fcb8b960"
+  },
+  "./assets/anatomy/revised-factory-strider-knee-armor-thumb.webp": {
+    "sha256": "540f5118246a8be519d2f38926701f9f5c4a400a0f58e61d368eaa60cc11f36f",
+    "sourceSha256": "2ea5534b5524ad99456a530b85b3cb883dd2a6ba2057a38c327e2a4a2af63dab"
+  },
+  "./assets/anatomy/revised-factory-strider-knee-armor.webp": {
+    "sha256": "27bc55c0376dc0915429104f3320f4c65b91461cd2ee6b868b6c8436893451eb",
+    "sourceSha256": "d280871cf3334b677718ea0d7c43810f2c0dd3606165499aca216aaa982be967"
+  },
+  "./assets/anatomy/revised-factory-strider-neck-armor-exposed-thumb.webp": {
+    "sha256": "ecc63186c797e7c68775a42b05a0cc9558bf992cfda6d1a652a78b3c2814a8c2",
+    "sourceSha256": "804d1f078bffee9ac9b67a30c672307d59e1115a57d92d0913330febb8bbaf27"
+  },
+  "./assets/anatomy/revised-factory-strider-neck-armor-exposed.webp": {
+    "sha256": "3cbb61432f1b4c50bacb64e1bbc85c9563ae73fb5ebe9ea6b836d493aa124675",
+    "sourceSha256": "b168cfb590cba46c49f17551c9328f0b3854a55ce1759238962af4e2d444c31e"
+  },
+  "./assets/anatomy/revised-factory-strider-neck-armor-thumb.webp": {
+    "sha256": "a4f8d897015e7c350e0c593344fa467eeadedd172e7ca4ed2459494685f2fb14",
+    "sourceSha256": "f66e935e24986bc8ceb10fe0782ce9e536d692d908717633b2505382a084f58b"
+  },
+  "./assets/anatomy/revised-factory-strider-neck-armor.webp": {
+    "sha256": "12e42dadf54686ae42a51c15e26f8e03654cee0a97dd0e2be3fe1e9a68c17172",
+    "sourceSha256": "cc82e52232ab5df01a082721267d62112e7b311860b2f70aebd655f2db461d14"
+  },
+  "./assets/anatomy/revised-factory-strider-neck-thumb.webp": {
+    "sha256": "747e006fe5ec03436fdadfc3ee8d1362de925e926d94183aa6e4e4be016f0389",
+    "sourceSha256": "ab4812b2179349d99f348e73795442951b2e131e654a176ecc2bd747a4fe9cc1"
+  },
+  "./assets/anatomy/revised-factory-strider-neck.webp": {
+    "sha256": "7a003e60b63f016bb9c3e2997c009fa126db5a76bfb0633e226b0cf51f328586",
+    "sourceSha256": "44e6df3895f44c43365c2bc8f2b3efa765e27cbc9a5214315e48d395027af505"
+  },
+  "./assets/anatomy/revised-factory-strider-rear-armor-exposed-thumb.webp": {
+    "sha256": "e27aec69ae921083f669628ace35264f9f002add847c170e25eebbdbeda32ada",
+    "sourceSha256": "bec8688bd6de1a7b4eb358f245436e13e8491d8355851b6cba15a111c63d0e93"
+  },
+  "./assets/anatomy/revised-factory-strider-rear-armor-exposed.webp": {
+    "sha256": "0c38e832e5462fb76e9c4eeb4d6174ec12dea957091acac5221e4f9d355a5ea3",
+    "sourceSha256": "9a50600469c623b582a68622719a44716e802958c3f8e807742b14e1bef6e44e"
+  },
+  "./assets/anatomy/revised-factory-strider-rear-armor-thumb.webp": {
+    "sha256": "d785694a48bad85b9e386bb0350a48c3b71d6ab578cc55df9dbef3c132f1ac8c",
+    "sourceSha256": "9770bfe263504f84fb742f9673eedec948f9420bfb6a41216cee8bf4aacd0624"
+  },
+  "./assets/anatomy/revised-factory-strider-rear-armor.webp": {
+    "sha256": "01ca6875791402eb4346a2c1db6e19b42cbb6061ec676b57db1fff4b7bc9f17c",
+    "sourceSha256": "adcc36d1b829bfec0d6c444d619eb0642ba81ee44d727246a51ee8e6e6ad2ab4"
+  },
+  "./assets/anatomy/revised-factory-strider-rear-engine-armor-thumb.webp": {
+    "sha256": "6d2468ec2fb0ab020bb6f5438445b69b37ef5269bf3df9e20f5c6e610650bf4d",
+    "sourceSha256": "046c4d2873a8372c17d0cdc233bcd1bbc8c8b62faa0cd21b14f0a4cc697671e7"
+  },
+  "./assets/anatomy/revised-factory-strider-rear-engine-armor.webp": {
+    "sha256": "3c8287c0280fefe570bb8baa8fc9ccef1b91eada17618c0ec855c4294e0a9ab6",
+    "sourceSha256": "386e79b97cfbd1af43f7f049196f6144d2fa599f6ae118475f61b5b0f2f2180d"
+  },
   "./assets/anatomy/revised-hulk-arm-thumb.webp": {
     "sha256": "ff6fb64f24c8a87fe8cf1ea4208d5e7bcc2b8057a9acf22c541a53eada13b0b1",
     "sourceSha256": "e852cb09094774a5b14ca609f76bcd03f002726ec270dbec63005612f5dc4494"

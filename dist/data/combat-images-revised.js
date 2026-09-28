@@ -1088,5 +1088,210 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "factory-strider": {
+    "neck": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-neck.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-neck-thumb.webp",
+        "title": "Factory Strider Neck.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Neck.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Neck.png?b4af25",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Neck.png/800px-Factory_Strider_Neck.png?b4af25",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Neck.png/320px-Factory_Strider_Neck.png?b4af25",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "44e6df3895f44c43365c2bc8f2b3efa765e27cbc9a5214315e48d395027af505",
+        "thumbnailSha256": "ab4812b2179349d99f348e73795442951b2e131e654a176ecc2bd747a4fe9cc1",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "neck-armor": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-neck-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-neck-armor-thumb.webp",
+        "title": "Factory Strider Neck Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Neck_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Neck_Armor_Front.png?944791",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Neck_Armor_Front.png/800px-Factory_Strider_Neck_Armor_Front.png?944791",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Neck_Armor_Front.png/320px-Factory_Strider_Neck_Armor_Front.png?944791",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "cc82e52232ab5df01a082721267d62112e7b311860b2f70aebd655f2db461d14",
+        "thumbnailSha256": "f66e935e24986bc8ceb10fe0782ce9e536d692d908717633b2505382a084f58b",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-factory-strider-neck-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-neck-armor-exposed-thumb.webp",
+        "title": "Factory Strider Neck Exposed Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Neck_Exposed_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Neck_Exposed_Front.png?4f0324",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Neck_Exposed_Front.png/800px-Factory_Strider_Neck_Exposed_Front.png?4f0324",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Neck_Exposed_Front.png/320px-Factory_Strider_Neck_Exposed_Front.png?4f0324",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "b168cfb590cba46c49f17551c9328f0b3854a55ce1759238962af4e2d444c31e",
+        "thumbnailSha256": "804d1f078bffee9ac9b67a30c672307d59e1115a57d92d0913330febb8bbaf27",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "front-top-armor": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-front-top-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-front-top-armor-thumb.webp",
+        "title": "Factory Strider Front Top Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Front_Top_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Front_Top_Armor_Front.png?936e63",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Top_Armor_Front.png/800px-Factory_Strider_Front_Top_Armor_Front.png?936e63",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Top_Armor_Front.png/320px-Factory_Strider_Front_Top_Armor_Front.png?936e63",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9ad19928c0e990e16b7e696d34eba0014d371d3adf20ce9986a79da9fcb8b960",
+        "thumbnailSha256": "3445fe682433d9f4f3d71e301be31ba0352e695a1329140cb46e88ee71acaddc",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "front-engine": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-front-engine.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-front-engine-thumb.webp",
+        "title": "Factory Strider Front Engine Weakspot Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Front_Engine_Weakspot_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Front_Engine_Weakspot_Front.png?2c5154",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Engine_Weakspot_Front.png/800px-Factory_Strider_Front_Engine_Weakspot_Front.png?2c5154",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Engine_Weakspot_Front.png/320px-Factory_Strider_Front_Engine_Weakspot_Front.png?2c5154",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0b86abbec28ebf84c8ffae98cc21274bc476480bf2e8e19e703d498885811668",
+        "thumbnailSha256": "8c94a6b8703408ff9cff60a62e625162e10585a13f61ada1c606617d3139e41b",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "front-armor": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-front-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-front-armor-thumb.webp",
+        "title": "Factory Strider Front Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Front_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Front_Armor_Front.png?655241",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Armor_Front.png/800px-Factory_Strider_Front_Armor_Front.png?655241",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Armor_Front.png/320px-Factory_Strider_Front_Armor_Front.png?655241",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9bedbb2beb063692bddb0487473893ea18d5d565d9c3cf5f39f539b41e158bd6",
+        "thumbnailSha256": "cd33197c9f0f7103fd85c827c5764477b8afcd1a07c7ab242535435d4cd351eb",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-factory-strider-front-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-front-armor-exposed-thumb.webp",
+        "title": "Factory Strider Front Circuits Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Front_Circuits_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Front_Circuits_Front.png?eec6d0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Circuits_Front.png/800px-Factory_Strider_Front_Circuits_Front.png?eec6d0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Front_Circuits_Front.png/320px-Factory_Strider_Front_Circuits_Front.png?eec6d0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3865adbaf531a13f534fbe5e4a80e07b72e1f73166c13f7b9a194cc157fbecf7",
+        "thumbnailSha256": "b186d847220e62e54e7424fee7cd9f41c5c63a6b4bb5b5e34806fb3320680b63",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-engine-armor": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-rear-engine-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-rear-engine-armor-thumb.webp",
+        "title": "Factory Strider Rear Engine Armor Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Rear_Engine_Armor_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Rear_Engine_Armor_Side.png?8dcf7b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Rear_Engine_Armor_Side.png/800px-Factory_Strider_Rear_Engine_Armor_Side.png?8dcf7b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Rear_Engine_Armor_Side.png/320px-Factory_Strider_Rear_Engine_Armor_Side.png?8dcf7b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "386e79b97cfbd1af43f7f049196f6144d2fa599f6ae118475f61b5b0f2f2180d",
+        "thumbnailSha256": "046c4d2873a8372c17d0cdc233bcd1bbc8c8b62faa0cd21b14f0a4cc697671e7",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-armor": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-rear-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-rear-armor-thumb.webp",
+        "title": "Factory Strider Rear Armor Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Rear_Armor_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Rear_Armor_Side.png?e258a7",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Rear_Armor_Side.png/800px-Factory_Strider_Rear_Armor_Side.png?e258a7",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Rear_Armor_Side.png/320px-Factory_Strider_Rear_Armor_Side.png?e258a7",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "adcc36d1b829bfec0d6c444d619eb0642ba81ee44d727246a51ee8e6e6ad2ab4",
+        "thumbnailSha256": "9770bfe263504f84fb742f9673eedec948f9420bfb6a41216cee8bf4aacd0624",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-factory-strider-rear-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-rear-armor-exposed-thumb.webp",
+        "title": "Factory Strider Rear Circuits Side.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Rear_Circuits_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Rear_Circuits_Side.png?ffea70",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Rear_Circuits_Side.png/800px-Factory_Strider_Rear_Circuits_Side.png?ffea70",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Rear_Circuits_Side.png/320px-Factory_Strider_Rear_Circuits_Side.png?ffea70",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9a50600469c623b582a68622719a44716e802958c3f8e807742b14e1bef6e44e",
+        "thumbnailSha256": "bec8688bd6de1a7b4eb358f245436e13e8491d8355851b6cba15a111c63d0e93",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "knee-armor": [
+      {
+        "src": "./assets/anatomy/revised-factory-strider-knee-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-factory-strider-knee-armor-thumb.webp",
+        "title": "Factory Strider Knee Armor Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Factory_Strider_Knee_Armor_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Factory_Strider_Knee_Armor_Side.png?a509ff",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Knee_Armor_Side.png/800px-Factory_Strider_Knee_Armor_Side.png?a509ff",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Factory_Strider_Knee_Armor_Side.png/320px-Factory_Strider_Knee_Armor_Side.png?a509ff",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d280871cf3334b677718ea0d7c43810f2c0dd3606165499aca216aaa982be967",
+        "thumbnailSha256": "2ea5534b5524ad99456a530b85b3cb883dd2a6ba2057a38c327e2a4a2af63dab",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

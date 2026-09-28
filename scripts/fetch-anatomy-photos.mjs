@@ -73,7 +73,8 @@ for (const enemy of enemies.filter(item => item.anatomyRevision)) {
     if (baseCombatImages[enemy.id]?.[part.id] || revised[enemy.id]?.[part.id]) continue;
     const photos = [];
     for (const [stage, layer] of [['initial', part], ['exposed', part.next]]) {
-      const file = layer?.sourcePart && IMAGE_FIELDS.map(field => rows.get(layer.sourcePart)?.[field]).find(Boolean);
+      // "Anatomy Placeholder.png" marks a part without a real photo.
+      const file = layer?.sourcePart && IMAGE_FIELDS.map(field => rows.get(layer.sourcePart)?.[field]).find(name => name && !/^Anatomy Placeholder/i.test(name));
       if (file) photos.push(await photo(enemy.id, part.id, stage, file));
     }
     if (!photos.length) continue;
