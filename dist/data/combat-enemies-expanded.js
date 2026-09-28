@@ -2358,7 +2358,7 @@ export const expandedEnemies = [
         "toMain": 100,
         "overflowCap": false,
         "effect": "kill",
-        "tip": "배 아래 두 문 중 한쪽에 집중하세요. 서로 다른 문 피해를 합치지 않습니다.체력1,200과 자연감소 없는 추가 체력 1,200을 모두 깎는 조건입니다.",
+        "tip": "배 아래 두 문 중 한쪽에 집중하세요. 서로 다른 문 피해를 합치지 않습니다. 체력 1,200과 자연감소 없는 추가 체력 1,200을 모두 깎는 조건입니다.",
         "constitution": 0,
         "staticConstitution": 1200,
         "sourcePart": "Belly Panels (2)"
@@ -2373,7 +2373,7 @@ export const expandedEnemies = [
         "toMain": 40,
         "overflowCap": true,
         "effect": "kill",
-        "tip": "장갑판 사이 노출된 연결부나 발목을 노리세요.0/s 추가 체력 2,000을 포함해 실질 3,500 피해가 필요합니다.",
+        "tip": "장갑판 사이 노출된 연결부나 발목을 노리세요. 자연감소 없는 추가 체력 2,000을 포함해 실질 3,500 피해가 필요합니다.",
         "constitution": 0,
         "staticConstitution": 2000,
         "sourcePart": "Leg Assembly (4)"
@@ -2400,7 +2400,7 @@ export const expandedEnemies = [
           "toMain": 40,
           "overflowCap": true,
           "effect": "kill",
-          "tip": "장갑판 사이 노출된 연결부나 발목을 노리세요.0/s 추가 체력 2,000을 포함해 실질 3,500 피해가 필요합니다.",
+          "tip": "장갑판 사이 노출된 연결부나 발목을 노리세요. 자연감소 없는 추가 체력 2,000을 포함해 실질 3,500 피해가 필요합니다.",
           "constitution": 0,
           "staticConstitution": 2000,
           "sourcePart": "Leg Assembly (4)"
