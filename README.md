@@ -1,8 +1,10 @@
 # HD2 필드 가이드 v2
 
-헬다이버즈 2의 스트라타젬 수치, 적 부위별 필요 탄수, 시설 철거 조건, 팩션별 추천 장비를 한국어로 찾아보는 비공식 팬 사이트의 리뉴얼 버전입니다.
+헬다이버즈 2의 스트라타젬 수치, 적 부위별 필요 탄수, 시설 철거 조건, 팩션별 추천 장비를 한국어로 찾아보는 비공식 팬 사이트의 리뉴얼 버전입니다. 영어로도 볼 수 있습니다.
 
-**[사이트 바로가기](https://jj-dot-eng.github.io/superguide-v2/)**
+**[사이트 바로가기](https://jj-dot-eng.github.io/superguide-v2/)** · **[English](https://jj-dot-eng.github.io/superguide-v2/?lang=en)**
+
+> An unofficial Helldivers 2 field guide: stratagem and weapon stats, shots to kill for every enemy part, what destroys each structure, and loadout picks per faction. Switch to English with the **EN** button in the header, or open the site with `?lang=en`.
 
 ## 네 가지 도구
 
@@ -17,10 +19,13 @@
 - 초성(`ㄱㄷㅈㅁ` → 궤도 정밀 타격)이나 글자 순서를 섞은 검색(`도밀타`)도 됩니다.
 - 보고 있는 화면은 주소에 그대로 담기므로, 링크를 보내면 같은 화면이 열립니다.
 - 휴대폰에서도 편하게 볼 수 있고, 기기 설정에 따라 다크·라이트 모드로 표시됩니다.
+- 머리글의 **EN / 한국어** 버튼으로 언어를 바꿉니다. 브라우저 언어에 한국어가 없으면 처음부터 영어로 열리고, 영어 화면의 주소에는 `?lang=en`이 붙어 링크를 보내도 영어로 열립니다.
 
 ## 자료 기준
 
 수치·아이콘·부위 이미지는 [Helldivers Wiki](https://helldivers.wiki.gg/)에서 2026년 9월 16일 확인한 값이며, 게임 패치와 실시간으로 연동되지 않습니다. 표시 탄수는 최대 피해로 같은 부위를 계속 맞혔을 때의 이론값이고, 확인되지 않은 값은 0으로 채우지 않고 ‘미확인’ 또는 ‘계산 보류’로 표시합니다.
+
+영문판의 적·부위·시설·무기 이름은 위키의 영문 명칭을 따릅니다. 데이터(`dist/data`)는 한국어 그대로 두고, 화면에 보일 때만 `dist/i18n/en/`의 사전으로 영어를 찾아 씁니다. 데이터의 한국어 문구를 고치면 같은 문구의 영어도 사전에서 고쳐야 하며, `npm run check`가 영어가 빠진 문구를 알려 줍니다.
 
 아이콘과 부위 이미지는 Helldivers Wiki 기여자들의 작업이며 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 조건에 따라 webp로 변환·축소해 사용합니다. 각 부위 사진에는 위키 원본 파일 링크가 붙어 있습니다.
 
