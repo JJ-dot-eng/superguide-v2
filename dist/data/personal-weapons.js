@@ -4195,7 +4195,7 @@ export const personalWeapons = [
     splashStatuses: [],
     fuseType: null,
     fuseOptions: [],
-    playerNotes: ['처치 탄수는 직격과 충돌 피해만 반영합니다. 붙은 뒤의 지연 폭발과 지속 피해는 포함하지 않습니다.'],
+    playerNotes: ['사격 모드는 하나입니다. 처치 탄수는 직격과 붙은 뒤의 지연 폭발을 함께 반영하며, 지속 피해는 포함하지 않습니다.'],
     image: 'P-34 Breacher Secondary Render.png',
     sourceRevision: 136738,
     variants: [

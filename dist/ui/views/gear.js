@@ -3,6 +3,7 @@
 //   #/gear[/<weapon>]?cat=<group>&type=<type>&q=<text>&sort=<key>
 //   #/gear?tab=loadout&p=<primary>&s=<secondary>&g=<throwable>&st=<a,b,c,d>&f=<faction>
 import { personalWeapons, personalWeaponsCheckedAt } from '../../data/personal-weapons.js';
+import { personalProfiles } from '../../data/personal-profiles.js';
 import { weaponImages } from '../../data/weapon-images.js';
 import { apBandOf } from '../../core/catalog.js';
 import { search } from '../../core/search.js';
@@ -75,7 +76,10 @@ export function traits(w) {
   if (w.category !== 'throwable' && w.splash > 0) list.push(badge(L('폭발', 'Explosive')));
   if (w.heatCapacity?.raw) list.push(badge(L('과열식', 'Heat-based')));
   if (w.pellets > 1) list.push(badge(L('산탄', 'Pellets')));
-  if (w.variants?.length > 1) list.push(badge(L(`모드 ${w.variants.length}`, `${w.variants.length} modes`)));
+  // Selectable firing modes only: variants are damage components (an impact
+  // and its delayed explosion), not modes the player switches between.
+  const modes = personalProfiles[w.id]?.modes.length ?? 0;
+  if (modes > 1) list.push(badge(L(`모드 ${modes}`, `${modes} modes`)));
   return list;
 }
 

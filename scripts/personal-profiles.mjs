@@ -76,9 +76,17 @@ export function buildPersonalProfiles(weapons, data, pages, checkedAt) {
       modes[0].bomblet = fragmentMode;
       modes[0].note = `기본은 파편의 20%를 반올림한 개수가 같은 부위에 맞는다고 가정하며, ${weapon.delivery === 'explosion' ? '폭발 피해도' : '직접 맞혔을 때의 피해와 폭발 피해도'} 반영합니다. 명중률을 바꿔 다시 계산할 수 있으며, 파편 0개를 고르면 파편 피해는 제외합니다.`;
     }
-    // Breacher's delayed explosion is linked, not another firing mode. Keep
-    // only the known impact here; do not invent timing/attachment success.
-    if (weapon.id === 'breacher') modes[0].note = '맞는 순간의 피해만 계산합니다. 붙은 뒤에 터지는 폭발과 계속 타는 피해는 빼며, 실제로 잘 붙는지는 반영하지 않습니다.';
+    // Breacher's delayed explosion is part of the same shot, not another
+    // firing mode: the round sticks where it hits and then detonates there.
+    // Its impact explosion has 0 durable damage and AP 0, so it never adds
+    // damage under the engine's explosion rule and is left out of the list.
+    if (weapon.id === 'breacher') {
+      const delayed = weapon.variants.filter(v => v.delivery === 'explosion');
+      if (delayed.length !== 1 || modes[0].explosionDurable !== 0) throw new Error('Breacher explosion evidence changed');
+      const [blast] = delayed;
+      modes[0].explosions = [{ id: 'delayed', name: '지연 폭발', standard: blast.splash, durable: blast.splashDurable, ap: blast.splashAp, innerRadius: blast.innerRadius, radius: blast.radius }];
+      modes[0].note = '맞은 부위에 붙은 탄이 잠시 뒤 그 자리에서 터지는 지연 폭발까지 계산합니다. 붙은 뒤 적이 움직여도 같은 부위에서 터진다고 가정하며, 계속 타는 피해는 뺍니다.';
+    }
     if (['pyrotech', 'melta-mine'].includes(weapon.id)) modes[0].note = '처음 터지는 폭발만 계산합니다. 남은 불길에 계속 닿아서 받는 피해는 더하지 않습니다.';
     for (const mode of modes) {
       if (mode.unsupported) continue;

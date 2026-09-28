@@ -241,6 +241,13 @@ eq(head('devastator', mode('senator')).hits, 1);
 const frag = head('hunter-hardened', withHitAssumption(mode('frag'), { hitCount: 0 }));
 eq([frag.hits, frag.outcome, frag.via], [1, 'kill', 'main']);
 eq(frag.stages[0].damage, { direct: 0, explosion: 0, mainExplosion: 500 });
+// Breacher: one firing mode whose stuck round detonates the 2000/AP7 delayed
+// explosion on the part it hit. Charger head (1200 HP, AV4, dur 75, ExDR 25):
+// direct floor(floor(60*0.25)*0.65)=9 + blast floor(2000*0.75)=1500 → 1 shot.
+eq(personalProfiles.breacher.modes.length, 1, 'Breacher has one firing mode');
+eq(mode('breacher').explosions.map(b => [b.id, b.durable, b.ap, b.innerRadius, b.radius]), [['delayed', 2000, 7, 1.5, 2.5]]);
+eq(head('charger', mode('breacher')).stages[0].damage, { direct: 9, explosion: 1500, mainExplosion: 0 });
+eq([head('charger', mode('breacher')).hits, head('charger', mode('breacher')).outcome], [1, 'kill']);
 // Breaker 30 per pellet: one hit pellet takes 2 shots, two take 1.
 eq(head('hunter-hardened', withHitAssumption(mode('breaker'), { hitCount: 1 })).hits, 2);
 eq(head('hunter-hardened', withHitAssumption(mode('breaker'), { hitCount: 2 })).hits, 1);

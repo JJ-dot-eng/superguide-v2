@@ -65,7 +65,7 @@ export function playerDetails(weapon, box) {
     stoker: '주 총열과 하부 화염방사기를 전환해 사용합니다. 화염방사 모드의 처치 탄수는 계산하지 않습니다.',
   })[weapon.id] || '하부 부착 무기로 전환할 수 있습니다. 두 공격의 피해는 합산하지 않습니다.');
   if (weapon.id === 'halt') playerNotes.push('플레셰트탄과 기절탄은 각각 8발씩 별도 탄창에 담습니다.');
-  if (weapon.id === 'breacher') playerNotes.push('처치 탄수는 직격과 충돌 피해만 반영합니다. 붙은 뒤의 지연 폭발과 지속 피해는 포함하지 않습니다.');
+  if (weapon.id === 'breacher') playerNotes.push('사격 모드는 하나입니다. 처치 탄수는 직격과 붙은 뒤의 지연 폭발을 함께 반영하며, 지속 피해는 포함하지 않습니다.');
   if (['pyrotech', 'melta-mine'].includes(weapon.id)) playerNotes.push('처치 탄수는 첫 폭발만 반영합니다. 남은 불길의 지속 피해는 포함하지 않습니다.');
   if (weapon.variants.some(v => v.delivery === 'projectile' && !v.id.startsWith('shrapnel')) && ['missile-pistol', 'warrant'].includes(weapon.id)) playerNotes.push('유도와 비유도를 전환할 수 있습니다. 처치 탄수는 비유도 사격 기준입니다.');
   return { ...fuse, playerNotes };
