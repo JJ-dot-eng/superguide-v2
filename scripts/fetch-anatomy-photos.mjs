@@ -66,7 +66,9 @@ const { revisedCombatImages: previous } = await import(moduleUrl);
 const revised = structuredClone(previous);
 let added = 0;
 for (const enemy of enemies.filter(item => item.anatomyRevision)) {
-  const rows = new Map(snapshot.pages[titleOf(enemy)].rows.map(row => [clean(row.part_name), row]));
+  // Same row names as scripts/test-anatomy.mjs: extra tabs are "<tab>: <part>".
+  const home = enemy.anatomyTable ?? 0;
+  const rows = new Map(snapshot.pages[titleOf(enemy)].rows.map(row => [(row.table ?? 0) === home ? clean(row.part_name) : `${row.tab}: ${clean(row.part_name)}`, row]));
   for (const part of enemy.parts) {
     if (baseCombatImages[enemy.id]?.[part.id] || revised[enemy.id]?.[part.id]) continue;
     const photos = [];

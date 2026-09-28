@@ -2310,6 +2310,8 @@
    "revision": 135134,
    "rows": [
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Main",
      "health": "10,000",
      "av": "4",
@@ -2322,6 +2324,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Stratagem<br>Scrambler",
      "health": "5,000",
      "av": "0",
@@ -2335,6 +2339,8 @@
      "df": "40"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Cannon<br>Turret",
      "health": "900",
      "av": "5",
@@ -2348,6 +2354,8 @@
      "exdr": "50%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Fusion Gatling<br>Guns (2)",
      "health": "300",
      "av": "3",
@@ -2361,6 +2369,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Head<br>Armor",
      "health": "1,500",
      "av": "5",
@@ -2374,6 +2384,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Head<br>Body",
      "health": "2,500",
      "av": "4",
@@ -2387,6 +2399,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Neck<br>Armor",
      "health": "1,500",
      "av": "5",
@@ -2400,6 +2414,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Neck",
      "health": "2,500",
      "av": "4",
@@ -2412,6 +2428,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Front Top<br>Armor",
      "health": "2,200",
      "av": "5",
@@ -2426,6 +2444,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Front Engine<br>Weakspot",
      "health": "2,000",
      "av": "4",
@@ -2439,6 +2459,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Front<br>Armor",
      "health": "2,200",
      "av": "5",
@@ -2452,6 +2474,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Side<br>Armor (2)",
      "health": "2,200",
      "av": "5",
@@ -2464,6 +2488,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rear Engine<br>Armor",
      "health": "2,200",
      "av": "5",
@@ -2477,6 +2503,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rear Engine<br>Weakspot",
      "health": "1,500",
      "av": "3",
@@ -2490,6 +2518,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rear<br>Armor",
      "health": "2,200",
      "av": "5",
@@ -2503,6 +2533,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Leg<br>Armor (8)",
      "health": "1,500",
      "av": "5",
@@ -2517,6 +2549,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Knee<br>Armor (4)",
      "health": "800",
      "av": "5",
@@ -2530,6 +2564,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Leg<br>Assembly (4)",
      "health": "1,500",
      "av": "4",
@@ -2544,6 +2580,8 @@
      "exdr": "40%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Belly<br>Panels (2)",
      "health": "1,200",
      "av": "3",
@@ -2558,6 +2596,8 @@
      "exdr": "40%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Head Body<br>(Broken Head Armor)",
      "health": "2,500",
      "av": "4",
@@ -2570,6 +2610,8 @@
      "exdr": "40%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Neck",
      "health": "2,500",
      "av": "4",
@@ -2582,6 +2624,8 @@
      "exdr": "40%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Circuits Front<br>(Broken Front Armor)",
      "health": "1,200",
      "av": "3",
@@ -2595,6 +2639,8 @@
      "exdr": "40%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Side Circuits (2)<br>(Broken Side Armor)",
      "health": "1,200",
      "av": "3",
@@ -2607,6 +2653,8 @@
      "exdr": "40%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Rear Circuits<br>(Broken Rear Armor)",
      "health": "1,200",
      "av": "3",
@@ -2620,6 +2668,8 @@
      "exdr": "40%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Leg Assembly (4)<br>(Broken Leg Armor)",
      "health": "1,500",
      "av": "4",
@@ -2719,6 +2769,8 @@
    "revision": 135035,
    "rows": [
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Main",
      "health": "2,500",
      "av": "4",
@@ -2731,6 +2783,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Shield<br>Generator",
      "health": "50",
      "av": "4",
@@ -2744,6 +2798,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Chassis",
      "health": "1,600",
      "av": "4",
@@ -2758,6 +2814,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Carapace (2)",
      "health": "400",
      "av": "4",
@@ -2772,6 +2830,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rear<br>Weakspot",
      "health": "800",
      "av": "1",
@@ -2785,6 +2845,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Shield",
      "health": "1,300",
      "av": "2",
@@ -2799,6 +2861,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Pilot",
      "health": "700",
      "av": "2",
@@ -2811,6 +2875,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Cockpit",
      "health": "1,200",
      "av": "4",
@@ -2825,6 +2891,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Cockpit<br>Weakspot",
      "health": "800",
      "av": "1",
@@ -2837,6 +2905,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Shoulder<br>Armor (2)",
      "health": "200",
      "av": "4",
@@ -2851,6 +2921,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Arm<br>Armor (2)",
      "health": "200",
      "av": "4",
@@ -2865,6 +2937,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Arms (2)",
      "health": "1,600",
      "av": "3",
@@ -2879,6 +2953,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Guns (2)",
      "health": "800",
      "av": "4",
@@ -2893,6 +2969,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Gun<br>Weakspots (2)",
      "health": "800",
      "av": "2",
@@ -2906,6 +2984,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Leg<br>Armor (6)",
      "health": "200",
      "av": "4",
@@ -2920,6 +3000,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Hips (3)",
      "health": "800",
      "av": "3",
@@ -2934,6 +3016,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Legs (3)",
      "health": "800",
      "av": "3",
@@ -2948,6 +3032,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Broken",
      "part_name": "Internals (2)",
      "health": "800",
      "av": "2",
@@ -2961,6 +3047,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Broken",
      "part_name": "Arms<br>(Broken Armor) (2)",
      "health": "1,600",
      "av": "3",
@@ -2975,6 +3063,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Broken",
      "part_name": "Legs<br>(Broken Armor) (3)",
      "health": "800",
      "av": "3",
@@ -3051,6 +3141,8 @@
    "revision": 135183,
    "rows": [
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Main",
      "health": "3,000",
      "av": "4",
@@ -3064,6 +3156,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Eye",
      "health": "350",
      "av": "2",
@@ -3076,6 +3170,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Shield<br>Generators (3)",
      "health": "350",
      "av": "3",
@@ -3090,6 +3186,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Chassis",
      "health": "2,000",
      "av": "4",
@@ -3104,6 +3202,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Carapace (2)",
      "health": "800",
      "av": "4",
@@ -3118,6 +3218,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Carapace<br>Weakspots (2)",
      "health": "500",
      "av": "1",
@@ -3130,6 +3232,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Left Hip<br>Joint",
      "health": "1,000",
      "av": "3",
@@ -3144,6 +3248,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Right & Middle<br>Hip Joints (2)",
      "health": "1,000",
      "av": "3",
@@ -3158,6 +3264,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Left Upper<br>Thigh Armor",
      "health": "600",
      "av": "4",
@@ -3172,6 +3280,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Right & Middle<br>Upper Thigh<br>Armor (2)",
      "health": "900",
      "av": "4",
@@ -3186,6 +3296,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Lower Thigh<br>Armor (3)",
      "health": "900",
      "av": "4",
@@ -3200,6 +3312,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Shin armor (3)",
      "health": "900",
      "av": "4",
@@ -3214,6 +3328,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Left Foot<br>Armor",
      "health": "900",
      "av": "4",
@@ -3228,6 +3344,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Right & Middle<br>Foot Armor (2)",
      "health": "900",
      "av": "4",
@@ -3242,6 +3360,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Exposed Leg<br>Internals",
      "health": "1,000",
      "av": "3",
@@ -3256,6 +3376,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Shield",
      "health": "1,500",
      "av": "0",
@@ -3267,6 +3389,8 @@
      "exdr": "0%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Damaged<br>Chassis",
      "health": "2,000",
      "av": "4",
@@ -3281,6 +3405,8 @@
      "exdr": "0%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Internals (2)",
      "health": "800",
      "av": "2",
@@ -3295,6 +3421,8 @@
      "exdr": "0%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Right & Left<br>Upper Leg<br>Internals (3)",
      "health": "1,000",
      "av": "3",
@@ -3309,6 +3437,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Middle Upper<br>Leg Internals",
      "health": "1,000",
      "av": "3",
@@ -3323,6 +3453,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Armor Broken",
      "part_name": "Lower Leg<br>Internals (3)",
      "health": "1,000",
      "av": "3",
@@ -3568,6 +3700,8 @@
    "revision": 136936,
    "rows": [
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Main",
      "health": "150,000",
      "av": "5",
@@ -3580,6 +3714,8 @@
      "exdr": "25%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Crown",
      "health": "150,000",
      "av": "10",
@@ -3593,6 +3729,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Jaws",
      "health": "150,000",
      "av": "6",
@@ -3606,6 +3744,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Mandibles (2)",
      "health": "10,000",
      "av": "6",
@@ -3619,6 +3759,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Mouth",
      "health": "150,000",
      "av": "2",
@@ -3632,6 +3774,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Dorsal Plate<br>Armor (6)",
      "health": "15,000",
      "av": "5",
@@ -3645,6 +3789,8 @@
      "exdr": "25%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Sterna Plate<br>Armor (6)",
      "health": "15,000",
      "av": "5",
@@ -3657,6 +3803,8 @@
      "exdr": "25%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Lower Sterna<br>Plate Armor",
      "health": "20,000",
      "av": "5",
@@ -3669,6 +3817,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Inner<br>Flesh (6)",
      "health": "150,000",
      "av": "2",
@@ -3682,6 +3832,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Top & Side",
      "part_name": "Fins (14)",
      "health": "5,000",
      "av": "5",
@@ -3695,6 +3847,8 @@
      "exdr": "50%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Main",
      "health": "150,000",
      "av": "5",
@@ -3707,6 +3861,8 @@
      "exdr": "25%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Crown",
      "health": "150,000",
      "av": "10",
@@ -3719,6 +3875,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Jaws",
      "health": "150,000",
      "av": "6",
@@ -3732,6 +3890,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Mandibles (2)",
      "health": "10,000",
      "av": "6",
@@ -3745,6 +3905,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Mouth",
      "health": "150,000",
      "av": "2",
@@ -3757,6 +3919,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Dorsal Plate<br>Armor (6)",
      "health": "15,000",
      "av": "5",
@@ -3769,6 +3933,8 @@
      "exdr": "25%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Sterna Plate<br>Armor (6)",
      "health": "15,000",
      "av": "5",
@@ -3781,6 +3947,8 @@
      "exdr": "25%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Lower Sterna<br>Plate Armor",
      "health": "20,000",
      "av": "5",
@@ -3793,6 +3961,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Inner<br>Flesh (6)",
      "health": "150,000",
      "av": "2",
@@ -3805,6 +3975,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Bottom & Face",
      "part_name": "Fins (14)",
      "health": "5,000",
      "av": "5",
@@ -5049,6 +5221,8 @@
    "revision": 135186,
    "rows": [
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Main",
      "health": "15,000",
      "av": "4",
@@ -5060,6 +5234,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Turrets (4)",
      "health": "1,500",
      "av": "4",
@@ -5072,6 +5248,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Front<br>Vertebra",
      "health": "7,000",
      "av": "5",
@@ -5085,6 +5263,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Front<br>Fins (2)",
      "health": "5,500",
      "av": "5",
@@ -5098,6 +5278,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Warp<br>Disc",
      "health": "3,000",
      "av": "5",
@@ -5111,6 +5293,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Forward-Middle<br>Vertebra",
      "health": "5,500",
      "av": "5",
@@ -5124,6 +5308,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Forward-Middle<br>Fins (2)",
      "health": "5,000",
      "av": "5",
@@ -5137,6 +5323,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rearward-Middle<br>Vertebra",
      "health": "5,500",
      "av": "5",
@@ -5150,6 +5338,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rearward-Middle<br>Fins (2)",
      "health": "3,900",
      "av": "5",
@@ -5163,6 +5353,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rear<br>Vertebra",
      "health": "5,000",
      "av": "5",
@@ -5176,6 +5368,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Rear<br>Fins (2)",
      "health": "3,000",
      "av": "5",
@@ -5189,6 +5383,8 @@
      "exdr": "35%"
     },
     {
+     "table": 0,
+     "tab": "Intact",
      "part_name": "Tail",
      "health": "3,900",
      "av": "5",
@@ -5202,6 +5398,8 @@
      "exdr": "35%"
     },
     {
+     "table": 1,
+     "tab": "Broken",
      "part_name": "Internals",
      "health": "15,000",
      "av": "4",
@@ -5215,6 +5413,8 @@
      "exdr": "0%"
     },
     {
+     "table": 1,
+     "tab": "Broken",
      "part_name": "Damaged Rearward-<br>Middle Vertebra",
      "health": "5,500",
      "av": "5",
@@ -6823,6 +7023,8 @@
    "revision": 135123,
    "rows": [
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "Main",
      "health": "500",
      "av": "4",
@@ -6835,6 +7037,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "Pilot",
      "health": "125",
      "av": "0",
@@ -6849,6 +7053,8 @@
      "exdr": "50%"
     },
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "Front Plate",
      "health": "350",
      "av": "4",
@@ -6863,6 +7069,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "HMG",
      "health": "300",
      "av": "4",
@@ -6876,6 +7084,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "Turret<br>System",
      "health": "300",
      "av": "3",
@@ -6890,6 +7100,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "Waist",
      "health": "300",
      "av": "3",
@@ -6904,6 +7116,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Scout Strider",
      "part_name": "Legs (2)",
      "health": "400",
      "av": "2",
@@ -6918,6 +7132,8 @@
      "exdr": "0%"
     },
     {
+     "table": 1,
+     "tab": "Pilot",
      "part_name": "Main",
      "health": "125",
      "av": "0",
@@ -6930,6 +7146,8 @@
      "exdr": "50%"
     },
     {
+     "table": 1,
+     "tab": "Pilot",
      "part_name": "Head",
      "health": "40",
      "av": "0",
@@ -6943,6 +7161,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Pilot",
      "part_name": "Torso",
      "health": "100",
      "av": "0",
@@ -6956,6 +7176,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Pilot",
      "part_name": "Arms (2)",
      "health": "65",
      "av": "0",
@@ -6969,6 +7191,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Pilot",
      "part_name": "Legs (2)",
      "health": "90",
      "av": "0",
@@ -8097,6 +8321,8 @@
    "revision": 135187,
    "rows": [
     {
+     "table": 0,
+     "tab": "Light",
      "part_name": "Main",
      "health": "100",
      "av": "0",
@@ -8109,6 +8335,8 @@
      "exdr": "0%"
     },
     {
+     "table": 0,
+     "tab": "Light",
      "part_name": "Head",
      "health": "40",
      "av": "1",
@@ -8122,6 +8350,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Light",
      "part_name": "Upper Arms (2)",
      "health": "50",
      "av": "0",
@@ -8135,6 +8365,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Light",
      "part_name": "Forearms (2)",
      "health": "50",
      "av": "0",
@@ -8148,6 +8380,8 @@
      "exdr": "100%"
     },
     {
+     "table": 0,
+     "tab": "Light",
      "part_name": "Legs",
      "health": "80",
      "av": "0",
@@ -8161,6 +8395,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Medium",
      "part_name": "Main",
      "health": "130",
      "av": "0",
@@ -8173,6 +8409,8 @@
      "exdr": "0%"
     },
     {
+     "table": 1,
+     "tab": "Medium",
      "part_name": "Head",
      "health": "50",
      "av": "1",
@@ -8186,6 +8424,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Medium",
      "part_name": "Upper Arms (2)",
      "health": "65",
      "av": "0",
@@ -8199,6 +8439,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Medium",
      "part_name": "Forearms (2)",
      "health": "50",
      "av": "0",
@@ -8212,6 +8454,8 @@
      "exdr": "100%"
     },
     {
+     "table": 1,
+     "tab": "Medium",
      "part_name": "Legs",
      "health": "80",
      "av": "0",
@@ -8225,6 +8469,8 @@
      "exdr": "100%"
     },
     {
+     "table": 2,
+     "tab": "Heavy",
      "part_name": "Main",
      "health": "160",
      "av": "0",
@@ -8237,6 +8483,8 @@
      "exdr": "0%"
     },
     {
+     "table": 2,
+     "tab": "Heavy",
      "part_name": "Head",
      "health": "60",
      "av": "1",
@@ -8250,6 +8498,8 @@
      "exdr": "100%"
     },
     {
+     "table": 2,
+     "tab": "Heavy",
      "part_name": "Upper Arms (2)",
      "health": "80",
      "av": "0",
@@ -8263,6 +8513,8 @@
      "exdr": "100%"
     },
     {
+     "table": 2,
+     "tab": "Heavy",
      "part_name": "Forearms (2)",
      "health": "65",
      "av": "0",
@@ -8276,6 +8528,8 @@
      "exdr": "100%"
     },
     {
+     "table": 2,
+     "tab": "Heavy",
      "part_name": "Legs",
      "health": "80",
      "av": "0",

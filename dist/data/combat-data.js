@@ -124,9 +124,14 @@ const originalEnemies = [
     id: 'hulk', name: '헐크 스코처', faction: '오토마톤', source: wiki('Hulk_Scorcher'),
     main: main(1800, 4, 60, 0),
     note: '화염방사기형 헐크 기준입니다. 눈은 폭발 피해를 받지 않으며, 후방 방열판 파괴 후에도 잠시 생존할 수 있습니다.',
+    // Every part matches Wiki Anatomy revision 135126 (checked 2026-09-28).
+    // Parts after the first two were added then.
+    anatomyRevision: 135126, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '정면의 붉은 눈', 250, 4, 25, 100, 100, true, 'kill', '작은 붉은 눈에 직접 맞혀야 합니다. 주변 얼굴 장갑에 맞는 것과 다릅니다.'),
-      part('heatsink', '후방 방열판', 900, 1, 60, 0, 60, true, 'bleed', '뒤쪽 주황색 방열판을 쏘세요. 파괴 후 남은 추가 체력이 감소하며 죽습니다.', { constitution: 650 }),
+      part('head', '정면의 붉은 눈', 250, 4, 25, 100, 100, true, 'kill', '작은 붉은 눈에 직접 맞혀야 합니다. 주변 얼굴 장갑에 맞는 것과 다릅니다.', { sourcePart: 'Head' }),
+      part('heatsink', '후방 방열판', 900, 1, 60, 0, 60, true, 'bleed', '뒤쪽 주황색 방열판을 쏘세요. 파괴 후 남은 추가 체력이 감소하며 죽습니다.', { constitution: 650, sourcePart: 'Heatsink' }),
+      part('arm', '팔 한쪽', 500, 4, 70, 100, 80, false, 'break', '화염방사기나 무기를 든 팔 하나입니다. 부숴도 죽지 않지만 초과 피해까지 80%가 본체로 들어갑니다.', { sourcePart: 'Arms (2)' }),
+      part('leg', '다리 한쪽', 500, 4, 80, 100, 80, false, 'break', '다리 하나를 부수면 쓰러뜨릴 수 있지만 죽지는 않습니다. 체력 500과 줄지 않는 추가 체력 500을 모두 소진해야 합니다.', { staticConstitution: 500, sourcePart: 'Legs (2)' }),
     ],
   },
   {
@@ -283,30 +288,49 @@ const originalEnemies = [
     id: 'scout-strider', name: '스카우트 스트라이더', faction: '오토마톤', source: wiki('Scout_Strider'), sourceRevision: 135123,
     main: main(500, 4, 0, 0),
     note: '후방이 열린 기본형입니다. 조종사와 보행 기체는 별도 체력이며, 조종사 머리 계산에는 조종사 체력 125를 적용합니다.',
+    // Every part matches Wiki Anatomy revision 135123 (checked 2026-09-28),
+    // the strider tab and the Pilot tab. Parts after the first three were added then.
+    anatomyRevision: 135123, anatomyCheckedAt: '2026-09-28',
+    anatomyOmitted: { Pilot: 'The pilot health pool is the Pilot tab, whose parts are modelled one by one' },
     parts: [
-      part('pilot-head', '노출된 조종사 머리', 40, 0, 0, 100, 100, true, 'kill', '뒤로 돌아가거나 높은 곳에서 드러난 조종사의 머리를 직접 맞히세요. 사진은 같은 조종사 모델의 머리 위치입니다.', { main: { ...main(125, 0, 0, 50), name: '조종사' } }),
-      part('waist', '허리 연결부', 300, 3, 0, 100, 100, true, 'kill', '정면 장갑판 아래, 두 다리 위의 연결부를 맞히세요.'),
-      part('leg', '다리 한쪽', 400, 2, 75, 0, 50, true, 'kill', '다리 하나를 계속 맞혀 보행 기체를 무너뜨리세요. 양쪽에 피해를 나누지 않는 조건입니다.'),
+      part('pilot-head', '노출된 조종사 머리', 40, 0, 0, 100, 100, true, 'kill', '뒤로 돌아가거나 높은 곳에서 드러난 조종사의 머리를 직접 맞히세요. 사진은 같은 조종사 모델의 머리 위치입니다.', { main: { ...main(125, 0, 0, 50), name: '조종사' }, sourcePart: 'Pilot: Head' }),
+      part('waist', '허리 연결부', 300, 3, 0, 100, 100, true, 'kill', '정면 장갑판 아래, 두 다리 위의 연결부를 맞히세요.', { sourcePart: 'Waist' }),
+      part('leg', '다리 한쪽', 400, 2, 75, 0, 50, true, 'kill', '다리 하나를 계속 맞혀 보행 기체를 무너뜨리세요. 양쪽에 피해를 나누지 않는 조건입니다.', { sourcePart: 'Legs (2)' }),
+      part('front-plate', '정면 장갑판', 350, 4, 40, 0, 0, false, 'kill', '조종석 앞을 가린 큰 장갑판입니다. 체력이 따로 있고, 파괴하면 기체가 쓰러집니다.', { sourcePart: 'Front Plate' }),
+      part('hmg', '중기관총', 300, 4, 100, 0, 0, false, 'kill', '조종석 아래의 중기관총입니다. 체력이 따로 있고, 파괴하면 기체가 쓰러집니다.', { sourcePart: 'HMG' }),
+      part('turret-system', '포탑 연결부', 300, 3, 0, 100, 100, true, 'kill', '조종석과 하부 보행 장치 사이의 회전 연결부를 맞히세요.', { sourcePart: 'Turret System' }),
+      part('pilot-torso', '노출된 조종사 몸통', 100, 0, 0, 100, 100, true, 'kill', '뒤로 돌아가거나 높은 곳에서 드러난 조종사의 몸통을 맞히세요.', { main: { ...main(125, 0, 0, 50), name: '조종사' }, sourcePart: 'Pilot: Torso' }),
+      part('pilot-arm', '노출된 조종사 팔', 65, 0, 0, 100, 50, false, 'break', '조종사의 팔 하나입니다. 부숴도 죽지 않지만 피해의 절반이 조종사 체력으로 들어갑니다.', { main: { ...main(125, 0, 0, 50), name: '조종사' }, sourcePart: 'Pilot: Arms (2)' }),
+      part('pilot-leg', '노출된 조종사 다리', 90, 0, 0, 100, 65, true, 'kill', '조종사의 다리 하나입니다. 파괴하면 조종사가 죽습니다.', { main: { ...main(125, 0, 0, 50), name: '조종사' }, sourcePart: 'Pilot: Legs (2)' }),
     ],
   },
   {
     id: 'reinforced-strider', name: '강화 스카우트 스트라이더', faction: '오토마톤', source: wiki('Reinforced_Scout_Strider'), sourceRevision: 135124,
     main: main(500, 4, 0, 0),
     note: '조종석이 막힌 강화형입니다. 위키에 로켓 유폭의 즉사 판정 오류가 기재되어 있어 로켓은 탄수 계산에서 제외합니다.',
+    // Every part matches Wiki Anatomy revision 135124 (checked 2026-09-28).
+    // Parts after the first three were added then.
+    anatomyRevision: 135124, anatomyCheckedAt: '2026-09-28',
+    anatomyOmitted: { 'Rockets (4)': 'The wiki notes a bug in the rocket detonation instant kill, so rockets are not counted' },
     parts: [
-      part('turret-system', '포탑 연결부', 300, 3, 0, 100, 100, true, 'kill', '조종석과 하부 보행 장치 사이의 회전 연결부를 맞히세요.'),
-      part('waist', '허리', 300, 3, 0, 100, 100, true, 'kill', '큰 정면 장갑판 아래의 허리를 노리세요. AP 3 이상으로 관통합니다.'),
-      part('leg', '다리 한쪽', 400, 2, 75, 0, 50, true, 'kill', '같은 다리 하나를 집중 공격하세요. 장갑은 2지만 내구도가 높습니다.'),
+      part('turret-system', '포탑 연결부', 300, 3, 0, 100, 100, true, 'kill', '조종석과 하부 보행 장치 사이의 회전 연결부를 맞히세요.', { sourcePart: 'Turret System' }),
+      part('waist', '허리', 300, 3, 0, 100, 100, true, 'kill', '큰 정면 장갑판 아래의 허리를 노리세요. AP 3 이상으로 관통합니다.', { sourcePart: 'Waist' }),
+      part('leg', '다리 한쪽', 400, 2, 75, 0, 50, true, 'kill', '같은 다리 하나를 집중 공격하세요. 장갑은 2지만 내구도가 높습니다.', { sourcePart: 'Legs (2)' }),
+      part('faceplate', '정면 장갑판', 400, 4, 40, 0, 0, false, 'kill', '막힌 조종석 앞의 큰 장갑판입니다. 체력이 따로 있고, 파괴하면 기체가 쓰러집니다.', { sourcePart: 'Faceplate' }),
+      part('hmg', '중기관총', 300, 4, 100, 0, 0, false, 'kill', '조종석 아래의 중기관총입니다. 체력이 따로 있고, 파괴하면 기체가 쓰러집니다.', { sourcePart: 'HMG' }),
+      part('rocket-rail', '로켓 레일 한쪽', 200, 2, 0, 80, 0, false, 'break', '양옆의 로켓 발사대 하나입니다. 부숴도 기체는 살아 있고 본체에 피해가 가지 않습니다.', { sourcePart: 'Rocket Rails (2)' }),
     ],
   },
   {
     id: 'gunship', name: '건십', faction: '오토마톤', source: wiki('Gunship'), sourceRevision: 135132,
     main: main(950, 3, 0, 0),
     note: '추진기 하나를 파괴하면 격추합니다. 앞뒤 추진기는 체력이 같지만 내구도가 다릅니다. 동체와 여러 추진기에 나눠 맞힌 경우는 계산하지 않습니다.',
+    // Every part matches Wiki Anatomy revision 135132 (checked 2026-09-28).
+    anatomyRevision: 135132, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('front-thruster', '앞 추진기 한 개', 400, 3, 85, 0, 0, true, 'kill', '동체 앞쪽 추진기 한 개에 집중하세요. 다른 추진기에 맞힌 피해는 합산하지 않습니다.'),
-      part('rear-thruster', '뒤 추진기 한 개', 400, 3, 80, 0, 0, true, 'kill', '뒤쪽 추진기는 내구도가 조금 낮습니다. 사진에서 표시한 추진기 하나를 계속 맞히세요.'),
-      part('fuselage', '동체', 950, 3, 100, 100, 100, true, 'kill', '가운데 큰 기체 몸통입니다. 내구도 100%를 적용하며 폭발은 관통 조건에 따라 본체로 전달합니다.'),
+      part('front-thruster', '앞 추진기 한 개', 400, 3, 85, 0, 0, true, 'kill', '동체 앞쪽 추진기 한 개에 집중하세요. 다른 추진기에 맞힌 피해는 합산하지 않습니다.', { sourcePart: 'Front Thrusters (2)' }),
+      part('rear-thruster', '뒤 추진기 한 개', 400, 3, 80, 0, 0, true, 'kill', '뒤쪽 추진기는 내구도가 조금 낮습니다. 사진에서 표시한 추진기 하나를 계속 맞히세요.', { sourcePart: 'Rear Thrusters (2)' }),
+      part('fuselage', '동체', 950, 3, 100, 100, 100, true, 'kill', '가운데 큰 기체 몸통입니다. 내구도 100%를 적용하며 폭발은 관통 조건에 따라 본체로 전달합니다.', { sourcePart: 'Fuselage' }),
     ],
   },
   {

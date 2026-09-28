@@ -833,5 +833,220 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "scout-strider": {
+    "front-plate": [
+      {
+        "src": "./assets/anatomy/revised-scout-strider-front-plate.webp",
+        "thumbnail": "./assets/anatomy/revised-scout-strider-front-plate-thumb.webp",
+        "title": "Scout Strider Front Plate Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Scout_Strider_Front_Plate_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Scout_Strider_Front_Plate_Front.png?e85866",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Scout_Strider_Front_Plate_Front.png/800px-Scout_Strider_Front_Plate_Front.png?e85866",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Scout_Strider_Front_Plate_Front.png/320px-Scout_Strider_Front_Plate_Front.png?e85866",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9dead3d6273a0f1da2b83fc593929b03fec8bb98c4174f2befee3c269c48494e",
+        "thumbnailSha256": "2529223d1a76c6f5ffdae9ac3e360db0117afa78c942c7b72cd5847abdcd63bf",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "hmg": [
+      {
+        "src": "./assets/anatomy/revised-scout-strider-hmg.webp",
+        "thumbnail": "./assets/anatomy/revised-scout-strider-hmg-thumb.webp",
+        "title": "Scout Strider HMG Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Scout_Strider_HMG_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Scout_Strider_HMG_Front.png?e7df57",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Scout_Strider_HMG_Front.png/800px-Scout_Strider_HMG_Front.png?e7df57",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Scout_Strider_HMG_Front.png/320px-Scout_Strider_HMG_Front.png?e7df57",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "b4e99fc2d6a5aed9a65354476271c54666f7384b0bc992427783e5d611a02f5e",
+        "thumbnailSha256": "a82d21a8a4997286f2d4e3f443a90fe1f7b317f5acb19f13865476651ab0dd60",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "turret-system": [
+      {
+        "src": "./assets/anatomy/revised-scout-strider-turret-system.webp",
+        "thumbnail": "./assets/anatomy/revised-scout-strider-turret-system-thumb.webp",
+        "title": "Scout Strider Turret System Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Scout_Strider_Turret_System_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Scout_Strider_Turret_System_Front.png?a9dbec",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Scout_Strider_Turret_System_Front.png/800px-Scout_Strider_Turret_System_Front.png?a9dbec",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Scout_Strider_Turret_System_Front.png/320px-Scout_Strider_Turret_System_Front.png?a9dbec",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "61e4015116062fd29212326ec850a61d6548e3d062de2f9b96a16ae65010a03d",
+        "thumbnailSha256": "a79480f5fa36c0749b60726cf89066cdf703af4e4e607ae858c611f732e7718d",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pilot-torso": [
+      {
+        "src": "./assets/anatomy/revised-scout-strider-pilot-torso.webp",
+        "thumbnail": "./assets/anatomy/revised-scout-strider-pilot-torso-thumb.webp",
+        "title": "Trooper Torso Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Trooper_Torso_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Trooper_Torso_Front.png?e18c80",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Trooper_Torso_Front.png/800px-Trooper_Torso_Front.png?e18c80",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Trooper_Torso_Front.png/320px-Trooper_Torso_Front.png?e18c80",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d9b2223418ce6437e58c6c6e74690054ba171430d40b5213ba4f58903a23d135",
+        "thumbnailSha256": "a2f3084684fe5f5e94f635c393c16156e91a313bbb5e36fcfa8c894bcfd04622",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pilot-arm": [
+      {
+        "src": "./assets/anatomy/revised-scout-strider-pilot-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-scout-strider-pilot-arm-thumb.webp",
+        "title": "Trooper Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Trooper_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Trooper_Arms_Front.png?7a1112",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Trooper_Arms_Front.png/800px-Trooper_Arms_Front.png?7a1112",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Trooper_Arms_Front.png/320px-Trooper_Arms_Front.png?7a1112",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "90cd9cd5052e09826a493bed08221dbf10784b39d54eb66961e29fab93f8cd97",
+        "thumbnailSha256": "16ab176a4e26d73552acdcd5bc661df890096879832bd99c12f79aea4460dc8a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "pilot-leg": [
+      {
+        "src": "./assets/anatomy/revised-scout-strider-pilot-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-scout-strider-pilot-leg-thumb.webp",
+        "title": "Trooper Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Trooper_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Trooper_Legs_Front.png?715a03",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Trooper_Legs_Front.png/800px-Trooper_Legs_Front.png?715a03",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Trooper_Legs_Front.png/320px-Trooper_Legs_Front.png?715a03",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "4d403fc7b8f270c50bb969f71b9b07789088652b4e330f3be203632991cd0b57",
+        "thumbnailSha256": "88ad2c4ac73267e99e404e3561305cd1f0facd7af3c2145482f679fb1fc92edc",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "reinforced-strider": {
+    "faceplate": [
+      {
+        "src": "./assets/anatomy/revised-reinforced-strider-faceplate.webp",
+        "thumbnail": "./assets/anatomy/revised-reinforced-strider-faceplate-thumb.webp",
+        "title": "Reinforced Scout Strider Cabin Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Reinforced_Scout_Strider_Cabin_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Reinforced_Scout_Strider_Cabin_Front.png?945232",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Reinforced_Scout_Strider_Cabin_Front.png/800px-Reinforced_Scout_Strider_Cabin_Front.png?945232",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Reinforced_Scout_Strider_Cabin_Front.png/320px-Reinforced_Scout_Strider_Cabin_Front.png?945232",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d00ab0bfc37f16aa1f99750ce0791af28e7daff7b85c8e6c9dd7e2ecce00d9de",
+        "thumbnailSha256": "127f370ba01839e7ff44590074aeab475154ad5ac48e4dd7ab074f4740af3e04",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "hmg": [
+      {
+        "src": "./assets/anatomy/revised-reinforced-strider-hmg.webp",
+        "thumbnail": "./assets/anatomy/revised-reinforced-strider-hmg-thumb.webp",
+        "title": "Reinforced Scout Strider HMG Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Reinforced_Scout_Strider_HMG_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Reinforced_Scout_Strider_HMG_Front.png?86a2f2",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Reinforced_Scout_Strider_HMG_Front.png/800px-Reinforced_Scout_Strider_HMG_Front.png?86a2f2",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Reinforced_Scout_Strider_HMG_Front.png/320px-Reinforced_Scout_Strider_HMG_Front.png?86a2f2",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8d530a4922a5385d6acefcb4c3c6594e98746e62b0a17b46f9b6a69e28cb3aef",
+        "thumbnailSha256": "80e2c11665f72e7480fc1bb4bfe12f6f03859348a2c3e8a2a2d6b189e23a458a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rocket-rail": [
+      {
+        "src": "./assets/anatomy/revised-reinforced-strider-rocket-rail.webp",
+        "thumbnail": "./assets/anatomy/revised-reinforced-strider-rocket-rail-thumb.webp",
+        "title": "Reinforced Scout Strider Rocket Rails Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Reinforced_Scout_Strider_Rocket_Rails_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Reinforced_Scout_Strider_Rocket_Rails_Front.png?87ab8c",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Reinforced_Scout_Strider_Rocket_Rails_Front.png/800px-Reinforced_Scout_Strider_Rocket_Rails_Front.png?87ab8c",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Reinforced_Scout_Strider_Rocket_Rails_Front.png/320px-Reinforced_Scout_Strider_Rocket_Rails_Front.png?87ab8c",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6862d3e36b3d57d625e269bba1c3e0448565e2332afb6701ce167fb913330537",
+        "thumbnailSha256": "06dd0a91a97f0b625bccf32fe2e4830329779ccee4b59f064ac5329f9fca3fef",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "hulk": {
+    "arm": [
+      {
+        "src": "./assets/anatomy/revised-hulk-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-hulk-arm-thumb.webp",
+        "title": "Hulk Scorcher Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Hulk_Scorcher_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Hulk_Scorcher_Arms_Front.png?e454e5",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Hulk_Scorcher_Arms_Front.png/800px-Hulk_Scorcher_Arms_Front.png?e454e5",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Hulk_Scorcher_Arms_Front.png/320px-Hulk_Scorcher_Arms_Front.png?e454e5",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d504cbfa76b9cbdbf6949cbd791f2e8a7db3c0802d9cae26f6bb747f98175427",
+        "thumbnailSha256": "e852cb09094774a5b14ca609f76bcd03f002726ec270dbec63005612f5dc4494",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-hulk-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-hulk-leg-thumb.webp",
+        "title": "Hulk Scorcher Legs Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Hulk_Scorcher_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Hulk_Scorcher_Legs_Front.png?d4d213",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Hulk_Scorcher_Legs_Front.png/800px-Hulk_Scorcher_Legs_Front.png?d4d213",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Hulk_Scorcher_Legs_Front.png/320px-Hulk_Scorcher_Legs_Front.png?d4d213",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "581912377b7e3fda04bf170b94c518fdf9786e8accc49a8795a8c72de4aa5447",
+        "thumbnailSha256": "1aa14b6d24f95db0f73fcaa34c9529807d90ebf4603ce85a14ca1e5d310b2c97",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

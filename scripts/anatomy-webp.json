@@ -1803,6 +1803,22 @@
     "sha256": "266bf09dd69a2395f08bdfd66ac5b9f324764eabb66af4e0402c5eae30b6c599",
     "sourceSha256": "caf86f9e060d9569e294e4700dc2fb2e73971eece75bd2bc652b0b6a687f5823"
   },
+  "./assets/anatomy/revised-hulk-arm-thumb.webp": {
+    "sha256": "ff6fb64f24c8a87fe8cf1ea4208d5e7bcc2b8057a9acf22c541a53eada13b0b1",
+    "sourceSha256": "e852cb09094774a5b14ca609f76bcd03f002726ec270dbec63005612f5dc4494"
+  },
+  "./assets/anatomy/revised-hulk-arm.webp": {
+    "sha256": "0bd7ec76f4923a3d3ef2dccdb8471def29984b0a015abd2f9965d0adfaa705a9",
+    "sourceSha256": "d504cbfa76b9cbdbf6949cbd791f2e8a7db3c0802d9cae26f6bb747f98175427"
+  },
+  "./assets/anatomy/revised-hulk-leg-thumb.webp": {
+    "sha256": "8c96a02c0c8ed6e370a942c31a6622d2ec9ddbe95a3fab63a35200ecb309c104",
+    "sourceSha256": "1aa14b6d24f95db0f73fcaa34c9529807d90ebf4603ce85a14ca1e5d310b2c97"
+  },
+  "./assets/anatomy/revised-hulk-leg.webp": {
+    "sha256": "f4ced6d7dd446d71dce7aadec9a46144baab180598a72078c60d39faad08a842",
+    "sourceSha256": "581912377b7e3fda04bf170b94c518fdf9786e8accc49a8795a8c72de4aa5447"
+  },
   "./assets/anatomy/revised-impaler-butt-thumb.webp": {
     "sha256": "b74b685990a9cd9dec345e83883d4254cef874ceffbd6ffb7b917ae7dbf0b6ad",
     "sourceSha256": "c7fb23209b56ab10f03ea7676396d8fa91162a2a9af18fdcde8e8bca82b19719"
@@ -1859,6 +1875,30 @@
     "sha256": "25cef40f53dbf84e881c56e40081986fa3d5a49bef9cc5c63617eaa85e8f3e81",
     "sourceSha256": "714a9a214548e9d40b3c28874eec4c6bf12d3b4801766a9a7410e7cde2188383"
   },
+  "./assets/anatomy/revised-reinforced-strider-faceplate-thumb.webp": {
+    "sha256": "1096e76f96d33e0743f549dd79a248a98a7a4c210a7a00eac77c9c5ae649687e",
+    "sourceSha256": "127f370ba01839e7ff44590074aeab475154ad5ac48e4dd7ab074f4740af3e04"
+  },
+  "./assets/anatomy/revised-reinforced-strider-faceplate.webp": {
+    "sha256": "b09e13efef2d61236c1e5c71fe3d8e18a6674c2f02c48cdb97ecebb236463db9",
+    "sourceSha256": "d00ab0bfc37f16aa1f99750ce0791af28e7daff7b85c8e6c9dd7e2ecce00d9de"
+  },
+  "./assets/anatomy/revised-reinforced-strider-hmg-thumb.webp": {
+    "sha256": "c76848de06fe8af10f0bb34a9289389aa504021d958d8a8ed70b8f8de965dbd8",
+    "sourceSha256": "80e2c11665f72e7480fc1bb4bfe12f6f03859348a2c3e8a2a2d6b189e23a458a"
+  },
+  "./assets/anatomy/revised-reinforced-strider-hmg.webp": {
+    "sha256": "d5ba7655f24667c6597966235fcf0d957135a24eb6a0d589d8765333e9bdc18a",
+    "sourceSha256": "8d530a4922a5385d6acefcb4c3c6594e98746e62b0a17b46f9b6a69e28cb3aef"
+  },
+  "./assets/anatomy/revised-reinforced-strider-rocket-rail-thumb.webp": {
+    "sha256": "212c6a564f4dc09ad923f94384d33808516c632305a7827adf4e0119714ddf0b",
+    "sourceSha256": "06dd0a91a97f0b625bccf32fe2e4830329779ccee4b59f064ac5329f9fca3fef"
+  },
+  "./assets/anatomy/revised-reinforced-strider-rocket-rail.webp": {
+    "sha256": "00315d720cba54b208d09238b5f464a576bbe8ecb42f9a61b69199ac7d9f2315",
+    "sourceSha256": "6862d3e36b3d57d625e269bba1c3e0448565e2332afb6701ce167fb913330537"
+  },
   "./assets/anatomy/revised-rupture-charger-claw-thumb.webp": {
     "sha256": "3b7117accf4f51b9d5950b0fd8c073fb9afcb02d242f0e576c07c0c7544e7dbb",
     "sourceSha256": "92bf5051d1df071c0d49dfc4730343824215527bd3ba3f6e5c2e781c971d9dc4"
@@ -1890,6 +1930,54 @@
   "./assets/anatomy/revised-rupture-charger-underside.webp": {
     "sha256": "0522ee64ff31abb2e1d651a0cf5eeb04bb1252334ca206be67afe6e0b144b108",
     "sourceSha256": "7e2cae447763244ee74a4eae32ca01e6453c22b68bec623206e504d6ba28353d"
+  },
+  "./assets/anatomy/revised-scout-strider-front-plate-thumb.webp": {
+    "sha256": "d3326cd3571b7defdcf5bc4351e42dcd26f70857b193679b6461df64d62152c5",
+    "sourceSha256": "2529223d1a76c6f5ffdae9ac3e360db0117afa78c942c7b72cd5847abdcd63bf"
+  },
+  "./assets/anatomy/revised-scout-strider-front-plate.webp": {
+    "sha256": "25b0dd4de5600524c14b545c86874b0ef96631f16157c3cf34c01d68bf23e9a2",
+    "sourceSha256": "9dead3d6273a0f1da2b83fc593929b03fec8bb98c4174f2befee3c269c48494e"
+  },
+  "./assets/anatomy/revised-scout-strider-hmg-thumb.webp": {
+    "sha256": "3c3cc2a7e5dc4ca8a4e687dccb6bb664f318d6f5ccd62211874a327ae9beaec7",
+    "sourceSha256": "a82d21a8a4997286f2d4e3f443a90fe1f7b317f5acb19f13865476651ab0dd60"
+  },
+  "./assets/anatomy/revised-scout-strider-hmg.webp": {
+    "sha256": "2d2707f73bcd4f97af202f71c29a9e264d8f77b222fe163a43ce58b6bd9185ce",
+    "sourceSha256": "b4e99fc2d6a5aed9a65354476271c54666f7384b0bc992427783e5d611a02f5e"
+  },
+  "./assets/anatomy/revised-scout-strider-pilot-arm-thumb.webp": {
+    "sha256": "0079f409129c4cfad579c9949c14171de036caec772329d470dec768454fdbea",
+    "sourceSha256": "16ab176a4e26d73552acdcd5bc661df890096879832bd99c12f79aea4460dc8a"
+  },
+  "./assets/anatomy/revised-scout-strider-pilot-arm.webp": {
+    "sha256": "ace075d5b3ef52cccd46675df090f6bc57f254da8a5077aa932de241f52c8d84",
+    "sourceSha256": "90cd9cd5052e09826a493bed08221dbf10784b39d54eb66961e29fab93f8cd97"
+  },
+  "./assets/anatomy/revised-scout-strider-pilot-leg-thumb.webp": {
+    "sha256": "356ff72f8709fde1f89aa1ed82b736df4c92561694a28763df9e457922fd764a",
+    "sourceSha256": "88ad2c4ac73267e99e404e3561305cd1f0facd7af3c2145482f679fb1fc92edc"
+  },
+  "./assets/anatomy/revised-scout-strider-pilot-leg.webp": {
+    "sha256": "fbbce93f167a4131422f9969eac2b0c5f36cb0577eae7b9833269266b320bc2a",
+    "sourceSha256": "4d403fc7b8f270c50bb969f71b9b07789088652b4e330f3be203632991cd0b57"
+  },
+  "./assets/anatomy/revised-scout-strider-pilot-torso-thumb.webp": {
+    "sha256": "bf86c37d9122397964932fa8152f3da8a53bae564c1d3227e532457716d0726b",
+    "sourceSha256": "a2f3084684fe5f5e94f635c393c16156e91a313bbb5e36fcfa8c894bcfd04622"
+  },
+  "./assets/anatomy/revised-scout-strider-pilot-torso.webp": {
+    "sha256": "29bf4314c8cc04ed1028297610d684b1266376ba7173d19997ef989f3d83deae",
+    "sourceSha256": "d9b2223418ce6437e58c6c6e74690054ba171430d40b5213ba4f58903a23d135"
+  },
+  "./assets/anatomy/revised-scout-strider-turret-system-thumb.webp": {
+    "sha256": "fe335ef26a131c66e99b4076b51b3a834424a227af00ffdec4531bc7a4c5170a",
+    "sourceSha256": "a79480f5fa36c0749b60726cf89066cdf703af4e4e607ae858c611f732e7718d"
+  },
+  "./assets/anatomy/revised-scout-strider-turret-system.webp": {
+    "sha256": "601e9505c794051026275d82c1e1717ef6c5b3ae00b1e03ebf33a3a85e3f76e7",
+    "sourceSha256": "61e4015116062fd29212326ec850a61d6548e3d062de2f9b96a16ae65010a03d"
   },
   "./assets/anatomy/revised-spore-charger-claw-thumb.webp": {
     "sha256": "34f0597e62b00a750c7d107c42752130f2dc08bf0f4d5cec96ceff445a9a8f24",

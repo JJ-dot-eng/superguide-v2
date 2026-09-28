@@ -26,8 +26,12 @@ function matches(part, row, label, main) {
   eq(part.armor, number(row.av), `${label}: armor`);
   eq(part.durability, number(row.durability), `${label}: durability`);
   eq(part.exdr, number(row.exdr), `${label}: explosive resistance`);
-  eq(part.toMain, number(row.percent_to_main), `${label}: % to main`);
-  eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
+  // "-" means a separate pool that passes nothing on, so its cap is moot.
+  if (row.percent_to_main === '-') eq(part.toMain, 0, `${label}: separate pool passes nothing to main`);
+  else {
+    eq(part.toMain, number(row.percent_to_main), `${label}: % to main`);
+    eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
+  }
   // Some pages put "Yes (Downs)" in the bleed column instead of fatal.
   const fatal = /^Yes/.test(row.fatal) || /Downs/.test(row.bleed);
   ok(fatal ? ['kill', 'bleed', 'down'].includes(part.effect) : ['break', 'armor'].includes(part.effect), `${label}: fatal ${row.fatal} vs ${part.effect}`);
@@ -44,15 +48,23 @@ for (const enemy of revised) {
   const page = snapshot.pages[titleOf(enemy)];
   ok(page, `${enemy.id}: page in snapshot`);
   eq(page.revision, enemy.anatomyRevision, `${enemy.id}: snapshot revision is the one reviewed`);
-  const byName = new Map(page.rows.map(row => [clean(row.part_name), row]));
-  const mainRow = byName.get('Main');
-  eq([enemy.main.hp, enemy.main.armor, enemy.main.exdr], [number(mainRow.health), number(mainRow.av), number(mainRow.exdr)], `${enemy.id}: main`);
+  // Rows of an extra tab (e.g. "Pilot") are named "<tab>: <part>". An enemy
+  // that is one tab of a shared page names its tab in anatomyTable.
+  const home = enemy.anatomyTable ?? 0;
+  const tables = enemy.anatomyTables ?? [...new Set(page.rows.map(row => row.table ?? 0))];
+  const nameOf = row => (row.table ?? 0) === home ? clean(row.part_name) : `${row.tab}: ${clean(row.part_name)}`;
+  const byName = new Map(page.rows.filter(row => tables.includes(row.table ?? 0)).map(row => [nameOf(row), row]));
+  const mainOf = name => byName.get(name.includes(': ') ? `${name.split(': ')[0]}: Main` : 'Main');
+  const vitals = (main, row) => eq([main.hp, main.armor, main.exdr], [number(row.health), number(row.av), number(row.exdr)], `${enemy.id}: ${row.tab ?? ''} main`);
+  vitals(enemy.main, mainOf(''));
   const parts = partsOf(enemy);
   const covered = new Set();
   for (const part of parts.filter(part => part.sourcePart)) {
     const row = byName.get(part.sourcePart);
     ok(row, `${enemy.id}/${part.id}: wiki row ${part.sourcePart}`);
     matches(part, row, `${enemy.id}/${part.id}`, enemy.main);
+    // A part with its own health pool (a pilot, a turret) matches that tab's Main.
+    if (part.main && part.sourcePart.includes(': ')) { vitals(part.main, mainOf(part.sourcePart)); covered.add(`${part.sourcePart.split(': ')[0]}: Main`); }
     covered.add(part.sourcePart);
   }
   for (const [name, partId] of Object.entries(enemy.anatomyMerged || {})) {

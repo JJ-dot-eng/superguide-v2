@@ -9,14 +9,22 @@ const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-en
 const titleOf = enemy => decodeURIComponent(enemy.source.split('/wiki/')[1]).replaceAll('_', ' ');
 
 // One Anatomy Row → its fields, keeping the raw wiki text of each value.
+// Pages with several Anatomy Tables (tabs such as "Pilot") record the table
+// index and its tab label on each row, so equal part names stay apart.
 export function anatomyRows(wikitext) {
-  return [...wikitext.matchAll(/\{\{\s*Anatomy Row([\s\S]*?)\n\s*\}\}/g)].map(match => {
-    const row = {};
-    for (const line of match[1].split('\n')) {
-      const field = line.match(/^\s*\|\s*([a-z_]+)\s*=\s*(.*)$/i);
-      if (field) row[field[1].toLowerCase()] = field[2].trim();
-    }
-    return row;
+  const starts = [...wikitext.matchAll(/\{\{\s*Anatomy Table/g)].map(match => match.index);
+  return starts.flatMap((start, table) => {
+    const before = wikitext.slice(table ? starts[table - 1] : 0, start);
+    const label = [...before.matchAll(/\|-\|\s*([^=\n]+?)\s*=/g)].at(-1)?.[1] ?? null;
+    const body = wikitext.slice(start, starts[table + 1] ?? wikitext.length);
+    return [...body.matchAll(/\{\{\s*Anatomy Row([\s\S]*?)\n\s*\}\}/g)].map(match => {
+      const row = starts.length > 1 ? { table, tab: label } : {};
+      for (const line of match[1].split('\n')) {
+        const field = line.match(/^\s*\|\s*([a-z_]+)\s*=\s*(.*)$/i);
+        if (field) row[field[1].toLowerCase()] = field[2].trim();
+      }
+      return row;
+    });
   });
 }
 
