@@ -1907,6 +1907,126 @@
     "sha256": "3c8287c0280fefe570bb8baa8fc9ccef1b91eada17618c0ec855c4294e0a9ab6",
     "sourceSha256": "386e79b97cfbd1af43f7f049196f6144d2fa599f6ae118475f61b5b0f2f2180d"
   },
+  "./assets/anatomy/revised-harvester-carapace-exposed-thumb.webp": {
+    "sha256": "ec9c2d35f5d9932f9679fae5aae887c6227fffcd6c28139234ac8f0ed2c52ddc",
+    "sourceSha256": "512265cdfec69822e81e6ba88fc8b0d8e77edc99da1a940cdd78a6b5e2e4199c"
+  },
+  "./assets/anatomy/revised-harvester-carapace-exposed.webp": {
+    "sha256": "de7d29be639dd22256b7bdf5f62936e85053a7d539c18f2033bd12a76c570328",
+    "sourceSha256": "f7168e261195a38e58f87edc6c1d6a3351aacd6ef061349386d663973b9f6827"
+  },
+  "./assets/anatomy/revised-harvester-carapace-thumb.webp": {
+    "sha256": "78fdbd6c3e81adc8096407d0432f6c617d32a96cbb283aad791694d2e0a911af",
+    "sourceSha256": "ce403f5d7456612ae07c23dcfa1f960001731f64665b586d14af78970aa91cd1"
+  },
+  "./assets/anatomy/revised-harvester-carapace-weakspot-thumb.webp": {
+    "sha256": "258b065441b0c97254aee5a90b8057a2ced352fcf7a98745ddb7599a559167ec",
+    "sourceSha256": "d16ebb561708912f3b08597ac7586f4bd9dc023c85fd723f99e56c55846ea4b4"
+  },
+  "./assets/anatomy/revised-harvester-carapace-weakspot.webp": {
+    "sha256": "a200f42e1020db39dd607dfbda9a9f9fd64f98a8f0cfd4165cbe3506d74ebb61",
+    "sourceSha256": "b60d96fce716f0df1785d9b773f2adccb5d1a52d20f0ea70a5008a469917280d"
+  },
+  "./assets/anatomy/revised-harvester-carapace.webp": {
+    "sha256": "0ebee1fca178e45329dc77c6222dcc1657ccd1e4f1dc9c145210384e9c085778",
+    "sourceSha256": "56f30606f5590ce373a10a51093caab57a0fdd497f7b492b2fdc3b797282875d"
+  },
+  "./assets/anatomy/revised-harvester-chassis-thumb.webp": {
+    "sha256": "44f00a722bac241aec7fb44f1482a82d19c9e6d3cca20d01cdb4b126a884f1c5",
+    "sourceSha256": "326c4d93537c0cffc626347426ab81ef673d3b4987c4c24c88d1d4bd6c2f7ce2"
+  },
+  "./assets/anatomy/revised-harvester-chassis.webp": {
+    "sha256": "be15fd5e355c48fa0d42cfb3463214d5352687ec9f9c16d6380a22a5abc43e72",
+    "sourceSha256": "eaa04b932517662779d91875525d4a86ca477c33736085db1b23dd5f12a1c35f"
+  },
+  "./assets/anatomy/revised-harvester-foot-armor-thumb.webp": {
+    "sha256": "797280d09ed60a691d9eb5443c778562c1db3419e68aba2a2e1a6f1115593d40",
+    "sourceSha256": "cdda3519e563a30f0b53439f8cd79e2218ef033b9b9b09ca4a76ca2addfc4cc3"
+  },
+  "./assets/anatomy/revised-harvester-foot-armor.webp": {
+    "sha256": "2c1cb2cef336e9bf7a4fac781bb664ea6beec799aea428d46df9d33d4d2db3b1",
+    "sourceSha256": "187ca5e24ff1f0e4edf4f750acaa28da4bc99dfefaf41117c33259a32e305fd4"
+  },
+  "./assets/anatomy/revised-harvester-left-foot-armor-thumb.webp": {
+    "sha256": "1b02e25edae7d7c67d99c58406d0b6bd968015f8d2d3b491a72712d93ec4b09b",
+    "sourceSha256": "22f25ee3e3df57f5bfc7005bdccf4c2a623d2bb7e3f2aec9037ea77f04f593f6"
+  },
+  "./assets/anatomy/revised-harvester-left-foot-armor.webp": {
+    "sha256": "794e13416cb1647963e1b1085dede85bb92336115b8a1fbf61be72cddf99ec1b",
+    "sourceSha256": "6e49a4d70cf1b9721febea68fc53fd3c9d75a33ac7c71c465c17474f976531a0"
+  },
+  "./assets/anatomy/revised-harvester-left-upper-thigh-exposed-thumb.webp": {
+    "sha256": "8966711ead83fe89949f8f5a435b50393ab9f16dd90f50c50eeb4947a58f3c15",
+    "sourceSha256": "eab7da9fc84049dfdb191af75cd2ae6c6d41118ff0f81dca8f3b956a97929ed3"
+  },
+  "./assets/anatomy/revised-harvester-left-upper-thigh-exposed.webp": {
+    "sha256": "20cfeb75e818b35ac66b7fe20eb884e7b0174569837effd64feb75755bccd66d",
+    "sourceSha256": "796fd1a861c9b55213f4adccf81407aac8c796433e7a43e63c92fcacb8e6b15e"
+  },
+  "./assets/anatomy/revised-harvester-left-upper-thigh-thumb.webp": {
+    "sha256": "942a1c8f4f04be4cb7e093e95d1f5fdc00183ec0180ecd4a65abaa6f1ae05c30",
+    "sourceSha256": "9412d0e3a0e9a0749395c720bdb2a4a034d72048fd7ab6e9c0699a60e86e2851"
+  },
+  "./assets/anatomy/revised-harvester-left-upper-thigh.webp": {
+    "sha256": "0d000d555f6726cc4204e2c3339258204aca4554a8667233ededbc732bae9ea8",
+    "sourceSha256": "a8dee024addaa6370829649d6a90843e22f6b111c20d3c382bf1655fd561f0ac"
+  },
+  "./assets/anatomy/revised-harvester-leg-internals-thumb.webp": {
+    "sha256": "5907f599a17c441c2d5ac2d2ecd8f061814fb666794b24f7627fd4b949a1d506",
+    "sourceSha256": "4834293cc7bb4112e315e7ea2f04278f5dd8cd129cee9468dd278da7e181569d"
+  },
+  "./assets/anatomy/revised-harvester-leg-internals.webp": {
+    "sha256": "17ed1b2723530c2313fadda2c622319bcd2f14fc73130bd1e4512026e858beb5",
+    "sourceSha256": "2a961cea076860a0f942218b6c7a114c5f065dcce6a61a8e4c2f7837664f6a98"
+  },
+  "./assets/anatomy/revised-harvester-lower-thigh-exposed-thumb.webp": {
+    "sha256": "54c14dc4405734d54eccd534e0db293bc401bbd0177d757ebc03d11de648e75f",
+    "sourceSha256": "4933e871735991f9699bb8085e8ebe9ce74010621b7aa3d8736adbc36cad049e"
+  },
+  "./assets/anatomy/revised-harvester-lower-thigh-exposed.webp": {
+    "sha256": "09e5ae4d8c0579f505535d9facd421fc9978fbb7f1ec1ae70be13130f247ad19",
+    "sourceSha256": "dbba7dcb038781b04102e8616c21514c98b6aeb586f2e69f5eb01a807c8c0ec8"
+  },
+  "./assets/anatomy/revised-harvester-lower-thigh-thumb.webp": {
+    "sha256": "1ebdfdb142cea379f4f478b8ded77fea14634d529d27398548af1cf6a3e99e46",
+    "sourceSha256": "441a9a89a544b1b8d28c9216cd734c31b26cd00a91139cbe7e62adaaf1a14f7e"
+  },
+  "./assets/anatomy/revised-harvester-lower-thigh.webp": {
+    "sha256": "6365638fc3eacc11375c8e611fb37af332d4d0731e9d6434f9c9209c215d6e16",
+    "sourceSha256": "d91395d2ec66d681a461d66e2b3c29c32230bf5f53426188f06069e4ca532560"
+  },
+  "./assets/anatomy/revised-harvester-middle-upper-leg-internals-thumb.webp": {
+    "sha256": "b26dc2a7ec8e6550aa716c60d83612f12259669bab4721ce0776081e435fcd8d",
+    "sourceSha256": "3b094cebca3da7cc2ca655c29fa8213c8b4753b22d03b330843b725a6af282f4"
+  },
+  "./assets/anatomy/revised-harvester-middle-upper-leg-internals.webp": {
+    "sha256": "81143ab3c2c822dadd638dd25c0e443a3ea8c7332ab4012855aeb5fce4a2f40a",
+    "sourceSha256": "2007c08daf45c0c6c517fbdb1140bbe3fdbcd96364d78c440eb89d3ee51a03b9"
+  },
+  "./assets/anatomy/revised-harvester-shin-armor-thumb.webp": {
+    "sha256": "46faeec9965a59e6b9173d8256ad351cd99889f3c4cc696c031867b0fb3c93a5",
+    "sourceSha256": "1b47f2eed5ededc850c79cdd278c956460fda7429b5cf6ae990a82f08fdfb127"
+  },
+  "./assets/anatomy/revised-harvester-shin-armor.webp": {
+    "sha256": "a685b0fe6a8cd159359920720c8ada511fff3f0cd2253c13dbb6311192306210",
+    "sourceSha256": "1dd4b1bd5cdfcac5a78748854d57c2b0fc00c0030add8cf68ffe3d8af691cd17"
+  },
+  "./assets/anatomy/revised-harvester-upper-thigh-exposed-thumb.webp": {
+    "sha256": "8966711ead83fe89949f8f5a435b50393ab9f16dd90f50c50eeb4947a58f3c15",
+    "sourceSha256": "493c843f43dedbeda19724fad81e6b74561b2dda2de38a61f9b0adf42d61a0f0"
+  },
+  "./assets/anatomy/revised-harvester-upper-thigh-exposed.webp": {
+    "sha256": "20cfeb75e818b35ac66b7fe20eb884e7b0174569837effd64feb75755bccd66d",
+    "sourceSha256": "61a6388c82962f46e3ded5766987a681f73161a1e989a4a3b545d20eb13eefd5"
+  },
+  "./assets/anatomy/revised-harvester-upper-thigh-thumb.webp": {
+    "sha256": "a5c8bd7643a0037917614bc308cc6cfea8a7779a0915632a361e122f3c9538c9",
+    "sourceSha256": "de254de7412fb51c05692f48d5af59e7ea2566a5490ffcaf96776b332ffca002"
+  },
+  "./assets/anatomy/revised-harvester-upper-thigh.webp": {
+    "sha256": "2a509238c29cee7b683c1021b5fa103902b65db6d76c8d73c557c02476dbe5d1",
+    "sourceSha256": "b6f6b1ae79c2281bb871f060d8adde88ceb7ebc8deda2a4c1179e9d6dd56f430"
+  },
   "./assets/anatomy/revised-hulk-arm-thumb.webp": {
     "sha256": "ff6fb64f24c8a87fe8cf1ea4208d5e7bcc2b8057a9acf22c541a53eada13b0b1",
     "sourceSha256": "e852cb09094774a5b14ca609f76bcd03f002726ec270dbec63005612f5dc4494"

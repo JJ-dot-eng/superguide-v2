@@ -1293,5 +1293,284 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "harvester": {
+    "chassis": [
+      {
+        "src": "./assets/anatomy/revised-harvester-chassis.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-chassis-thumb.webp",
+        "title": "Harvester Chassis Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Chassis_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Chassis_Front.png?3115c2",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Chassis_Front.png/800px-Harvester_Chassis_Front.png?3115c2",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Chassis_Front.png/320px-Harvester_Chassis_Front.png?3115c2",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "eaa04b932517662779d91875525d4a86ca477c33736085db1b23dd5f12a1c35f",
+        "thumbnailSha256": "326c4d93537c0cffc626347426ab81ef673d3b4987c4c24c88d1d4bd6c2f7ce2",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "carapace": [
+      {
+        "src": "./assets/anatomy/revised-harvester-carapace.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-carapace-thumb.webp",
+        "title": "Harvester Carapace Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Carapace_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Carapace_Front.png?daaaf0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Carapace_Front.png/800px-Harvester_Carapace_Front.png?daaaf0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Carapace_Front.png/320px-Harvester_Carapace_Front.png?daaaf0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "56f30606f5590ce373a10a51093caab57a0fdd497f7b492b2fdc3b797282875d",
+        "thumbnailSha256": "ce403f5d7456612ae07c23dcfa1f960001731f64665b586d14af78970aa91cd1",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-harvester-carapace-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-carapace-exposed-thumb.webp",
+        "title": "Harvester Internals Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Internals_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Internals_Front.png?59cca4",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Internals_Front.png/800px-Harvester_Internals_Front.png?59cca4",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Internals_Front.png/320px-Harvester_Internals_Front.png?59cca4",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f7168e261195a38e58f87edc6c1d6a3351aacd6ef061349386d663973b9f6827",
+        "thumbnailSha256": "512265cdfec69822e81e6ba88fc8b0d8e77edc99da1a940cdd78a6b5e2e4199c",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "carapace-weakspot": [
+      {
+        "src": "./assets/anatomy/revised-harvester-carapace-weakspot.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-carapace-weakspot-thumb.webp",
+        "title": "Harvester Carapace Weakspots.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Carapace_Weakspots.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Carapace_Weakspots.png?4ed57a",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Carapace_Weakspots.png/800px-Harvester_Carapace_Weakspots.png?4ed57a",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Carapace_Weakspots.png/320px-Harvester_Carapace_Weakspots.png?4ed57a",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "b60d96fce716f0df1785d9b773f2adccb5d1a52d20f0ea70a5008a469917280d",
+        "thumbnailSha256": "d16ebb561708912f3b08597ac7586f4bd9dc023c85fd723f99e56c55846ea4b4",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "left-upper-thigh": [
+      {
+        "src": "./assets/anatomy/revised-harvester-left-upper-thigh.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-left-upper-thigh-thumb.webp",
+        "title": "Harvester Left Upper Thigh Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Left_Upper_Thigh_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Left_Upper_Thigh_Armor_Front.png?259045",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Left_Upper_Thigh_Armor_Front.png/800px-Harvester_Left_Upper_Thigh_Armor_Front.png?259045",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Left_Upper_Thigh_Armor_Front.png/320px-Harvester_Left_Upper_Thigh_Armor_Front.png?259045",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "a8dee024addaa6370829649d6a90843e22f6b111c20d3c382bf1655fd561f0ac",
+        "thumbnailSha256": "9412d0e3a0e9a0749395c720bdb2a4a034d72048fd7ab6e9c0699a60e86e2851",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-harvester-left-upper-thigh-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-left-upper-thigh-exposed-thumb.webp",
+        "title": "Harvester Right and Left Leg Internals Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Right_and_Left_Leg_Internals_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Right_and_Left_Leg_Internals_Front.png?985b38",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Left_Leg_Internals_Front.png/800px-Harvester_Right_and_Left_Leg_Internals_Front.png?985b38",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Left_Leg_Internals_Front.png/320px-Harvester_Right_and_Left_Leg_Internals_Front.png?985b38",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "796fd1a861c9b55213f4adccf81407aac8c796433e7a43e63c92fcacb8e6b15e",
+        "thumbnailSha256": "eab7da9fc84049dfdb191af75cd2ae6c6d41118ff0f81dca8f3b956a97929ed3",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "upper-thigh": [
+      {
+        "src": "./assets/anatomy/revised-harvester-upper-thigh.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-upper-thigh-thumb.webp",
+        "title": "Harvester Right and Middle Upper Thigh Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Right_and_Middle_Upper_Thigh_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Right_and_Middle_Upper_Thigh_Armor_Front.png?f32ed7",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Middle_Upper_Thigh_Armor_Front.png/800px-Harvester_Right_and_Middle_Upper_Thigh_Armor_Front.png?f32ed7",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Middle_Upper_Thigh_Armor_Front.png/320px-Harvester_Right_and_Middle_Upper_Thigh_Armor_Front.png?f32ed7",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "b6f6b1ae79c2281bb871f060d8adde88ceb7ebc8deda2a4c1179e9d6dd56f430",
+        "thumbnailSha256": "de254de7412fb51c05692f48d5af59e7ea2566a5490ffcaf96776b332ffca002",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-harvester-upper-thigh-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-upper-thigh-exposed-thumb.webp",
+        "title": "Harvester Right and Left Leg Internals Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Right_and_Left_Leg_Internals_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Right_and_Left_Leg_Internals_Front.png?985b38",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Left_Leg_Internals_Front.png/800px-Harvester_Right_and_Left_Leg_Internals_Front.png?985b38",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Left_Leg_Internals_Front.png/320px-Harvester_Right_and_Left_Leg_Internals_Front.png?985b38",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "61a6388c82962f46e3ded5766987a681f73161a1e989a4a3b545d20eb13eefd5",
+        "thumbnailSha256": "493c843f43dedbeda19724fad81e6b74561b2dda2de38a61f9b0adf42d61a0f0",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "middle-upper-leg-internals": [
+      {
+        "src": "./assets/anatomy/revised-harvester-middle-upper-leg-internals.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-middle-upper-leg-internals-thumb.webp",
+        "title": "Harvester Middle Upper Leg Internals Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Middle_Upper_Leg_Internals_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Middle_Upper_Leg_Internals_Front.png?9bccf6",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Middle_Upper_Leg_Internals_Front.png/800px-Harvester_Middle_Upper_Leg_Internals_Front.png?9bccf6",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Middle_Upper_Leg_Internals_Front.png/320px-Harvester_Middle_Upper_Leg_Internals_Front.png?9bccf6",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2007c08daf45c0c6c517fbdb1140bbe3fdbcd96364d78c440eb89d3ee51a03b9",
+        "thumbnailSha256": "3b094cebca3da7cc2ca655c29fa8213c8b4753b22d03b330843b725a6af282f4",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "lower-thigh": [
+      {
+        "src": "./assets/anatomy/revised-harvester-lower-thigh.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-lower-thigh-thumb.webp",
+        "title": "Harvester Lower Thigh Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Lower_Thigh_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Lower_Thigh_Armor_Front.png?4d0411",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Lower_Thigh_Armor_Front.png/800px-Harvester_Lower_Thigh_Armor_Front.png?4d0411",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Lower_Thigh_Armor_Front.png/320px-Harvester_Lower_Thigh_Armor_Front.png?4d0411",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d91395d2ec66d681a461d66e2b3c29c32230bf5f53426188f06069e4ca532560",
+        "thumbnailSha256": "441a9a89a544b1b8d28c9216cd734c31b26cd00a91139cbe7e62adaaf1a14f7e",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-harvester-lower-thigh-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-lower-thigh-exposed-thumb.webp",
+        "title": "Harvester Lower Leg Internals Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Lower_Leg_Internals_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Lower_Leg_Internals_Front.png?7d3edf",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Lower_Leg_Internals_Front.png/800px-Harvester_Lower_Leg_Internals_Front.png?7d3edf",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Lower_Leg_Internals_Front.png/320px-Harvester_Lower_Leg_Internals_Front.png?7d3edf",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "dbba7dcb038781b04102e8616c21514c98b6aeb586f2e69f5eb01a807c8c0ec8",
+        "thumbnailSha256": "4933e871735991f9699bb8085e8ebe9ce74010621b7aa3d8736adbc36cad049e",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "shin-armor": [
+      {
+        "src": "./assets/anatomy/revised-harvester-shin-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-shin-armor-thumb.webp",
+        "title": "Harvester Shin Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Shin_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Shin_Armor_Front.png?21bf5c",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Shin_Armor_Front.png/800px-Harvester_Shin_Armor_Front.png?21bf5c",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Shin_Armor_Front.png/320px-Harvester_Shin_Armor_Front.png?21bf5c",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "1dd4b1bd5cdfcac5a78748854d57c2b0fc00c0030add8cf68ffe3d8af691cd17",
+        "thumbnailSha256": "1b47f2eed5ededc850c79cdd278c956460fda7429b5cf6ae990a82f08fdfb127",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "left-foot-armor": [
+      {
+        "src": "./assets/anatomy/revised-harvester-left-foot-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-left-foot-armor-thumb.webp",
+        "title": "Harvester Left Foot Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Left_Foot_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Left_Foot_Armor_Front.png?71d2cc",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Left_Foot_Armor_Front.png/800px-Harvester_Left_Foot_Armor_Front.png?71d2cc",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Left_Foot_Armor_Front.png/320px-Harvester_Left_Foot_Armor_Front.png?71d2cc",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6e49a4d70cf1b9721febea68fc53fd3c9d75a33ac7c71c465c17474f976531a0",
+        "thumbnailSha256": "22f25ee3e3df57f5bfc7005bdccf4c2a623d2bb7e3f2aec9037ea77f04f593f6",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "foot-armor": [
+      {
+        "src": "./assets/anatomy/revised-harvester-foot-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-foot-armor-thumb.webp",
+        "title": "Harvester Right and Middle Foot Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Right_and_Middle_Foot_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Right_and_Middle_Foot_Armor_Front.png?fc5373",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Middle_Foot_Armor_Front.png/800px-Harvester_Right_and_Middle_Foot_Armor_Front.png?fc5373",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Right_and_Middle_Foot_Armor_Front.png/320px-Harvester_Right_and_Middle_Foot_Armor_Front.png?fc5373",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "187ca5e24ff1f0e4edf4f750acaa28da4bc99dfefaf41117c33259a32e305fd4",
+        "thumbnailSha256": "cdda3519e563a30f0b53439f8cd79e2218ef033b9b9b09ca4a76ca2addfc4cc3",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg-internals": [
+      {
+        "src": "./assets/anatomy/revised-harvester-leg-internals.webp",
+        "thumbnail": "./assets/anatomy/revised-harvester-leg-internals-thumb.webp",
+        "title": "Harvester Exposed Lower Leg Internals Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Harvester_Exposed_Lower_Leg_Internals_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Harvester_Exposed_Lower_Leg_Internals_Front.png?e8f875",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Exposed_Lower_Leg_Internals_Front.png/800px-Harvester_Exposed_Lower_Leg_Internals_Front.png?e8f875",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Harvester_Exposed_Lower_Leg_Internals_Front.png/320px-Harvester_Exposed_Lower_Leg_Internals_Front.png?e8f875",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2a961cea076860a0f942218b6c7a114c5f065dcce6a61a8e4c2f7837664f6a98",
+        "thumbnailSha256": "4834293cc7bb4112e315e7ea2f04278f5dd8cd129cee9468dd278da7e181569d",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };
