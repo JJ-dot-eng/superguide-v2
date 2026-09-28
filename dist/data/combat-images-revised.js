@@ -2761,5 +2761,414 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "voteless-light": {
+    "upper-arm": [
+      {
+        "src": "./assets/anatomy/revised-voteless-light-upper-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-voteless-light-upper-arm-thumb.webp",
+        "title": "Light Voteless Upper Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Light_Voteless_Upper_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Light_Voteless_Upper_Arms_Front.png?7fb979",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Light_Voteless_Upper_Arms_Front.png/800px-Light_Voteless_Upper_Arms_Front.png?7fb979",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Light_Voteless_Upper_Arms_Front.png/320px-Light_Voteless_Upper_Arms_Front.png?7fb979",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3ae8563ce59192b88d56cd267a9edcac4b34ada6c2dc0df16e05c58b08edd742",
+        "thumbnailSha256": "02895545db081e344af60ef0e172a90a59ba6d8aae0c739c94baa4264ae33d82",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "voteless-medium": {
+    "upper-arm": [
+      {
+        "src": "./assets/anatomy/revised-voteless-medium-upper-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-voteless-medium-upper-arm-thumb.webp",
+        "title": "Medium Voteless Upper Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Medium_Voteless_Upper_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Medium_Voteless_Upper_Arms_Front.png?f5be08",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Medium_Voteless_Upper_Arms_Front.png/800px-Medium_Voteless_Upper_Arms_Front.png?f5be08",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Medium_Voteless_Upper_Arms_Front.png/320px-Medium_Voteless_Upper_Arms_Front.png?f5be08",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f08829111a6301f673ac0f1155e0d8f6e69a98ccbd4c1558ea4b2f09f65713ab",
+        "thumbnailSha256": "6909df882e419bdd02d61fb97f55bae9c2188f37ad3a568f1a043f2d8ae5a7b9",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "voteless-heavy": {
+    "upper-arm": [
+      {
+        "src": "./assets/anatomy/revised-voteless-heavy-upper-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-voteless-heavy-upper-arm-thumb.webp",
+        "title": "Heavy Voteless Upper Arms Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Heavy_Voteless_Upper_Arms_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Heavy_Voteless_Upper_Arms_Front.png?477207",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Voteless_Upper_Arms_Front.png/800px-Heavy_Voteless_Upper_Arms_Front.png?477207",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Heavy_Voteless_Upper_Arms_Front.png/320px-Heavy_Voteless_Upper_Arms_Front.png?477207",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "206f742eda9709741596727178f84c31f04961012c4f5a6d58b22bbb7aeb3d72",
+        "thumbnailSha256": "6aa5004f09d32078ac6db5faab5f44d30d6fb59093e3b65ec60268a58cc15fe3",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "overseer": {
+    "crotch-armor": [
+      {
+        "src": "./assets/anatomy/revised-overseer-crotch-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-overseer-crotch-armor-thumb.webp",
+        "title": "Overseer Crotch Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Crotch_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Crotch_Armor_Front.png?7dadc8",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Crotch_Armor_Front.png/800px-Overseer_Crotch_Armor_Front.png?7dadc8",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Crotch_Armor_Front.png/320px-Overseer_Crotch_Armor_Front.png?7dadc8",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8df6a61183248874c0ee0f28c0836427ef69539075dd3a4edafa4d52b762c5a6",
+        "thumbnailSha256": "0a662ef5d438f4e2b694e005d236923417b0de1f3d7d86a2998208dc608a850d",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-overseer-crotch-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-overseer-crotch-armor-exposed-thumb.webp",
+        "title": "Overseer Half Bare Torso.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Half_Bare_Torso.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Half_Bare_Torso.png?30386f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Torso.png/800px-Overseer_Half_Bare_Torso.png?30386f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Torso.png/320px-Overseer_Half_Bare_Torso.png?30386f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0b119a915326692df109318c7872bdb00acbe91e68b20651ee8334a2a05cc034",
+        "thumbnailSha256": "38cf63bf944c5ec8049df86fc0aeb7fd3e937d5e699c5144b63a377e98531859",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "limb-armor": [
+      {
+        "src": "./assets/anatomy/revised-overseer-limb-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-overseer-limb-armor-thumb.webp",
+        "title": "Overseer Limb Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Limb_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Limb_Armor_Front.png?e1898d",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Limb_Armor_Front.png/800px-Overseer_Limb_Armor_Front.png?e1898d",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Limb_Armor_Front.png/320px-Overseer_Limb_Armor_Front.png?e1898d",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0d5c67f9519482c81079c236dff783d8cfbf1e3bdc3b6b3dfa26decfc5139828",
+        "thumbnailSha256": "f892dc2deff3e047c115f78cbf82fdb00992d69e1514723a907ff5d95ee02613",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "right-arm": [
+      {
+        "src": "./assets/anatomy/revised-overseer-right-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-overseer-right-arm-thumb.webp",
+        "title": "Overseer Right Arm Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Right_Arm_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Right_Arm_Front.png?2f6734",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Right_Arm_Front.png/800px-Overseer_Right_Arm_Front.png?2f6734",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Right_Arm_Front.png/320px-Overseer_Right_Arm_Front.png?2f6734",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db",
+        "thumbnailSha256": "e02dc462ffd60de211868e650d18914cb740be7282d8b2fad4ee7475e93a8992",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "left-arm": [
+      {
+        "src": "./assets/anatomy/revised-overseer-left-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-overseer-left-arm-thumb.webp",
+        "title": "Overseer Left Arm.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Left_Arm.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Left_Arm.png?c32470",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Left_Arm.png/800px-Overseer_Left_Arm.png?c32470",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Left_Arm.png/320px-Overseer_Left_Arm.png?c32470",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c193d18d5e0e66b0249a16cc5f083280d9404c4aa544841961c70c870a395a0a",
+        "thumbnailSha256": "e571e30cf348de37421bebfd817672d4458e728a0352ba4ea5c311ae9333027d",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-overseer-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-overseer-leg-thumb.webp",
+        "title": "Overseer Half Bare Legs.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Half_Bare_Legs.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Half_Bare_Legs.png?9251a0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Legs.png/800px-Overseer_Half_Bare_Legs.png?9251a0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Legs.png/320px-Overseer_Half_Bare_Legs.png?9251a0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "06ba0ab3da54c110efa6088adf65ad7dfb224f10b1733c4ceb7d89a47d10cb91",
+        "thumbnailSha256": "83765411c9bd076ee8860d189a9eaf3a11f3c034b6dde56a8a9cc7017297a3e3",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "elevated-overseer": {
+    "crotch-armor": [
+      {
+        "src": "./assets/anatomy/revised-elevated-overseer-crotch-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-elevated-overseer-crotch-armor-thumb.webp",
+        "title": "Elevated Overseer Crotch Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Elevated_Overseer_Crotch_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Elevated_Overseer_Crotch_Armor_Front.png?ccdb10",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Elevated_Overseer_Crotch_Armor_Front.png/800px-Elevated_Overseer_Crotch_Armor_Front.png?ccdb10",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Elevated_Overseer_Crotch_Armor_Front.png/320px-Elevated_Overseer_Crotch_Armor_Front.png?ccdb10",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "347052510812dbe5fa8c8265d272fac5079434d4ba1b4f77fac151adad54d7ae",
+        "thumbnailSha256": "f0a8834003aceeacabc8420dbba7a4246b4fabba42759b8b5b25a010bac5eda6",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-elevated-overseer-crotch-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-elevated-overseer-crotch-armor-exposed-thumb.webp",
+        "title": "Overseer Half Bare Torso.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Half_Bare_Torso.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Half_Bare_Torso.png?30386f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Torso.png/800px-Overseer_Half_Bare_Torso.png?30386f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Torso.png/320px-Overseer_Half_Bare_Torso.png?30386f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "63dca8020b9964504766e8466051634c53347b974bd8f3668eedf6d3d3508e8e",
+        "thumbnailSha256": "564c937a6f1b53d651108f40fe390d8224151d3604a8cba7d7498b87d99ef284",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "limb-armor": [
+      {
+        "src": "./assets/anatomy/revised-elevated-overseer-limb-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-elevated-overseer-limb-armor-thumb.webp",
+        "title": "Elevated_Overseer_Limb_Armor_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Elevated_Overseer_Limb_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Elevated_Overseer_Limb_Armor_Front.png?b60983",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Elevated_Overseer_Limb_Armor_Front.png/800px-Elevated_Overseer_Limb_Armor_Front.png?b60983",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Elevated_Overseer_Limb_Armor_Front.png/320px-Elevated_Overseer_Limb_Armor_Front.png?b60983",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "cd64de075cb7fbd4c6275e1e195414e1405ea3460b39e1b83b8ddedc9a927dc2",
+        "thumbnailSha256": "a5ed5b2ee894b2c0ba2b7d758e1cd5572012ca2ca63e5a2a3d9d09cfd93ad78a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "right-arm": [
+      {
+        "src": "./assets/anatomy/revised-elevated-overseer-right-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-elevated-overseer-right-arm-thumb.webp",
+        "title": "Overseer Right Arm Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Right_Arm_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Right_Arm_Front.png?2f6734",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Right_Arm_Front.png/800px-Overseer_Right_Arm_Front.png?2f6734",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Right_Arm_Front.png/320px-Overseer_Right_Arm_Front.png?2f6734",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db",
+        "thumbnailSha256": "9624f3023334e1c2b8805f32ac2c2c921a95bdc19e98159270f3a706fdda2656",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "left-arm": [
+      {
+        "src": "./assets/anatomy/revised-elevated-overseer-left-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-elevated-overseer-left-arm-thumb.webp",
+        "title": "Overseer Left Arm.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Left_Arm.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Left_Arm.png?c32470",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Left_Arm.png/800px-Overseer_Left_Arm.png?c32470",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Left_Arm.png/320px-Overseer_Left_Arm.png?c32470",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "4dce4f37515578e22cb3644bb33144dd56dd3f2ef59d68f8ebeb161b59f42067",
+        "thumbnailSha256": "4d598f37e88690207a276a6f2d51b74acc8398bba4782a19083a5c39003abfa7",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-elevated-overseer-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-elevated-overseer-leg-thumb.webp",
+        "title": "Overseer Half Bare Legs.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Half_Bare_Legs.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Half_Bare_Legs.png?9251a0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Legs.png/800px-Overseer_Half_Bare_Legs.png?9251a0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Legs.png/320px-Overseer_Half_Bare_Legs.png?9251a0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "baf83ff9dc4b953f43c5787e63b0796535308d0efc0679bad340fb39faf1fcdc",
+        "thumbnailSha256": "8cd7bbcb9f245f9d0295ac5bcc89a71a768c31974074fd4d5bbc58e0e9275bf4",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "crescent-overseer": {
+    "limb-armor": [
+      {
+        "src": "./assets/anatomy/revised-crescent-overseer-limb-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-crescent-overseer-limb-armor-thumb.webp",
+        "title": "Overseer Limb Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Limb_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Limb_Armor_Front.png?e1898d",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Limb_Armor_Front.png/800px-Overseer_Limb_Armor_Front.png?e1898d",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Limb_Armor_Front.png/320px-Overseer_Limb_Armor_Front.png?e1898d",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "883cf9de5121eba41e3f8a3b56ae5d39405c09164e4fbc4ebeff24015e976303",
+        "thumbnailSha256": "15ec0efa9e9782532519b84b885825e764a4136abc2813ac45e9c02db0a0fa47",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "right-arm": [
+      {
+        "src": "./assets/anatomy/revised-crescent-overseer-right-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-crescent-overseer-right-arm-thumb.webp",
+        "title": "Overseer Right Arm Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Right_Arm_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Right_Arm_Front.png?2f6734",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Right_Arm_Front.png/800px-Overseer_Right_Arm_Front.png?2f6734",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Right_Arm_Front.png/320px-Overseer_Right_Arm_Front.png?2f6734",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db",
+        "thumbnailSha256": "9624f3023334e1c2b8805f32ac2c2c921a95bdc19e98159270f3a706fdda2656",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "left-arm": [
+      {
+        "src": "./assets/anatomy/revised-crescent-overseer-left-arm.webp",
+        "thumbnail": "./assets/anatomy/revised-crescent-overseer-left-arm-thumb.webp",
+        "title": "Overseer Left Arm.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Left_Arm.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Left_Arm.png?c32470",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Left_Arm.png/800px-Overseer_Left_Arm.png?c32470",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Left_Arm.png/320px-Overseer_Left_Arm.png?c32470",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "4dce4f37515578e22cb3644bb33144dd56dd3f2ef59d68f8ebeb161b59f42067",
+        "thumbnailSha256": "4d598f37e88690207a276a6f2d51b74acc8398bba4782a19083a5c39003abfa7",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-crescent-overseer-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-crescent-overseer-leg-thumb.webp",
+        "title": "Overseer Half Bare Legs.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Overseer_Half_Bare_Legs.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Overseer_Half_Bare_Legs.png?9251a0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Legs.png/800px-Overseer_Half_Bare_Legs.png?9251a0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Overseer_Half_Bare_Legs.png/320px-Overseer_Half_Bare_Legs.png?9251a0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "baf83ff9dc4b953f43c5787e63b0796535308d0efc0679bad340fb39faf1fcdc",
+        "thumbnailSha256": "8cd7bbcb9f245f9d0295ac5bcc89a71a768c31974074fd4d5bbc58e0e9275bf4",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "watcher": {
+    "lower-fin": [
+      {
+        "src": "./assets/anatomy/revised-watcher-lower-fin.webp",
+        "thumbnail": "./assets/anatomy/revised-watcher-lower-fin-thumb.webp",
+        "title": "Watcher Lower Fin Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Watcher_Lower_Fin_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Watcher_Lower_Fin_Front.png?86d257",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Watcher_Lower_Fin_Front.png/800px-Watcher_Lower_Fin_Front.png?86d257",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Watcher_Lower_Fin_Front.png/320px-Watcher_Lower_Fin_Front.png?86d257",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0e428306f713956fa7c776aa245ad1311ade049e61ae86c6389e71e982398f4d",
+        "thumbnailSha256": "3db0aa2efb328b2305f4a06728a2a58f828fc3c5e0b4ec5be78e4011e9cf79a8",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "side-fin": [
+      {
+        "src": "./assets/anatomy/revised-watcher-side-fin.webp",
+        "thumbnail": "./assets/anatomy/revised-watcher-side-fin-thumb.webp",
+        "title": "Watcher Side Fins Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Watcher_Side_Fins_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Watcher_Side_Fins_Front.png?ed9582",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Watcher_Side_Fins_Front.png/800px-Watcher_Side_Fins_Front.png?ed9582",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Watcher_Side_Fins_Front.png/320px-Watcher_Side_Fins_Front.png?ed9582",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "ca0fe2487018b6eb0d72b78a38a7ec681a9f76e00ec97ecfa9fe1e73af103624",
+        "thumbnailSha256": "cca00cbc666919637094c1fc057aab2cc198276a7d95d34bcd88898e9f85144e",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

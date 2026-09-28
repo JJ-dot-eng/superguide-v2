@@ -3490,6 +3490,8 @@ export const expandedEnemies = [
     "sourceRevision": 135181,
     "note": "박격포형 오버시어입니다. 머리는 장갑 3이며, 흉부와 사타구니 장갑을 벗긴 뒤 몸통을 공격할 수 있습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136673,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 600,
       "armor": 0,
@@ -3562,6 +3564,59 @@ export const expandedEnemies = [
           "sourcePart": "Torso"
         },
         "sourcePart": "Crotch Armor"
+      },
+      {
+        "id": "limb-armor",
+        "name": "팔다리 장갑 한 개",
+        "hp": 100,
+        "armor": 2,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 20,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "팔다리를 덮은 장갑판 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Limb Armor"
+      },
+      {
+        "id": "right-arm",
+        "name": "오른팔",
+        "hp": 300,
+        "armor": 1,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 50,
+        "overflowCap": true,
+        "effect": "kill",
+        "tip": "무기를 든 오른팔입니다. 파괴하면 죽습니다.",
+        "sourcePart": "Right Arm"
+      },
+      {
+        "id": "left-arm",
+        "name": "왼팔",
+        "hp": 300,
+        "armor": 1,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 50,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "왼팔입니다. 부숴도 죽지 않지만 피해의 절반이 본체로 전달됩니다.",
+        "sourcePart": "Left Arm"
+      },
+      {
+        "id": "leg",
+        "name": "다리 한쪽",
+        "hp": 600,
+        "armor": 0,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 70,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "다리 하나입니다. 본체 체력을 공유하며, 피해의 70%가 본체로 들어갑니다.",
+        "mainOnly": true,
+        "sourcePart": "Legs (2)"
       }
     ],
     "spearLock": false

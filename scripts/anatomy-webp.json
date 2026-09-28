@@ -1883,6 +1883,38 @@
     "sha256": "db8c1c1f182642167f0c72d12524d310441cd6fdb621d8f433f418c54df6278d",
     "sourceSha256": "8d5649f2ce38f752f23a4d870668bd220ef380807121467822b076aa527ed00f"
   },
+  "./assets/anatomy/revised-crescent-overseer-left-arm-thumb.webp": {
+    "sha256": "d3eb16dadf2aee0bb87a71cd100d6b94eb5403c4771126c257967692e0eaef7f",
+    "sourceSha256": "4d598f37e88690207a276a6f2d51b74acc8398bba4782a19083a5c39003abfa7"
+  },
+  "./assets/anatomy/revised-crescent-overseer-left-arm.webp": {
+    "sha256": "f2c11532e652ec6c66f6898a7992a920b66b4db1f4d84401cc2952e6034eb429",
+    "sourceSha256": "4dce4f37515578e22cb3644bb33144dd56dd3f2ef59d68f8ebeb161b59f42067"
+  },
+  "./assets/anatomy/revised-crescent-overseer-leg-thumb.webp": {
+    "sha256": "6681b7e8771c8bde116c0471322275be3765d8529b9093d14b4b2d3c50af54ae",
+    "sourceSha256": "8cd7bbcb9f245f9d0295ac5bcc89a71a768c31974074fd4d5bbc58e0e9275bf4"
+  },
+  "./assets/anatomy/revised-crescent-overseer-leg.webp": {
+    "sha256": "86fe28e5b1591b4172b476ac69d346890f06c7ceb3500766ed2ae8c1145f2f34",
+    "sourceSha256": "baf83ff9dc4b953f43c5787e63b0796535308d0efc0679bad340fb39faf1fcdc"
+  },
+  "./assets/anatomy/revised-crescent-overseer-limb-armor-thumb.webp": {
+    "sha256": "a52a4fd9e44df1ac5a039cb0541856593efec055e3b5258179ca8f547fe32869",
+    "sourceSha256": "15ec0efa9e9782532519b84b885825e764a4136abc2813ac45e9c02db0a0fa47"
+  },
+  "./assets/anatomy/revised-crescent-overseer-limb-armor.webp": {
+    "sha256": "217635a350ddcd881917093842fffae2cce04a853683968cf597d3cc7de52a9c",
+    "sourceSha256": "883cf9de5121eba41e3f8a3b56ae5d39405c09164e4fbc4ebeff24015e976303"
+  },
+  "./assets/anatomy/revised-crescent-overseer-right-arm-thumb.webp": {
+    "sha256": "c5cf8113b0a29e6f1f6f4044a5ef99765d6b3a98128e1f8270bfb0b8da4aeb88",
+    "sourceSha256": "9624f3023334e1c2b8805f32ac2c2c921a95bdc19e98159270f3a706fdda2656"
+  },
+  "./assets/anatomy/revised-crescent-overseer-right-arm.webp": {
+    "sha256": "e54690b6c0fa654d778dae92764dd5d158d9466049095452b14ae8e89bb8b436",
+    "sourceSha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db"
+  },
   "./assets/anatomy/revised-devastator-arm-thumb.webp": {
     "sha256": "cdc8059a0e98654e3e658d59054c2ca42a36d151bcfcfbbcea29dc07d32211a4",
     "sourceSha256": "472eef7c0e7e6e3d94b48b6c568b8a292b6a4f0ec6e54b0f0ce50b80670b84da"
@@ -1946,6 +1978,54 @@
   "./assets/anatomy/revised-dragonroach-leg-armor.webp": {
     "sha256": "266bf09dd69a2395f08bdfd66ac5b9f324764eabb66af4e0402c5eae30b6c599",
     "sourceSha256": "caf86f9e060d9569e294e4700dc2fb2e73971eece75bd2bc652b0b6a687f5823"
+  },
+  "./assets/anatomy/revised-elevated-overseer-crotch-armor-exposed-thumb.webp": {
+    "sha256": "39be52f1ff3c3d04780a570a7a6f8131a240cf52fb2da02e675ca791f547356f",
+    "sourceSha256": "564c937a6f1b53d651108f40fe390d8224151d3604a8cba7d7498b87d99ef284"
+  },
+  "./assets/anatomy/revised-elevated-overseer-crotch-armor-exposed.webp": {
+    "sha256": "5fea9b2580de1630013878da6346dc434f389e3304577ac07801e634bc0a404b",
+    "sourceSha256": "63dca8020b9964504766e8466051634c53347b974bd8f3668eedf6d3d3508e8e"
+  },
+  "./assets/anatomy/revised-elevated-overseer-crotch-armor-thumb.webp": {
+    "sha256": "1294a2ac1a52e372bc3dc5a569994ec34c878c6955e58b13d7fa7fee1225a1ad",
+    "sourceSha256": "f0a8834003aceeacabc8420dbba7a4246b4fabba42759b8b5b25a010bac5eda6"
+  },
+  "./assets/anatomy/revised-elevated-overseer-crotch-armor.webp": {
+    "sha256": "07773d764226a0a4dba4341a52f9c9d78e704ed09a25f17300492f88eafad280",
+    "sourceSha256": "347052510812dbe5fa8c8265d272fac5079434d4ba1b4f77fac151adad54d7ae"
+  },
+  "./assets/anatomy/revised-elevated-overseer-left-arm-thumb.webp": {
+    "sha256": "d3eb16dadf2aee0bb87a71cd100d6b94eb5403c4771126c257967692e0eaef7f",
+    "sourceSha256": "4d598f37e88690207a276a6f2d51b74acc8398bba4782a19083a5c39003abfa7"
+  },
+  "./assets/anatomy/revised-elevated-overseer-left-arm.webp": {
+    "sha256": "f2c11532e652ec6c66f6898a7992a920b66b4db1f4d84401cc2952e6034eb429",
+    "sourceSha256": "4dce4f37515578e22cb3644bb33144dd56dd3f2ef59d68f8ebeb161b59f42067"
+  },
+  "./assets/anatomy/revised-elevated-overseer-leg-thumb.webp": {
+    "sha256": "6681b7e8771c8bde116c0471322275be3765d8529b9093d14b4b2d3c50af54ae",
+    "sourceSha256": "8cd7bbcb9f245f9d0295ac5bcc89a71a768c31974074fd4d5bbc58e0e9275bf4"
+  },
+  "./assets/anatomy/revised-elevated-overseer-leg.webp": {
+    "sha256": "86fe28e5b1591b4172b476ac69d346890f06c7ceb3500766ed2ae8c1145f2f34",
+    "sourceSha256": "baf83ff9dc4b953f43c5787e63b0796535308d0efc0679bad340fb39faf1fcdc"
+  },
+  "./assets/anatomy/revised-elevated-overseer-limb-armor-thumb.webp": {
+    "sha256": "a4204941f69054d2b842b5915e533cf4d9fc61fef0985b6d9c4253169f312195",
+    "sourceSha256": "a5ed5b2ee894b2c0ba2b7d758e1cd5572012ca2ca63e5a2a3d9d09cfd93ad78a"
+  },
+  "./assets/anatomy/revised-elevated-overseer-limb-armor.webp": {
+    "sha256": "30109e3d0fef6f6eacdde7b67ce905ac5a300790b0590ed85b51703f1a1f32d5",
+    "sourceSha256": "cd64de075cb7fbd4c6275e1e195414e1405ea3460b39e1b83b8ddedc9a927dc2"
+  },
+  "./assets/anatomy/revised-elevated-overseer-right-arm-thumb.webp": {
+    "sha256": "c5cf8113b0a29e6f1f6f4044a5ef99765d6b3a98128e1f8270bfb0b8da4aeb88",
+    "sourceSha256": "9624f3023334e1c2b8805f32ac2c2c921a95bdc19e98159270f3a706fdda2656"
+  },
+  "./assets/anatomy/revised-elevated-overseer-right-arm.webp": {
+    "sha256": "e54690b6c0fa654d778dae92764dd5d158d9466049095452b14ae8e89bb8b436",
+    "sourceSha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db"
   },
   "./assets/anatomy/revised-factory-strider-front-armor-exposed-thumb.webp": {
     "sha256": "626281286fd10385fb6f625ac8d1e453e6de9c604e12399ca2ccfb716ab1dce6",
@@ -2435,6 +2515,54 @@
     "sha256": "c6db19d169666a82153ba00009e42030e6bb4984fbcdd4da3d6e3d52344844f8",
     "sourceSha256": "21b36780ce50571cc2cdac6b3348bd019773f9e71db62f923ecdf8cf23858150"
   },
+  "./assets/anatomy/revised-overseer-crotch-armor-exposed-thumb.webp": {
+    "sha256": "39be52f1ff3c3d04780a570a7a6f8131a240cf52fb2da02e675ca791f547356f",
+    "sourceSha256": "38cf63bf944c5ec8049df86fc0aeb7fd3e937d5e699c5144b63a377e98531859"
+  },
+  "./assets/anatomy/revised-overseer-crotch-armor-exposed.webp": {
+    "sha256": "5fea9b2580de1630013878da6346dc434f389e3304577ac07801e634bc0a404b",
+    "sourceSha256": "0b119a915326692df109318c7872bdb00acbe91e68b20651ee8334a2a05cc034"
+  },
+  "./assets/anatomy/revised-overseer-crotch-armor-thumb.webp": {
+    "sha256": "aad78f4503d4e4778d4f61cb2ed9629c7e0de53babe2317a22fc45b9d64e856f",
+    "sourceSha256": "0a662ef5d438f4e2b694e005d236923417b0de1f3d7d86a2998208dc608a850d"
+  },
+  "./assets/anatomy/revised-overseer-crotch-armor.webp": {
+    "sha256": "6cf3fbc64db3a0b670b777cf96978d0835187c9e480bede74f7fefb78c2a9da1",
+    "sourceSha256": "8df6a61183248874c0ee0f28c0836427ef69539075dd3a4edafa4d52b762c5a6"
+  },
+  "./assets/anatomy/revised-overseer-left-arm-thumb.webp": {
+    "sha256": "d3eb16dadf2aee0bb87a71cd100d6b94eb5403c4771126c257967692e0eaef7f",
+    "sourceSha256": "e571e30cf348de37421bebfd817672d4458e728a0352ba4ea5c311ae9333027d"
+  },
+  "./assets/anatomy/revised-overseer-left-arm.webp": {
+    "sha256": "f2c11532e652ec6c66f6898a7992a920b66b4db1f4d84401cc2952e6034eb429",
+    "sourceSha256": "c193d18d5e0e66b0249a16cc5f083280d9404c4aa544841961c70c870a395a0a"
+  },
+  "./assets/anatomy/revised-overseer-leg-thumb.webp": {
+    "sha256": "6681b7e8771c8bde116c0471322275be3765d8529b9093d14b4b2d3c50af54ae",
+    "sourceSha256": "83765411c9bd076ee8860d189a9eaf3a11f3c034b6dde56a8a9cc7017297a3e3"
+  },
+  "./assets/anatomy/revised-overseer-leg.webp": {
+    "sha256": "86fe28e5b1591b4172b476ac69d346890f06c7ceb3500766ed2ae8c1145f2f34",
+    "sourceSha256": "06ba0ab3da54c110efa6088adf65ad7dfb224f10b1733c4ceb7d89a47d10cb91"
+  },
+  "./assets/anatomy/revised-overseer-limb-armor-thumb.webp": {
+    "sha256": "a52a4fd9e44df1ac5a039cb0541856593efec055e3b5258179ca8f547fe32869",
+    "sourceSha256": "f892dc2deff3e047c115f78cbf82fdb00992d69e1514723a907ff5d95ee02613"
+  },
+  "./assets/anatomy/revised-overseer-limb-armor.webp": {
+    "sha256": "217635a350ddcd881917093842fffae2cce04a853683968cf597d3cc7de52a9c",
+    "sourceSha256": "0d5c67f9519482c81079c236dff783d8cfbf1e3bdc3b6b3dfa26decfc5139828"
+  },
+  "./assets/anatomy/revised-overseer-right-arm-thumb.webp": {
+    "sha256": "c5cf8113b0a29e6f1f6f4044a5ef99765d6b3a98128e1f8270bfb0b8da4aeb88",
+    "sourceSha256": "e02dc462ffd60de211868e650d18914cb740be7282d8b2fad4ee7475e93a8992"
+  },
+  "./assets/anatomy/revised-overseer-right-arm.webp": {
+    "sha256": "e54690b6c0fa654d778dae92764dd5d158d9466049095452b14ae8e89bb8b436",
+    "sourceSha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db"
+  },
   "./assets/anatomy/revised-radical-forearm-thumb.webp": {
     "sha256": "4b03b0c8ab0ef99e986d0ec7169058f8d2eeead88f35fb0b14b63ea57be05078",
     "sourceSha256": "a50dbc0698fc0cefbdb344bb18d2b5246da797dc9f29926b6f72b0f18db08267"
@@ -2746,6 +2874,46 @@
   "./assets/anatomy/revised-veracitor-upper-leg.webp": {
     "sha256": "4d181352c578f56a779b2d3312922bdec204e435de7486ae6f1e3caf077d0b47",
     "sourceSha256": "7515d877682ac8df4bbd86312bfd55c41afcef44e841e85b9377f07796ec1bc0"
+  },
+  "./assets/anatomy/revised-voteless-heavy-upper-arm-thumb.webp": {
+    "sha256": "eab3896ad7a7232fa180fff6c151e564273fb3ebe351c43b99fb929f17dd08dd",
+    "sourceSha256": "6aa5004f09d32078ac6db5faab5f44d30d6fb59093e3b65ec60268a58cc15fe3"
+  },
+  "./assets/anatomy/revised-voteless-heavy-upper-arm.webp": {
+    "sha256": "fe257cb0efd819cc2b93c704a5fd98ce6c46872877966da75b073a263e929b03",
+    "sourceSha256": "206f742eda9709741596727178f84c31f04961012c4f5a6d58b22bbb7aeb3d72"
+  },
+  "./assets/anatomy/revised-voteless-light-upper-arm-thumb.webp": {
+    "sha256": "e709e1c36cc38608ebbdf9fa732a6d0fbfed8c60eceef3e41d9c901c0e511b8a",
+    "sourceSha256": "02895545db081e344af60ef0e172a90a59ba6d8aae0c739c94baa4264ae33d82"
+  },
+  "./assets/anatomy/revised-voteless-light-upper-arm.webp": {
+    "sha256": "48fee3a714e8b1120a9f378d86c03441c30b8e6301f47aa94ed7e23ba8886a7a",
+    "sourceSha256": "3ae8563ce59192b88d56cd267a9edcac4b34ada6c2dc0df16e05c58b08edd742"
+  },
+  "./assets/anatomy/revised-voteless-medium-upper-arm-thumb.webp": {
+    "sha256": "89e724ac3c33456a4d084ed1148cf3a3695d56f2c7d590a83aeb542e59d21843",
+    "sourceSha256": "6909df882e419bdd02d61fb97f55bae9c2188f37ad3a568f1a043f2d8ae5a7b9"
+  },
+  "./assets/anatomy/revised-voteless-medium-upper-arm.webp": {
+    "sha256": "0c42175398ee2ca388994aaf2e7a621026d166a9880be42fcfb103168ecf7fe4",
+    "sourceSha256": "f08829111a6301f673ac0f1155e0d8f6e69a98ccbd4c1558ea4b2f09f65713ab"
+  },
+  "./assets/anatomy/revised-watcher-lower-fin-thumb.webp": {
+    "sha256": "15a923ce2b5f3e4e84fdd78c9b6398cdcccd0e4ababf767effd6cc97e46ce817",
+    "sourceSha256": "3db0aa2efb328b2305f4a06728a2a58f828fc3c5e0b4ec5be78e4011e9cf79a8"
+  },
+  "./assets/anatomy/revised-watcher-lower-fin.webp": {
+    "sha256": "f6274d1344e24b45a81f9f234b9e4c53b28270cb1f4eae0fab2024c61629dc96",
+    "sourceSha256": "0e428306f713956fa7c776aa245ad1311ade049e61ae86c6389e71e982398f4d"
+  },
+  "./assets/anatomy/revised-watcher-side-fin-thumb.webp": {
+    "sha256": "00ae68c0c64d5e6a8d923fd8a53817a0e9d020f2486b045b9d1ef0e9f58e28b1",
+    "sourceSha256": "cca00cbc666919637094c1fc057aab2cc198276a7d95d34bcd88898e9f85144e"
+  },
+  "./assets/anatomy/revised-watcher-side-fin.webp": {
+    "sha256": "8ff2020be431620c3c84077dc368498c3134b1d0d150db3631428c18bc1dc08d",
+    "sourceSha256": "ca0fe2487018b6eb0d72b78a38a7ec681a9f76e00ec97ecfa9fe1e73af103624"
   },
   "./assets/anatomy/rocket-devastator-head-thumb.webp": {
     "sha256": "f9e4875094e061230053dbd70f36fb23f1b2e9cef1337b82b6897d48c5a402e4",

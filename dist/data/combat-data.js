@@ -61,14 +61,18 @@ const spewer = (id, name, page, armor, note, revision, family = id, anatomy = {}
     part('rear-leg', '뒷다리 한쪽', 250, 2, 30, 100, 50, false, 'break', '몸 뒤쪽 다리 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Rear Legs (2)' }),
   ],
 });
-const voteless = (id, name, hp, headHp, forearmHp) => ({
+// Each build is one tab (table) of the wiki Voteless page, revision 135187
+// (checked 2026-09-28). The upper arm was added then.
+const voteless = (id, name, hp, headHp, forearmHp, upperArmHp, table) => ({
   id, name, faction: '일루미닛', source: wiki('Voteless'), sourceRevision: 135187, family: 'voteless',
+  anatomyRevision: 135187, anatomyCheckedAt: '2026-09-28', anatomyTable: table, anatomyTables: [table],
   main: main(hp, 0, 0, 0, 100),
   note: '체형별 체력이 다릅니다. 머리는 치명 부위입니다. 다리를 잃고도 기어올 수 있어 다리 파괴는 즉사로 취급하지 않습니다. 본체 체력 소진 후의 출혈도 반영합니다.',
   parts: [
-    part('head', '머리', headHp, 1, 0, 100, 100, true, 'kill', '몸통보다 체력이 낮은 머리를 직접 맞히세요.'),
-    part('forearm', '아래팔 한쪽', forearmHp, 0, 0, 100, 30, false, 'break', '팔꿈치 아래의 팔 한쪽을 노리는 계산입니다. 팔 하나가 떨어져도 살아 있을 수 있습니다.'),
-    part('leg', '다리', 80, 0, 0, 100, 30, true, 'break', '다리를 끊어 쓰러뜨려도 기어와 공격할 수 있습니다. 확실히 끝내려면 머리를 노리세요.'),
+    part('head', '머리', headHp, 1, 0, 100, 100, true, 'kill', '몸통보다 체력이 낮은 머리를 직접 맞히세요.', { sourcePart: 'Head' }),
+    part('forearm', '아래팔 한쪽', forearmHp, 0, 0, 100, 30, false, 'break', '팔꿈치 아래의 팔 한쪽을 노리는 계산입니다. 팔 하나가 떨어져도 살아 있을 수 있습니다.', { sourcePart: 'Forearms (2)' }),
+    part('leg', '다리', 80, 0, 0, 100, 30, true, 'break', '다리를 끊어 쓰러뜨려도 기어와 공격할 수 있습니다. 확실히 끝내려면 머리를 노리세요.', { sourcePart: 'Legs' }),
+    part('upper-arm', '위팔 한쪽', upperArmHp, 0, 0, 100, 40, true, 'break', '팔꿈치 위의 팔 한쪽입니다. 떨어져도 바로 죽지 않지만 피해의 40%가 본체로 들어갑니다.', { constitution: 1000, sourcePart: 'Upper Arms (2)' }),
   ],
 });
 
@@ -182,11 +186,20 @@ const originalEnemies = [
     main: main(600, 0, 0, 0),
     shield: { hp: 1500, armor: 2, label: '방패를 피해서 공격할 수 있음', note: '팔의 방패를 우회해 해당 부위를 직접 맞히는 조건입니다. 방패에 맞는 탄수는 포함하지 않습니다.' },
     note: '흉부는 장갑을 먼저 벗겨야 합니다. 방패가 사선을 가리고 있다면 아래의 직격 계산을 그대로 적용할 수 없습니다.',
+    // Every part matches Wiki Anatomy revision 135796 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 135796, anatomyCheckedAt: '2026-09-28',
+    anatomyOmitted: { Shield: 'The arm shield is the shield toggle (hits that get past it), not a part' },
     parts: [
-      part('head', '머리·투구', 150, 3, 0, 100, 100, true, 'kill', '장갑 관통이 충분하면 투구를 쏘세요.'),
-      part('chest-armor', '흉부 장갑 → 몸통', 150, 2, 0, 100, 20, false, 'armor', '흉부 장갑을 벗긴 뒤 같은 위치의 몸통을 쏘세요.', {
-        next: part('torso', '노출된 몸통', 600, 1, 0, 100, 100, true, 'kill', '벗겨진 장갑 아래 몸통입니다.'),
+      part('head', '머리·투구', 150, 3, 0, 100, 100, true, 'kill', '장갑 관통이 충분하면 투구를 쏘세요.', { sourcePart: 'Head' }),
+      part('chest-armor', '흉부 장갑 → 몸통', 150, 2, 0, 100, 20, false, 'armor', '흉부 장갑을 벗긴 뒤 같은 위치의 몸통을 쏘세요.', { sourcePart: 'Chest Armor',
+        next: part('torso', '노출된 몸통', 600, 1, 0, 100, 100, true, 'kill', '벗겨진 장갑 아래 몸통입니다.', { sourcePart: 'Torso' }),
       }),
+      part('crotch-armor', '사타구니 장갑 → 몸통', 200, 2, 0, 100, 20, false, 'armor', '하복부 장갑을 벗긴 다음 같은 몸통을 공격하세요.', { sourcePart: 'Crotch Armor', next: part('torso', '노출된 몸통', 600, 1, 0, 100, 100, true, 'kill', '벗겨진 하복부 안쪽입니다.', { sourcePart: 'Torso' }) }),
+      part('limb-armor', '팔다리 장갑 한 개', 100, 2, 0, 100, 20, false, 'break', '팔다리를 덮은 장갑판 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Limb Armor (8)' }),
+      part('right-arm', '오른팔', 300, 1, 0, 100, 50, true, 'kill', '무기를 든 오른팔입니다. 파괴하면 죽습니다.', { sourcePart: 'Right Arm' }),
+      part('left-arm', '왼팔', 300, 1, 0, 100, 50, true, 'break', '왼팔입니다. 부숴도 죽지 않지만 피해의 절반이 본체로 전달됩니다.', { sourcePart: 'Left Arm' }),
+      part('leg', '다리 한쪽', 600, 0, 0, 100, 70, true, 'break', '다리 하나입니다. 본체 체력을 공유하며, 피해의 70%가 본체로 들어갑니다.', { mainOnly: true, sourcePart: 'Legs (2)' }),
     ],
   },
   {
@@ -434,27 +447,42 @@ const originalEnemies = [
       part('track', '궤도 한쪽', 750, 3, 80, 100, 100, false, 'break', '한쪽 궤도를 끊어 이동을 막을 수 있습니다. 궤도 파괴 자체는 즉사 조건이 아닙니다.', { sourcePart: 'Tracks (2)' }),
     ],
   },
-  voteless('voteless-light', '무권자 · 경량형', 100, 40, 50),
-  voteless('voteless-medium', '무권자 · 중간형', 130, 50, 50),
-  voteless('voteless-heavy', '무권자 · 중량형', 160, 60, 65),
+  voteless('voteless-light', '무권자 · 경량형', 100, 40, 50, 50, 0),
+  voteless('voteless-medium', '무권자 · 중간형', 130, 50, 50, 65, 1),
+  voteless('voteless-heavy', '무권자 · 중량형', 160, 60, 65, 80, 2),
   {
     id: 'watcher', name: '와처', faction: '일루미닛', source: wiki('Watcher'), sourceRevision: 135178,
     main: main(600, 0, 0, 0),
     note: '몸통이 치명 부위입니다. 눈이나 지느러미 하나를 파괴하는 것만으로는 죽지 않으며, 추가 피해가 본체를 소진한 경우에만 처치로 표시합니다.',
+    // Every part matches Wiki Anatomy revision 135710 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 135710, anatomyCheckedAt: '2026-09-28',
+    // The wiki raised the upper fin's armor from 0 after the reviewed revision.
+    anatomyLegacy: { 'upper-fin.armor': 0 },
     parts: [
-      part('body', '몸통', 400, 2, 0, 100, 100, true, 'kill', '눈 주변의 둥근 기체 몸통을 노리세요. 중앙을 안정적으로 맞히는 것이 중요합니다.'),
-      part('eye', '눈', 300, 0, 0, 100, 100, true, 'break', '앞쪽 눈입니다. 눈의 장갑은 없지만 눈 파괴 자체는 즉사가 아닙니다.'),
-      part('upper-fin', '위쪽 지느러미', 200, 0, 0, 100, 100, true, 'break', '몸 위로 돌출된 지느러미 하나입니다. 이 부위만 부수고 사격을 멈추면 살아 있을 수 있습니다.'),
+      part('body', '몸통', 400, 2, 0, 100, 100, true, 'kill', '눈 주변의 둥근 기체 몸통을 노리세요. 중앙을 안정적으로 맞히는 것이 중요합니다.', { sourcePart: 'Body' }),
+      part('eye', '눈', 300, 0, 0, 100, 100, true, 'break', '앞쪽 눈입니다. 눈의 장갑은 없지만 눈 파괴 자체는 즉사가 아닙니다.', { sourcePart: 'Eye' }),
+      part('upper-fin', '위쪽 지느러미', 200, 2, 0, 100, 100, true, 'break', '몸 위로 돌출된 지느러미 하나입니다. 이 부위만 부수고 사격을 멈추면 살아 있을 수 있습니다.', { sourcePart: 'Upper Fin' }),
+      part('lower-fin', '아래쪽 지느러미', 200, 2, 0, 100, 100, true, 'break', '몸 아래로 돌출된 지느러미 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.', { sourcePart: 'Lower Fin' }),
+      part('side-fin', '옆 지느러미 한쪽', 150, 0, 0, 100, 100, true, 'break', '몸 옆의 작은 지느러미 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.', { sourcePart: 'Side Fins (2)' }),
     ],
   },
   {
     id: 'elevated-overseer', name: '고위 오버시어 · 비행형', faction: '일루미닛', source: wiki('Elevated_Overseer'), sourceRevision: 135189,
     main: main(450, 0, 0, 0),
     note: '비행형은 지상형과 체력·머리 장갑이 다릅니다. 제트팩 파괴는 즉사이며, 흉부는 장갑을 벗긴 뒤 몸통에 후속탄을 맞힙니다.',
+    // Every part matches Wiki Anatomy revision 135795 (checked 2026-09-28).
+    // Parts after the legacy ones were added then.
+    anatomyRevision: 135795, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리·투구', 200, 2, 0, 100, 100, true, 'kill', '날아다니는 적의 작은 투구를 직접 맞히세요. 지상형보다 머리 장갑이 낮습니다.'),
-      part('jetpack', '등의 제트팩', 300, 2, 0, 100, 50, true, 'kill', '옆이나 뒤에서 등에 달린 제트팩을 노리세요. 파괴 때 주변에 폭발 피해를 줄 수 있습니다.'),
-      part('chest-armor', '흉부 장갑 → 몸통', 150, 2, 0, 100, 20, false, 'armor', '흉부 장갑을 벗긴 뒤 같은 위치를 계속 맞히세요. 본체 체력 450에 전달된 피해도 함께 계산합니다.', { next: part('torso', '노출된 몸통', 600, 1, 0, 100, 100, true, 'kill', '위키 부위 표의 몸통 체력은 600이며, 그 전에 별도 본체 체력 450이 소진되면 처치입니다.') }),
+      part('head', '머리·투구', 200, 2, 0, 100, 100, true, 'kill', '날아다니는 적의 작은 투구를 직접 맞히세요. 지상형보다 머리 장갑이 낮습니다.', { sourcePart: 'Head' }),
+      part('jetpack', '등의 제트팩', 300, 2, 0, 100, 50, true, 'kill', '옆이나 뒤에서 등에 달린 제트팩을 노리세요. 파괴 때 주변에 폭발 피해를 줄 수 있습니다.', { sourcePart: 'Jetpack' }),
+      part('chest-armor', '흉부 장갑 → 몸통', 150, 2, 0, 100, 20, false, 'armor', '흉부 장갑을 벗긴 뒤 같은 위치를 계속 맞히세요. 본체 체력 450에 전달된 피해도 함께 계산합니다.', { sourcePart: 'Chest Armor', next: part('torso', '노출된 몸통', 600, 1, 0, 100, 100, true, 'kill', '위키 부위 표의 몸통 체력은 600이며, 그 전에 별도 본체 체력 450이 소진되면 처치입니다.', { sourcePart: 'Torso' }) }),
+      part('crotch-armor', '사타구니 장갑 → 몸통', 200, 2, 0, 100, 20, false, 'armor', '하복부 장갑을 벗긴 다음 같은 몸통을 공격하세요.', { sourcePart: 'Crotch Armor', next: part('torso', '노출된 몸통', 600, 1, 0, 100, 100, true, 'kill', '벗겨진 하복부 안쪽입니다.', { sourcePart: 'Torso' }) }),
+      part('limb-armor', '팔다리 장갑 한 개', 100, 2, 0, 100, 20, false, 'break', '팔다리를 덮은 장갑판 하나입니다. 부숴도 죽지 않습니다.', { sourcePart: 'Limb Armor' }),
+      part('right-arm', '오른팔', 300, 1, 0, 100, 50, true, 'kill', '무기를 든 오른팔입니다. 파괴하면 죽습니다.', { sourcePart: 'Right Arm' }),
+      part('left-arm', '왼팔', 300, 1, 0, 100, 50, true, 'break', '왼팔입니다. 부숴도 죽지 않지만 피해의 절반이 본체로 전달됩니다.', { sourcePart: 'Left Arm' }),
+      part('leg', '다리 한쪽', 450, 0, 0, 100, 70, true, 'break', '다리 하나입니다. 본체 체력을 공유하며, 피해의 70%가 본체로 들어갑니다.', { mainOnly: true, sourcePart: 'Legs (2)' }),
     ],
   },
 ];
