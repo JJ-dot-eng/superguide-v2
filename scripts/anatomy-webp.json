@@ -1659,6 +1659,62 @@
     "sha256": "85dd959726c899588241d3b234901596cf300c51291c53fae6ca6c71b02cb15a",
     "sourceSha256": "4ed24d6560c034b1887c322fc94b8ee04ae68457870880f6019e02c08effb6da"
   },
+  "./assets/anatomy/revised-impaler-butt-thumb.webp": {
+    "sha256": "b74b685990a9cd9dec345e83883d4254cef874ceffbd6ffb7b917ae7dbf0b6ad",
+    "sourceSha256": "c7fb23209b56ab10f03ea7676396d8fa91162a2a9af18fdcde8e8bca82b19719"
+  },
+  "./assets/anatomy/revised-impaler-butt.webp": {
+    "sha256": "84fb94a1a7de68d7c0413b342253e01397beb06fe528e91c930e072574db36dd",
+    "sourceSha256": "623fb8a29c52fd88d4eb7ad9f05638a0ae5bcd1ba70d6aa62418eb2148f6a550"
+  },
+  "./assets/anatomy/revised-impaler-crest-armor-thumb.webp": {
+    "sha256": "a9a0124d1a3500b28c9ffde704d5d25cbec132d0c8e9445242484094bc661cc0",
+    "sourceSha256": "5bb17ba03fb1726b0ee86c8c8349621558b19183ac561f23b7583d7b15c2f8d0"
+  },
+  "./assets/anatomy/revised-impaler-crest-armor.webp": {
+    "sha256": "fa6f06d0a348d1f7e9640c942c6e9d1f98954701d6bc54698f8508a22a9c49e6",
+    "sourceSha256": "c8751f77b03118ddd5dcd26c2fe5214f3b0cde6ab537397df547ee371d03776d"
+  },
+  "./assets/anatomy/revised-impaler-rear-armor-thumb.webp": {
+    "sha256": "21bf70b50e7a5f17f031d973e85a9eba53c49848a3516595bc1911bdb022c48d",
+    "sourceSha256": "44d03dce2500bcd8923bd94fa2feb8d86c27d7f17225d6964ed65eb0d602c02f"
+  },
+  "./assets/anatomy/revised-impaler-rear-armor.webp": {
+    "sha256": "1771a23271ed04c0f18e3d89dadcf00751ab0bbfc4e8d89f63fdc2a64495bd76",
+    "sourceSha256": "ea3e6975177b58ff70b43afb031fa25f35c0ba51865f4da022cedca3dcf33324"
+  },
+  "./assets/anatomy/revised-impaler-tentacle-armor-thumb.webp": {
+    "sha256": "b43761046927cb6d38c3f427229657715e8f82687742718396e4bf34f3b88234",
+    "sourceSha256": "d9611a8bfc3f92b062ba2d86d76a717026bb8ca371eaaa3dd628d44f9e90242d"
+  },
+  "./assets/anatomy/revised-impaler-tentacle-armor.webp": {
+    "sha256": "c6c970eb80615c3ad13db8468c4f233ca061114d3ba7be58f16d7a89118272a8",
+    "sourceSha256": "9106e8543d4faa18b0022ca959ad00cdc6c65c5c3ccb40ad7d9aae13e40e2bf9"
+  },
+  "./assets/anatomy/revised-impaler-torso-armor-exposed-thumb.webp": {
+    "sha256": "3d7c16cb42bb938b22bedb246c1778ed31f0a89fcf7893e0bd4466173a7fae6e",
+    "sourceSha256": "766a66b063ae42054d3bfc60ebbbf889543789b6ba86a5a036cf2e5e93c90cf0"
+  },
+  "./assets/anatomy/revised-impaler-torso-armor-exposed.webp": {
+    "sha256": "288ded29946638d592566cf733ce4cb32f6a2e5dd66a76c686fc5397075229ea",
+    "sourceSha256": "993abdff34d675787e6b7fec6f28e28d3fcf5fac728cefdc09400f1d74a1eece"
+  },
+  "./assets/anatomy/revised-impaler-torso-armor-thumb.webp": {
+    "sha256": "5c5391f0eee3e0b6589b6c77b03f5a42c88b3279149cd47b6e0a096879a6fff9",
+    "sourceSha256": "30e70b2f39ca2499123ab7c174accaf4a2127e5d1d38bc326d169789c2067bdc"
+  },
+  "./assets/anatomy/revised-impaler-torso-armor.webp": {
+    "sha256": "f57cb0ed1204092af6c2433ca34678854ff459161f7e519bb6729680e8f5e03c",
+    "sourceSha256": "3fa5a460755a2d0582d0fc748f6205f9c0a55e64b35d0c7ad3eb07310df0c38f"
+  },
+  "./assets/anatomy/revised-impaler-underside-thumb.webp": {
+    "sha256": "372538048d6723899310b454d5c333cdb834a7faffc71fe77d460c097fc45210",
+    "sourceSha256": "1c04be1b62c23044df247719e58a4927ad98a871a1521291adb7d87d051ea94a"
+  },
+  "./assets/anatomy/revised-impaler-underside.webp": {
+    "sha256": "25cef40f53dbf84e881c56e40081986fa3d5a49bef9cc5c63617eaa85e8f3e81",
+    "sourceSha256": "714a9a214548e9d40b3c28874eec4c6bf12d3b4801766a9a7410e7cde2188383"
+  },
   "./assets/anatomy/rocket-devastator-head-thumb.webp": {
     "sha256": "f9e4875094e061230053dbd70f36fb23f1b2e9cef1337b82b6897d48c5a402e4",
     "sourceSha256": "d0e78d29aa6c793e3fbfafe5c1e59378d0e777089316e53de87403dbad6cbd81"

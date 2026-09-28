@@ -149,5 +149,138 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "impaler": {
+    "tentacle-armor": [
+      {
+        "src": "./assets/anatomy/revised-impaler-tentacle-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-tentacle-armor-thumb.webp",
+        "title": "Impaler Tentacle Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Tentacle_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Tentacle_Armor_Front.png?f769cf",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Tentacle_Armor_Front.png/800px-Impaler_Tentacle_Armor_Front.png?f769cf",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Tentacle_Armor_Front.png/320px-Impaler_Tentacle_Armor_Front.png?f769cf",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9106e8543d4faa18b0022ca959ad00cdc6c65c5c3ccb40ad7d9aae13e40e2bf9",
+        "thumbnailSha256": "d9611a8bfc3f92b062ba2d86d76a717026bb8ca371eaaa3dd628d44f9e90242d",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "crest-armor": [
+      {
+        "src": "./assets/anatomy/revised-impaler-crest-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-crest-armor-thumb.webp",
+        "title": "Impaler Crest Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Crest_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Crest_Armor_Front.png?ff40e8",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Crest_Armor_Front.png/800px-Impaler_Crest_Armor_Front.png?ff40e8",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Crest_Armor_Front.png/320px-Impaler_Crest_Armor_Front.png?ff40e8",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c8751f77b03118ddd5dcd26c2fe5214f3b0cde6ab537397df547ee371d03776d",
+        "thumbnailSha256": "5bb17ba03fb1726b0ee86c8c8349621558b19183ac561f23b7583d7b15c2f8d0",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "torso-armor": [
+      {
+        "src": "./assets/anatomy/revised-impaler-torso-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-torso-armor-thumb.webp",
+        "title": "Impaler Torso Armor Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Torso_Armor_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Torso_Armor_Side.png?569741",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Torso_Armor_Side.png/800px-Impaler_Torso_Armor_Side.png?569741",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Torso_Armor_Side.png/320px-Impaler_Torso_Armor_Side.png?569741",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "3fa5a460755a2d0582d0fc748f6205f9c0a55e64b35d0c7ad3eb07310df0c38f",
+        "thumbnailSha256": "30e70b2f39ca2499123ab7c174accaf4a2127e5d1d38bc326d169789c2067bdc",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-impaler-torso-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-torso-armor-exposed-thumb.webp",
+        "title": "Impaler Inner Flesh.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Inner_Flesh.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Inner_Flesh.png?2073d3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Inner_Flesh.png/800px-Impaler_Inner_Flesh.png?2073d3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Inner_Flesh.png/320px-Impaler_Inner_Flesh.png?2073d3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "993abdff34d675787e6b7fec6f28e28d3fcf5fac728cefdc09400f1d74a1eece",
+        "thumbnailSha256": "766a66b063ae42054d3bfc60ebbbf889543789b6ba86a5a036cf2e5e93c90cf0",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "underside": [
+      {
+        "src": "./assets/anatomy/revised-impaler-underside.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-underside-thumb.webp",
+        "title": "Impaler Underside.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Underside.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Underside.png?feb6f9",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Underside.png/800px-Impaler_Underside.png?feb6f9",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Underside.png/320px-Impaler_Underside.png?feb6f9",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "714a9a214548e9d40b3c28874eec4c6bf12d3b4801766a9a7410e7cde2188383",
+        "thumbnailSha256": "1c04be1b62c23044df247719e58a4927ad98a871a1521291adb7d87d051ea94a",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-armor": [
+      {
+        "src": "./assets/anatomy/revised-impaler-rear-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-rear-armor-thumb.webp",
+        "title": "Impaler Rear Armor Plates Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Rear_Armor_Plates_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Rear_Armor_Plates_Side.png?35f9c4",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Rear_Armor_Plates_Side.png/800px-Impaler_Rear_Armor_Plates_Side.png?35f9c4",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Rear_Armor_Plates_Side.png/320px-Impaler_Rear_Armor_Plates_Side.png?35f9c4",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "ea3e6975177b58ff70b43afb031fa25f35c0ba51865f4da022cedca3dcf33324",
+        "thumbnailSha256": "44d03dce2500bcd8923bd94fa2feb8d86c27d7f17225d6964ed65eb0d602c02f",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "butt": [
+      {
+        "src": "./assets/anatomy/revised-impaler-butt.webp",
+        "thumbnail": "./assets/anatomy/revised-impaler-butt-thumb.webp",
+        "title": "Impaler Butt Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Impaler_Butt_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Impaler_Butt_Side.png?11f2af",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Butt_Side.png/800px-Impaler_Butt_Side.png?11f2af",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Impaler_Butt_Side.png/320px-Impaler_Butt_Side.png?11f2af",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "623fb8a29c52fd88d4eb7ad9f05638a0ae5bcd1ba70d6aa62418eb2148f6a550",
+        "thumbnailSha256": "c7fb23209b56ab10f03ea7676396d8fa91162a2a9af18fdcde8e8bca82b19719",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

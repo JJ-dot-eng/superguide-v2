@@ -203,10 +203,23 @@ const originalEnemies = [
     id: 'impaler', name: '임페일러', faction: '테르미니드', source: wiki('Impaler'), sourceRevision: 135095,
     main: main(4000, 4, 100, 0),
     note: '촉수를 땅에 박으면 머리가 드러납니다. 얼굴 노출과 다리 장갑 제거를 구분하며, 촉수 하나의 파괴와 본체 처치도 구분합니다.',
+    // Every part matches Wiki Anatomy revision 136861 (checked 2026-09-28,
+    // compared by scripts/test-anatomy.mjs). Parts after the first three
+    // were added then, so legacy results keep their order.
+    anatomyRevision: 136861, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '노출된 머리', 1250, 1, 75, 0, 150, false, 'kill', '촉수를 땅에 박았을 때 드러나는 얼굴을 맞히세요. 평소 앞을 덮는 촉수 장갑과 다른 부위입니다.', { prerequisite: '얼굴 노출 중', prerequisiteNote: '촉수를 땅에 박아 얼굴이 드러난 동안의 탄수입니다. 얼굴이 가려져 있으면 이 결과를 적용하지 않습니다.' }),
-      part('leg-armor', '다리 장갑 → 살점', 1000, 4, 70, 0, 50, false, 'armor', '다리 하나의 장갑을 벗긴 뒤 같은 위치의 살점을 맞히세요.', { next: part('leg-flesh', '노출된 다리 살점', 1000, 0, 70, 0, 50, false, 'kill', '장갑을 벗긴 바로 그 다리입니다.') }),
-      part('tentacle', '촉수 살점 한 개', 500, 1, 70, 0, 50, false, 'break', '사진에서 색으로 표시한 촉수 살점 한 가닥을 맞히는 조건입니다. 딱딱한 바깥 장갑과 구분하세요.'),
+      part('head', '노출된 머리', 1250, 1, 75, 0, 150, false, 'kill', '촉수를 땅에 박았을 때 드러나는 얼굴을 맞히세요. 평소 앞을 덮는 촉수 장갑과 다른 부위입니다.', { prerequisite: '얼굴 노출 중', prerequisiteNote: '촉수를 땅에 박아 얼굴이 드러난 동안의 탄수입니다. 얼굴이 가려져 있으면 이 결과를 적용하지 않습니다.', sourcePart: 'Head' }),
+      part('leg-armor', '다리 장갑 → 살점', 1000, 4, 70, 0, 50, false, 'armor', '다리 하나의 장갑을 벗긴 뒤 같은 위치의 살점을 맞히세요.', { sourcePart: 'Leg Armor (4)', next: part('leg-flesh', '노출된 다리 살점', 1000, 0, 70, 0, 50, false, 'kill', '장갑을 벗긴 바로 그 다리입니다.', { sourcePart: 'Leg Flesh (4)' }) }),
+      part('tentacle', '촉수 살점 한 개', 500, 1, 70, 0, 50, false, 'break', '사진에서 색으로 표시한 촉수 살점 한 가닥을 맞히는 조건입니다. 딱딱한 바깥 장갑과 구분하세요.', { sourcePart: 'Tentacle Flesh (3)' }),
+      part('tentacle-armor', '촉수 장갑 한 개', 4000, 4, 75, 0, 100, true, 'break', '얼굴 앞을 덮는 딱딱한 촉수 장갑입니다. 부서지지 않고 본체 체력을 공유하며, 피해가 모두 본체로 전달됩니다.', { mainOnly: true, sourcePart: 'Tentacle Armor (3)' }),
+      part('crest-armor', '볏 장갑', 1000, 4, 80, 0, 75, true, 'break', '머리 위의 볏 모양 장갑입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.', { sourcePart: 'Crest Armor' }),
+      part('torso-armor', '몸통 장갑 → 내부 살점', 1000, 4, 75, 0, 75, true, 'armor', '옆이나 뒤에서 몸통 장갑판 하나를 벗긴 뒤 같은 자리의 속살을 계속 공격하세요.', {
+        sourcePart: 'Torso Armor (2)',
+        next: part('inner-flesh', '노출된 몸통 살점', 4000, 0, 90, 100, 150, true, 'kill', '장갑을 벗긴 몸통 속살입니다. 본체 체력을 공유하고 피해의 150%가 본체로 들어갑니다. 폭발 피해는 본체 장갑으로 따로 계산합니다.', { mainOnly: true, sourcePart: 'Inner Flesh' }),
+      }),
+      part('underside', '아래쪽 복부', 4000, 2, 100, 100, 150, true, 'kill', '몸 아래쪽을 맞히세요. 장갑 2로 얇고 본체 체력을 공유하며, 피해의 150%가 본체로 들어갑니다.', { mainOnly: true, sourcePart: 'Underside' }),
+      part('rear-armor', '후방 장갑판', 1000, 4, 75, 0, 75, true, 'break', '몸 뒤쪽의 장갑판입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.', { sourcePart: 'Rear Armor Plates' }),
+      part('butt', '후방 복부', 1100, 1, 85, 0, 140, false, 'break', '뒤쪽 끝의 장갑이 얇은 부위입니다. 부숴도 죽지 않지만, 한 발의 초과 피해까지 140%로 본체에 들어갑니다.', { sourcePart: 'Butt' }),
     ],
   },
   {

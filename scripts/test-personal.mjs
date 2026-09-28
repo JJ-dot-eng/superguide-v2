@@ -259,6 +259,10 @@ eq(impalerLeg.stages.map(stage => [stage.part.id, stage.hits, Math.round(stage.c
 // 2000 extra health that never decays (1.0989 shots) → 1.37 → 2 shots.
 const titanLeg = solveMatchup(enemy('bile-titan'), melta).rows.find(row => row.target.id === 'leg');
 eq([titanLeg.hits, titanLeg.outcome, titanLeg.via], [2, 'kill', 'part']);
+// Impaler torso: armor 1000 (0.2747 shot, 75% capped at 1000 → 750 to main),
+// then inner flesh sends 150% of 3640 per shot to the 3250 left → 1 shot.
+const impalerTorso = solveMatchup(enemy('impaler'), melta).rows.find(row => row.target.id === 'torso-armor');
+eq([impalerTorso.hits, impalerTorso.outcome, impalerTorso.via], [1, 'kill', 'main']);
 // A layer the beam cannot hurt after the armor breaks stops as armor removal.
 const armoredFlesh = { main: { hp: 5000, armor: 0, durability: 0, exdr: 0 }, parts: [{ id: 'plate', name: 'plate', hp: 1000, armor: 4, durability: 0, exdr: 0, toMain: 0, overflowCap: false, effect: 'armor', next: { id: 'core', name: 'core', hp: 100, armor: 9, durability: 0, exdr: 0, toMain: 100, overflowCap: false, effect: 'kill' } }] };
 eq((({ hits, outcome, reason }) => ({ hits, outcome, reason }))(solveMatchup(armoredFlesh, melta).rows[0]), { hits: 1, outcome: 'armor', reason: 'no-damage-after-armor' });
@@ -499,14 +503,19 @@ for (const row of coverage.rows) {
   eq(row.oneShot, Boolean(row.best?.verified && row.best.hits === 1), 'row reflects best answer');
   for (const slot of row.perSlot) for (const answer of slot.modes) eq(answer.oneShot, answer.verified && answer.hits === 1, 'every Answer carries oneShot');
 }
-const impaler = coverage.rows.find(row => row.enemyId === 'impaler');
-ok(impaler.isLarge && !impaler.oneShot, 'fixed loadout has a large non-one-shot priority target');
-const prioritized = loadoutCoverage(fixed, 'terminid', { prioritizeLarge: true });
-eq(prioritized.rows[0].enemyId, 'impaler');
-eq(prioritized.rows.filter(r => r.isLarge && !r.oneShot).map(r => r.enemyId), coverage.rows.filter(r => r.isLarge && !r.oneShot).map(r => r.enemyId), 'priority group remains stable');
-eq(prioritized.rows.filter(r => !(r.isLarge && !r.oneShot)).map(r => r.enemyId), coverage.rows.filter(r => !(r.isLarge && !r.oneShot)).map(r => r.enemyId), 'remaining group remains stable');
-eq(loadoutCoverage(fixed, 'terminid', { prioritizeLarge: false }).rows.map(r => r.enemyId), coverage.rows.map(r => r.enemyId), 'default guide order unchanged');
-eq(loadoutView(fixed, 'terminid', { prioritizeLarge: true, limit: 0 }).rows.map(r => r.enemyId), prioritized.rows.map(r => r.enemyId), 'view forwards priority option');
+// The recoilless rifle one-shots every large Terminid on the checklist, so
+// priority ordering is checked on the same loadout without it.
+ok(coverage.rows.every(row => !row.isLarge || row.oneShot), 'fixed loadout one-shots the large Terminids');
+const partial = { ...fixed, stratagems: ['autocannon', '', '', ''] };
+const partialCoverage = loadoutCoverage(partial, 'terminid');
+const impaler = partialCoverage.rows.find(row => row.enemyId === 'impaler');
+ok(impaler.isLarge && !impaler.oneShot, 'partial loadout has a large non-one-shot priority target');
+const prioritized = loadoutCoverage(partial, 'terminid', { prioritizeLarge: true });
+eq(prioritized.rows.slice(0, 5).map(r => r.enemyId), ['charger', 'impaler', 'bile-titan', 'spore-burst-bile-titan', 'rupture-charger']);
+eq(prioritized.rows.filter(r => r.isLarge && !r.oneShot).map(r => r.enemyId), partialCoverage.rows.filter(r => r.isLarge && !r.oneShot).map(r => r.enemyId), 'priority group remains stable');
+eq(prioritized.rows.filter(r => !(r.isLarge && !r.oneShot)).map(r => r.enemyId), partialCoverage.rows.filter(r => !(r.isLarge && !r.oneShot)).map(r => r.enemyId), 'remaining group remains stable');
+eq(loadoutCoverage(partial, 'terminid', { prioritizeLarge: false }).rows.map(r => r.enemyId), partialCoverage.rows.map(r => r.enemyId), 'default guide order unchanged');
+eq(loadoutView(partial, 'terminid', { prioritizeLarge: true, limit: 0 }).rows.map(r => r.enemyId), prioritized.rows.map(r => r.enemyId), 'view forwards priority option');
 const emptyPrioritized = loadoutCoverage({}, 'illuminate', { prioritizeLarge: true });
 ok(emptyPrioritized.rows[0].isLarge && !emptyPrioritized.rows[0].oneShot, 'large gaps are also prioritized');
 eq(emptyPrioritized.rows.find(r => r.enemyId === 'gatekeeper').size, null, 'unmapped size retained in coverage');

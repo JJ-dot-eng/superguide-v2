@@ -9,7 +9,7 @@ import { pickerEnemyImages } from '../../data/selector-images.js';
 import { combatImages } from '../../data/combat-images.js';
 import { wikiIcons } from '../../data/wiki-icons.js';
 import { stratagems, stratagemById } from '../../core/catalog.js';
-import { solveMatchup, withHitAssumption, spearCannotLock, partPool, isFatal } from '../../core/combat.js';
+import { solveMatchup, withHitAssumption, spearCannotLock, partPool, isFatal, FATAL } from '../../core/combat.js';
 import { compareAttacks } from '../../core/compare.js';
 import { enemySize, isLargeEnemy, SIZE_NAMES } from '../../core/enemy-size.js';
 import { solveAccumulation, noFatalPart } from '../../core/accumulate.js';
@@ -174,23 +174,36 @@ function hero(enemy) {
     <span>${enemy.shield.kind === 'energy' ? L('보호막', 'Shield') : L('방패', 'Shield')} ${enemy.shield.infiniteHealth ? L('파괴 불가', 'indestructible') : L(`체력 ${num(enemy.shield.hp)}`, `health ${num(enemy.shield.hp)}`)}${Number.isFinite(enemy.shield.armor) ? L(` · 장갑 ${enemy.shield.armor}`, ` · armor ${enemy.shield.armor}`) : ''}. ${enemy.shield.note} ${L('제거·우회에 드는 공격은 횟수에 포함하지 않습니다.', 'Attacks spent removing or getting around it are not counted.')}</span></div></label>` : ''}`;
 }
 
+// The quickest kill that needs a prerequisite first (e.g. the Impaler's face
+// exposed). It never counts as the verified route, but players should see it.
+const conditionalBest = entry => (entry.rows || []).filter(row => row.conditional && FATAL.includes(row.outcome) && row.hits != null)
+  .sort((a, b) => a.hits - b.hits)[0] || null;
+const conditionalText = (row, mode) => L(`${row.target.prerequisite}: ${row.target.name} ${num(row.hits)}${unitOf(mode, row.hits).unit}`,
+  `${T(row.target.prerequisite)}: ${T(row.target.name)} ${num(row.hits)}${unitOf(mode, row.hits).unit}`);
+
 function rankRow(entry, selected, large = false, noFatal = false) {
   const { weapon, status } = entry;
   const single = large && oneShot(entry);
   const unit = unitOf(entry.mode, entry.best?.hits).unit;
   const multi = entry.profile?.modes.length > 1;
+  const conditional = conditionalBest(entry);
   let part = '', hits = html`<span class="hits dim">—</span>`, tag = '';
   if (status === 'route') {
     const outcome = outcomeOf(entry.best);
     const aside = entry.reference ? L(`위키 전술: ${entry.reference.target} ${entry.reference.hits}${unit}`, `Wiki tactic: ${T(entry.reference.target)} ${entry.reference.hits}${unitOf(entry.mode, entry.reference.hits).unit}`)
       : entry.spear ? L('직접 락온 불가 · 참고값', 'No direct lock-on · reference only')
       : entry.best.accumulated ? L('누적 처치 · 덩어리를 차례로 터뜨림', 'Cumulative kill · pop the lumps in turn')
+      : conditional && conditional.hits < entry.best.hits ? conditionalText(conditional, entry.mode)
       : entry.defaulted ? defaultLabel(entry.mode) : assumptionTag(entry.mode);
     part = html`<span>${entry.best.target.name}</span>${aside ? html`<small>${aside}</small>` : ''}`;
     hits = html`<span class="hits">${num(entry.best.hits)}<small>${unit}${entry.best.lowerBound ? '+' : ''}</small></span>`;
     tag = badge(outcome.label, outcome.tone);
   } else if (status === 'assume') {
     part = html`<span class="faint">${L('명중 수 가정 필요', 'Pick a hit assumption')}</span>`; tag = badge(L('가정 선택', 'Assumption'), 'unknown');
+  } else if (status === 'none' && conditional) {
+    part = html`<span>${conditional.target.name}</span><small>${L(`${conditional.target.prerequisite}에만`, `Only ${T(conditional.target.prerequisite).replace(/^./, c => c.toLowerCase())}`)}</small>`;
+    hits = html`<span class="hits">${num(conditional.hits)}<small>${unitOf(entry.mode, conditional.hits).unit}</small></span>`;
+    tag = badge(L('선행 조건', 'Prerequisite'), 'conditional');
   } else if (status === 'none') {
     const blocked = entry.rows.every(row => ['blocked', 'shield'].includes(row.outcome) || row.hits != null);
     const pierces = entry.rows.some(row => row.hits != null);

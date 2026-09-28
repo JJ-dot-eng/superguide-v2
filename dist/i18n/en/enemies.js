@@ -724,4 +724,13 @@ export default {
   "체력 2,000과 줄지 않는 추가 체력 1,500을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.": "It dies once its 2,000 health and 1,500 extra health that never goes down are both used up, or earlier if main health runs out first.",
   "왼앞다리를 뺀 나머지 다리 하나의 장갑판을 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.": "Strip an armor plate on any leg other than the front left one, then keep hitting the flesh in the same spot.",
   "체력 2,000과 줄지 않는 추가 체력 2,000을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.": "It dies once its 2,000 health and 2,000 extra health that never goes down are both used up, or earlier if main health runs out first.",
+  "촉수 장갑 한 개": "One Tentacle Armor",
+  "얼굴 앞을 덮는 딱딱한 촉수 장갑입니다. 부서지지 않고 본체 체력을 공유하며, 피해가 모두 본체로 전달됩니다.": "The hard tentacle armor covering its face. It doesn't break; it shares main health and passes all damage to it.",
+  "볏 장갑": "Crest Armor",
+  "머리 위의 볏 모양 장갑입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.": "The crest-shaped armor above the head. Breaking it doesn't kill, and the damage passed to main is capped at this part's health.",
+  "옆이나 뒤에서 몸통 장갑판 하나를 벗긴 뒤 같은 자리의 속살을 계속 공격하세요.": "From the side or rear, strip one torso armor plate, then keep hitting the inner flesh in the same spot.",
+  "장갑을 벗긴 몸통 속살입니다. 본체 체력을 공유하고 피해의 150%가 본체로 들어갑니다. 폭발 피해는 본체 장갑으로 따로 계산합니다.": "The inner flesh under the stripped torso armor. It shares main health and 150% of the damage goes to main. Explosion damage is calculated against the main body's armor instead.",
+  "몸 아래쪽을 맞히세요. 장갑 2로 얇고 본체 체력을 공유하며, 피해의 150%가 본체로 들어갑니다.": "Hit its underside. It has thin armor (2), shares main health, and 150% of the damage goes to main.",
+  "몸 뒤쪽의 장갑판입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.": "The armor plates on its back end. Breaking them doesn't kill, and the damage passed to main is capped at this part's health.",
+  "뒤쪽 끝의 장갑이 얇은 부위입니다. 부숴도 죽지 않지만, 한 발의 초과 피해까지 140%로 본체에 들어갑니다.": "The thinly armored rear end. Breaking it doesn't kill, but 140% of each hit, excess damage included, goes to main.",
 };
