@@ -1595,6 +1595,62 @@
     "sha256": "7bbf3446bf02b00a3ab4c45ed97417d20f3e316a8e3e5421802718de43bfcb35",
     "sourceSha256": "9e1106a44c5d696e4eab2419103b89da6a9c4337061a5007cd053eef5b24bccb"
   },
+  "./assets/anatomy/revised-behemoth-claw-thumb.webp": {
+    "sha256": "d2d3189bd4ee8c15ff5efcd05a90c5fc0b1efeeb49277d50a297c6f5e97c40ef",
+    "sourceSha256": "c4361132942769086d75e1f92bc52973ef3adb0cd9b4b8666763459698388c9d"
+  },
+  "./assets/anatomy/revised-behemoth-claw.webp": {
+    "sha256": "927a45017c4604096d0e7ee9600f5eacd72a17ed3f6255be21219206d3a18221",
+    "sourceSha256": "d459cacaa05525a09496029395d88a3530e7c22f667fed0afa716bf47de43bc3"
+  },
+  "./assets/anatomy/revised-behemoth-rear-armor-thumb.webp": {
+    "sha256": "0a99966bc2a0d57ad97fcdfab7069558d94ad276b036a4c48b408487b0eb853d",
+    "sourceSha256": "1b0c7264a0c7b4df7f2ec1189ea64aef550e3c4cdc355be1780074e4124d1016"
+  },
+  "./assets/anatomy/revised-behemoth-rear-armor.webp": {
+    "sha256": "56abd42bd8fd5277c7f77015b915e5bf006fc5b0c9484165f18fad6951430a88",
+    "sourceSha256": "8044e96764330ee96d8aff184bf8c667faca1e7282e6d4f0800eb4384101380d"
+  },
+  "./assets/anatomy/revised-behemoth-rear-leg-exposed-thumb.webp": {
+    "sha256": "363c65ec936ec725f6a3ed4870851d8e26f0efdba13cffdd788ffdf374f972c4",
+    "sourceSha256": "171cde9f7d7570b67a5c92905bad3ab3d5ce59f0b0518daa4b532fbf8d403fd7"
+  },
+  "./assets/anatomy/revised-behemoth-rear-leg-exposed.webp": {
+    "sha256": "0e0d7d153ac19ef41d8cb4368765eb9e7a45383c164f3f0e056ace2c7a9dfb8b",
+    "sourceSha256": "572ec5548a7d917c092e74863e78f1b0368c95aae2f733e13ef04a7740ebf525"
+  },
+  "./assets/anatomy/revised-behemoth-rear-leg-thumb.webp": {
+    "sha256": "db7a112c7d16b1d089861a5a88f2bfa49e617aa614b61b830a6e44e0c0f17cc7",
+    "sourceSha256": "16b64c8b89886a913be76db90ac89fd7d699daa15f02b810507cbe4fa441d94c"
+  },
+  "./assets/anatomy/revised-behemoth-rear-leg.webp": {
+    "sha256": "4dbd807a60bdde677d46f1d5ca875a36aa5ef8e5c27e9f690839e809c95e3104",
+    "sourceSha256": "76e264674e929d200a0d7ae13e6f948b16c9ae09715f64d83c9edcd0cb0d33bd"
+  },
+  "./assets/anatomy/revised-behemoth-torso-armor-exposed-thumb.webp": {
+    "sha256": "a5a9e897740bc2f467a46ceeff1194cb2a03c4ac367ead0ba3699b0b748f5773",
+    "sourceSha256": "3d752f61a0d1d2f66c3d9300429dd9be2f451ef809e324d44cf598c9286003b6"
+  },
+  "./assets/anatomy/revised-behemoth-torso-armor-exposed.webp": {
+    "sha256": "1a24d27da65de46b8ab813895b0415d3c158c77707b7a8b6f895d32ca29d2c31",
+    "sourceSha256": "f12fb81dffeeea369bbbfaadec79b338bc10683e5c1f54cea554364d89636cb0"
+  },
+  "./assets/anatomy/revised-behemoth-torso-armor-thumb.webp": {
+    "sha256": "bc078f9ed73ec2e2215360cab13f5040181044407aeb99d564fff4e47cfa9e8f",
+    "sourceSha256": "cf8575bca1a41dfb3fb43a59e821031478023cb6b7d5a9b839da7a45c6ad0e6e"
+  },
+  "./assets/anatomy/revised-behemoth-torso-armor.webp": {
+    "sha256": "365a33a902778482030188252d98cfc1815446ea29508621dbe8c5f6c8459739",
+    "sourceSha256": "2cdce53d8d4785cf6db4d6124609657cba5044e9eaa8b10abedbb4a2638af07b"
+  },
+  "./assets/anatomy/revised-behemoth-underside-thumb.webp": {
+    "sha256": "e979870578761ade8519267e33fcac2768e19215e4bb98a92bb764001514894b",
+    "sourceSha256": "0d0d2697e25268c1d8b256c06223b51c4556f8efdad67d395da12a38d63f0656"
+  },
+  "./assets/anatomy/revised-behemoth-underside.webp": {
+    "sha256": "72da8ed63b9a5da989b10a3713c7c950a440472f0c8692aa056f989d25ea2b70",
+    "sourceSha256": "23bb80a009fd28e0fb3b655adeac29182633f8ec3f16630f897fb1ff701a85cb"
+  },
   "./assets/anatomy/revised-bile-titan-butt-armor-thumb.webp": {
     "sha256": "1bf1d0266cb529fd326e4fe1607d28215775f287b1621dc5ec1f6a3bba74d9e0",
     "sourceSha256": "ebd31f69393f0bbee0682585dc522e4bd6acffc0770b6d1f21e0b8b738be6c26"
@@ -1659,6 +1715,62 @@
     "sha256": "85dd959726c899588241d3b234901596cf300c51291c53fae6ca6c71b02cb15a",
     "sourceSha256": "4ed24d6560c034b1887c322fc94b8ee04ae68457870880f6019e02c08effb6da"
   },
+  "./assets/anatomy/revised-charger-claw-thumb.webp": {
+    "sha256": "83ed7ab7b77cd42d77c34adfe1581bf8168cd7ffdcb8c218eb6a038ad660743a",
+    "sourceSha256": "ad1fd7de2e3218f6b7024e5c6828dd5ec5cd728356ba152e649d79ab82122d6e"
+  },
+  "./assets/anatomy/revised-charger-claw.webp": {
+    "sha256": "1ce80c1c2e203d6c0e030fe90125ac4dbf7060c5bc937b1fb6a8eb10fec12b6b",
+    "sourceSha256": "706bfe727a34c0a1a4e89fb7305e5ef79db0dba0b3b9237b728a438e5d5ab7e7"
+  },
+  "./assets/anatomy/revised-charger-rear-armor-thumb.webp": {
+    "sha256": "b0ab6cb35d2265c85b12314e9051bc785a29288096d2f1b8fca202334168e214",
+    "sourceSha256": "bf3dbc635478a2814c71b1202df90dd456932003331938cbfdd3d0b23918ee2b"
+  },
+  "./assets/anatomy/revised-charger-rear-armor.webp": {
+    "sha256": "a8459408991cb00fdcf2ba4430cc243438e810692c11914151f0bc52eac755fd",
+    "sourceSha256": "2d167d8cd52457d1ebef89ff0de0e5d286d5e6e623b8e7ada22873066cb407c5"
+  },
+  "./assets/anatomy/revised-charger-rear-leg-exposed-thumb.webp": {
+    "sha256": "4599d8eccbe14912b3d2f1ddbb0d3b2078f2ddeeeb31de111aa63a36a13b8d94",
+    "sourceSha256": "b10ca63f1fb94b5049e3fb0d80781dd7b96281042115511f9d93d7abfe230c62"
+  },
+  "./assets/anatomy/revised-charger-rear-leg-exposed.webp": {
+    "sha256": "0ba6829d9f3a819875741aef7edb7f73dfcc60b5e380556216e1ae29ecdb9ec9",
+    "sourceSha256": "9b55be70a7f5ccbec2bafbf73846a54f1710f49cbd182d632ae7126e968b44c8"
+  },
+  "./assets/anatomy/revised-charger-rear-leg-thumb.webp": {
+    "sha256": "02cfd7528b56f843a1ab6259d0660bb89dc66ebb29c92c17cec57ac47555c929",
+    "sourceSha256": "3d956f860d49d8d75a4ccb40aa1b073a598993bdd0e62a4f33828710f65c9e3e"
+  },
+  "./assets/anatomy/revised-charger-rear-leg.webp": {
+    "sha256": "2052c2a6e9f32aca92ae07f0b524b734cf0da391f06c5c164c82f1df569c661d",
+    "sourceSha256": "ca24e714847ce1c19355fde607c4ad5d3f87236dae08c2e9fddcb9d6ce05287b"
+  },
+  "./assets/anatomy/revised-charger-torso-armor-exposed-thumb.webp": {
+    "sha256": "39bb9b8d98ca0b7340d37731c4bb14103bdf134a912fbc597bb8e1d59ca783ad",
+    "sourceSha256": "6e83e4829254194fb58ae10b953a38a1500a69607f216a734c123dd96f980658"
+  },
+  "./assets/anatomy/revised-charger-torso-armor-exposed.webp": {
+    "sha256": "2685e3c31bb69cc9ca58f25e5e1f28bb6322ef888c0f066185c6b97b020fc704",
+    "sourceSha256": "d052f0c6f6b261d3653f58e89241e2c6607211021ae0d88e234449706e1f6d6c"
+  },
+  "./assets/anatomy/revised-charger-torso-armor-thumb.webp": {
+    "sha256": "419974759b00a05a565ff2c5e21bc186ac8fa1bebea378f198aab3377eb1f3f1",
+    "sourceSha256": "3873c0640b90722d5eb116cb1a4ef3708b674f56cc52fbf3d1f774f06cb861b5"
+  },
+  "./assets/anatomy/revised-charger-torso-armor.webp": {
+    "sha256": "7e658ef1e819549c5965172a4d1146d1651d585447c6e33996927dd4ba4771c6",
+    "sourceSha256": "537f1ca65f22006a927c83fd2963cce00384ad69782292b886df00ade1f04466"
+  },
+  "./assets/anatomy/revised-charger-underside-thumb.webp": {
+    "sha256": "8943a7b332ec01c32e71a6b92860584d01a9d9f592de95d2b4eb1e3bcb9ebd27",
+    "sourceSha256": "74290df6862b2f23fdb193556f379d8c04206c81f4efe8c4590bb10ddf56c0d6"
+  },
+  "./assets/anatomy/revised-charger-underside.webp": {
+    "sha256": "4ceaf58db17bc95be180ef2cfac7dc97cb4e7605faf8b2e6c76aafa7c43dd4e5",
+    "sourceSha256": "570682ca573cee1e16b0bb87063046cf02a06cf2afb07f3a88a5c1dba0f2b481"
+  },
   "./assets/anatomy/revised-impaler-butt-thumb.webp": {
     "sha256": "b74b685990a9cd9dec345e83883d4254cef874ceffbd6ffb7b917ae7dbf0b6ad",
     "sourceSha256": "c7fb23209b56ab10f03ea7676396d8fa91162a2a9af18fdcde8e8bca82b19719"
@@ -1714,6 +1826,70 @@
   "./assets/anatomy/revised-impaler-underside.webp": {
     "sha256": "25cef40f53dbf84e881c56e40081986fa3d5a49bef9cc5c63617eaa85e8f3e81",
     "sourceSha256": "714a9a214548e9d40b3c28874eec4c6bf12d3b4801766a9a7410e7cde2188383"
+  },
+  "./assets/anatomy/revised-rupture-charger-claw-thumb.webp": {
+    "sha256": "3b7117accf4f51b9d5950b0fd8c073fb9afcb02d242f0e576c07c0c7544e7dbb",
+    "sourceSha256": "92bf5051d1df071c0d49dfc4730343824215527bd3ba3f6e5c2e781c971d9dc4"
+  },
+  "./assets/anatomy/revised-rupture-charger-claw.webp": {
+    "sha256": "5f5b8c322058200f765ca962dfdb7976e9d2e104cb5b01fa89b51964a5ddce19",
+    "sourceSha256": "6d79f7d86fdd668ed5ae78f6b4ae4aa2ded880cdb313eea5ae4d6b77b9994bff"
+  },
+  "./assets/anatomy/revised-rupture-charger-rear-leg-exposed-thumb.webp": {
+    "sha256": "54a7f65da4b69373c31b3668bb0ee5cda268bb11a8ed2ca0adf37e3b2d4143b3",
+    "sourceSha256": "f87bd10943531309567fae83a2bf5a6b33940211f269e11afc4d3bb83a8f04dd"
+  },
+  "./assets/anatomy/revised-rupture-charger-rear-leg-exposed.webp": {
+    "sha256": "d5e212ba1bdc4064ed6fdc89d160a9417920b2c97d5a585d5f859cb8f35a410f",
+    "sourceSha256": "a6b368cc93fc88d8eb76df6b706fa6e8da8b2716fb31f7e15916b0df62bdd929"
+  },
+  "./assets/anatomy/revised-rupture-charger-rear-leg-thumb.webp": {
+    "sha256": "ba87f1225af590d769d09fbdb5248c36dcbc77cead2fb285117805f04f90abbd",
+    "sourceSha256": "06a5bda961e1d461bd0bb7570c6c6db7fd88209bf1c882a6eb22d3143417f728"
+  },
+  "./assets/anatomy/revised-rupture-charger-rear-leg.webp": {
+    "sha256": "912819eb96981fec5e3718222ab4d1e086763a6d803737c2e336eb0d15c2c344",
+    "sourceSha256": "6874123f6f1b4b5d867626de20bbb577ca321b29700f1538d5967aa436779562"
+  },
+  "./assets/anatomy/revised-rupture-charger-underside-thumb.webp": {
+    "sha256": "96a4c6c65a75b7969d64a7421e5085966d283bc22eae03a1ab9332a4369bbdc2",
+    "sourceSha256": "d0fbf46ca1d6ec0c9256a4cda763b6291853c54911809887600ddda571ec5c96"
+  },
+  "./assets/anatomy/revised-rupture-charger-underside.webp": {
+    "sha256": "0522ee64ff31abb2e1d651a0cf5eeb04bb1252334ca206be67afe6e0b144b108",
+    "sourceSha256": "7e2cae447763244ee74a4eae32ca01e6453c22b68bec623206e504d6ba28353d"
+  },
+  "./assets/anatomy/revised-spore-charger-claw-thumb.webp": {
+    "sha256": "34f0597e62b00a750c7d107c42752130f2dc08bf0f4d5cec96ceff445a9a8f24",
+    "sourceSha256": "7eede8d782ae1b709d84c71072f0a8725edc2b15ac0dbfe45934ede8cda4b114"
+  },
+  "./assets/anatomy/revised-spore-charger-claw.webp": {
+    "sha256": "2870615b797fcd34265bad963bf2406905e2c59b061043ce6a941fada57478c3",
+    "sourceSha256": "96b82b14a23e47239b4e0f84e179b6666ee0a2c8e33ed00f0ab8de21f85a9fc0"
+  },
+  "./assets/anatomy/revised-spore-charger-rear-leg-exposed-thumb.webp": {
+    "sha256": "b934ba1c4d3ad88dc1e117a9e9a1c40e817d8a5ca84c9d682780b74716ff84d9",
+    "sourceSha256": "d62d6121519e40176b8d6efd5f5b28a600d1e73b8b482964ba1021a6cce7e8d3"
+  },
+  "./assets/anatomy/revised-spore-charger-rear-leg-exposed.webp": {
+    "sha256": "2a622a1b0644dcb906c6063dce6c2f69038ea9021629a8833f935c3a5696f43a",
+    "sourceSha256": "af741d8934194e3e9d6c55c41094867280dadb01cd36e41ed5861ff251ab1dde"
+  },
+  "./assets/anatomy/revised-spore-charger-rear-leg-thumb.webp": {
+    "sha256": "49c039741c91f1b652b922e6080b6f521ffae0376fd8f8b80107171c142796e5",
+    "sourceSha256": "d8d467186b01b77f390929866ab45c8ceca7016945b32bdfda774744e29145d1"
+  },
+  "./assets/anatomy/revised-spore-charger-rear-leg.webp": {
+    "sha256": "10ceb96501bfa58f3b0c061a9a6b8259279db364400a0421bb56d70538a23c68",
+    "sourceSha256": "a950bbc1dafbe0ee0a24aaca40c519b10ad5cb9f18b70208ba64013f3ad738b5"
+  },
+  "./assets/anatomy/revised-spore-charger-underside-thumb.webp": {
+    "sha256": "3b8cc06ce75d2c97739d1832699c1433bc71b926528366af29c59ff6c98c55c4",
+    "sourceSha256": "b19fc9143ae72255d38009c4bf9ae2f7c8fe4ebb912721852d33b6fa8af171ff"
+  },
+  "./assets/anatomy/revised-spore-charger-underside.webp": {
+    "sha256": "fad59e15bf0a1fcfc94cd0e1a6dc43c8cb1cb8f1cb3fbeaa1f410db25f20f41a",
+    "sourceSha256": "68429d0eaca960e89204113b49817ab08aa07f1f578915e30bfaf0f0802061c9"
   },
   "./assets/anatomy/rocket-devastator-head-thumb.webp": {
     "sha256": "f9e4875094e061230053dbd70f36fb23f1b2e9cef1337b82b6897d48c5a402e4",

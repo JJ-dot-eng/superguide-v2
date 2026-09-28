@@ -1,6 +1,7 @@
 // Enemies re-checked against the Wiki Anatomy snapshot (db/source/wiki_anatomy.json):
-// every wiki row is either a part (matched by sourcePart) or merged into a
-// named part with the same numbers, and every number matches the wiki.
+// every wiki row is a part (matched by sourcePart), merged into a named part
+// with the same numbers (anatomyMerged), or left out with a stated reason
+// (anatomyOmitted), and every number of a modelled row matches the wiki.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { enemies } from '../dist/data/combat-data.js';
@@ -16,16 +17,18 @@ const titleOf = enemy => decodeURIComponent(enemy.source.split('/wiki/')[1]).rep
 const partsOf = enemy => enemy.parts.flatMap(part => [part, ...(part.next ? [part.next] : [])]);
 
 function matches(part, row, label) {
-  if (row.health === 'Main') ok(part.mainOnly === true, `${label}: health Main shares the main pool`);
+  if (/^Main\b/.test(row.health)) ok(part.mainOnly === true, `${label}: health ${row.health} shares a main pool`);
   else eq(part.hp, number(row.health), `${label}: health`);
   eq(part.armor, number(row.av), `${label}: armor`);
   eq(part.durability, number(row.durability), `${label}: durability`);
   eq(part.exdr, number(row.exdr), `${label}: explosive resistance`);
   eq(part.toMain, number(row.percent_to_main), `${label}: % to main`);
   eq(part.overflowCap, { Yes: true, No: false }[row.dmg_cap_main], `${label}: damage cap to main`);
-  ok(/^Yes/.test(row.fatal) ? ['kill', 'bleed', 'down'].includes(part.effect) : ['break', 'armor'].includes(part.effect), `${label}: fatal ${row.fatal} vs ${part.effect}`);
+  // Some pages put "Yes (Downs)" in the bleed column instead of fatal.
+  const fatal = /^Yes/.test(row.fatal) || /Downs/.test(row.bleed);
+  ok(fatal ? ['kill', 'bleed', 'down'].includes(part.effect) : ['break', 'armor'].includes(part.effect), `${label}: fatal ${row.fatal} vs ${part.effect}`);
   const bleed = row.bleed.match(/^([\d,]+) \[-([\d.]+)\/s\]$/);
-  if (row.bleed === 'None') ok(!part.staticConstitution && !part.constitution, `${label}: no extra health`);
+  if (['None', 'No'].includes(row.bleed) || /Downs/.test(row.bleed)) ok(!part.staticConstitution && !part.constitution, `${label}: no extra health`);
   else if (bleed && Number(bleed[2]) === 0) eq(part.staticConstitution, number(bleed[1]), `${label}: extra health that never decays`);
   else if (bleed) eq(part.constitution, number(bleed[1]), `${label}: bleed-out health`);
   else assert.fail(`${label}: unreadable bleed ${row.bleed}`);
@@ -52,6 +55,10 @@ for (const enemy of revised) {
     const part = parts.find(item => item.id === partId);
     ok(part && byName.has(name), `${enemy.id}: ${name} merged into ${partId}`);
     matches(part, byName.get(name), `${enemy.id}/${partId} (${name})`);
+    covered.add(name);
+  }
+  for (const [name, reason] of Object.entries(enemy.anatomyOmitted || {})) {
+    ok(byName.has(name) && !covered.has(name) && /^[ -~]{20,}$/.test(reason), `${enemy.id}: ${name} left out with an English reason`);
     covered.add(name);
   }
   const uncovered = [...byName.keys()].filter(name => name !== 'Main' && !covered.has(name));

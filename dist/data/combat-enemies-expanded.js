@@ -499,6 +499,8 @@ export const expandedEnemies = [
     "sourceRevision": 135093,
     "note": "머리는 즉사 부위이며 후방 복부 파괴는 출혈을 유발합니다. 포자 혹은 본체에 20%만 전달하며 폭발 피해를 받지 않습니다. 뒤쪽 복부 내구도는 100%로 일반 차저와 다릅니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136858,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 2400,
       "armor": 4,
@@ -612,6 +614,59 @@ export const expandedEnemies = [
         "effect": "break",
         "tip": "몸에 솟은 포자 혹 한 개입니다. 장갑은 1이지만 내구도 100%, 본체 전달률 20%로 효율이 낮으며 파괴만으로 즉사하지 않습니다.",
         "sourcePart": "Spore Flesh (6)"
+      },
+      {
+        "id": "underside",
+        "name": "아래쪽 복부",
+        "hp": 2400,
+        "armor": 2,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "kill",
+        "tip": "몸 아래쪽 배를 맞히세요. 장갑 2이며 본체 체력을 공유합니다. 폭발 피해는 본체 장갑으로 따로 계산합니다.",
+        "mainOnly": true,
+        "sourcePart": "Underside"
+      },
+      {
+        "id": "claw",
+        "name": "앞발 한쪽",
+        "hp": 500,
+        "armor": 4,
+        "durability": 70,
+        "exdr": 100,
+        "toMain": 70,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "머리 앞의 큰 집게발 하나입니다. 부숴도 죽지 않지만 피해의 70%가 본체로 전달됩니다.",
+        "sourcePart": "Claws (2)"
+      },
+      {
+        "id": "rear-leg",
+        "name": "뒷다리 장갑 → 살점",
+        "hp": 800,
+        "armor": 4,
+        "durability": 70,
+        "exdr": 25,
+        "toMain": 50,
+        "overflowCap": false,
+        "effect": "armor",
+        "tip": "뒷다리 하나의 장갑을 벗긴 뒤 같은 위치의 살점을 계속 맞히세요. 장갑을 벗긴 탄의 초과 피해는 살점에 합산하지 않습니다.",
+        "sourcePart": "Rear Leg Armor (2)",
+        "next": {
+          "id": "leg-flesh",
+          "name": "노출된 다리 살점",
+          "hp": 800,
+          "armor": 2,
+          "durability": 70,
+          "exdr": 25,
+          "toMain": 50,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "장갑이 벗겨진 같은 다리입니다. 살점 파괴는 치명 판정입니다.",
+          "sourcePart": "Leg Flesh (4)"
+        }
       }
     ],
     "spearLock": true
@@ -624,6 +679,8 @@ export const expandedEnemies = [
     "sourceRevision": 135108,
     "note": "지상으로 드러났을 때의 계산입니다. 머리와 앞다리 정면 족판은 장갑 5, 앞다리 측면 장갑은 4입니다. 일반 차저와 같은 장갑으로 계산하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135108,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 2400,
       "armor": 4,
@@ -738,6 +795,59 @@ export const expandedEnemies = [
           "sourcePart": "Inner Flesh"
         },
         "sourcePart": "Torso Armor (2)"
+      },
+      {
+        "id": "underside",
+        "name": "아래쪽 복부",
+        "hp": 2400,
+        "armor": 2,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "kill",
+        "tip": "몸 아래쪽 배를 맞히세요. 장갑 2이며 본체 체력을 공유합니다. 폭발 피해는 본체 장갑으로 따로 계산합니다.",
+        "mainOnly": true,
+        "sourcePart": "Underside"
+      },
+      {
+        "id": "claw",
+        "name": "앞발 한쪽",
+        "hp": 500,
+        "armor": 4,
+        "durability": 70,
+        "exdr": 100,
+        "toMain": 70,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "머리 앞의 큰 집게발 하나입니다. 부숴도 죽지 않지만 피해의 70%가 본체로 전달됩니다.",
+        "sourcePart": "Claws (2)"
+      },
+      {
+        "id": "rear-leg",
+        "name": "뒷다리 장갑 → 살점",
+        "hp": 800,
+        "armor": 4,
+        "durability": 70,
+        "exdr": 25,
+        "toMain": 50,
+        "overflowCap": false,
+        "effect": "armor",
+        "tip": "뒷다리 하나의 장갑을 벗긴 뒤 같은 위치의 살점을 계속 맞히세요. 장갑을 벗긴 탄의 초과 피해는 살점에 합산하지 않습니다.",
+        "sourcePart": "Rear Leg Armor (2)",
+        "next": {
+          "id": "leg-flesh",
+          "name": "노출된 다리 살점",
+          "hp": 800,
+          "armor": 2,
+          "durability": 70,
+          "exdr": 25,
+          "toMain": 50,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "장갑이 벗겨진 같은 다리의 살점을 맞히세요.",
+          "sourcePart": "Leg Flesh (4)"
+        }
       }
     ],
     "spearLock": true

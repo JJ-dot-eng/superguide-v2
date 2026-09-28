@@ -9,7 +9,18 @@ export const damageSource = 'https://helldivers.wiki.gg/wiki/Damage';
 const wiki = page => `https://helldivers.wiki.gg/wiki/${page}`;
 const main = (hp, armor, durability, exdr, constitution = 0) => ({ hp, armor, durability, exdr, constitution });
 const part = (id, name, hp, armor, durability, exdr, toMain, overflowCap, effect, tip, extra = {}) => ({ id, name, hp, armor, durability, exdr, toMain, overflowCap, effect, tip, ...extra });
-const legFlesh = () => part('leg-flesh', '노출된 다리 살점', 800, 2, 70, 25, 50, false, 'kill', '장갑을 벗긴 같은 다리에 계속 맞히세요.');
+const legFlesh = () => part('leg-flesh', '노출된 다리 살점', 800, 2, 70, 25, 50, false, 'kill', '장갑을 벗긴 같은 다리에 계속 맞히세요.', { sourcePart: 'Leg Flesh (4)' });
+// Charger-family parts added from the wiki anatomy tables (checked 2026-09-28).
+const chargerExtras = ({ mainHp, torsoHp, legHp, legDurability }) => [
+  part('torso-armor', '몸통 장갑 → 내부 살점', torsoHp, 4, 85, 25, 100, false, 'armor', '몸통 측면의 같은 장갑판을 벗긴 뒤 드러난 살점을 맞히세요.', {
+    sourcePart: 'Torso Armor (2)',
+    next: part('inner-flesh', '노출된 몸통 살점', mainHp, 1, 30, 100, 300, true, 'kill', '몸통 장갑을 제거한 같은 위치입니다. 본체 체력 공유 부위이며 직격 피해가 본체에 300% 전달됩니다.', { mainOnly: true, sourcePart: 'Inner Flesh' }),
+  }),
+  part('underside', '아래쪽 복부', mainHp, 2, 100, 100, 100, true, 'kill', '몸 아래쪽 배를 맞히세요. 장갑 2이며 본체 체력을 공유합니다. 폭발 피해는 본체 장갑으로 따로 계산합니다.', { mainOnly: true, sourcePart: 'Underside' }),
+  part('rear-armor', '후방 장갑판', 2200, 4, 75, 100, 75, false, 'kill', '후방 복부 위의 단단한 장갑판을 직접 맞히는 계산입니다. 아래 복부와 장갑·내구·저항이 다릅니다.', { sourcePart: 'Rear Armor Plates' }),
+  part('claw', '앞발 한쪽', 500, 4, 70, 100, 70, false, 'break', '머리 앞의 큰 집게발 하나입니다. 부숴도 죽지 않지만 피해의 70%가 본체로 전달됩니다.', { sourcePart: 'Claws (2)' }),
+  part('rear-leg', '뒷다리 장갑 → 살점', legHp, 4, legDurability, 25, 50, false, 'armor', '뒷다리 하나의 장갑을 벗긴 뒤 같은 위치의 살점을 계속 맞히세요. 장갑을 벗긴 탄의 초과 피해는 살점에 합산하지 않습니다.', { sourcePart: 'Rear Leg Armor (2)', next: legFlesh() }),
+];
 const hunter = (id, name, hp, limbHp) => ({
   id, name, faction: '테르미니드', source: wiki('Hunter'), sourceRevision: 135080, family: 'hunter',
   main: main(hp, 0, 0, 0),
@@ -55,20 +66,28 @@ const originalEnemies = [
     id: 'charger', name: '차저', faction: '테르미니드', source: wiki('Charger'),
     main: main(2400, 4, 100, 25, 750),
     note: '머리 파괴는 즉사, 후방 복부 파괴는 출혈을 유발합니다. 다리는 장갑과 살점을 따로 계산합니다.',
+    // Every part matches Wiki Anatomy revision 136850 (checked 2026-09-28).
+    // Parts after the first three were added then.
+    anatomyRevision: 136850, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 1200, 4, 75, 25, 70, false, 'kill', '정면 머리 중앙을 노리세요. 등 장갑에 빗맞으면 다른 부위입니다.'),
-      part('butt', '후방 복부', 950, 0, 80, 25, 150, false, 'bleed', '돌진을 피한 뒤 뒤쪽의 드러난 복부를 쏘세요. 파괴 후에도 바로 죽지 않을 수 있습니다.'),
-      part('front-leg', '앞다리 장갑 → 살점', 800, 4, 70, 25, 60, false, 'armor', '한쪽 앞다리에 집중하세요. 장갑을 벗긴 탄의 초과 피해는 살점으로 넘어가지 않습니다.', { next: legFlesh() }),
+      part('head', '머리', 1200, 4, 75, 25, 70, false, 'kill', '정면 머리 중앙을 노리세요. 등 장갑에 빗맞으면 다른 부위입니다.', { sourcePart: 'Head' }),
+      part('butt', '후방 복부', 950, 0, 80, 25, 150, false, 'bleed', '돌진을 피한 뒤 뒤쪽의 드러난 복부를 쏘세요. 파괴 후에도 바로 죽지 않을 수 있습니다.', { sourcePart: 'Butt' }),
+      part('front-leg', '앞다리 장갑 → 살점', 800, 4, 70, 25, 60, false, 'armor', '한쪽 앞다리에 집중하세요. 장갑을 벗긴 탄의 초과 피해는 살점으로 넘어가지 않습니다.', { sourcePart: 'Front Leg Armor (2)', next: legFlesh() }),
+      ...chargerExtras({ mainHp: 2400, torsoHp: 800, legHp: 800, legDurability: 70 }),
     ],
   },
   {
     id: 'behemoth', name: '베히모스 차저', faction: '테르미니드', source: wiki('Charger_Behemoth'),
     main: main(3000, 4, 100, 25, 1000),
     note: '일반 차저보다 머리와 앞다리 장갑이 튼튼합니다. 같은 부위에 연속으로 맞히는 조건입니다.',
+    // Every part matches Wiki Anatomy revision 136856 (checked 2026-09-28).
+    // Parts after the first three were added then.
+    anatomyRevision: 136856, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 1600, 4, 100, 25, 70, false, 'kill', '정면 머리를 노리세요. 일반 차저의 탄수를 그대로 적용하지 마세요.'),
-      part('butt', '후방 복부', 950, 0, 100, 25, 50, false, 'bleed', '뒤쪽 복부를 부수면 출혈이 시작됩니다. 장갑은 없지만 내구도가 높습니다.'),
-      part('front-leg', '앞다리 장갑 → 살점', 1000, 4, 80, 25, 60, false, 'armor', '장갑 제거 후 같은 다리의 살점을 공격하세요.', { next: legFlesh() }),
+      part('head', '머리', 1600, 4, 100, 25, 70, false, 'kill', '정면 머리를 노리세요. 일반 차저의 탄수를 그대로 적용하지 마세요.', { sourcePart: 'Head' }),
+      part('butt', '후방 복부', 950, 0, 100, 25, 50, false, 'bleed', '뒤쪽 복부를 부수면 출혈이 시작됩니다. 장갑은 없지만 내구도가 높습니다.', { sourcePart: 'Butt' }),
+      part('front-leg', '앞다리 장갑 → 살점', 1000, 4, 80, 25, 60, false, 'armor', '장갑 제거 후 같은 다리의 살점을 공격하세요.', { sourcePart: 'Front Leg Armor (2)', next: legFlesh() }),
+      ...chargerExtras({ mainHp: 3000, torsoHp: 1000, legHp: 1000, legDurability: 80 }),
     ],
   },
   {

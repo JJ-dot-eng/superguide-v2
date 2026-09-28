@@ -282,5 +282,419 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "charger": {
+    "torso-armor": [
+      {
+        "src": "./assets/anatomy/revised-charger-torso-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-torso-armor-thumb.webp",
+        "title": "Charger Torso Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Torso_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Torso_Armor_Front.png?41a3cf",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Torso_Armor_Front.png/800px-Charger_Torso_Armor_Front.png?41a3cf",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Torso_Armor_Front.png/320px-Charger_Torso_Armor_Front.png?41a3cf",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "537f1ca65f22006a927c83fd2963cce00384ad69782292b886df00ade1f04466",
+        "thumbnailSha256": "3873c0640b90722d5eb116cb1a4ef3708b674f56cc52fbf3d1f774f06cb861b5",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-charger-torso-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-torso-armor-exposed-thumb.webp",
+        "title": "Charger Inner Flesh.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Inner_Flesh.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Inner_Flesh.png?3b70f3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Inner_Flesh.png/800px-Charger_Inner_Flesh.png?3b70f3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Inner_Flesh.png/320px-Charger_Inner_Flesh.png?3b70f3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d052f0c6f6b261d3653f58e89241e2c6607211021ae0d88e234449706e1f6d6c",
+        "thumbnailSha256": "6e83e4829254194fb58ae10b953a38a1500a69607f216a734c123dd96f980658",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "underside": [
+      {
+        "src": "./assets/anatomy/revised-charger-underside.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-underside-thumb.webp",
+        "title": "Charger Underside Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Underside_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Underside_Front.png?b90f70",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Underside_Front.png/800px-Charger_Underside_Front.png?b90f70",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Underside_Front.png/320px-Charger_Underside_Front.png?b90f70",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "570682ca573cee1e16b0bb87063046cf02a06cf2afb07f3a88a5c1dba0f2b481",
+        "thumbnailSha256": "74290df6862b2f23fdb193556f379d8c04206c81f4efe8c4590bb10ddf56c0d6",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-armor": [
+      {
+        "src": "./assets/anatomy/revised-charger-rear-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-rear-armor-thumb.webp",
+        "title": "Charger Rear Armor Plates Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Rear_Armor_Plates_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Rear_Armor_Plates_Side.png?2e31a7",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Rear_Armor_Plates_Side.png/800px-Charger_Rear_Armor_Plates_Side.png?2e31a7",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Rear_Armor_Plates_Side.png/320px-Charger_Rear_Armor_Plates_Side.png?2e31a7",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2d167d8cd52457d1ebef89ff0de0e5d286d5e6e623b8e7ada22873066cb407c5",
+        "thumbnailSha256": "bf3dbc635478a2814c71b1202df90dd456932003331938cbfdd3d0b23918ee2b",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-charger-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-claw-thumb.webp",
+        "title": "Charger Claws Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Claws_Front.png?219b6a",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Claws_Front.png/800px-Charger_Claws_Front.png?219b6a",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Claws_Front.png/320px-Charger_Claws_Front.png?219b6a",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "706bfe727a34c0a1a4e89fb7305e5ef79db0dba0b3b9237b728a438e5d5ab7e7",
+        "thumbnailSha256": "ad1fd7de2e3218f6b7024e5c6828dd5ec5cd728356ba152e649d79ab82122d6e",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-charger-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-rear-leg-thumb.webp",
+        "title": "Charger Rear Leg Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Rear_Leg_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Rear_Leg_Armor_Front.png?649f7d",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Rear_Leg_Armor_Front.png/800px-Charger_Rear_Leg_Armor_Front.png?649f7d",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Rear_Leg_Armor_Front.png/320px-Charger_Rear_Leg_Armor_Front.png?649f7d",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "ca24e714847ce1c19355fde607c4ad5d3f87236dae08c2e9fddcb9d6ce05287b",
+        "thumbnailSha256": "3d956f860d49d8d75a4ccb40aa1b073a598993bdd0e62a4f33828710f65c9e3e",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-charger-rear-leg-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-charger-rear-leg-exposed-thumb.webp",
+        "title": "Charger Leg Flesh Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Leg_Flesh_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Leg_Flesh_Front.png?48722b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Leg_Flesh_Front.png/800px-Charger_Leg_Flesh_Front.png?48722b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Leg_Flesh_Front.png/320px-Charger_Leg_Flesh_Front.png?48722b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "9b55be70a7f5ccbec2bafbf73846a54f1710f49cbd182d632ae7126e968b44c8",
+        "thumbnailSha256": "b10ca63f1fb94b5049e3fb0d80781dd7b96281042115511f9d93d7abfe230c62",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "behemoth": {
+    "torso-armor": [
+      {
+        "src": "./assets/anatomy/revised-behemoth-torso-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-torso-armor-thumb.webp",
+        "title": "Charger Behemoth Torso Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Torso_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Torso_Armor_Front.png?efddfe",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Torso_Armor_Front.png/800px-Charger_Behemoth_Torso_Armor_Front.png?efddfe",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Torso_Armor_Front.png/320px-Charger_Behemoth_Torso_Armor_Front.png?efddfe",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2cdce53d8d4785cf6db4d6124609657cba5044e9eaa8b10abedbb4a2638af07b",
+        "thumbnailSha256": "cf8575bca1a41dfb3fb43a59e821031478023cb6b7d5a9b839da7a45c6ad0e6e",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-behemoth-torso-armor-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-torso-armor-exposed-thumb.webp",
+        "title": "Charger Behemoth Inner Flesh.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Inner_Flesh.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Inner_Flesh.png?42db7e",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Inner_Flesh.png/800px-Charger_Behemoth_Inner_Flesh.png?42db7e",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Inner_Flesh.png/320px-Charger_Behemoth_Inner_Flesh.png?42db7e",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f12fb81dffeeea369bbbfaadec79b338bc10683e5c1f54cea554364d89636cb0",
+        "thumbnailSha256": "3d752f61a0d1d2f66c3d9300429dd9be2f451ef809e324d44cf598c9286003b6",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "underside": [
+      {
+        "src": "./assets/anatomy/revised-behemoth-underside.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-underside-thumb.webp",
+        "title": "Charger Behemoth Underside Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Underside_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Underside_Front.png?ea60de",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Underside_Front.png/800px-Charger_Behemoth_Underside_Front.png?ea60de",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Underside_Front.png/320px-Charger_Behemoth_Underside_Front.png?ea60de",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "23bb80a009fd28e0fb3b655adeac29182633f8ec3f16630f897fb1ff701a85cb",
+        "thumbnailSha256": "0d0d2697e25268c1d8b256c06223b51c4556f8efdad67d395da12a38d63f0656",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-armor": [
+      {
+        "src": "./assets/anatomy/revised-behemoth-rear-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-rear-armor-thumb.webp",
+        "title": "Charger Behemoth Rear Armor Plates.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Rear_Armor_Plates.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Rear_Armor_Plates.png?5817e2",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Rear_Armor_Plates.png/800px-Charger_Behemoth_Rear_Armor_Plates.png?5817e2",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Rear_Armor_Plates.png/320px-Charger_Behemoth_Rear_Armor_Plates.png?5817e2",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8044e96764330ee96d8aff184bf8c667faca1e7282e6d4f0800eb4384101380d",
+        "thumbnailSha256": "1b0c7264a0c7b4df7f2ec1189ea64aef550e3c4cdc355be1780074e4124d1016",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-behemoth-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-claw-thumb.webp",
+        "title": "Charger Behemoth Claws Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Claws_Front.png?d685ac",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Claws_Front.png/800px-Charger_Behemoth_Claws_Front.png?d685ac",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Claws_Front.png/320px-Charger_Behemoth_Claws_Front.png?d685ac",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "d459cacaa05525a09496029395d88a3530e7c22f667fed0afa716bf47de43bc3",
+        "thumbnailSha256": "c4361132942769086d75e1f92bc52973ef3adb0cd9b4b8666763459698388c9d",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-behemoth-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-rear-leg-thumb.webp",
+        "title": "Charger Behemoth Rear Leg Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Rear_Leg_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Rear_Leg_Armor_Front.png?e3cfb3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Rear_Leg_Armor_Front.png/800px-Charger_Behemoth_Rear_Leg_Armor_Front.png?e3cfb3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Rear_Leg_Armor_Front.png/320px-Charger_Behemoth_Rear_Leg_Armor_Front.png?e3cfb3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "76e264674e929d200a0d7ae13e6f948b16c9ae09715f64d83c9edcd0cb0d33bd",
+        "thumbnailSha256": "16b64c8b89886a913be76db90ac89fd7d699daa15f02b810507cbe4fa441d94c",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-behemoth-rear-leg-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-behemoth-rear-leg-exposed-thumb.webp",
+        "title": "Charger Behemoth Leg Flesh Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Charger_Behemoth_Leg_Flesh_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Charger_Behemoth_Leg_Flesh_Front.png?576354",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Leg_Flesh_Front.png/800px-Charger_Behemoth_Leg_Flesh_Front.png?576354",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Charger_Behemoth_Leg_Flesh_Front.png/320px-Charger_Behemoth_Leg_Flesh_Front.png?576354",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "572ec5548a7d917c092e74863e78f1b0368c95aae2f733e13ef04a7740ebf525",
+        "thumbnailSha256": "171cde9f7d7570b67a5c92905bad3ab3d5ce59f0b0518daa4b532fbf8d403fd7",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "spore-charger": {
+    "underside": [
+      {
+        "src": "./assets/anatomy/revised-spore-charger-underside.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-charger-underside-thumb.webp",
+        "title": "Spore Charger Underside Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Charger_Underside_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Charger_Underside_Front.png?adf602",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Underside_Front.png/800px-Spore_Charger_Underside_Front.png?adf602",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Underside_Front.png/320px-Spore_Charger_Underside_Front.png?adf602",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "68429d0eaca960e89204113b49817ab08aa07f1f578915e30bfaf0f0802061c9",
+        "thumbnailSha256": "b19fc9143ae72255d38009c4bf9ae2f7c8fe4ebb912721852d33b6fa8af171ff",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-spore-charger-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-charger-claw-thumb.webp",
+        "title": "Spore Charger Claws Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Charger_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Charger_Claws_Front.png?7fe472",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Claws_Front.png/800px-Spore_Charger_Claws_Front.png?7fe472",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Claws_Front.png/320px-Spore_Charger_Claws_Front.png?7fe472",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "96b82b14a23e47239b4e0f84e179b6666ee0a2c8e33ed00f0ab8de21f85a9fc0",
+        "thumbnailSha256": "7eede8d782ae1b709d84c71072f0a8725edc2b15ac0dbfe45934ede8cda4b114",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-spore-charger-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-charger-rear-leg-thumb.webp",
+        "title": "Spore Charger Rear Leg Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Charger_Rear_Leg_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Charger_Rear_Leg_Armor_Front.png?db6cb6",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Rear_Leg_Armor_Front.png/800px-Spore_Charger_Rear_Leg_Armor_Front.png?db6cb6",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Rear_Leg_Armor_Front.png/320px-Spore_Charger_Rear_Leg_Armor_Front.png?db6cb6",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "a950bbc1dafbe0ee0a24aaca40c519b10ad5cb9f18b70208ba64013f3ad738b5",
+        "thumbnailSha256": "d8d467186b01b77f390929866ab45c8ceca7016945b32bdfda774744e29145d1",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-spore-charger-rear-leg-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-charger-rear-leg-exposed-thumb.webp",
+        "title": "Spore Charger Leg Flesh Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Charger_Leg_Flesh_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Charger_Leg_Flesh_Front.png?6b67fe",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Leg_Flesh_Front.png/800px-Spore_Charger_Leg_Flesh_Front.png?6b67fe",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Charger_Leg_Flesh_Front.png/320px-Spore_Charger_Leg_Flesh_Front.png?6b67fe",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "af741d8934194e3e9d6c55c41094867280dadb01cd36e41ed5861ff251ab1dde",
+        "thumbnailSha256": "d62d6121519e40176b8d6efd5f5b28a600d1e73b8b482964ba1021a6cce7e8d3",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "rupture-charger": {
+    "underside": [
+      {
+        "src": "./assets/anatomy/revised-rupture-charger-underside.webp",
+        "thumbnail": "./assets/anatomy/revised-rupture-charger-underside-thumb.webp",
+        "title": "Rupture Charger Underside Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rupture_Charger_Underside_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rupture_Charger_Underside_Front.png?b0894e",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Underside_Front.png/800px-Rupture_Charger_Underside_Front.png?b0894e",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Underside_Front.png/320px-Rupture_Charger_Underside_Front.png?b0894e",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "7e2cae447763244ee74a4eae32ca01e6453c22b68bec623206e504d6ba28353d",
+        "thumbnailSha256": "d0fbf46ca1d6ec0c9256a4cda763b6291853c54911809887600ddda571ec5c96",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-rupture-charger-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-rupture-charger-claw-thumb.webp",
+        "title": "Rupture Charger Claws Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rupture_Charger_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rupture_Charger_Claws_Front.png?40511a",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Claws_Front.png/800px-Rupture_Charger_Claws_Front.png?40511a",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Claws_Front.png/320px-Rupture_Charger_Claws_Front.png?40511a",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6d79f7d86fdd668ed5ae78f6b4ae4aa2ded880cdb313eea5ae4d6b77b9994bff",
+        "thumbnailSha256": "92bf5051d1df071c0d49dfc4730343824215527bd3ba3f6e5c2e781c971d9dc4",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "rear-leg": [
+      {
+        "src": "./assets/anatomy/revised-rupture-charger-rear-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-rupture-charger-rear-leg-thumb.webp",
+        "title": "Rupture Charger Rear Leg Armor Rear.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rupture_Charger_Rear_Leg_Armor_Rear.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rupture_Charger_Rear_Leg_Armor_Rear.png?e53777",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Rear_Leg_Armor_Rear.png/800px-Rupture_Charger_Rear_Leg_Armor_Rear.png?e53777",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Rear_Leg_Armor_Rear.png/320px-Rupture_Charger_Rear_Leg_Armor_Rear.png?e53777",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6874123f6f1b4b5d867626de20bbb577ca321b29700f1538d5967aa436779562",
+        "thumbnailSha256": "06a5bda961e1d461bd0bb7570c6c6db7fd88209bf1c882a6eb22d3143417f728",
+        "retrievedAt": "2026-09-28"
+      },
+      {
+        "src": "./assets/anatomy/revised-rupture-charger-rear-leg-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-rupture-charger-rear-leg-exposed-thumb.webp",
+        "title": "Rupture Charger Leg Flesh Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Rupture_Charger_Leg_Flesh_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Rupture_Charger_Leg_Flesh_Front.png?811521",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Leg_Flesh_Front.png/800px-Rupture_Charger_Leg_Flesh_Front.png?811521",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Rupture_Charger_Leg_Flesh_Front.png/320px-Rupture_Charger_Leg_Flesh_Front.png?811521",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "a6b368cc93fc88d8eb76df6b706fa6e8da8b2716fb31f7e15916b0df62bdd929",
+        "thumbnailSha256": "f87bd10943531309567fae83a2bf5a6b33940211f269e11afc4d3bb83a8f04dd",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

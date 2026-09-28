@@ -733,4 +733,8 @@ export default {
   "몸 아래쪽을 맞히세요. 장갑 2로 얇고 본체 체력을 공유하며, 피해의 150%가 본체로 들어갑니다.": "Hit its underside. It has thin armor (2), shares main health, and 150% of the damage goes to main.",
   "몸 뒤쪽의 장갑판입니다. 부숴도 죽지 않으며, 본체로 전달되는 피해는 이 부위 체력까지입니다.": "The armor plates on its back end. Breaking them doesn't kill, and the damage passed to main is capped at this part's health.",
   "뒤쪽 끝의 장갑이 얇은 부위입니다. 부숴도 죽지 않지만, 한 발의 초과 피해까지 140%로 본체에 들어갑니다.": "The thinly armored rear end. Breaking it doesn't kill, but 140% of each hit, excess damage included, goes to main.",
+  "몸 아래쪽 배를 맞히세요. 장갑 2이며 본체 체력을 공유합니다. 폭발 피해는 본체 장갑으로 따로 계산합니다.": "Hit its belly from below. It has armor 2 and shares main health. Explosion damage is calculated against the main body's armor instead.",
+  "머리 앞의 큰 집게발 하나입니다. 부숴도 죽지 않지만 피해의 70%가 본체로 전달됩니다.": "One of the big pincers in front of the head. Breaking it doesn't kill, but 70% of the damage passes to main health.",
+  "뒷다리 장갑 → 살점": "Rear Leg Armor → Flesh",
+  "뒷다리 하나의 장갑을 벗긴 뒤 같은 위치의 살점을 계속 맞히세요. 장갑을 벗긴 탄의 초과 피해는 살점에 합산하지 않습니다.": "Strip the armor from one rear leg, then keep hitting the flesh in the same spot. Excess damage from the shot that strips the armor doesn't carry into the flesh.",
 };
