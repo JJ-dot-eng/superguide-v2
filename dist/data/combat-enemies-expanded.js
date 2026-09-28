@@ -3507,7 +3507,7 @@ export const expandedEnemies = [
           "overflowCap": null,
           "effect": "kill",
           "tip": "파괴된 꼬리 안쪽입니다.",
-          "sourcePart": "Internals",
+          "sourcePart": "Broken: Internals",
           "capUnverified": true
         },
         "sourcePart": "Tail"
@@ -3534,7 +3534,7 @@ export const expandedEnemies = [
           "overflowCap": null,
           "effect": "kill",
           "tip": "파괴된 지느러미 안쪽입니다.",
-          "sourcePart": "Internals",
+          "sourcePart": "Broken: Internals",
           "capUnverified": true
         },
         "sourcePart": "Rear Fins (2)"
