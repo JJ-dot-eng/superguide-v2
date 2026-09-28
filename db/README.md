@@ -35,7 +35,7 @@
 | 전격 반복·부위 명중 수 미확인 | arc |
 | damage 항목의 투척 연결·타격 단위 미확인 | throwing-knife |
 
-모든 피해는 동일 부위에 최대 피해가 닿는 이론값이며 AP는 ap1을 사용합니다. 거리·입사각·도탄·접근 가능성·시간·DoT·상태이상·여러 부위 동시 피해는 계산하지 않습니다. 근접은 엔진이 일반 타격을 표현할 수 있어 6종을 지원하되, 높은 부위/비행 적에게 실제 접근 가능한지는 보장하지 않습니다. Thermite 등은 확인된 폭발만, Breacher는 직격·충돌만, Pyrotech/Melta Mine는 주폭발만 계산하며 제외 성분은 모드 note에 명시합니다.
+모든 피해는 동일 부위에 최대 피해가 닿는 이론값이며 AP는 ap1을 사용합니다. 거리·입사각·도탄·접근 가능성·시간·DoT·상태이상·여러 부위 동시 피해는 계산하지 않습니다. 근접은 엔진이 일반 타격을 표현할 수 있어 6종을 지원하되, 높은 부위/비행 적에게 실제 접근 가능한지는 보장하지 않습니다. Thermite 등은 확인된 폭발만, Breacher는 직격과 붙은 뒤 같은 부위에서 터지는 지연 폭발(2,000·AP7)을, Pyrotech/Melta Mine는 주폭발만 계산하며 제외 성분은 모드 note에 명시합니다.
 
 명중 수 조건은 `hitCondition.kind`의 pellets(산탄), arcs(전격), bomblets(자탄), shrapnel(파편)으로 구분합니다. 모두 `defaultPct`(설정한 기본 백분율)와 `default = Math.max(min, Math.round(max * defaultPct / 100))`를 제공합니다. **산탄·전격은 100%, 자탄·파편은 20%**입니다. Blitzer는 5/5, De-Escalator는 10/10, Airburst의 flak/cluster는 각각 5/25, Eruptor는 6/30, Frag와 Lure Mine는 7/35, Pineapple은 4/18입니다. 산탄 전탄 기본값은 하부 산탄총, Halt의 두 탄종, 여러 총열 동시 사격과 Variable 일제 사격에도 적용됩니다. 이는 제품의 기본 가정이며 관측한 실제 명중률이 아닙니다.
 
