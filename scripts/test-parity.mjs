@@ -50,7 +50,7 @@ const legacyUnsupported = {
   'autocannon:flak': '근접 신관과 파편의 명중 수에 따라 피해가 크게 달라져 고정 탄수를 계산하지 않습니다.',
 };
 assert(!golden.combat.some(row => row.weapon === 'wasp'), 'W.A.S.P. had no legacy combat profile');
-let checked = 0;
+let checked = 0, beamCarried = 0;
 for (const expected of golden.combat) {
   const enemy = enemies.find(item => item.id === expected.enemy);
   const currentMode = weaponProfiles[expected.weapon].modes.find(item => item.id === expected.mode);
@@ -60,12 +60,25 @@ for (const expected of golden.combat) {
   const options = addedHitConditions.has(key) ? { ...expected.options, hitCount: 0 } : expected.options;
   const { rows, best } = solveMatchup(enemy, withHitAssumption(mode, options), options);
   const label = `${expected.enemy} × ${expected.weapon}/${expected.mode} ${JSON.stringify(expected.options)}`;
-  assert.equal(best?.target.id ?? null, expected.best, `${label}: best route`);
-  assert.deepEqual(rows.map(view), expected.rows, label);
+  const actual = rows.map(view);
+  // Deliberate change: the legacy engine stopped a beam at a broken armor
+  // layer. A beam held on the spot now carries on into the exposed layer, so
+  // those rows keep the legacy armor stage exactly and only extend past it.
+  const carried = new Set();
+  expected.rows.forEach((row, i) => {
+    if (row.r !== legacyReason['beam-armor-only']) return assert.deepEqual(actual[i], row, `${label}: ${row.t}`);
+    carried.add(row.t); beamCarried++;
+    assert.deepEqual([actual[i].t, actual[i].c, actual[i].s[0]], [row.t, row.c, row.s[0]], `${label}: ${row.t} armor stage unchanged`);
+    assert(actual[i].s.length === 2 && actual[i].h >= row.h && actual[i].r !== row.r, `${label}: ${row.t} beam reaches the exposed layer`);
+  });
+  assert.equal(actual.length, expected.rows.length, label);
+  const legacyBest = expected.rows.find(row => row.t === expected.best);
+  assert((best?.target.id ?? null) === expected.best || carried.has(best?.target.id) && (!legacyBest || best.hits <= legacyBest.h), `${label}: best route`);
   checked++;
 }
 assert.equal(checked, golden.combat.length);
 assert(checked > 20000, 'combat coverage shrank');
+assert(beamCarried > 0, 'beam carry-over adapter is exercised');
 
 // --- Demolition ----------------------------------------------------------------
 const conditionText = (condition, profile) => ({
@@ -145,4 +158,4 @@ for (const expected of golden.defense) {
   assert.deepEqual([0, cap / 2, cap, -1, undefined].map(value => shieldRecovery(item.defense, value)), expected.recovery, expected.id);
 }
 
-console.log(`PASS parity: ${golden.combat.length} matchups, ${golden.demolition.length} demolition cases, ${golden.selections.length} overviews, ${picks} faction picks match ${golden.generatedFrom}.`);
+console.log(`PASS parity: ${golden.combat.length} matchups (${beamCarried} beam routes now carry past armor), ${golden.demolition.length} demolition cases, ${golden.selections.length} overviews, ${picks} faction picks match ${golden.generatedFrom}.`);

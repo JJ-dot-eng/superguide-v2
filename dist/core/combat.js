@@ -236,33 +236,51 @@ function solveImpacts(enemy, target, attack, options) {
 }
 
 // A beam burst is a damage budget, not an instant hit: it stops when the part
-// breaks or main health runs out, and never spills into the exposed layer.
+// breaks or main health runs out. A beam held on the same spot keeps burning
+// once the armor there breaks, so the rest of the budget reaches the exposed
+// layer. Budgets are counted in bursts (fractions of one shot) per layer.
 function solveBeam(enemy, target, attack, options) {
   const base = pending(target);
   const main = target.main || enemy.main;
-  const damage = hitDamage(attack, target, main, options);
-  const stage = { part: target, hits: 0, damage, events: [{ name: null, attack, times: 1, damage }] };
-  const stages = [stage];
   const { beam } = attack;
-  if (![damage.direct, damage.explosion, damage.mainExplosion, beam.duration, beam.standardPerSecond, beam.durablePerSecond, target.hp, target.toMain, main.hp].every(known)
-    || beam.duration === 0 || target.hp === 0 || main.hp === 0 || damage.explosion !== 0 || damage.mainExplosion !== 0) {
-    return { ...base, stages, reason: 'beam-data-missing' };
-  }
-  if (damage.direct === 0) return { ...base, stages, outcome: 'blocked', reason: 'beam-blocked' };
-  const partBursts = target.mainOnly ? Infinity : partPool(target) / damage.direct;
-  const transferPerBurst = damage.direct * target.toMain / 100;
-  const cap = target.overflowCap ? transferCap(target) : Infinity;
-  const mainBursts = !target.isolated && transferPerBurst > 0 && main.hp <= cap ? main.hp / transferPerBurst : Infinity;
-  const bursts = Math.min(partBursts, mainBursts);
-  const hits = Math.ceil(bursts - EPSILON);
-  if (hits < 1 || hits > MAX_HITS) return { ...base, stages, reason: 'too-many-hits' };
-  Object.assign(stage, { hits, contactSeconds: bursts * beam.duration, partTotal: damage.direct * bursts, mainTotal: Math.min(transferPerBurst * bursts, cap) });
-  const done = { ...base, stages, hits };
   const bleedOrKill = main.constitution ? 'bleed' : 'kill';
-  if (partBursts <= mainBursts && target.effect === 'kill') return { ...done, outcome: 'kill', via: 'part' };
-  if (partBursts <= mainBursts && main.hp - stage.mainTotal - (target.destroyMainDamage || 0) <= 0) return { ...done, outcome: bleedOrKill, via: 'main' };
-  if (mainBursts <= partBursts) return { ...done, outcome: bleedOrKill, via: 'main' };
-  return { ...done, outcome: target.effect, via: 'part', ...(target.next ? { reason: 'beam-armor-only' } : {}) };
+  const stages = [];
+  let mainLeft = main.hp;
+  let spent = 0;
+  let part = target;
+  while (part) {
+    const damage = hitDamage(attack, part, main, options);
+    const stage = { part, hits: 0, damage, events: [{ name: null, attack, times: 1, damage }] };
+    stages.push(stage);
+    if (![damage.direct, damage.explosion, damage.mainExplosion, beam.duration, beam.standardPerSecond, beam.durablePerSecond, part.hp, part.toMain, main.hp].every(known)
+      || beam.duration === 0 || part.hp === 0 || main.hp === 0 || damage.explosion !== 0 || damage.mainExplosion !== 0) {
+      return { ...base, stages, reason: 'beam-data-missing' };
+    }
+    if (damage.direct === 0) {
+      return part === target ? { ...base, stages, outcome: 'blocked', reason: 'beam-blocked' }
+        : { ...base, stages, hits: Math.ceil(spent - EPSILON), outcome: 'armor', reason: 'no-damage-after-armor' };
+    }
+    const partBursts = part.mainOnly ? Infinity : partPool(part) / damage.direct;
+    const transferPerBurst = damage.direct * part.toMain / 100;
+    const cap = part.overflowCap ? transferCap(part) : Infinity;
+    const mainBursts = !target.isolated && transferPerBurst > 0 && mainLeft <= cap ? mainLeft / transferPerBurst : Infinity;
+    const bursts = Math.min(partBursts, mainBursts);
+    const before = spent;
+    spent += bursts;
+    const hits = Math.ceil(spent - EPSILON);
+    if (hits < 1 || hits > MAX_HITS) return { ...base, stages, reason: 'too-many-hits' };
+    // A layer's count is the shots that start on it; a shot that breaks the
+    // armor carries on into the next layer.
+    Object.assign(stage, { hits: hits - Math.ceil(before - EPSILON), contactSeconds: bursts * beam.duration, partTotal: damage.direct * bursts, mainTotal: Math.min(transferPerBurst * bursts, cap) });
+    const done = { ...base, stages, hits };
+    if (partBursts <= mainBursts && part.effect === 'kill') return { ...done, outcome: 'kill', via: 'part' };
+    if (partBursts <= mainBursts && mainLeft - stage.mainTotal - (part.destroyMainDamage || 0) <= 0) return { ...done, outcome: bleedOrKill, via: 'main' };
+    if (mainBursts <= partBursts) return { ...done, outcome: bleedOrKill, via: 'main' };
+    if (!part.next) return { ...done, outcome: part.effect, via: 'part' };
+    mainLeft -= stage.mainTotal + (part.destroyMainDamage || 0);
+    part = part.next;
+  }
+  return base;
 }
 
 // --- Matchups ------------------------------------------------------------------

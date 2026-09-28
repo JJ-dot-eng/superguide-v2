@@ -248,6 +248,16 @@ eq(personalProfiles.breacher.modes.length, 1, 'Breacher has one firing mode');
 eq(mode('breacher').explosions.map(b => [b.id, b.durable, b.ap, b.innerRadius, b.radius]), [['delayed', 2000, 7, 1.5, 2.5]]);
 eq(head('charger', mode('breacher')).stages[0].damage, { direct: 9, explosion: 1500, mainExplosion: 0 });
 eq([head('charger', mode('breacher')).hits, head('charger', mode('breacher')).outcome], [1, 'kill']);
+// A held beam burns through armor and carries on into the exposed layer.
+// Meltagun near = 3640 per 1.4s shot. Impaler leg armor 1000 takes 0.2747 of
+// a shot (500 to main), then leg flesh 1000 takes another 0.2747 → 1 shot.
+const melta = weaponProfiles.meltagun.modes.find(m => m.id === 'near');
+const impalerLeg = solveMatchup(enemy('impaler'), melta).rows.find(row => row.target.id === 'leg-armor');
+eq([impalerLeg.hits, impalerLeg.outcome, impalerLeg.via, impalerLeg.stages.length], [1, 'kill', 'part', 2]);
+eq(impalerLeg.stages.map(stage => [stage.part.id, stage.hits, Math.round(stage.contactSeconds * 1000), Math.round(stage.mainTotal)]), [['leg-armor', 1, 385, 500], ['leg-flesh', 0, 385, 500]]);
+// A layer the beam cannot hurt after the armor breaks stops as armor removal.
+const armoredFlesh = { main: { hp: 5000, armor: 0, durability: 0, exdr: 0 }, parts: [{ id: 'plate', name: 'plate', hp: 1000, armor: 4, durability: 0, exdr: 0, toMain: 0, overflowCap: false, effect: 'armor', next: { id: 'core', name: 'core', hp: 100, armor: 9, durability: 0, exdr: 0, toMain: 100, overflowCap: false, effect: 'kill' } }] };
+eq((({ hits, outcome, reason }) => ({ hits, outcome, reason }))(solveMatchup(armoredFlesh, melta).rows[0]), { hits: 1, outcome: 'armor', reason: 'no-damage-after-armor' });
 // Breaker 30 per pellet: one hit pellet takes 2 shots, two take 1.
 eq(head('hunter-hardened', withHitAssumption(mode('breaker'), { hitCount: 1 })).hits, 2);
 eq(head('hunter-hardened', withHitAssumption(mode('breaker'), { hitCount: 2 })).hits, 1);

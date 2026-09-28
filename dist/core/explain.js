@@ -82,7 +82,6 @@ const REASONS = {
   'too-many-hits': L('필요 횟수가 계산 범위를 넘습니다.', 'The count needed is beyond the calculation range.'),
   'beam-data-missing': L('광선 피해·지속시간 또는 부위 수치가 확인되지 않았습니다.', 'Beam damage, duration or part values are unverified.'),
   'beam-blocked': L('광선이 이 부위 장갑을 관통하지 못합니다.', 'The beam cannot penetrate this part\'s armor.'),
-  'beam-armor-only': L('장갑을 태워 없애는 데까지의 횟수입니다. 이어서 안쪽 살점에 닿는 부분은 확인되지 않아 처치 횟수는 계산하지 않았습니다.', 'This count only burns the armor away. Reaching the flesh beneath it is unverified, so the kill count was not calculated.'),
 };
 export const reasonText = row => ['unsupported', 'shield', 'part-unknown'].includes(row.reason)
   ? row.detail || L('정밀 피해 자료가 아직 확인되지 않았습니다.', 'Detailed damage data has not been verified yet.') : REASONS[row.reason] || '';
@@ -173,7 +172,9 @@ export function aimText(row, mode) {
     lines.push(target.partOnly ? L('이 장치는 폭발에 면역이라 폭발 피해는 장치 파괴에 더하지 않습니다.', 'This device is immune to explosions, so explosion damage does not count toward destroying it.')
       : L('이 부위는 폭발에 면역이라 폭발 피해는 본체 장갑·저항으로 따로 계산합니다.', 'This part is immune to explosions, so explosion damage is calculated separately against the main body\'s armor and resistance.'));
   }
-  if (target.next && row.stages.length > 1) lines.push(L(`장갑이 깨지면 다음 ${mode?.unitLabel || unitOf(mode).unit}부터 ${josa(target.next.name, ['을', '를'])} 노리세요. 초과 피해는 넘어가지 않습니다.`,
+  if (target.next && row.stages.length > 1 && mode?.beam) lines.push(L(`같은 자리에 광선을 계속 비추면 장갑이 타서 없어진 뒤 ${josa(target.next.name, ['으로', '로'])} 이어서 닿습니다.`,
+    `Keep the beam on the same spot: once the armor burns away, it carries on into ${T(target.next.name)}.`));
+  else if (target.next && row.stages.length > 1) lines.push(L(`장갑이 깨지면 다음 ${mode?.unitLabel || unitOf(mode).unit}부터 ${josa(target.next.name, ['을', '를'])} 노리세요. 초과 피해는 넘어가지 않습니다.`,
     `Once the armor breaks, aim the following ${unitOf(mode).word} at ${T(target.next.name)}. Excess damage does not carry over.`));
   return lines.filter(Boolean);
 }
@@ -182,7 +183,7 @@ export function routeNotes(row, mode) {
   const { noun } = unitOf(mode);
   const target = row.target;
   const notes = [];
-  if (row.reason && (row.hits == null || row.reason === 'beam-armor-only')) {
+  if (row.reason && row.hits == null) {
     const multi = ['pellets', 'shrapnel'].includes(mode?.hitCondition?.kind);
     notes.push(multi && row.reason === 'assumption-needed' ? assumptionSummary(mode)
       : multi && row.reason === 'leftover-events' ? L('장갑이 깨진 뒤 같은 발의 남은 탄체·펠릿·파편이 안쪽에 닿는지 확인되지 않아 처치 횟수를 계산하지 않습니다.', 'It is unverified whether the rest of the same shot (projectiles, pellets, fragments) reaches the inside once the armor breaks, so the kill count is not calculated.') : reasonText(row));
