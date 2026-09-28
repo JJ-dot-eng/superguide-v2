@@ -1,5 +1,6 @@
 // App shell: hash router, navigation, shared sheet/palette/toast.
 import { parseRoute, formatRoute } from '../core/route.js';
+import { lang, L, addEnglish } from '../core/i18n.js';
 import { $, $$, icon, render, html } from './dom.js';
 import { initAnalytics } from './analytics.js';
 
@@ -10,12 +11,41 @@ const VIEW_MODULES = {
   demolition: () => import('./views/demolition.js'),
   factions: () => import('./views/factions.js'),
 };
-const TITLES = { arsenal: '스트라타젬', gear: '장비', enemy: '적 대응', demolition: '철거', factions: '팩션 추천' };
+const TITLES = {
+  arsenal: L('스트라타젬', 'Stratagems'), gear: L('장비', 'Gear'), enemy: L('적 대응', 'Enemies'),
+  demolition: L('철거', 'Demolition'), factions: L('팩션 추천', 'Faction picks'),
+};
+const SITE = L('HD2 필드 가이드', 'HD2 Field Guide');
 
 const root = $('#view');
 const loaded = new Map();
 let current = { view: null, module: null, route: null };
 const track = initAnalytics();
+
+// --- Language ----------------------------------------------------------------------
+// index.html already chose the language. In English the static page text comes
+// from data-en* attributes and the data text from the dictionary, which must be
+// loaded before the first view renders.
+const LANG_KEY = 'hd2-lang';
+if (lang === 'en') {
+  for (const node of $$('[data-en]')) node.innerHTML = node.dataset.en;
+  const attributes = { enLabel: 'aria-label', enTitle: 'title', enPlaceholder: 'placeholder', enContent: 'content', enHref: 'href', enLang: 'lang' };
+  for (const [key, name] of Object.entries(attributes)) for (const node of $$(`[data-${key.replace(/[A-Z]/g, c => `-${c.toLowerCase()}`)}]`)) node.setAttribute(name, node.dataset[key]);
+  // Keep ?lang=en in the address so a copied link opens in English too.
+  const url = new URL(location.href);
+  if (url.searchParams.get('lang') !== 'en') { url.searchParams.set('lang', 'en'); history.replaceState(null, '', url); }
+  try { addEnglish(Object.entries((await import('../i18n/en.js')).english)); } catch (error) { console.error(error); }
+  document.documentElement.setAttribute('data-i18n-ready', '');
+}
+function switchLanguage() {
+  const next = lang === 'en' ? 'ko' : 'en';
+  try { localStorage.setItem(LANG_KEY, next); } catch {}
+  const url = new URL(location.href);
+  // The address always changes (?lang=en is added or removed), so this reloads
+  // the page in the other language on the same screen.
+  if (next === 'en') url.searchParams.set('lang', 'en'); else url.searchParams.delete('lang');
+  location.assign(url);
+}
 
 for (const slot of $$('[data-icon]')) slot.outerHTML = icon(slot.dataset.icon, slot.closest('.tabbar') ? 22 : 18).toString();
 
@@ -67,14 +97,14 @@ async function handle() {
     if (link.dataset.tab === route.view) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
-  document.title = `${TITLES[route.view]} — HD2 필드 가이드`;
+  document.title = `${TITLES[route.view]} — ${SITE}`;
 
   let module = loaded.get(route.view);
   if (!module) {
     root.setAttribute('aria-busy', 'true');
     try { module = await VIEW_MODULES[route.view](); } catch (error) {
       root.removeAttribute('aria-busy');
-      render(root, html`<div class="empty"><h2>화면을 불러오지 못했습니다</h2><p>연결을 확인한 뒤 새로 고침해 주세요.</p></div>`);
+      render(root, html`<div class="empty"><h2>${L('화면을 불러오지 못했습니다', 'This screen could not be loaded')}</h2><p>${L('연결을 확인한 뒤 새로 고침해 주세요.', 'Check your connection and reload the page.')}</p></div>`);
       throw error;
     }
     loaded.set(route.view, module);
@@ -115,8 +145,9 @@ const currentTheme = () => document.documentElement.dataset.theme || systemTheme
 function showTheme() {
   const theme = currentTheme();
   const button = $('[data-action="theme"]');
-  button?.setAttribute('aria-label', theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
-  button?.setAttribute('title', theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+  const label = theme === 'dark' ? L('라이트 모드로 전환', 'Switch to light mode') : L('다크 모드로 전환', 'Switch to dark mode');
+  button?.setAttribute('aria-label', label);
+  button?.setAttribute('title', label);
   for (const meta of $$('meta[name="theme-color"]')) meta.content = document.documentElement.dataset.theme ? THEME_COLORS[theme] : meta.media.includes('light') ? THEME_COLORS.light : THEME_COLORS.dark;
 }
 function toggleTheme() {
@@ -136,6 +167,7 @@ document.addEventListener('click', event => {
   if (action === 'palette') openPalette();
   if (action === 'method') import('./views/method.js').then(module => module.openMethod(ctx));
   if (action === 'theme') toggleTheme();
+  if (action === 'lang') switchLanguage();
 });
 document.addEventListener('keydown', event => {
   const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
@@ -152,7 +184,7 @@ async function openPalette() {
   palette ||= import('./palette.js').then(module => module.createPalette(ctx));
   try { (await palette).open(); } catch (error) {
     palette = null;
-    toast('검색을 불러오지 못했습니다. 연결을 확인해 주세요.');
+    toast(L('검색을 불러오지 못했습니다. 연결을 확인해 주세요.', 'Search could not be loaded. Check your connection.'));
     throw error;
   }
 }

@@ -2,6 +2,7 @@
 import { stratagems, categoryOf } from '../core/catalog.js';
 import { search, stratagemFields } from '../core/search.js';
 import { html, render, $ } from './dom.js';
+import { L, T, lang } from '../core/i18n.js';
 
 const LIMIT = 8;
 
@@ -11,13 +12,15 @@ export async function createPalette(ctx) {
     import('../data/selector-images.js'), import('../data/wiki-icons.js'),
     import('../data/personal-weapons.js'), import('../data/weapon-images.js'),
   ]);
-  const GEAR_GROUP = { primary: '주무기', secondary: '보조무기', throwable: '투척' };
+  const GEAR_GROUP = L({ primary: '주무기', secondary: '보조무기', throwable: '투척' }, { primary: 'Primary', secondary: 'Secondary', throwable: 'Throwable' });
+  // In English the subtitle skips the English name, which is already the title.
+  const withEn = (text, en) => lang === 'en' ? text : `${text} · ${en}`;
   const groups = [
-    { name: '스트라타젬', items: stratagems.map(item => ({ fields: stratagemFields(item), label: item.name, sub: `${categoryOf(item.category).name} · ${item.en}`, image: wikiIcons[item.id]?.src, route: { view: 'arsenal', id: item.id } })) },
-    { name: '장비', items: personalWeapons.map(item => ({ fields: { names: [item.name, item.en, item.code].filter(Boolean), text: [GEAR_GROUP[item.category]] }, label: item.name || item.en, sub: `${GEAR_GROUP[item.category]} · ${item.en}`, image: weaponImages[item.id]?.src, route: { view: 'gear', id: item.id } })) },
-    { name: '적', items: enemies.map(item => ({ fields: { names: [item.name, item.id.replaceAll('-', ' ')], text: [item.faction] }, label: item.name, sub: `${item.faction} · 무기별 탄수 비교`, image: pickerEnemyImages[item.id]?.src, route: { view: 'enemy', id: item.id } })) },
-    { name: '시설', items: structures.map(item => ({ fields: { names: [item.name], text: [item.faction, item.tip] }, label: item.name, sub: `${item.faction} · 철거 방법`, image: pickerStructureImages[item.id]?.src, route: { view: 'demolition', query: { s: item.id } } })) },
-    { name: '팩션', items: factionGuides.map(item => ({ fields: { names: [item.name, item.en], text: [item.intro] }, label: item.name, sub: `${factionSides.find(side => side.id === item.side).name} · 추천 장비`, image: factionSides.find(side => side.id === item.side).icon, route: { view: 'factions', id: item.id } })) },
+    { id: 'stratagems', name: L('스트라타젬', 'Stratagems'), items: stratagems.map(item => ({ fields: stratagemFields(item), label: T(item.name), sub: withEn(categoryOf(item.category).name, item.en), image: wikiIcons[item.id]?.src, route: { view: 'arsenal', id: item.id } })) },
+    { id: 'gear', name: L('장비', 'Gear'), items: personalWeapons.map(item => ({ fields: { names: [item.name, item.en, item.en?.replace(/^\S+\s/, ''), item.code].filter(Boolean), text: [GEAR_GROUP[item.category]] }, label: T(item.name || item.en), sub: withEn(GEAR_GROUP[item.category], item.en), image: weaponImages[item.id]?.src, route: { view: 'gear', id: item.id } })) },
+    { id: 'enemies', name: L('적', 'Enemies'), items: enemies.map(item => ({ fields: { names: [item.name, T(item.name), item.id.replaceAll('-', ' ')], text: [item.faction, T(item.faction)] }, label: T(item.name), sub: `${T(item.faction)} · ${L('무기별 탄수 비교', 'shots to kill by weapon')}`, image: pickerEnemyImages[item.id]?.src, route: { view: 'enemy', id: item.id } })) },
+    { id: 'structures', name: L('시설', 'Structures'), items: structures.map(item => ({ fields: { names: [item.name, T(item.name)], text: [item.faction, T(item.faction), item.tip, T(item.tip)] }, label: T(item.name), sub: `${T(item.faction)} · ${L('철거 방법', 'how to demolish')}`, image: pickerStructureImages[item.id]?.src, route: { view: 'demolition', query: { s: item.id } } })) },
+    { id: 'factions', name: L('팩션', 'Factions'), items: factionGuides.map(item => ({ fields: { names: [item.name, item.en], text: [item.intro, T(item.intro)] }, label: T(item.name), sub: `${T(factionSides.find(side => side.id === item.side).name)} · ${L('추천 장비', 'recommended loadout')}`, image: factionSides.find(side => side.id === item.side).icon, route: { view: 'factions', id: item.id } })) },
   ];
 
   const dialog = $('#palette');
@@ -28,14 +31,14 @@ export async function createPalette(ctx) {
 
   function run() {
     const query = input.value.trim();
-    const shown = groups.map(group => ({ name: group.name, items: query ? search(group.items, query, item => item.fields).slice(0, LIMIT) : group.name === '적' || group.name === '스트라타젬' ? group.items.slice(0, 4) : [] }))
+    const shown = groups.map(group => ({ name: group.name, items: query ? search(group.items, query, item => item.fields).slice(0, LIMIT) : group.id === 'enemies' || group.id === 'stratagems' ? group.items.slice(0, 4) : [] }))
       .filter(group => group.items.length);
     results = shown.flatMap(group => group.items);
     active = 0;
     let index = -1;
-    render(list, results.length ? shown.map(group => html`<li class="group" role="presentation">${query ? group.name : `${group.name} · 예시`}</li>${group.items.map(item => { index++; return html`<li role="option" id="pal-${index}" data-index="${index}" aria-selected="${index === active}">
+    render(list, results.length ? shown.map(group => html`<li class="group" role="presentation">${query ? group.name : `${group.name} · ${L('예시', 'examples')}`}</li>${group.items.map(item => { index++; return html`<li role="option" id="pal-${index}" data-index="${index}" aria-selected="${index === active}">
       ${item.image ? html`<img class="thumb" src="${item.image}" alt="" loading="lazy">` : html`<span class="thumb"></span>`}<span class="label"><b>${item.label}</b><span>${item.sub}</span></span></li>`; })}`)
-      : html`<li class="none">‘${query}’ 검색 결과가 없습니다.</li>`);
+      : html`<li class="none">${L(`‘${query}’ 검색 결과가 없습니다.`, `No results for “${query}”.`)}</li>`);
     input.setAttribute('aria-activedescendant', results.length ? 'pal-0' : '');
   }
   function move(step) {

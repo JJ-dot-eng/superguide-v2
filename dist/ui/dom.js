@@ -1,12 +1,22 @@
 // Minimal rendering helpers: an auto-escaping `html` template tag, so data
 // text can never inject markup, plus a few shared UI fragments.
+import { L, T } from '../core/i18n.js';
+
 class Safe { constructor(text) { this.text = text; } toString() { return this.text; } }
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const escape = value => String(value).replace(/[&<>"']/g, char => ESC[char]);
 export const raw = text => new Safe(String(text));
-const piece = value => value == null || value === false ? '' : value instanceof Safe ? value.text
-  : Array.isArray(value) ? value.map(piece).join('') : escape(value);
-export const html = (strings, ...values) => new Safe(strings.reduce((out, text, i) => out + text + (i < values.length ? piece(values[i]) : ''), ''));
+// Shown text is looked up in the English dictionary (T is a no-op in Korean):
+// text between tags and human-readable attributes. Other attribute values
+// (data-*, value, class …) keep their raw text, because code reads them back.
+const piece = (value, shown = true) => value == null || value === false ? '' : value instanceof Safe ? value.text
+  : Array.isArray(value) ? value.map(item => piece(item, shown)).join('') : escape(shown ? T(value) : value);
+const READABLE = /\s(?:aria-label|aria-valuetext|title|alt|placeholder)=["'][^"']*$/;
+const shownAt = out => { const open = out.lastIndexOf('<'); return open <= out.lastIndexOf('>') || READABLE.test(out.slice(open)); };
+export const html = (strings, ...values) => new Safe(strings.reduce((out, text, i) => {
+  const next = out + text;
+  return i < values.length ? next + piece(values[i], shownAt(next)) : next;
+}, ''));
 
 export const $ = (selector, root = document) => root.querySelector(selector);
 export const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -37,6 +47,6 @@ const ICONS = {
 export const icon = (name, size = 20) => raw(`<svg class="icon" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`);
 
 /** Stratagem call code as keycaps: ↑↓←→ */
-export const keycaps = (input, size = '') => input ? html`<span class="keys ${size}" aria-label="호출 코드 ${input}">${[...input].map(key => html`<kbd>${key}</kbd>`)}</span>` : '';
+export const keycaps = (input, size = '') => input ? html`<span class="keys ${size}" aria-label="${L('호출 코드', 'Stratagem code')} ${input}">${[...input].map(key => html`<kbd>${key}</kbd>`)}</span>` : '';
 
 export const badge = (text, tone = '') => html`<span class="badge ${tone}">${text}</span>`;

@@ -1,10 +1,11 @@
 // Additive fallback only: never modifies the single-part combat engine.
 import { FATAL, hitDamage, known, partPool, solveMatchup, spearCannotLock } from './combat.js';
+import { L } from './i18n.js';
 
 const MAX_HITS = 20000;
 const floor = value => Math.floor(value + 1e-9);
 const optionalKnown = (object, key) => !Object.hasOwn(object, key) || known(object[key]);
-export const ACCUMULATION_SUMMARY = '덩어리를 하나씩 터뜨리며 본체를 깎는 누적 경로입니다.';
+export const ACCUMULATION_SUMMARY = L('덩어리를 하나씩 터뜨리며 본체를 깎는 누적 경로입니다.', 'Cumulative route: pop the lumps one by one to wear down main health.');
 
 /** Structural check, independent of weapon: excludes fatal parts/exposed layers
  * and main-only hitboxes. A break part may still transfer enough to kill.
@@ -96,9 +97,9 @@ export function solveAccumulation(enemy, mode, options = {}) {
       hits, outcome: enemy.main.constitution && mainLeft > -enemy.main.constitution ? 'bleed' : 'kill',
       steps, accumulated: true, summary: ACCUMULATION_SUMMARY,
       notes: [ACCUMULATION_SUMMARY,
-        '한 번에 부위 하나만 맞히고, 파괴되면 다음 부위로 옮겨 같은 무기로 공격합니다. 폭발이 여러 부위에 동시에 닿는 피해는 제외합니다.',
-        '각 부위를 부술 때 본체에 전달되는 발당 평균 피해가 큰 순서입니다. 실제 최저 탄수나 모든 부위를 조준할 수 있음을 보장하지 않습니다.',
-        '개수와 피해가 확인된 부위만 사용하며, 거리 감쇠·지속 피해·재생은 합산하지 않습니다.'],
+        L('한 번에 부위 하나만 맞히고, 파괴되면 다음 부위로 옮겨 같은 무기로 공격합니다. 폭발이 여러 부위에 동시에 닿는 피해는 제외합니다.', 'Hit one part at a time and move to the next once it breaks, with the same weapon. Explosion damage to several parts at once is left out.'),
+        L('각 부위를 부술 때 본체에 전달되는 발당 평균 피해가 큰 순서입니다. 실제 최저 탄수나 모든 부위를 조준할 수 있음을 보장하지 않습니다.', 'Parts are ordered by average damage per shot passed to main while breaking them. This does not guarantee the true minimum or that every part can be aimed at.'),
+        L('개수와 피해가 확인된 부위만 사용하며, 거리 감쇠·지속 피해·재생은 합산하지 않습니다.', 'Only parts with verified counts and damage are used; falloff, damage over time and regeneration are not added.')],
     };
   }
   return null;

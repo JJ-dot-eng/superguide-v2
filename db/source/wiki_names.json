@@ -1,0 +1,5610 @@
+{
+ "source": "https://helldivers.wiki.gg/api.php",
+ "retrievedAt": "2026-09-28",
+ "enemies": {
+  "Scavenger": {
+   "title": "Scavenger",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limbs (6)",
+     "health": "30",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Spore Burst Scavenger": {
+   "title": "Spore Burst Scavenger",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limbs (6)",
+     "health": "30",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Bile Spitter": {
+   "title": "Bile Spitter",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limbs (6)",
+     "health": "30",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Pouncer": {
+   "title": "Pouncer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limbs (6)",
+     "health": "30",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Hunter": {
+   "title": "Hunter",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "130 [Default] 160 at {{Difficulty|4",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "45 [Default] 60 at {{Difficulty|4",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "45 [Default] 60 at {{Difficulty|4",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings (2)",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Predator Hunter": {
+   "title": "Predator Hunter",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "175",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings (2)",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Spore Burst Hunter": {
+   "title": "Spore Burst Hunter",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "160",
+     "av": "0",
+     "durability": "35%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "60",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "60",
+     "av": "0",
+     "durability": "25%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings (2)",
+     "health": "20",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Warrior": {
+   "title": "Warrior",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "250 [Default] 325 at {{Difficulty|4",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110 [Default] 150 at {{Difficulty|4",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "75 [Default] 100 at {{Difficulty|4",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "75 [Default] 100 at {{Difficulty|4",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "40%"
+    }
+   ]
+  },
+  "Alpha Warrior": {
+   "title": "Alpha Warrior",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "325",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Bile Warrior": {
+   "title": "Bile Warrior",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "325",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs(4)",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "40%"
+    }
+   ]
+  },
+  "Rupture Warrior": {
+   "title": "Rupture Warrior",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "250",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "3",
+     "durability": "20%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "75",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "40%"
+    }
+   ]
+  },
+  "Spore Burst Warrior": {
+   "title": "Spore Burst Warrior",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "325",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "1",
+     "durability": "40%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "100",
+     "av": "1",
+     "durability": "25%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "100",
+     "av": "1",
+     "durability": "35%",
+     "toMain": "40%"
+    }
+   ]
+  },
+  "Hive Guard": {
+   "title": "Hive Guard",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "3",
+     "durability": "35%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Frontal Tarsal Plate Armor (2)",
+     "health": "125",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "45%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Legs (2)",
+     "health": "125",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "45%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Legs (2)",
+     "health": "125",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "35%"
+    }
+   ]
+  },
+  "Brood Commander": {
+   "title": "Brood Commander",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "800",
+     "av": "2",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "200",
+     "av": "2",
+     "durability": "60%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "200",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "170",
+     "av": "1",
+     "durability": "40%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Alpha Commander": {
+   "title": "Alpha Commander",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,000",
+     "av": "2",
+     "durability": "70%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "2",
+     "durability": "70%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "200",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "200",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Nursing Spewer": {
+   "title": "Nursing Spewer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mouth",
+     "health": "250",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Spinal Plates",
+     "health": "500",
+     "av": "2",
+     "durability": "80%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Legs (2)",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Legs (2)",
+     "health": "250",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Bile Spewer": {
+   "title": "Bile Spewer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mouth",
+     "health": "250",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Spinal Plates",
+     "health": "500",
+     "av": "2",
+     "durability": "80%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Legs (2)",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Legs (2)",
+     "health": "250",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Rupture Spewer": {
+   "title": "Rupture Spewer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "300",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mouth",
+     "health": "250",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Spinal Plates",
+     "health": "500",
+     "av": "2",
+     "durability": "80%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Legs (2)",
+     "health": "200",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Legs (2)",
+     "health": "250",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Stalker": {
+   "title": "Stalker",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "800",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "175",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Body Armor",
+     "health": "Main",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underbelly",
+     "health": "Main",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "Main",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (4)",
+     "health": "Main",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings",
+     "health": "125",
+     "av": "0",
+     "durability": "50%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Predator Stalker": {
+   "title": "Predator Stalker",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "650",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "175",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Body Armor",
+     "health": "Main",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underbelly",
+     "health": "Main",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "200",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Legs (2)",
+     "health": "200",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Legs (2)",
+     "health": "200",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings",
+     "health": "125",
+     "av": "0",
+     "durability": "50%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Charger": {
+   "title": "Charger",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "2,400",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,200",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "85%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "1",
+     "durability": "30%",
+     "toMain": "300%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "Main",
+     "av": "2",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Armor Plates",
+     "health": "2,200",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "950",
+     "av": "0",
+     "durability": "80%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Leg Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Leg Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (4)",
+     "health": "800",
+     "av": "2",
+     "durability": "70%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Charger Behemoth": {
+   "title": "Charger Behemoth",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "3,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,600",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "85%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "1",
+     "durability": "30%",
+     "toMain": "300%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "Main",
+     "av": "2",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Armor Plates",
+     "health": "2,200",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "950",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Leg Armor (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Leg Armor (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (4)",
+     "health": "800",
+     "av": "2",
+     "durability": "70%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Spore Charger": {
+   "title": "Spore Charger",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "2,400",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,200",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "85%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "1",
+     "durability": "100%",
+     "toMain": "300%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "Main",
+     "av": "2",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Armor Plates",
+     "health": "2,200",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "950",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Spore Flesh (6)",
+     "health": "500",
+     "av": "1",
+     "durability": "100%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Leg Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Leg Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (4)",
+     "health": "800",
+     "av": "2",
+     "durability": "70%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Rupture Charger": {
+   "title": "Rupture Charger",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "2,400",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,200",
+     "av": "5",
+     "durability": "75%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "85%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "1",
+     "durability": "30%",
+     "toMain": "300%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Armor Plates",
+     "health": "2,200",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "950",
+     "av": "0",
+     "durability": "80%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "Main",
+     "av": "2",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Frontal Tarsal Plate Armor (2)",
+     "health": "800",
+     "av": "5",
+     "durability": "70%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Leg Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Leg Armor (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (4)",
+     "health": "800",
+     "av": "2",
+     "durability": "70%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Impaler": {
+   "title": "Impaler",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "4,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,250",
+     "av": "1",
+     "durability": "75%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tentacle Armor (3)",
+     "health": "Main",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tentacle Flesh (3)",
+     "health": "500",
+     "av": "1",
+     "durability": "70%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crest Armor",
+     "health": "1,000",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "0",
+     "durability": "90%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "Main",
+     "av": "2",
+     "durability": "100%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Armor Plates",
+     "health": "1,000",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt",
+     "health": "1,100",
+     "av": "1",
+     "durability": "85%",
+     "toMain": "140%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Armor (4)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (4)",
+     "health": "1,000",
+     "av": "0",
+     "durability": "70%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Shrieker": {
+   "title": "Shrieker",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "80",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "30",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limbs",
+     "health": "30",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings (2)",
+     "health": "20",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Dragonroach": {
+   "title": "Dragonroach",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "6,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,500",
+     "av": "4",
+     "durability": "95%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Carapace (2)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Wings (4)",
+     "health": "1,500",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Thorax Sac",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Abdomen Sac",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Thorax Innards",
+     "health": "3,000",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Abdomen Innards",
+     "health": "Main",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Abdomen Armor",
+     "health": "3,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Armor (12)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Bile Titan": {
+   "title": "Bile Titan",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "6,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "1,500",
+     "av": "4",
+     "durability": "95%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "0",
+     "durability": "70%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt Armor",
+     "health": "3,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Sac",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Sac",
+     "health": "750",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "4,000",
+     "av": "2",
+     "durability": "80%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Armor (12)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Left Leg Flesh",
+     "health": "2,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (3)",
+     "health": "2,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Spore Burst Bile Titan": {
+   "title": "Spore Burst Bile Titan",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "7,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "2,500",
+     "av": "4",
+     "durability": "95%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor (2)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh",
+     "health": "Main",
+     "av": "0",
+     "durability": "70%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Butt Armor",
+     "health": "3,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Sac",
+     "health": "1,000",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Sac",
+     "health": "1,000",
+     "av": "0",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Underside",
+     "health": "4,000",
+     "av": "2",
+     "durability": "80%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Armor (12)",
+     "health": "1,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Left Leg Flesh",
+     "health": "2,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Flesh (3)",
+     "health": "2,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Hive Lord": {
+   "title": "Hive Lord",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "150,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crown",
+     "health": "150,000",
+     "av": "10",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jaws",
+     "health": "150,000",
+     "av": "6",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mandibles (2)",
+     "health": "10,000",
+     "av": "6",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mouth",
+     "health": "150,000",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Dorsal Plate Armor (6)",
+     "health": "15,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Sterna Plate Armor (6)",
+     "health": "15,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Sterna Plate Armor",
+     "health": "20,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh (6)",
+     "health": "150,000",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fins (14)",
+     "health": "5,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "150,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crown",
+     "health": "150,000",
+     "av": "10",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jaws",
+     "health": "150,000",
+     "av": "6",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mandibles (2)",
+     "health": "10,000",
+     "av": "6",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Mouth",
+     "health": "150,000",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Dorsal Plate Armor (6)",
+     "health": "15,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Sterna Plate Armor (6)",
+     "health": "15,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Sterna Plate Armor",
+     "health": "20,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Inner Flesh (6)",
+     "health": "150,000",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fins (14)",
+     "health": "5,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "25%"
+    }
+   ]
+  },
+  "Trooper": {
+   "title": "Trooper",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Jet Brigade Trooper": {
+   "title": "Jet Brigade Trooper",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "50",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Pyro Trooper": {
+   "title": "Pyro Trooper",
+   "anatomy": [
+    {
+     "section": "Behavior",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Behavior",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Behavior",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Behavior",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Behavior",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    },
+    {
+     "section": "Behavior",
+     "part": "Fuel Tanks Main",
+     "health": "10",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Behavior",
+     "part": "Fuel Tanks",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Brawler": {
+   "title": "Brawler",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "Main",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Arm",
+     "health": "85",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Arm",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Commissar": {
+   "title": "Commissar",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Jet Brigade Commissar": {
+   "title": "Jet Brigade Commissar",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "50",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Rocket Raider": {
+   "title": "Rocket Raider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Incendiary Rocket Raider": {
+   "title": "Incendiary Rocket Raider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Assault Raider": {
+   "title": "Assault Raider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "50",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Marauder": {
+   "title": "Marauder",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "MG Raider": {
+   "title": "MG Raider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Backpack Main",
+     "health": "10",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Backpack",
+     "health": "50",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Jet Brigade MG Raider": {
+   "title": "Jet Brigade MG Raider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "50",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Berserker": {
+   "title": "Berserker",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chest",
+     "health": "425",
+     "av": "2",
+     "durability": "40%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "600",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "65%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulder (2)",
+     "health": "180",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arm (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "30%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg (2)",
+     "health": "750",
+     "av": "1",
+     "durability": "30%",
+     "toMain": "0%"
+    }
+   ]
+  },
+  "Radical": {
+   "title": "Radical",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Circuits",
+     "health": "1,200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pauldron",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Arms (2)",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forearms (2)",
+     "health": "300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis and Left Leg",
+     "health": "1,400",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Leg",
+     "health": "1,400",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    }
+   ]
+  },
+  "Agitator": {
+   "title": "Agitator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "1",
+     "durability": "20%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Helmet",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Armor",
+     "health": "300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "1,200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pauldrons (2)",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Arms (2)",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forearms (2)",
+     "health": "300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis and Left Leg",
+     "health": "1,400",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Leg",
+     "health": "1,400",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    }
+   ]
+  },
+  "Devastator": {
+   "title": "Devastator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "425",
+     "av": "3",
+     "durability": "30%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "500",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Rocket Devastator": {
+   "title": "Rocket Devastator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "425",
+     "av": "3",
+     "durability": "30%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "500",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rockets",
+     "health": "200",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rocket Pods",
+     "health": "300",
+     "av": "1",
+     "durability": "100%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Heavy Devastator": {
+   "title": "Heavy Devastator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "425",
+     "av": "3",
+     "durability": "30%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "500",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Backpack",
+     "health": "600",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "-"
+    }
+   ]
+  },
+  "Conflagration Devastator": {
+   "title": "Conflagration Devastator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "425",
+     "av": "3",
+     "durability": "30%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "500",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "800",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "-"
+    }
+   ]
+  },
+  "Incendiary MG Devastator": {
+   "title": "Incendiary MG Devastator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "425",
+     "av": "3",
+     "durability": "30%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "500",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "Infinite",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "0%"
+    }
+   ]
+  },
+  "Jet Brigade Devastator": {
+   "title": "Jet Brigade Devastator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "750",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "110",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "425",
+     "av": "3",
+     "durability": "30%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "260",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach",
+     "health": "350",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "500",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "2",
+     "durability": "30%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "300",
+     "av": "2",
+     "durability": "20%",
+     "toMain": "-"
+    }
+   ]
+  },
+  "Scout Strider": {
+   "title": "Scout Strider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "500",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pilot",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Plate",
+     "health": "350",
+     "av": "4",
+     "durability": "40%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "HMG",
+     "health": "300",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turret System",
+     "health": "300",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Waist",
+     "health": "300",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "400",
+     "av": "2",
+     "durability": "75%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "125",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "90",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "65%"
+    }
+   ]
+  },
+  "Reinforced Scout Strider": {
+   "title": "Reinforced Scout Strider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "500",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Faceplate",
+     "health": "400",
+     "av": "4",
+     "durability": "40%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "HMG",
+     "health": "300",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rocket Rails (2)",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rockets (4)",
+     "health": "100",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turret System",
+     "health": "300",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Waist",
+     "health": "300",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "400",
+     "av": "2",
+     "durability": "75%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Hulk Scorcher": {
+   "title": "Hulk Scorcher",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,800",
+     "av": "4",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "4",
+     "durability": "25%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Heatsink",
+     "health": "900",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Hulk Bruiser": {
+   "title": "Hulk Bruiser",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,800",
+     "av": "4",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "4",
+     "durability": "25%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Heatsink",
+     "health": "900",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Hulk Obliterator": {
+   "title": "Hulk Obliterator",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,800",
+     "av": "4",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "4",
+     "durability": "25%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Heatsink",
+     "health": "900",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Hulk Firebomber": {
+   "title": "Hulk Firebomber",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,800",
+     "av": "4",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "4",
+     "durability": "25%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Heatsink",
+     "health": "900",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Jet Brigade Hulk Scorcher": {
+   "title": "Jet Brigade Hulk Scorcher",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,800",
+     "av": "4",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "4",
+     "durability": "25%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "750",
+     "av": "3",
+     "durability": "70%",
+     "toMain": "-"
+    }
+   ]
+  },
+  "Jet Brigade Hulk Bruiser": {
+   "title": "Jet Brigade Hulk Bruiser",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "1,800",
+     "av": "4",
+     "durability": "60%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "250",
+     "av": "4",
+     "durability": "25%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "750",
+     "av": "3",
+     "durability": "70%",
+     "toMain": "-"
+    }
+   ]
+  },
+  "Annihilator Tank": {
+   "title": "Annihilator Tank",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Turret Main",
+     "health": "2,100",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turret Front",
+     "health": "Main (Turret)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turret Heatsink",
+     "health": "750",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "200%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Main",
+     "health": "4,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Front",
+     "health": "Main (Hull)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Sides (2)",
+     "health": "Main (Hull)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Engine Bay",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tracks (2)",
+     "health": "750",
+     "av": "3",
+     "durability": "80%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Shredder Tank": {
+   "title": "Shredder Tank",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Turret Main",
+     "health": "2,100",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turret Front and Sides",
+     "health": "Main (Turret)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turret Heatsink",
+     "health": "750",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "200%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Main",
+     "health": "4,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Front",
+     "health": "Main (Hull)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Side (2)",
+     "health": "Main (Hull)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Engine Bay",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tracks (2)",
+     "health": "750",
+     "av": "3",
+     "durability": "80%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Barrager Tank": {
+   "title": "Barrager Tank",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Turret Main",
+     "health": "2,100",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Launch Tubes",
+     "health": "1,500",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Main",
+     "health": "4,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Front",
+     "health": "Main (Hull)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hull Sides (2)",
+     "health": "Main (Hull)",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Engine Bay",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tracks (2)",
+     "health": "750",
+     "av": "3",
+     "durability": "80%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Gunship": {
+   "title": "Gunship",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "950",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fuselage",
+     "health": "Main",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Thrusters (2)",
+     "health": "400",
+     "av": "3",
+     "durability": "85%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Thrusters (2)",
+     "health": "400",
+     "av": "3",
+     "durability": "80%",
+     "toMain": "0%"
+    }
+   ]
+  },
+  "Dropship": {
+   "title": "Dropship",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "3,500",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fuselage",
+     "health": "Main",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Thruster (4)",
+     "health": "1,500",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "0%"
+    }
+   ]
+  },
+  "War Strider": {
+   "title": "War Strider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "3,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "3,300",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Eyes (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fusion Cannons (2)",
+     "health": "500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Grenade Launchers (2)",
+     "health": "400",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crotch",
+     "health": "1,800",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Heatsink",
+     "health": "700",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hip Joints (2)",
+     "health": "750",
+     "av": "3",
+     "durability": "80%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "80%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Greaves (2)",
+     "health": "150",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "50%"
+    }
+   ]
+  },
+  "Factory Strider": {
+   "title": "Factory Strider",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "10,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stratagem Scrambler",
+     "health": "5,000",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Cannon Turret",
+     "health": "900",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fusion Gatling Guns (2)",
+     "health": "300",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head Armor",
+     "health": "1,500",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head Body",
+     "health": "2,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Neck Armor",
+     "health": "1,500",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Neck",
+     "health": "2,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Top Armor",
+     "health": "2,200",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Engine Weakspot",
+     "health": "2,000",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Armor",
+     "health": "2,200",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Side Armor (2)",
+     "health": "2,200",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Engine Armor",
+     "health": "2,200",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Engine Weakspot",
+     "health": "1,500",
+     "av": "3",
+     "durability": "75%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Armor",
+     "health": "2,200",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Armor (8)",
+     "health": "1,500",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Knee Armor (4)",
+     "health": "800",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Assembly (4)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Belly Panels (2)",
+     "health": "1,200",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head Body (Broken Head Armor)",
+     "health": "2,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Neck",
+     "health": "2,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Circuits Front (Broken Front Armor)",
+     "health": "1,200",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Side Circuits (2) (Broken Side Armor)",
+     "health": "1,200",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Circuits (Broken Rear Armor)",
+     "health": "1,200",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Assembly (4) (Broken Leg Armor)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "40%"
+    }
+   ]
+  },
+  "Vox Engine": {
+   "title": "Vox Engine",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "9,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Sarcophagus",
+     "health": "7,000",
+     "av": "5",
+     "durability": "60%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "9,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Cannons (2)<!--Macro-Culverins-->",
+     "health": "3,500",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Missile Launchers (2)<!--Icarus Launchers-->",
+     "health": "1,200",
+     "av": "3",
+     "durability": "60%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Miniguns (2)<!--Hydrogen Duster Arrays-->",
+     "health": "300",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Speakers (2)",
+     "health": "800",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Fog Lights (2)",
+     "health": "50",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso Flaps (2)",
+     "health": "500",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Vents (6)",
+     "health": "300",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hatches (2)",
+     "health": "-",
+     "av": "0",
+     "durability": "-",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Undercarriage",
+     "health": "9,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Trackpod Latches (4)",
+     "health": "2,000",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tracks (4)",
+     "health": "3,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Voteless": {
+   "title": "Voteless",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "40",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Arms (2)",
+     "health": "50",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forearms (2)",
+     "health": "50",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs",
+     "health": "80",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "130",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "50",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Arms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forearms (2)",
+     "health": "50",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs",
+     "health": "80",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "160",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "60",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Arms (2)",
+     "health": "80",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "40%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forearms (2)",
+     "health": "65",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs",
+     "health": "80",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "30%"
+    }
+   ]
+  },
+  "Wretch": {
+   "title": "Wretch",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "450",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "100",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (4)",
+     "health": "50",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Claws (2)",
+     "health": "200",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "450",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Overseer": {
+   "title": "Overseer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "600",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chest Armor",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crotch Armor",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limb Armor (8)",
+     "health": "100",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "600",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Arm",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Arm",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "Main",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "70%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "1,500",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "0%"
+    }
+   ]
+  },
+  "Elevated Overseer": {
+   "title": "Elevated Overseer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "450",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Jetpack",
+     "health": "300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chest Armor",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crotch Armor",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limb Armor",
+     "health": "100",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "600",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Arm",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Arm",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "Main",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "70%"
+    }
+   ]
+  },
+  "Crescent Overseer": {
+   "title": "Crescent Overseer",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "600",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "150",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chest Armor",
+     "health": "150",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Crotch Armor",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Limb Armor",
+     "health": "100",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "600",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right Arm",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Arm",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "Main",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "70%"
+    }
+   ]
+  },
+  "Watcher": {
+   "title": "Watcher",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "600",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Body",
+     "health": "400",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Eye",
+     "health": "300",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Fin",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Fin",
+     "health": "200",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Side Fins (2)",
+     "health": "150",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Obtruder": {
+   "title": "Obtruder",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "400",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Body",
+     "health": "400",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Eye",
+     "health": "300",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Vertical Fins (2)",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lateral Fins (2)",
+     "health": "100",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Fleshmob": {
+   "title": "Fleshmob",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "5,000",
+     "av": "0",
+     "durability": "40%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head Chunks (6)",
+     "health": "400",
+     "av": "0",
+     "durability": "25%",
+     "toMain": "150%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stomach Chunks (2)",
+     "health": "400",
+     "av": "0",
+     "durability": "40%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (4)",
+     "health": "200",
+     "av": "0",
+     "durability": "40%",
+     "toMain": "25%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "400",
+     "av": "0",
+     "durability": "40%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Crusher": {
+   "title": "Crusher",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "6,000",
+     "av": "1",
+     "durability": "70%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Helmet",
+     "health": "300",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "300",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Torso",
+     "health": "6,000",
+     "av": "1",
+     "durability": "70%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "2,000",
+     "av": "1",
+     "durability": "70%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pelvis",
+     "health": "4,000",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (2)",
+     "health": "4,000",
+     "av": "1",
+     "durability": "60%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Harvester": {
+   "title": "Harvester",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "3,000",
+     "av": "4",
+     "durability": "70%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Eye",
+     "health": "350",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "120%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield Generators (3)",
+     "health": "350",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "10%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chassis",
+     "health": "2,000",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Carapace (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Carapace Weakspots (2)",
+     "health": "500",
+     "av": "1",
+     "durability": "80%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Hip Joint",
+     "health": "1,000",
+     "av": "3",
+     "durability": "70%",
+     "toMain": "45%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right & Middle Hip Joints (2)",
+     "health": "1,000",
+     "av": "3",
+     "durability": "70%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Upper Thigh Armor",
+     "health": "600",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right & Middle Upper Thigh Armor (2)",
+     "health": "900",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Thigh Armor (3)",
+     "health": "900",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shin armor (3)",
+     "health": "900",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Left Foot Armor",
+     "health": "900",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right & Middle Foot Armor (2)",
+     "health": "900",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "30%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Exposed Leg Internals",
+     "health": "1,000",
+     "av": "3",
+     "durability": "25%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "1,500",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Damaged Chassis",
+     "health": "2,000",
+     "av": "4",
+     "durability": "75%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Internals (2)",
+     "health": "800",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Right & Left Upper Leg Internals (3)",
+     "health": "1,000",
+     "av": "3",
+     "durability": "25%",
+     "toMain": "45%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Middle Upper Leg Internals",
+     "health": "1,000",
+     "av": "3",
+     "durability": "25%",
+     "toMain": "60%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Leg Internals (3)",
+     "health": "1,000",
+     "av": "3",
+     "durability": "25%",
+     "toMain": "60%"
+    }
+   ]
+  },
+  "Veracitor": {
+   "title": "Veracitor",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "3,000",
+     "av": "3",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Head",
+     "health": "300",
+     "av": "3",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chassis",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Carapace (2)",
+     "health": "400",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "50%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Internals (2)",
+     "health": "600",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "1,300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pilot",
+     "health": "700",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Cockpit",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Cockpit Weakspot",
+     "health": "800",
+     "av": "1",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulders (2)",
+     "health": "800",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Arms (2)",
+     "health": "800",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Arms (2)",
+     "health": "800",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arm Weakspots (2)",
+     "health": "800",
+     "av": "1",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hips (2)",
+     "health": "1,600",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Hip",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Upper Legs (2)",
+     "health": "1,600",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Lower Legs (2)",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Leg",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "75%"
+    }
+   ]
+  },
+  "Gatekeeper": {
+   "title": "Gatekeeper",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "2,500",
+     "av": "4",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield Generator",
+     "health": "50",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Chassis",
+     "health": "1,600",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Carapace (2)",
+     "health": "400",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Weakspot",
+     "health": "800",
+     "av": "1",
+     "durability": "80%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "1,300",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Pilot",
+     "health": "700",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Cockpit",
+     "health": "1,200",
+     "av": "4",
+     "durability": "80%",
+     "toMain": "75%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Cockpit Weakspot",
+     "health": "800",
+     "av": "1",
+     "durability": "80%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shoulder Armor (2)",
+     "health": "200",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arm Armor (2)",
+     "health": "200",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (2)",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Guns (2)",
+     "health": "800",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Gun Weakspots (2)",
+     "health": "800",
+     "av": "2",
+     "durability": "0%",
+     "toMain": "0%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Leg Armor (6)",
+     "health": "200",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "20%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Hips (3)",
+     "health": "800",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (3)",
+     "health": "800",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Internals (2)",
+     "health": "800",
+     "av": "2",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Arms (Broken Armor) (2)",
+     "health": "1,600",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Legs (Broken Armor) (3)",
+     "health": "800",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Stingray": {
+   "title": "Stingray",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "800",
+     "av": "3",
+     "durability": "70%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Gun Ports",
+     "health": "Main",
+     "av": "3",
+     "durability": "50%",
+     "toMain": "100%"
+    }
+   ]
+  },
+  "Warp Ship": {
+   "title": "Warp Ship",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "3,500",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Beamer",
+     "health": "1,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Frontal Fuselage (2)",
+     "health": "1,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Fuselage (2)",
+     "health": "1,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Engine",
+     "health": "Main",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Stern (2)",
+     "health": "1,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Bow",
+     "health": "1,000",
+     "av": "5",
+     "durability": "100%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Shield",
+     "health": "2,500",
+     "av": "0",
+     "durability": "0%",
+     "toMain": "0%"
+    }
+   ]
+  },
+  "Leviathan": {
+   "title": "Leviathan",
+   "anatomy": [
+    {
+     "section": "Anatomy",
+     "part": "Main",
+     "health": "15,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Turrets (4)",
+     "health": "1,500",
+     "av": "4",
+     "durability": "85%",
+     "toMain": "-"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Vertebra",
+     "health": "7,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Front Fins (2)",
+     "health": "5,500",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Warp Disc",
+     "health": "3,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forward-Middle Vertebra",
+     "health": "5,500",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Forward-Middle Fins (2)",
+     "health": "5,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rearward-Middle Vertebra",
+     "health": "5,500",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rearward-Middle Fins (2)",
+     "health": "3,900",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Vertebra",
+     "health": "5,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Rear Fins (2)",
+     "health": "3,000",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Tail",
+     "health": "3,900",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Internals",
+     "health": "15,000",
+     "av": "4",
+     "durability": "0%",
+     "toMain": "100%"
+    },
+    {
+     "section": "Anatomy",
+     "part": "Damaged Rearward- Middle Vertebra",
+     "health": "5,500",
+     "av": "5",
+     "durability": "0%",
+     "toMain": "100%"
+    }
+   ]
+  }
+ },
+ "demolition": "{{Breadcrumb Auto|parent=Damage}}\nSeparate from Damage, the '''Demolition Force''' of an attack determines if said attack can destroy a structure.\n\n== Demolition Force & Structures ==\nAll destructible structures in- game have a Demolition Threshold between 10 and 60.\n\nIn order to destroy a structure, the user needs to be using a weapon/stratagem that has enough Demolition Force. Explosions have demolition force fall-off in the outer radius. Armor penetration is irrelevant to this check, as is damage, and whether or not the attack is explosive. When the threshold is met, the structure will be destroyed. \n\nThe exceptions to this are enemy spawners; [[Bug Hole|Bug Holes]], [[Automaton Fabricator|Automaton Fabricators]], [[Bulk Fabricator|Bulk Fabricators]] and [[Grounded Warp Ship|Grounded Warp Ships]], which require a '''minimum''' demo force of '''20''' and the ''explosive'' property to destroy via their open hole, vent and door; as they have '''B'''allistic '''D'''emolition '''R'''esistance, or BaDR. Ballistic Demolition Resistance means that the structure(s) resists demo force from non-explosive projectiles such as bullets or electric arcs. For example, an [[E/MG-101 HMG Emplacement]] which has a demo force of 20, but is not explosive. Therefore, it will not destroy the structure.\n\nNote: Certain structures such as [[Spore Spewer|Spore Spewers]] and [[Shrieker Nest|Shrieker Nests]], are not labeled as structures that require demo force to destroy. These entities are considered non-moving enemy units with low Armor Value, high HP, and Durability. The only exceptions to this are Automaton Fabricators, Bulk Fabricators and Grounded Warp Ships, which use both health, armor, and demolition force systems.\n\n=== Demolition Force Sources ===\nA variety of weapons and other gear used by Helldivers are capable of destroying structures. The following tables list all sources of at least '''20''' Demolition Force available to players, along with their Demolition Force values and whether they are considered explosive.\n\n{| class=\"wikitable sortable mw-collapsible mw-collapsed\"\n|+Primary and Secondary Weapons\n|'''Weapon'''\n|'''Attack'''\n|'''Demo Force'''\n|'''Explosive?'''\n|-\n| rowspan=\"2\" |[[AR/GL-21 One-Two]] || Projectile (40mm) || 30 || No\n|-\n| Explosion (40mm) || 30 || Yes\n|-\n| rowspan=\"2\" |[[CB-9 Exploding Crossbow]] || Projectile || 30 || No\n|-\n| Explosion || 20 || Yes\n|-\n|[[GL-15 Evictor]]\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[GP-20 Ultimatum]] || Projectile || 40 || No\n|-\n| Explosion || 40 || Yes\n|-\n| rowspan=\"2\" |[[GP-31 Grenade Pistol]] || Projectile || 30 || No\n|-\n| Explosion || 30 || Yes\n|-\n| rowspan=\"2\" |[[P-33 Missile Pistol]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|[[P-34 Breacher]]\n|Explosion\n|30\n|Yes\n|-\n|[[P/40-K Bolt Pistol]]\n|Projectile\n|20\n|No\n|-\n| rowspan=\"2\" |[[R-36 Eruptor]] || Projectile || 30 || No\n|-\n| Explosion || 20 || Yes\n|}\n\n{| class=\"wikitable sortable mw-collapsible mw-collapsed\"\n|+Throwables\n|'''Weapon'''\n|'''Attack'''\n|'''Demo Force'''\n|'''Explosive?'''\n|-\n|[[G-4 Gas]] || Explosion ||30 || Yes\n|-\n|[[G-6 Frag]] || Explosion || 20 || Yes\n|-\n| rowspan=\"3\" | [[G-7 Pineapple]]  || Explosion || 30 || Yes\n|-\n| Cluster Impact || 30 || No\n|-\n| Cluster Explosion || 20 || Yes\n|-\n| [[G-10 Incendiary]] || Explosion || 30 || Yes\n|-\n| [[G-12 High Explosive]] || Explosion || 30 || Yes\n|-\n| [[G-13 Incendiary Impact]] || Explosion || 30 || Yes\n|-\n| [[G-16 Impact]] || Explosion || 30 || Yes\n|-\n| [[G-31 Arc]] || Arc || 20 || No\n|-\n|[[G/40-K Melta Mine]]\n|Explosion\n|40\n|Yes\n|-\n|[[G-48 Giga Grenade]]\n|Explosion\n|40\n|Yes\n|-\n| [[G-50 Seeker]] || Explosion || 30 || Yes\n|-\n|[[G-60 Anti-Tank Seeker]]\n|Explosion\n|40\n|Yes\n|-\n| [[G-123 Thermite]] || Explosion || 30 || Yes\n|-\n| [[G-142 Pyrotech]] || Explosion || 30 || Yes\n|-\n| [[TED-63 Dynamite]] || Explosion || 40 || Yes\n|-\n|[[TM-1 Lure Mine]]\n|Explosion\n|30\n|Yes\n|}\n\n{| class=\"wikitable sortable mw-collapsible mw-collapsed\"\n|+Support Weapons\n|'''Weapon'''\n|'''Attack'''\n|'''Demo Force'''\n|'''Explosive?'''\n|-\n|[[40-K Meltagun]]\n|Beam\n|30\n|No\n|-\n| rowspan=\"4\" |[[AC-8 Autocannon]]\n|APHET Impact\n|30\n|No\n|-\n|APHET Explosion\n|30\n|Yes\n|-\n|Flak Impact\n|20\n|No\n|-\n|Flak Explosion\n|20\n|Yes\n|-\n| [[APW-1 Anti-Materiel Rifle]] || Projectile || 20 || No\n|-\n|[[ARC-3 Arc Thrower]]\n|Arc\n|20\n|No\n|-\n|[[B/MD C4 Pack]]\n|Explosion\n|40\n|Yes\n|-\n| rowspan=\"2\" |[[CQC-9 Defoliation Tool]]\n|1s Contact\n|20\n|No\n|-\n|2s Contact\n|30\n|No\n|-\n| rowspan=\"2\" |[[CQC-20 Breaching Hammer]] || Impact || 30 || No\n|-\n| Explosion || 30 || Yes\n|-\n| rowspan=\"2\" |[[EAT-17 Expendable Anti-Tank]] || Projectile || 30 || No\n|-\n| Explosion || 30 || Yes\n|-\n| rowspan=\"2\" |[[EAT-411 Leveller]] || Projectile || 40 || No\n|-\n| Explosion || 40 || Yes\n|-\n| rowspan=\"4\" |[[EAT-700 Expendable Napalm]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|Cluster Impact\n|30\n|No\n|-\n|Cluster Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[FAF-14 Spear]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|[[GL-21 Grenade Launcher]]\n| Explosion || 30 || Yes\n|-\n|[[GL-28 Belt-Fed Grenade Launcher]]\n| Explosion || 30 || Yes\n|-\n|[[GL-52 De-Escalator]] || Arc || 20 || No\n|-\n| rowspan=\"4\" |[[GR-8 Recoilless Rifle]]\n|HEAT Impact\n|30\n|No\n|-\n|HEAT Explosion\n|30\n|Yes\n|-\n|HE Impact\n|30\n|No\n|-\n|HE Explosion\n|30\n|Yes\n|-\n|[[LAS-98 Laser Cannon]]\n|Beam\n|20\n|No\n|-\n| rowspan=\"2\" |[[LAS-99 Quasar Cannon]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[MLS-4X Commando]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[MS-11 Solo Silo]]\n|Explosion 1\n|40\n|Yes\n|-\n|Explosion 2\n|40 \n|Yes\n|-\n| rowspan=\"2\" |[[PLAS-45 Epoch]]\n|Charged Explosion\n|30\n|Yes\n|-\n|Destruct Explosion\n|30\n|Yes\n|-\n| rowspan=\"4\" |[[RL-77 Airburst Rocket Launcher]]\n|Rocket Impact\n|30\n|No\n|-\n|Rocket Explosion\n|25\n|Yes\n|-\n|Cluster Impact\n|25\n|No\n|-\n|Cluster Explosion\n|20\n|Yes\n|-\n|[[RS-422 Railgun]]\n|Destruct Explosion\n|20\n|Yes\n|-\n| rowspan=\"2\" |[[S-11 Speargun]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"3\" |[[StA-X3 W.A.S.P. Launcher]]\n|Rocket Impact\n|30\n|No\n|-\n|Rocket Explosion\n|30\n|Yes\n|-\n|Artillery Explosion\n|30\n|Yes\n|}\n\n{| class=\"wikitable sortable mw-collapsible mw-collapsed\"\n|+Orbital and Eagle Strikes\n|'''Weapon'''\n|'''Attack'''\n|'''Demo Force'''\n|'''Explosive?'''\n|-\n| rowspan=\"2\" |[[Orbital Gatling Barrage]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"3\" |[[Orbital Airburst Strike]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|Heavy Shrapnel Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital 120mm HE Barrage]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital 380mm HE Barrage]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital Walking Barrage]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n|[[Orbital Laser]]\n|Beam\n|50\n|No\n|-\n| rowspan=\"2\" |[[Orbital Napalm Barrage]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital Railcannon Strike]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital Precision Strike]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital Gas Strike]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n| rowspan=\"2\" |[[Orbital EMS Strike]]\n|Projectile\n|50\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|[[Orbital Smoke Strike]]\n|Projectile\n|50\n|No\n|-\n| rowspan=\"2\" |[[Eagle Strafing Run]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[Eagle Airstrike]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|40\n|Yes\n|-\n| rowspan=\"3\" |[[Eagle Cluster Bomb]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|Cluster Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[Eagle Napalm Airstrike]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|[[Eagle Smoke Strike]]\n|Projectile\n|40\n|No\n|-\n| rowspan=\"2\" |[[Eagle 110mm Rocket Pods]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[Eagle 500kg Bomb]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|50\n|Yes\n|}\n{| class=\"wikitable sortable mw-collapsible mw-collapsed\"\n|+Other Stratagems\n|'''Weapon'''\n|'''Attack'''\n|'''Demo Force'''\n|'''Explosive?'''\n|-\n|[[E/MG-101 HMG Emplacement]]\n|Projectile\n|20\n|No\n|-\n| rowspan=\"2\" |[[E/AT-12 Anti-Tank Emplacement]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|[[A/ARC-3 Tesla Tower]]\n|Arc\n|20\n|No\n|-\n|[[E/GL-21 Grenadier Battlement]]\n|Explosion\n|30\n|Yes\n|-\n|[[MD-6 Anti-Personnel Minefield]]\n|Explosion\n|30\n|Yes\n|-\n|[[MD-I4 Incendiary Mines|MD-14 Incendiary Mines]]\n|Explosion\n|30\n|Yes\n|-\n|[[MD-17 Anti-Tank Mines]]\n|Explosion\n|40\n|Yes\n|-\n|[[MD-8 Gas Mines]]\n|Explosion\n|30\n|Yes\n|-\n|[[A/M-12 Mortar Sentry]]\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[A/AC-8 Autocannon Sentry]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[A/MLS-4X Rocket Sentry]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|-\n|[[A/M-23 EMS Mortar Sentry]]\n|Explosion\n|30\n|Yes\n|-\n|[[A/FLAM-40 Flame Sentry]]\n|Destruction Explosion\n|20\n|Yes\n|-\n| rowspan=\"2\" |All [[Exosuit (disambiguation)|Exosuits]]\n|Stomp\n|30\n|No\n|-\n|Destruction Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[EXO-45 Patriot Exosuit]]\n|Rocket Projectile\n|30\n|No\n|-\n|Rocket Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[EXO-49 Emancipator Exosuit]]\n|APHE Projectile\n|30\n|No\n|-\n|APHE Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[EXO-51 Lumberer Exosuit]]\n|Cannon Projectile\n|30\n|No\n|-\n|Cannon Explosion\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[EXO-55 Breakthrough Exosuit]]\n|Shield Bash\n|30\n|No\n|-\n|Scattergun Projectile\n|20\n|No\n|-\n| rowspan=\"2\" |[[TD-220 Bastion MK XVI]]\n|Cannon Projectile\n|40\n|No\n|-\n|Cannon Explosion\n|40\n|Yes\n|-\n|[[B-100 Portable Hellbomb]]\n|Explosion\n|60\n|Yes\n|}\n{| class=\"wikitable sortable mw-collapsible mw-collapsed\"\n|+Other\n|'''Weapon'''\n|'''Attack'''\n|'''Demo Force'''\n|'''Explosive?'''\n|-\n|[[NUX-223 Hellbomb]]\n|Explosion\n|60\n|Yes\n|-\n|[[Hellpod]]\n|Impact\n|40\n|Yes\n|-\n| rowspan=\"6\" |[[SEAF Artillery]]\n|Projectile\n|50\n|No\n|-\n|Explosion (Explosive)\n|50\n|Yes\n|-\n|Explosion (High-Yield Explosive)\n|50\n|Yes\n|-\n|Explosion (Mini-Nuke)\n|60\n|Yes\n|-\n|Explosion (Static Field)\n|30\n|Yes\n|-\n|Explosion (Napalm)\n|30\n|Yes\n|-\n| rowspan=\"2\" |[[SEAF SAM Site]]\n|Projectile\n|40\n|No\n|-\n|Explosion\n|60\n|Yes\n|-\n| rowspan=\"2\" |[[Take Down Overship|Planetary Defense Cannon]]\n|Projectile\n|60\n|No\n|-\n|Explosion\n|50\n|Yes\n|-\n| rowspan=\"2\" |[[Ground All-Terrain Extraction Rig (GATER)]]\n|Projectile\n|30\n|No\n|-\n|Explosion\n|30\n|Yes\n|}\n\n=== Demolition Force vs. Structures ===\n{| class=\"wikitable sortable\"\n! Faction !! Structure !! BaDR !! Demo Force\n|-\n! rowspan=\"3\" | Neutral\n| [[Minor Places of Interest#Cargo Containers|Cargo Container]] || No || 20\n|-\n| [[Missions#Terminate Illegal Broadcast Tower|Illegal Broadcast Tower]] || No || 30\n|-\n| [[Destroy Rogue Research Station|Rogue Research Station]] || No || 50\n|-\n! rowspan=\"4\" | {{Super Earth Federation|text}}\n| [[Colonies|Colony]] Wall || No || 40\n|-\n| [[Evacuate High-Value Assets#Defense Gate|Defense Gate]] || No || 40\n|-\n| [[Evacuate High-Value Assets#Generator|Defense Generator]] || No || 40\n|-\n|[[Mega City|Megacity]] Structures\n|No\n|40\n|-\n! rowspan=\"6\" | {{Terminids|text}}\n| [[Bug Hole#Bile Titan Bug Hole|Bile Titan Bug Hole]] || No || 40\n|-\n| [[Bug Hole]] (Inner) || Yes || 20\n|-\n| [[Bug Hole]] (Outer) || No || 40\n|-\n|[[Cleanse Infested District|Infested Tower]]\n|No\n|50\n|-\n| [[Shrieker Nest|Shrieker Nest Tower]] || No || 60\n|-\n| [[Spore Spewer]] || No || 50\n|-\n! rowspan=\"11\" | {{Automatons|text}}\n| [[Enemy Bio-Processors|Bio-Processor]]|| No || 40\n|-\n| [[Bulk Fabricator]] (Outer) ||No || 50\n|-\n| [[Bulk Fabricator]] (Vent) || Yes || 20\n|-\n| [[Detector Tower]] || No || 50\n|-\n| [[Automaton Fabricator|Fabricator]] (Outer) || No || 40\n|-\n| [[Automaton Fabricator|Fabricator]] (Vent) || Yes || 20\n|-\n| [[Sabotage Supply Bases#Destroy Fuel Reserves|Fuel Reserve]] || No || 60\n|-\n| [[Gunship Facility]] || No || 60\n|-\n|[[Automaton Megafactory#Gates|Megafactory Gates]] || No || 40\n|-\n| [[Neutralize Ground-to-Orbit Defenses|Orbital Cannon]]|| No || 60\n|-\n| [[Stratagem Jammer]] || No || 50\n|-\n! rowspan=\"8\" | {{Illuminate|text}}\n| [[Cognitive Disruptor#Cognitive Disruptor PSU|Cognitive Disruptor PSU]] || No || 30\n|-\n| [[Gazer]] || No || 20\n|-\n| [[Gazer Spire]] || No || 60\n|-\n| [[Grounded Warp Ship]] (Door) || Yes || 20\n|-\n| [[Grounded Warp Ship]] (Outer) || No || 50\n|-\n| [[Grounded Warp Ship]] (Shield) || Yes || 50\n|-\n| [[Lightning Spire]]|| No || 20\n|-\n| [[Monolith|Monolith]] || No || 60\n|}\nNote: '''BaDR''' means '''Ba'''llistic '''D'''emolition '''R'''esistance. Projectile weapons that meet demo threshold but are not explosive cannot destroy said structure with BaDR.\n\nFor example: LAS-98 Laser Cannon has demo force 20 but cannot destroy bug holes, fabricators or warp ships since it is not explosive.\n\n==References==\n<references/>\n[[Category:Game_Mechanics]]\n__FORCETOC__",
+ "structurePages": {
+  "Points of Interest": "{{Breadcrumb Auto|parent=Places of Interest}}\n\n{{Quote|Missions are filled with unexplored points of interest. Check them out -- you never know what you might find.|[[Training Manual Tips]]}}\n\n'''{{PAGENAME}}''' (m'''POI''') are minor locations scattered around on Expedition-mission<ref>Expedition-mission being random-generated-maps, I.E. not fixed [[Eradicate]] or [[Evacuate High-Value Assets|Evacuation]]-mission-maps.</ref> maps containing various items of value, some depending on the [[difficulty]] level.\n\nThese are not to be confused with [[Galaxy Places of Interest]].\n\n__FORCETOC__\n== Locations and Icons ==\n{{PAGENAME}}s can be found in multiple ways:\n* All mPOIs are displayed onto the topographical minimap. Spotting or otherwise recognizing some of the mPOIs can be tricky due the numerous variations of the topographical drawings varying between different [[biomes]] or otherwise having different randomly selected sharpness and other quality variations.\n* The compass displays a question mark (\"?\") when Helldiver is within 60-metres radius of undiscovered mPOI-markers; this mark functions identically to pinged locations being bright while in field-of-view and transparent at the edges of the compass.\n* Completing the [[Radar Station|Radar Station side objective]] highlights all POIs on the map.\n* Occasionally the marking-cursor on the mini-map can reveal some (and very rarely all mPOIs) with a '''''Minor Place of Interest''''' text-pop-up. NOTE: This method becomes functional only after first playing an expedition-type (not [[Eradicate]] or [[Evacuate High-Value Assets|Defence]])-mission during each gameplay-session / \".exe-boot\".\n\nWhen found, the icons of {{PAGENAME}}s will change on the minimap if it was sufficiently looted of all samples (ammunition and [[Support Weapons]] generally do not count):\n* [[File:POI Unplundered Icon.png|50px]] Contains [[Samples]] / un-explored mPOI.\n* [[File:POI Plundered Icon.png|50px]]Does not contain [[Samples]]/all [[Samples]] collected.\nAn exception to note is that if there was a Rescue Pod at the mPOI, and it did not contain a [[Support Weapon]], then the icon will not change from the gem after successful looting, even if all [[Sample|Samples]] and [[currency]] have been collected. If it did contain a Support Weapon, then it will change after picking it up. This is unique to Rescue Pods, and does not apply to [[Underground Cache|Underground Caches]] or other types of mPOIs. \n\n=== Guards at mPOIs ===\nOn {{Difficulty|4}} and above, enemies can be present at most {{PAGENAME}}s. On {{Difficulty|7}} and above, enemies can occupy them, along with their appearances changing, such as adding structures like [[Environmental Hazards|Barbed Wire]] or [[Cannon Turret]]s.\n\n=== Minor Places of Interest Within Cities ===\nThe generation of mPOIs within [[Cities| colonies / cities]] has some exceptions: \n\n* All eligible mPOI candidate \"tiles\" will be generated regardless of if they end up being a mPOI or not, such \"Checkpoints\" and \"Customs / Shipping Container Platforms\".\n** This rule allows a chance of colony-tileset being the most densely populated by mPOIs. E.G. There can be several Rescue Pods placed within few steps of each other due to the small surface-area-requirement of these mPOIs.\n* Most importantly mPOIs inside Super Earth [[Cities| colonial cities]] / urban settlement zones are only marked as a mPOI if there is at least a Sample, Support Weapon, or a Special Loot container (including bunkers).\n** E.G. Shipping container area / customs will only be marked as a mPOI if there is a lootable (shipping) container.\n\nThe above rules however only affect the colonial / offworld cities: [[Mega City]] / [[Super Earth Metropolis]]-mPOI-generation works for the most part identically to other non-City mPOIs. I.E. the Mega City mPOI-assets are fully tied to the mPOI itself and cannot exist as non-mPOI, even if they exist as a \"scenery-prop\" akin to empty \"[[Ground Stash]]\"-mPOIs. Metropolis-biomes also spaw",
+  "Bot Fabricator": "{{Infobox Structure\n| image = Automaton_Fabricator.png\n| faction = Automatons\n| class = \n| health = 1,500\n| min_difficulty = {{difficulty|1}}\n| max_difficulty = {{difficulty|10}}\n| demo_force= 20 Vents<br> 40 Elsewhere.\n| badr=Yes Vents<br> No Elsewhere.\n| \n}}\nThe '''{{PAGENAME}}''', or '''Light Fabricators''' in-game, is an [[Automaton]] exclusive [[Automatons#List_of_Automaton_Structures|structure]] found in [[Automaton Outpost]]s. These fabricators will continuously deploy new [[Trooper]]s and their variants until the structure runs out of troopers or is destroyed.\n\n== Anatomy ==\n{{Anatomy Table|\n  {{Anatomy Row\n    | part_name = Main\n    | health = 1,500\n    | av = 5\n    | front_image = Automaton Fabricator Main Front.png\n\t| side_image = Automaton Fabricator Main Side.png\n\t| rear_image = Automaton Fabricator Main Rear.png\n    | durability = 100%\n    | percent_to_main = -\n    | bleed = None\n    | fatal = Yes\n    | exdr = 0%\n    | df=40\n  }}\n  {{Anatomy Row\n    | part_name = Vents\n    | health = -\n    | front_image = Automaton Fabricator Vent.png\n\t| durability = N/A\n    | percent_to_main = -\n    | bleed = None\n    | fatal = Yes\n    | exdr = 0%\n    | df=20 if {{Damage|Explosion||notext}}\n  }}\n|df=yes}}\n\n== Tactical Information ==\n*{{PAGENAME}}s can be destroyed via vent by using grenades or explosive primary/support weapons with a '''minimum demolition force''' of '''20 or higher''', from the outside by using attacks with a demolition force of '''40+''', or repeated strikes with an armor penetration of {{Armor|5|AP}} or higher(i.e. [[FAF-14 Spear]], [[Eagle Strafing Run]], etc.).\n** Helldivers are advised to target the upper parts or the roof of Fabricators when attempting to demolish through the outer shell; the amount of debris and miniature/foundation walls around Fabricators often blocks the explosions.\n** A [[GP-20 Ultimatum]]  direct hit, [[TED-63 Dynamite]] or a [[Hellpod]] will destroy a Fabricator on impact.\n** A [[Helldiver]] getting out of a Hellpod will be protected from the Fabricator explosion during the deployment animation.\n** A Fabricator can also get destroyed by [[Cannon Turret]] shots, [[Reinforced Scout Strider]] rockets, as well as lucky hits during [[Meteor Storms]] and [[Volcanic Activity]] hazards.\n*Upon destruction, the fabricator will explode with a large amount of force, ragdolling, damaging, or killing any [[Enemies]] or Helldivers nearby.\n\n== Bulk Fabricator ==\nThe [[Bulk Fabricator]] can be found in Automaton Outposts in [[cities]]. Instead of deploying Troopers, it will deploy [[Devastator]]s, [[Berserker]]s, [[Scout Strider]]s, and even [[Hulk]], [[Tank]]s, and [[War Strider]]s. It is much bigger than standard Automaton Fabricators and has a much higher height. Its weakpoints remain the same: the upper part, where there are two massive vents.\n\n== Change History ==\n{{Change History Head}}\n{{Change History Update|1.002.001|changes=\nUndocumented Change\n* Fabricator Explosion demolition force reduced from 50 to 40.\n}}\n{{Change History Update|1.001.100|changes=\nChanges\n* Automaton Fabricators now have health and armor in addition to their existing destruction system. This means that while many high armor penetration weapons can still destroy them, it may take multiple hits to do so, depending on the weapon used.\n* Added effects to clearer showcase their health state.\n* Main health set to 1,500.\n* Armor set to {{Armor|5|AV}}\n}}\n[[Category:Automatons]]\n{{Nav Enemy}}",
+  "Detector Tower": "{{Infobox Mission| title = {{PAGENAME}}\n| image_optional =  {{PAGENAME}} TO Icon.svg\n\n| faction_optional =  Automaton\n\n| min_difficulty_optional = 4\n| max_difficulty_optional = 10\n}}\n{{Infobox Structure\n| image = Detector Tower Desert.png\n| faction = Automatons\n| min_difficulty = {{Difficulty|4}}\n| demo_force = 50\n}}\n'''Detector Tower''' is an [[Missions#Tactical Objectives|Optional Objective]] exclusive to the {{Automaton|text}}, consisting of a large, rotating surveillance tower that will summon reinforcements if it detects the presence of Helldivers. To complete the objective, Helldivers must destroy the tower.\n\n== Objective Steps ==\n* Destroy Automaton Detector Tower\n** The [[NUX-223 Hellbomb]] will be available to call down when near the tower.\n* Rewards: {{Currency|Requisition|200}}, {{Currency|Experience|50}}\n\n== Tactical Information<!-- Old version mentioned \"active Hellpod-stratagems\" as being valid Detector Tower targets as well, confused if this means sentries/emplacements -->==\n\n* The Detector Tower has a 150-meter range in which it can detect Helldivers, within its distinctive red vision cone.\n** The position of the vision cone means that Helldivers that are very close to the Detector Tower cannot be spotted.\n** Going prone will render Helldivers completely invisible to the Detector Tower.\n* If a Helldiver is spotted, the tower will sound an audible alarm and begin summoning constant waves of bot drops until it can no longer see any Helldivers.\n** [[Dropship|Dropships]] spawned in this manner will deploy their units on the last known position of the Helldiver.\n* The [[Demolition]] requirement of 50 means that a Hellbomb is unnecessary if alternate options are available.\n** Common examples include the [[Eagle 500kg Bomb]], [[Orbital Precision Strike]] and [[SEAF Artillery]] shells.\n** Clever positioning can trick [[Cannon Turret|Cannon Turrets]] into destroying the Detector Tower with their shots.\n* The Hellbomb's large AOE means that it can be called down far away from the Detector Tower (where one is at little risk of being spotted) and still complete the objective.\n* Detector Towers will occasionally spawn inside of [[Automaton Outpost|Fortresses]]. They function identically to standard Detector Towers, but the Hellbomb will '''not''' be available to call down to destroy them. They are also not mandatory to destroy to mark the Fortress as \"cleared\".\n\n== Trivia ==\n\n* Due to the Tower's distinctive appearance, it is often colloquially referred to as the [[wikipedia:en:Lord of the Rings|'Eye of Sauron']] by many Helldivers.\n* Detector Towers can be used to farm Automaton kills for [[Major Orders]], as their alarm state bypasses the global cooldown of bot flares, allowing a constant stream of incoming [[Dropship|Dropships]].\n\n== Gallery ==\n\n<gallery>\nFile:Detector Tower In Scope from 150m.png|A distant Detector Tower as seen through a scope.\nFile:Detector Tower Approaching By FRV.png|A Detector Tower facing away from an [[M-102 Fast Recon Vehicle|FRV]].\nFile:HellDads-Detector Tower Gets Destroyed By Orbital Gas Strike.png|A Detector Tower being destroyed by an [[Orbital Gas Strike]].\nFile:Detector Tower OO Far.PNG|An extremely distant Detector Tower, still clearly visible because of its bright red light.\n</gallery>\n\n== Change History ==\n{{Change History Head}}\n{{Change History Update|1.004.100|changes=\nUndocumented Change\n* The tower now has better detection and calls in reinforcements more frequently.\n}}\n{{Change History Update|1.000.400|changes=\nFix\n* Reduced situations where blue stratagems would bounce when placed next to the detector tower.\n}}\n{{Change History Update|1.000.300|changes=\nFix\n* Fixed incorrect collision being left over after destroying detector towers with hellbombs.\n}}\n\n==Known Issues==\n* Area around Automaton Detector Tower makes blue stratagems such as the Hellbomb bounce and be repelled when trying to call them down close to the tower.\n\n[[Category:Automatons]]\n[[Category:Missions]]\n[[Category:",
+  "Stratagem Jammer": "{{Infobox Mission| image_optional =  {{PAGENAME}} TO Icon.svg\n\n| faction_optional =  Automaton\n\n| min_difficulty_optional =   4\n\n\n| max_difficulty_optional =   10\n\n\n}}\n{{Infobox Structure\n|image = Stratagem Jammer OO Structure.png\n|faction = Automaton\n|demo_force = 50\n|min_difficulty = {{Difficulty|4}}\n}}\n\nThe '''{{PAGENAME}}''' is an Optional Objective contained within an [[Automatons|Automaton]] structure. For as long as it is standing, it disables the ability for Helldivers within 150m to call down any [[Stratagems|Stratagem]] '''except''' for [[SEAF Artillery]]. To complete the Objective, Helldivers must destroy the structure.\n\n== Objective Steps ==\n* Destroy Automaton Stratagem Jammer.\n** If SEAF Artillery is available, Mini-Nuke & High-Yield Explosive can hit nearby, while Explosive, Napalm, Static Field & Smoke shells must hit the jammer directly to destroy it. This can be done while the jammer is either active or disabled.\n** Helldivers must interact with the terminal at the base of the Jammer to disable it, then call in a [[NUX-223 Hellbomb|Hellbomb]] or a Stratagem with minimum [[Demolition|demolition force]] of '''50''' of their choosing to destroy it.\n* Reward: {{Currency| Requisition Slips|200}} & {{Currency|Experience|50}}\n\n== Tactical Information ==\n* The building that needs to be demolished requires a demolition force of '''50''', which means it can be destroyed by other means than a [[NUX-223 Hellbomb]].\n* A recommended tactic is to fire the [[MS-11 Solo Silo]] at the jammer to wipe out any static enemies within the outpost to facilitate the raid into the structure.\n* Should the entire squad perish within the range of Stratagem Jammer, the [[Reinforce]] stratagem will be automatically deployed by the edge of the jamming radius, towards the center of the mission area.\n* A smart tactic some Helldivers use is to bait a [[Cannon Turret|Cannon Turrets]], [[Annihilator Tank|Annihilator Tanks]], [[Factory Strider|Factory Striders]], or [[Vox Engine|Vox Engines]] into shooting them with the structure behind them, but taking cover immediately so they will shoot and destroy the structure as their powerful lasers have a demolition force of 50.\n** The [[Eagle 500kg Bomb]], [[Orbital Precision Strike]], [[Orbital 120mm HE Barrage]], [[Orbital 380mm HE Barrage]], or [[Orbital Walking Barrage]] can be used destroy the jammer when it is deactivated.\n*** Additionally The [[Orbital Gas Strike]], [[Orbital EMS Strike]], [[Orbital Smoke Strike]] and [[Orbital Railcannon Strike]] all have the capacity to destroy the jammer, requiring a direct hit.\n** SEAF Artillery: Mini-Nuke, High-Yield Explosive, Explosive, Napalm, Smoke and Static Field as well as the [[B-100 Portable Hellbomb]] can destroy the jammer '''without''' disabling it.\n*** Napalm, Smoke & Static Field require a direct hit.\n* If any stratagem balls are thrown into the range of the jammer, they will neither activate nor enter into a cooldown period.\n* Throwing the Stratagem ball of the [[Orbital Walking Barrage]] just outside of the Jammer's radius will still allow the barrages shells to land inside the jammers range. If the barrage is faced directly towards the jammer, it is even possible to destroy it (albeit slowly) with the last few shells.\n* It is possible for multiple jammers to spawn within the 150m jamming range of each other. This means that to destroy them, you must interact with the terminals of both of them to disable both jammers before Helldivers can call in a NUX-223 Hellbomb to destroy them, use a [[B-100 Portable Hellbomb]] to destroy one so the other can be destroyed by either mission hellbomb or other demo 50 stratagems or use SEAF Artillery.\n\n== Trivia ==\n* The stratagem disabling effect applied while under its area of influence is called \"Electronic Countermeasures\", a name shared with a [[Electronic Countermeasures|retired Operation Modifier]]. \n\n== Gallery ==\n<gallery>\nStratagem Jammer OO Structure.png|A {{PAGENAME}}\nStratagem Jammer OO Far.png|A ",
+  "Gunship Facility": "{{Infobox Mission\n | image_optional = {{PAGENAME}} TO Icon.svg\n | faction_optional =  Automaton\n | min_difficulty_optional =   6\n | max_difficulty_optional =   10\n\n }}\n{{Infobox Structure\n|image =\n|faction = Automaton\n|min_difficulty = {{Difficulty|6}}\n}}\nThe '''{{PAGENAME}}''' is an Optional Objective contained within an Automaton structure. For as long as it is standing, it will continuously spawn [[Gunship|Gunships]]. To complete the Objective, Helldivers must destroy the structure. \n\n== Objective Steps ==\n* Find and destroy any active Automaton Gunship Fabricators\n** Helldivers must approach the site, call down, arm and defend the [[Hellbomb]] until the structure is destroyed.\n* Reward: {{Currency|Requisition Slips|200}} & {{Currency|Experience|50}}\n\n== Tactical Information ==\n* As long as a Helldiver remains within 150-meter radius, each operational Gunship Facility tower spawns up to two Gunships every 60-seconds up to a maximum of four active Gunships per tower.\n* The Gunship Facility requires a demolition force of 60 to be destroyed.\n** All Eagle and Orbital stratagems are ineffective and will not damage nor destroy Gunship Facilities.\n** [[SEAF Artillery#Artillery Shells|SEAF Artillery: Mini Nuke]], [[B-100 Portable Hellbomb]] or [[NUX-223 Hellbomb]] can be used to destroy it.\n*** Note that the Gunship Facility '''MUST''' be within the '''17 meter''' inner explosion radius to maximize demolition force as it falls-off in the outer radius.\n*** With careful positioning, it is possible to destroy dual Gunship Facility sites with a singular Hellbomb as long as they are both within the 17 meter radius.\n\n== Gallery ==\n<gallery>\nFile:Gun Ship Facility 2.png|Gun Ship Facility render. ''Made by dark728''\nFile:Gun Ship Facility.png|Gun Ship Facility render. ''Made by dark728''\n\nFile:HellbombInnerBlastIndicatorMultipleGunshipFacilities20250106220852932.png|Minimap showing the inner blast radius of Hellbomb to destroy both Gunhip Facilities in a single blast provided the stratagem is placed and detonates in the middle of this circle.\n</gallery>\n\n== Change History ==\n{{Change History Head}}\n{{Change History Update|1.006.003|changes=\nFix\n* Gunship Facilities are now properly destroyed by the democratic might of the Hellbomb\n}}\n{{Change History Update|1.000.300|changes=\nChange\n* Gunship spawners now have a much lower cap on how many gunships they can have active at the same time\n}}\n{{Change History Update|1.000.200|changes=\nUndocumented Change\n* Added to the game\n}}\n\n[[Category:Automatons]]\n[[Category:Missions]]\n[[Category:Optional Objectives]]\n{{Nav Enemy}}\n{{Nav Objective}}\n__FORCETOC__",
+  "Grounded Warp Ship": "{{DisambigMsg|{{PAGENAME}} as a structure|the flying enemy|Warp Ship}}\n{{Infobox Structure\n| image = Warp Ship Bay Door.png\n| faction = Illuminate\n| class = \n| min_difficulty = {{Difficulty|1}}\n| health = 5,000\n| demo_force =Bay Door: 20<br/>Other Parts: 50\n| badr=Yes for All Parts\n}}\n\nThe '''Grounded Warp Ship''' is an enemy emplacement created by the [[Illuminate]]. \n\n== Anatomy ==\n{{Anatomy Table|\n  {{Anatomy Row\n    | part_name = Main\n    | health = 5,000\n    | av = 5\n    | front_image = Warp Ship Fuselage.png\n    | durability = 100%\n    | percent_to_main = -\n\t| dmg_cap_main = -\n    | bleed = None\n    | fatal = Yes\n    | exdr = -150%\n    | df=50 \n  }}\n{{Anatomy Row\n    | part_name = Inner\n    | health = -\n    | av = 0\n    | front_image = Warp Ship Door.png\n    | durability = N/A\n    | percent_to_main = -\n\t| dmg_cap_main = -\n    | bleed = None\n    | fatal = Yes\n    | exdr = 0%\n    | df=20 if {{Damage|Explosion||notext}}\n  }}\n  {{Anatomy Row\n    | part_name = Shield\n    | health = 2,500\n    | av = 0\n    | front_image = Warp Ship Shield.png\n    | durability = 0%\n    | percent_to_main = 0%\n\t| dmg_cap_main = -\n    | bleed = None\n    | fatal = No\n    | exdr = 0%\n    | df=50 \n}}\n|df = yes}}\n\n== Tactical Information ==\n*Warp Ships come in three variants: Grounded, Airborne, and Landing. Grounded Warp Ships appear as enemy spawners inside Illuminate outposts.\n** Information regarding the latter two variants can be found on the [[Warp Ship]] page.\n* Grounded Warp Ships can be demolished via bay door by using grenades, primary and [[Support Weapons|support weapons]] with a '''minimum''' demolition force of '''20''' but '''must''' be ''explosive'', or from the exterior by using offensive stratagems with a demolition force of '''50'''.\n** Grenades with a longer fuse time may need to be \"cooked\" to directly detonate at the Ship's bay doors, or else they bounce off and slide down the door's ramp instead.\n*** If the shield is restored while the explosive is already inside, the shield prevents the demolition.\n** The Warp Ship's shield color indicates its current health pool. At full capacity, they glow a neon blue color, and as it is being depleted, the shield begins to vibrate and turn a purple hue. Their shields recharge after a 15 second delay when depleted. The energy shields are able to regenerate if unbroken in a sufficient amount of time, regenerating 200hp/s and reaching full capacity after a few seconds.\n*** It is recommended to use weapons with high RPM and large magazine capacity in order to not be interrupted by a reload in order to destroy the energy shields. Notable mentions include the [[LAS-16 Sickle]] for its ability to destroy the shields without consuming ammo, or any of the five [[Weapons#Support Weapons|Machine Gun]] support weapons for their consistent rapid fire and large magazines.\n** An [[Orbital Gas Strike]], [[Orbital Laser]], [[Orbital Precision Strike]], [[Orbital Railcannon Strike]], [[Eagle 500kg Bomb]], a hit or explosion from a [[Orbital 120mm HE Barrage|120mm]]/[[Orbital 380mm HE Barrage|380mm]]/[[Orbital Walking Barrage|Walking]] Barrage shot or [[SEAF Artillery]] shot as well as sustained fire from a [[Orbital Gatling Barrage]] will destroy the Warp Ship even if its shields are activated. Throw the Stratagem Ball onto the loading ramp near the bay doors for certain destruction (especially with the Precision Strike) as attempting to throw it beneath or near it is inconsistent.\n*** SEAF Artillery: Smoke, Static, and Napalm must be a direct hit as their explosions do not have sufficient demolition force to destroy with AoE and shields '''MUST''' be down.\n*** Due to its rapid-fire nature, the Orbital Gatling barrage will take down the Warp Ship faster if the shield is down. As previously stated, however, this is not required.\n* Grounded Warp Ship can also be destroyed by conventional anti-tank weaponry, though they're more durable than the airborne variants.\n* A single [[G-123 Thermite]] grenade, [[B/MD C4 P",
+  "Monolith": "{{Infobox Structure\n|image = Monolith POI.png\n|image_caption = The '''{{PAGENAME}}''' is a large tower made by The Illuminate.\n|min_difficulty =\n|faction = Illuminate\n|demo_force = 60\n}}\n{{Quote|Strange Illuminate monoliths seem to be creating fields of negative energy.  We do not understand their purpose or their true nature.  That is why they must be destroyed.|[[Free Colony]] Mission Briefing}}\nThe '''Monolith ''' appears to be a towering machine with a ring in the base of it. This tower pulses blue lights up the tower at set times along with a sound effect.\n\n== Tactical Information ==\n* Appears during [[Free Colony]] Missions.\n* Destruction of the Monolith requires a demolition force of '''60'''. The most sure way to deliver this demolition force is with a [[NUX-223 Hellbomb]], [[B-100 Portable Hellbomb]] or [[SEAF Artillery]] Mini-Nuke when placed within the 17-meter inner blast radius.\n\n== Trivia ==\n* Helldivers can touch the Monolith.\n**Doing so will kill them by \"Unknown Forces\" unless they have explosion resistance.\n\n==Gallery==\n<gallery>\nMonolith_Active.png|Angled View Of an Active Monolith\nMonolith_Park_2.png|Monolith In a Park From Farther Away\nMonolith_Park.png| Monolith In a Park\nMonolith_Writing.png|Clear View of the Writing on The Monolith.  \n</gallery>\n\n{{Nav POI}}\n{{Nav Objective}}\n{{Nav Enemy}}\n[[Category:Locations]]\n[[Category:Optional Objectives]]\n[[Category:Illuminate]]\n[[Category:Enemies]]\n__FORCETOC__"
+ }
+}

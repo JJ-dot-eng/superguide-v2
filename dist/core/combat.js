@@ -6,6 +6,7 @@
 // pool runs out, or the part breaks without killing. Missing data is never
 // read as zero: anything unverified yields `hits: null` with a reason code.
 // Rules follow https://helldivers.wiki.gg/wiki/Damage.
+import { L } from './i18n.js';
 
 const EPSILON = 1e-9;
 const MAX_HITS = 20000;
@@ -26,7 +27,7 @@ export function explosionsOf(attack) {
   if (attack.explosions) return attack.explosions;
   if (attack.explosion === 0) return [];
   return [{
-    id: 'explosion', name: attack.explosionName || '폭발', standard: attack.explosion,
+    id: 'explosion', name: attack.explosionName || L('폭발', 'Explosion'), standard: attack.explosion,
     durable: Object.hasOwn(attack, 'explosionDurable') ? attack.explosionDurable : attack.explosion,
     ap: attack.explosionAp, innerRadius: attack.innerRadius, radius: attack.radius,
   }];
@@ -96,13 +97,13 @@ export function withHitAssumption(mode, { hitCount = '',
   if (!valid) return { ...mode, events: undefined, assumption: undefined };
   const event = (name, attack, times, directHit) => ({ name, attack, times, directHit });
   const events = ['arcs', 'pellets'].includes(kind)
-    ? [event(kind === 'arcs' ? '전격' : '명중 탄체·펠릿', mode, count, true)]
+    ? [event(kind === 'arcs' ? L('전격', 'Arcs') : L('명중 탄체·펠릿', 'Projectiles/pellets hit'), mode, count, true)]
     : kind === 'shrapnel'
-      ? [event('주탄·폭발', mode, 1, mode.delivery !== 'explosive'),
-        ...(count === 0 ? [] : [event('명중 파편', mode.bomblet, count, true)])]
+      ? [event(L('주탄·폭발', 'Main projectile/explosion'), mode, 1, mode.delivery !== 'explosive'),
+        ...(count === 0 ? [] : [event(L('명중 파편', 'Fragments hit'), mode.bomblet, count, true)])]
     : [
-      ...(primaryHit === 'none' ? [] : [event('주탄', mode, 1, primaryHit === 'direct')]),
-      ...(count === 0 ? [] : [event('자탄', mode.bomblet, count, bombletDirect)]),
+      ...(primaryHit === 'none' ? [] : [event(L('주탄', 'Main projectile'), mode, 1, primaryHit === 'direct')]),
+      ...(count === 0 ? [] : [event(L('자탄', 'Bomblets'), mode.bomblet, count, bombletDirect)]),
     ];
   return { ...mode, events, assumption: { count,
     primaryHit: kind === 'shrapnel' ? mode.delivery === 'explosive' ? 'blast' : 'direct' : primaryHit,
@@ -117,7 +118,7 @@ const assumeCap = (part, capped) => ({
   ...(part.capUnverified && part.overflowCap == null ? { overflowCap: capped } : {}),
   ...(part.next ? { next: assumeCap(part.next, capped) } : {}),
 });
-const CAP_NOTE = '본체 전달 상한은 자료 미확인입니다. 상한 적용 여부가 표시 횟수와 결과에 영향을 주지 않는 경우만 계산했습니다.';
+const CAP_NOTE = L('본체 전달 상한은 자료 미확인입니다. 상한 적용 여부가 표시 횟수와 결과에 영향을 주지 않는 경우만 계산했습니다.', 'The damage cap to main is unverified. Only cases where the cap does not change the count or the result were calculated.');
 
 /**
  * @returns {{ target, stages, hits: number|null, outcome: string, via?: 'part'|'main',

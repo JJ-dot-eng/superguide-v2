@@ -2,6 +2,7 @@
 // and input schema match the previous site so existing agent setups keep working.
 import { categories, apBands, stratagems } from '../core/catalog.js';
 import { search, stratagemFields } from '../core/search.js';
+import { L, T } from '../core/i18n.js';
 
 const PENETRATION = { all: '', tank: 'tank', heavy: 'heavy', medium: 'medium', light: 'light', none: 'utility', unknown: 'unknown' };
 
@@ -10,8 +11,8 @@ export function registerCatalogTool(ctx) {
   window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
   return Promise.resolve(document.modelContext.registerTool({
     name: 'filter_stratagem_catalog',
-    title: '스트라타젬 도감 필터',
-    description: '종류, 검색어, 관통 등급으로 화면의 스트라타젬 도감 목록을 좁힙니다.',
+    title: L('스트라타젬 도감 필터', 'Stratagem catalogue filter'),
+    description: L('종류, 검색어, 관통 등급으로 화면의 스트라타젬 도감 목록을 좁힙니다.', 'Narrows the on-screen stratagem list by category, search text and armor penetration band.'),
     inputSchema: {
       type: 'object',
       properties: {
@@ -24,18 +25,18 @@ export function registerCatalogTool(ctx) {
     annotations: { readOnlyHint: false, untrustedContentHint: true },
     execute(input) {
       if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(key => !['category', 'query', 'penetration'].includes(key))) {
-        throw new Error('필터는 category, query, penetration만 포함한 객체여야 합니다.');
+        throw new Error(L('필터는 category, query, penetration만 포함한 객체여야 합니다.', 'The filter must be an object with only category, query and penetration.'));
       }
       const { category = 'all', query = '', penetration = 'all' } = input;
       if (!(category === 'all' || categories.some(item => item.id === category)) || !(penetration in PENETRATION) || typeof query !== 'string' || query.length > 200) {
-        throw new Error('유효하지 않은 종류, 검색어 또는 관통 등급입니다.');
+        throw new Error(L('유효하지 않은 종류, 검색어 또는 관통 등급입니다.', 'Invalid category, query or penetration band.'));
       }
       const c = category === 'all' ? '' : category;
       const ap = PENETRATION[penetration];
       ctx.go({ view: 'arsenal', query: { c, ap, q: query } });
       const band = apBands.find(item => item.id === ap);
       const items = search(stratagems.filter(item => (!c || item.category === c) && (!band || band.test(item))), query, stratagemFields);
-      return { count: items.length, items: items.map(({ id, name, category: kind, ap: value }) => ({ id, name, category: kind, ap: value })) };
+      return { count: items.length, items: items.map(({ id, name, category: kind, ap: value }) => ({ id, name: T(name), category: kind, ap: value })) };
     },
   }, { signal: lifecycle.signal }));
 }

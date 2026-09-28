@@ -4,6 +4,7 @@ import { factionSides, factionGuides } from '../data/faction-data.js';
 import { stratagems, stratagemById } from './catalog.js';
 import { compareAttacks, resolveAttack } from './compare.js';
 import { enemySize, isLargeEnemy } from './enemy-size.js';
+import { L } from './i18n.js';
 
 // Common light/medium/heavy/air threats, plus the final (usually heavy) unit
 // in each existing variant guide. This is a documented checklist, not spawn odds.
@@ -90,7 +91,7 @@ export function loadoutCoverage(loadout, factionId, options = {}) {
     const attack = resolveAttack(slot.weaponId);
     return attack.profile ? [] : [{ ...slot, id: slot.weaponId, reason: attack.unsupported }];
   });
-  if (!faction) return { faction: null, rows: [], gaps: [], notComputable, reason: '알 수 없는 진영 ID입니다.' };
+  if (!faction) return { faction: null, rows: [], gaps: [], notComputable, reason: L('알 수 없는 진영 ID입니다.', 'Unknown faction ID.') };
   const rows = faction.enemyIds.map(enemyId => {
     const enemy = enemyById.get(enemyId);
     const perSlot = slots.map(slot => {
@@ -101,7 +102,7 @@ export function loadoutCoverage(loadout, factionId, options = {}) {
     const best = verified[0] || null;
     return { enemyId, enemyName: enemy?.name || enemyId, enemy, best, status: best ? 'route' : 'gap', perSlot,
       size: enemySize(enemyId), isLarge: isLargeEnemy(enemyId), oneShot: best?.oneShot ?? false,
-      reason: best ? null : '편성 내 단일 무기의 확인된 처치 경로가 없습니다. 가정·자료 미확인 결과는 공백으로 남깁니다.' };
+      reason: best ? null : L('편성 내 단일 무기의 확인된 처치 경로가 없습니다. 가정·자료 미확인 결과는 공백으로 남깁니다.', 'No single weapon in this loadout has a verified kill route. Assumed or unverified results are left as gaps.') };
   });
   // Stable partition: large/massive enemies without a one-hit answer first;
   // keep guide order within both groups and preserve it entirely by default.

@@ -5,6 +5,7 @@ import { weaponProfiles, unsupportedWeapons } from '../data/combat-data.js';
 import { solveMatchup, withHitAssumption, isFatal, spearCannotLock } from './combat.js';
 import { solveAccumulation } from './accumulate.js';
 import { assumptionSummary } from './explain.js';
+import { L } from './i18n.js';
 
 const personalById = new Map(personalWeapons.map(weapon => [weapon.id, weapon]));
 const own = (object, id) => Object.hasOwn(object, id) ? object[id] : null;
@@ -13,7 +14,7 @@ export function resolveAttack(weaponId) {
   const kind = personalById.has(weaponId) ? 'personal' : weapon ? 'support' : null;
   const profile = kind === 'personal' ? own(personalProfiles, weaponId) : weapon?.category === 'support' ? own(weaponProfiles, weaponId) : null;
   const unsupported = profile ? null : kind === 'personal' ? own(personalUnsupported, weaponId)
-    : own(unsupportedWeapons, weaponId) || (weapon ? '지원 무기 외 스트라타젬은 전투 계산 대상이 아닙니다.' : '알 수 없는 무기 ID입니다.');
+    : own(unsupportedWeapons, weaponId) || (weapon ? L('지원 무기 외 스트라타젬은 전투 계산 대상이 아닙니다.', 'Only support weapon stratagems are combat-calculated.') : L('알 수 없는 무기 ID입니다.', 'Unknown weapon ID.'));
   return { weapon, kind, profile, unsupported };
 }
 
@@ -38,7 +39,7 @@ function matchup(enemy, rawMode, options) {
     const accumulated = single.best ? null : solveAccumulation(enemy, mode, combatOptions);
     // A synthetic target distinguishes a sequence from any single hitbox.
     const accumulation = accumulated ? { ...accumulated,
-      target: { id: 'accumulation', name: '여러 부위 순차 타격' }, stages: [],
+      target: { id: 'accumulation', name: L('여러 부위 순차 타격', 'Several parts in turn') }, stages: [],
       via: 'main', conditional: false } : null;
     values.set(key, { mode, ...single, accumulation });
   }
@@ -70,10 +71,10 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       defaulted: false, defaultAssumed: null, fragmentsExcluded: false, allPelletsAssumed: false,
       shieldAssumed: Boolean(enemy?.shield && options.shieldCleared), verified: false, oneShot: false, magazinesNeeded: null,
     };
-    if (!rawMode || rawMode.unsupported || !resolved.profile) return { ...base, reason: base.reason || '선택한 발사 모드를 찾을 수 없습니다.' };
-    if (!enemy?.parts?.length || !enemy.main) return { ...base, reason: '적의 부위·본체 수치가 없어 계산하지 못합니다.' };
-    if (options.partId && !parts.some(part => part.id === options.partId)) return { ...base, status: 'none', reason: '선택한 부위를 찾을 수 없습니다.' };
-    if (spearCannotLock(enemy, rawMode)) return { ...base, reason: '이 적은 해당 유도 무기의 확인된 락온 대상이 아닙니다.' };
+    if (!rawMode || rawMode.unsupported || !resolved.profile) return { ...base, reason: base.reason || L('선택한 발사 모드를 찾을 수 없습니다.', 'The selected firing mode was not found.') };
+    if (!enemy?.parts?.length || !enemy.main) return { ...base, reason: L('적의 부위·본체 수치가 없어 계산하지 못합니다.', 'No part or main values for this enemy, so it cannot be calculated.') };
+    if (options.partId && !parts.some(part => part.id === options.partId)) return { ...base, status: 'none', reason: L('선택한 부위를 찾을 수 없습니다.', 'The selected part was not found.') };
+    if (spearCannotLock(enemy, rawMode)) return { ...base, reason: L('이 적은 해당 유도 무기의 확인된 락온 대상이 아닙니다.', 'This enemy is not a verified lock-on target for this guided weapon.') };
     const requested = options.assume?.[`${weaponId}:${rawMode.id}`] || options.assume || {};
     const defaulted = (requested.hitCount == null || requested.hitCount === '') && Number.isFinite(rawMode.hitCondition?.default);
     const assume = defaulted ? { ...requested, hitCount: rawMode.hitCondition.default } : requested;
@@ -96,11 +97,11 @@ export function compareAttacks(enemy, entries = [], options = {}) {
       && result.mode.assumption?.count === rawMode.hitCondition.max;
     const needsAssumption = Boolean(rawMode.hitCondition) && !fragmentsExcluded && !defaultAssumed;
     const status = needsAssumption ? 'assume' : route?.hits != null ? 'route' : 'none';
-    const reason = needsAssumption ? result.mode.assumption ? '선택한 명중 수 가정에 따른 결과입니다.' : '부위에 맞는 탄체·펠릿·파편 수를 먼저 선택하세요.'
-      : route?.reason ? route.detail || '부위 조건 또는 일부 수치가 미확인입니다.'
-        : !route ? result.rows.find(row => row.detail)?.detail || '확인된 처치 경로가 없습니다.'
+    const reason = needsAssumption ? result.mode.assumption ? L('선택한 명중 수 가정에 따른 결과입니다.', 'Result for the chosen hit assumption.') : L('부위에 맞는 탄체·펠릿·파편 수를 먼저 선택하세요.', 'First pick how many projectiles, pellets or fragments hit the part.')
+      : route?.reason ? route.detail || L('부위 조건 또는 일부 수치가 미확인입니다.', 'A part condition or some values are unverified.')
+        : !route ? result.rows.find(row => row.detail)?.detail || L('확인된 처치 경로가 없습니다.', 'No verified kill route.')
           : route.accumulated ? route.summary
-          : fragmentsExcluded ? `파편 피해를 제외한 ${rawMode.delivery === 'explosive' ? '폭발' : '직격·폭발'}만으로 계산합니다.`
+          : fragmentsExcluded ? L(`파편 피해를 제외한 ${rawMode.delivery === 'explosive' ? '폭발' : '직격·폭발'}만으로 계산합니다.`, `Calculated from the ${rawMode.delivery === 'explosive' ? 'explosion' : 'impact and explosion'} only, without shrapnel damage.`)
             : defaultAssumed ? assumptionSummary(result.mode) : null;
     const magazine = Object.hasOwn(rawMode, 'magazine') ? rawMode.magazine : resolved.weapon?.magazine;
     const shotsPerMagazine = Number.isFinite(magazine) && magazine > 0 ? Math.floor(magazine / (rawMode.ammoPerShot || 1)) : null;

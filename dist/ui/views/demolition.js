@@ -5,7 +5,8 @@ import { wikiIcons } from '../../data/wiki-icons.js';
 import { stratagems, stratagemById, categories, categoryOf } from '../../core/catalog.js';
 import { solveDemolition, structureOverview, forceRange } from '../../core/demolition.js';
 import { search, stratagemFields } from '../../core/search.js';
-import { num } from '../../core/explain.js';
+import { num, unitText } from '../../core/explain.js';
+import { L, T } from '../../core/i18n.js';
 import { html, raw, render, $, $$, icon, badge, external } from '../dom.js';
 
 const MAX_FORCE = 60;
@@ -18,37 +19,38 @@ const state = { by: 'structure', structure: null, weapon: null, mode: null, shie
 
 // --- Text -----------------------------------------------------------------------------
 const OUTCOME = {
-  demolish: { label: '철거 가능', tone: 'kill' },
-  health: { label: '체력 파괴', tone: 'health' },
-  conditional: { label: '조건부', tone: 'conditional' },
-  blocked: { label: '불가', tone: 'blocked' },
-  unknown: { label: '자료 미확인', tone: 'unknown' },
+  demolish: { label: L('철거 가능', 'Demolishes'), tone: 'kill' },
+  health: { label: L('체력 파괴', 'Via health'), tone: 'health' },
+  conditional: { label: L('조건부', 'Conditional'), tone: 'conditional' },
+  blocked: { label: L('불가', 'Cannot'), tone: 'blocked' },
+  unknown: { label: L('자료 미확인', 'Unverified'), tone: 'unknown' },
 };
 const REASON = {
-  'no-data': '이 공격의 철거 수치와 시설 피해가 아직 확인되지 않았습니다. 파괴할 수 없다는 뜻은 아닙니다.',
-  'force-unknown': '철거력이 미확인이거나 자료끼리 엇갈려 판정하지 않았습니다.',
-  'health-unknown': '철거력은 부족합니다. 체력으로 부술 수 있는 시설이지만 이 공격의 피해가 확인되지 않았습니다.',
-  'blocked-armor': '철거력이 모자라고, 시설 장갑을 뚫는 피해도 없습니다.',
-  'blocked-force': '철거력이 기준에 못 미칩니다. 여러 발의 철거력은 합쳐지지 않습니다.',
+  'no-data': L('이 공격의 철거 수치와 시설 피해가 아직 확인되지 않았습니다. 파괴할 수 없다는 뜻은 아닙니다.', 'Its demolition force and structure damage are not verified yet. That does not mean it cannot destroy it.'),
+  'force-unknown': L('철거력이 미확인이거나 자료끼리 엇갈려 판정하지 않았습니다.', 'Demolition force is unverified or sources disagree, so no verdict.'),
+  'health-unknown': L('철거력은 부족합니다. 체력으로 부술 수 있는 시설이지만 이 공격의 피해가 확인되지 않았습니다.', 'Not enough demolition force. The structure can be destroyed through its health, but this attack\'s damage is unverified.'),
+  'blocked-armor': L('철거력이 모자라고, 시설 장갑을 뚫는 피해도 없습니다.', 'Not enough demolition force, and no damage that gets through the structure\'s armor.'),
+  'blocked-force': L('철거력이 기준에 못 미칩니다. 여러 발의 철거력은 합쳐지지 않습니다.', 'Demolition force falls short. Force from several hits does not add up.'),
 };
 const forceText = (value, unknown) => {
-  if (unknown) return '미확인';
+  if (unknown) return L('미확인', 'Unverified');
   const force = forceRange(value);
-  return !force ? '없음' : force.min === force.max ? String(force.min) : `${force.min}–${force.max} (자료 불일치)`;
+  return !force ? L('없음', 'None') : force.min === force.max ? String(force.min) : L(`${force.min}–${force.max} (자료 불일치)`, `${force.min}–${force.max} (sources disagree)`);
 };
 const conditionText = (condition, profile) => ({
-  opening: () => `${condition.route.name}에 폭발을 넣어야 합니다.`,
-  aim: () => profile.note || '실제 명중·기폭 조건을 확인하세요.',
-  shield: () => '워프 함선의 보호막을 먼저 벗겨야 합니다. 보호막 제거에 드는 공격은 제외합니다.',
-  jammer: () => '교란기를 끈 뒤에만 호출할 수 있습니다.',
+  opening: () => L(`${condition.route.name}에 폭발을 넣어야 합니다.`, `The explosion has to go into the ${T(condition.route.name)}.`),
+  aim: () => profile.note || L('실제 명중·기폭 조건을 확인하세요.', 'Check the actual hit and detonation conditions.'),
+  shield: () => L('워프 함선의 보호막을 먼저 벗겨야 합니다. 보호막 제거에 드는 공격은 제외합니다.', 'The Warp Ship\'s shield has to come down first. Attacks spent on the shield are not counted.'),
+  jammer: () => L('교란기를 끈 뒤에만 호출할 수 있습니다.', 'Can only be called in once the jammer is off.'),
 })[condition.kind]();
 
 function howText(result) {
   if (result.method === 'health') {
     const openings = result.routes.filter(row => row.verdict === 'pass' && row.route.opening).map(row => row.route.name);
-    return `${num(result.hits)}${result.unit}로 체력 파괴${openings.length ? ` · 또는 ${openings.join('·')}에 폭발 1${result.unit}` : ''}`;
+    return L(`${num(result.hits)}${result.unit}로 체력 파괴${openings.length ? ` · 또는 ${openings.join('·')}에 폭발 1${result.unit}` : ''}`,
+      `Destroyed through health in ${num(result.hits)}${unitText(result.unit, result.hits)}${openings.length ? ` · or one explosive ${unitText(result.unit, 1).trim()} into the ${openings.map(T).join(' / ')}` : ''}`);
   }
-  if (result.method === 'force') return `${result.route.name}에 ${result.via === 'explosion' ? '폭발' : '직접 명중'} 1${result.unit}로 철거`;
+  if (result.method === 'force') return L(`${result.route.name}에 ${result.via === 'explosion' ? '폭발' : '직접 명중'} 1${result.unit}로 철거`, `One ${result.via === 'explosion' ? 'explosion' : 'direct hit'} on the ${T(result.route.name)} demolishes it`);
   return REASON[result.reason] || '';
 }
 
@@ -61,16 +63,16 @@ const structureImage = (structure, size = 44) => {
 // --- Pieces ---------------------------------------------------------------------------------
 function forceScale(structure) {
   return html`<div class="force-scale">${structure.routes.map(route => html`<div class="force-row">
-    <span>${route.name}${route.explosiveOnly ? html` <span class="faint">· 내부 폭발만</span>` : ''}</span>
-    <span class="force-bar" role="img" aria-label="철거력 ${route.threshold} 필요"><i style="width:${route.threshold / MAX_FORCE * 100}%"></i></span>
+    <span>${route.name}${route.explosiveOnly ? html` <span class="faint">· ${L('내부 폭발만', 'explosions inside only')}</span>` : ''}</span>
+    <span class="force-bar" role="img" aria-label="${L(`철거력 ${route.threshold} 필요`, `Needs demolition force ${route.threshold}`)}"><i style="width:${route.threshold / MAX_FORCE * 100}%"></i></span>
     <b class="num">${route.threshold}</b></div>`)}</div>`;
 }
 
 function conditionToggles(needShield, needJammer) {
   if (!needShield && !needJammer) return '';
   return html`<div style="display:grid;gap:8px">
-    ${needShield ? html`<label class="toggle"><input type="checkbox" data-opt="shieldCleared" ${state.shieldCleared ? raw('checked') : ''}><div><b>워프 함선 보호막을 이미 벗겼다고 가정</b><span>켜지 않으면 보호막을 통과하지 못하는 공격은 ‘조건부’로 표시합니다.</span></div></label>` : ''}
-    ${needJammer ? html`<label class="toggle"><input type="checkbox" data-opt="jammerDisabled" ${state.jammerDisabled ? raw('checked') : ''}><div><b>교란기를 이미 껐다고 가정</b><span>교란기가 켜져 있으면 궤도·이글 같은 호출 공격은 쓸 수 없습니다.</span></div></label>` : ''}
+    ${needShield ? html`<label class="toggle"><input type="checkbox" data-opt="shieldCleared" ${state.shieldCleared ? raw('checked') : ''}><div><b>${L('워프 함선 보호막을 이미 벗겼다고 가정', 'Assume the Warp Ship shield is already down')}</b><span>${L('켜지 않으면 보호막을 통과하지 못하는 공격은 ‘조건부’로 표시합니다.', 'If off, attacks that cannot get through the shield are marked “Conditional”.')}</span></div></label>` : ''}
+    ${needJammer ? html`<label class="toggle"><input type="checkbox" data-opt="jammerDisabled" ${state.jammerDisabled ? raw('checked') : ''}><div><b>${L('교란기를 이미 껐다고 가정', 'Assume the jammer is already off')}</b><span>${L('교란기가 켜져 있으면 궤도·이글 같은 호출 공격은 쓸 수 없습니다.', 'While the jammer is on, called-in attacks such as Orbitals and Eagles cannot be used.')}</span></div></label>` : ''}
   </div>`;
 }
 
@@ -79,27 +81,27 @@ function structurePanel(structure) {
   return html`<section class="panel" style="padding:18px;display:grid;gap:14px" data-faction="${structure.faction}">
     <div style="display:flex;gap:14px;align-items:center">${structureImage(structure, 56)}<div><span class="faction-tag">${structure.faction}</span><h2 style="font-size:22px;font-weight:800">${structure.name}</h2></div></div>
     <p class="muted">${structure.tip}</p>
-    <div><div class="note" style="margin-bottom:6px;font-weight:650;color:var(--text)">필요한 철거력 <span class="faint" style="font-weight:500">· 한 번의 명중·폭발 기준, 합산 안 됨</span></div>${forceScale(structure)}</div>
-    ${h ? html`<p class="note">체력으로도 부술 수 있습니다: <b style="color:var(--text)">체력 ${num(h.hp)}</b> · 장갑 ${h.armor} · 내구도 ${h.durability}%${h.exdr < 0 ? ` · 폭발 피해 ×${num(1 - h.exdr / 100)}` : ''}</p>` : ''}
+    <div><div class="note" style="margin-bottom:6px;font-weight:650;color:var(--text)">${L('필요한 철거력', 'Demolition force needed')} <span class="faint" style="font-weight:500">· ${L('한 번의 명중·폭발 기준, 합산 안 됨', 'per single hit or explosion; does not add up')}</span></div>${forceScale(structure)}</div>
+    ${h ? html`<p class="note">${L(html`체력으로도 부술 수 있습니다: <b style="color:var(--text)">체력 ${num(h.hp)}</b> · 장갑 ${h.armor} · 내구도 ${h.durability}%${h.exdr < 0 ? ` · 폭발 피해 ×${num(1 - h.exdr / 100)}` : ''}`, html`It can also be destroyed through health: <b style="color:var(--text)">health ${num(h.hp)}</b> · armor ${h.armor} · durability ${h.durability}%${h.exdr < 0 ? ` · explosion damage ×${num(1 - h.exdr / 100)}` : ''}`)}</p>` : ''}
     ${structure.note ? html`<p class="note">${structure.note}</p>` : ''}
-    <p class="sources">${external(structure.source, '시설 철거 조건')}${structure.healthSource ? external(structure.healthSource, '시설 체력') : ''}</p>
+    <p class="sources">${external(structure.source, L('시설 철거 조건', 'Demolition requirements'))}${structure.healthSource ? external(structure.healthSource, L('시설 체력', 'Structure health')) : ''}</p>
   </section>`;
 }
 
 function structureResults(structure) {
   const overview = structureOverview(structure, stratagems, demolitionProfiles, state);
   const groups = [
-    ['demolish', '바로 철거', '한 번의 명중이나 폭발로 무너뜨립니다.'],
-    ['health', '체력으로 파괴', '여러 번 맞혀 체력을 깎아 부숩니다.'],
-    ['conditional', '조건부', '아래 조건을 충족해야 합니다.'],
+    ['demolish', L('바로 철거', 'Demolishes outright'), L('한 번의 명중이나 폭발로 무너뜨립니다.', 'One hit or explosion brings it down.')],
+    ['health', L('체력으로 파괴', 'Destroys through health'), L('여러 번 맞혀 체력을 깎아 부숩니다.', 'Wears its health down over several hits.')],
+    ['conditional', L('조건부', 'Conditional'), L('아래 조건을 충족해야 합니다.', 'Only if the condition below is met.')],
   ].map(([outcome, title, hint]) => ({ outcome, title, hint, entries: overview.entries.filter(entry => entry.outcome === outcome) })).filter(group => group.entries.length);
   const needJammer = structure.condition === 'jammer' && overview.entries.some(entry => entry.profile.requiresCallIn);
   return html`
     ${conditionToggles(structure.condition === 'shield', needJammer)}
-    <div class="verdict" data-tone="${overview.possible ? 'kill' : ''}"><span class="label">${structure.name} × 모든 스트라타젬</span>
-      <h3>${overview.entries.length ? html`<span class="big">${overview.possible}</span>종 바로 가능 · 조건부 ${overview.conditional}종` : '파괴할 수 있는 스트라타젬이 아직 확인되지 않았습니다'}</h3>
-      <p>철거 자료가 없는 ${overview.unknown}종(보급·이동 장비 포함)은 목록에서 뺐습니다. 파괴할 수 없다는 뜻은 아닙니다.</p></div>
-    <div class="result-groups">${groups.map(group => html`<section class="result-group"><h3>${badge(OUTCOME[group.outcome].label, OUTCOME[group.outcome].tone)} ${group.title} <span class="faint" style="font-weight:500;font-size:13px">${group.entries.length}종 · ${group.hint}</span></h3>
+    <div class="verdict" data-tone="${overview.possible ? 'kill' : ''}"><span class="label">${structure.name} × ${L('모든 스트라타젬', 'every stratagem')}</span>
+      <h3>${overview.entries.length ? L(html`<span class="big">${overview.possible}</span>종 바로 가능 · 조건부 ${overview.conditional}종`, html`<span class="big">${overview.possible}</span> work outright · ${overview.conditional} conditional`) : L('파괴할 수 있는 스트라타젬이 아직 확인되지 않았습니다', 'No stratagem is verified to destroy it yet')}</h3>
+      <p>${L(`철거 자료가 없는 ${overview.unknown}종(보급·이동 장비 포함)은 목록에서 뺐습니다. 파괴할 수 없다는 뜻은 아닙니다.`, `${overview.unknown} stratagems without demolition data (supply and mobility gear included) are left off the list. That does not mean they cannot destroy it.`)}</p></div>
+    <div class="result-groups">${groups.map(group => html`<section class="result-group"><h3>${badge(OUTCOME[group.outcome].label, OUTCOME[group.outcome].tone)} ${group.title} <span class="faint" style="font-weight:500;font-size:13px">${group.entries.length}${L('종', '')} · ${group.hint}</span></h3>
       <div class="result-list">${group.entries.map(entry => html`<a class="panel result-item" style="text-decoration:none" href="#/demolition?w=${entry.weapon.id}&m=${entry.attacks[0].mode.id}">
         <header>${weaponIcon(entry.weapon.id)}<div><b>${entry.weapon.name}</b><small>${categoryOf(entry.weapon.category).name}</small></div></header>
         <ul class="mode-lines">${entry.attacks.map(({ mode, result }) => html`<li>${entry.profile.modes.length > 1 || mode.name !== '기본 공격' ? html`<b>${mode.name}</b>` : ''}<span class="how">${howText(result)}</span>
@@ -110,7 +112,7 @@ function structureResults(structure) {
 function weaponPicker() {
   const list = search(armed, state.q, stratagemFields);
   return html`<div style="display:grid;gap:10px">
-    <label class="field">${icon('search', 16)}<span class="sr-only">스트라타젬 검색</span><input class="input" id="demo-q" type="search" placeholder="스트라타젬 검색 (예: 500, 지옥폭탄)" value="${state.q}" autocomplete="off"></label>
+    <label class="field">${icon('search', 16)}<span class="sr-only">${L('스트라타젬 검색', 'Search stratagems')}</span><input class="input" id="demo-q" type="search" placeholder="${L('스트라타젬 검색 (예: 500, 지옥폭탄)', 'Search stratagems (e.g. 500, Hellbomb)')}" value="${state.q}" autocomplete="off"></label>
     <div class="tile-grid" id="demo-weapons">${list.map(item => html`<button class="tile" type="button" data-weapon="${item.id}" aria-current="${item.id === state.weapon}">${weaponIcon(item.id, 40)}<span><b>${item.name}</b><small class="faint">${categoryOf(item.category).name}</small></span></button>`)}</div>
   </div>`;
 }
@@ -127,34 +129,34 @@ function weaponResults(weapon) {
   const conditional = rows.filter(row => row.outcome === 'conditional').length;
   const notes = [profile.note, mode.note].filter(Boolean);
   return html`<section class="panel" style="padding:16px;display:grid;gap:12px">
-      <div class="matchup-head">${weaponIcon(weapon.id, 44)}<div><h2>${weapon.name}</h2><a class="ext" href="#/arsenal/${weapon.id}">도감에서 보기</a></div>
-        ${profile.modes.length > 1 ? html`<div class="segmented" role="group" aria-label="탄종·공격">${profile.modes.map(item => html`<button type="button" data-mode-pick="${item.id}" aria-pressed="${item.id === mode.id}">${item.name}</button>`)}</div>` : ''}</div>
+      <div class="matchup-head">${weaponIcon(weapon.id, 44)}<div><h2>${weapon.name}</h2><a class="ext" href="#/arsenal/${weapon.id}">${L('도감에서 보기', 'Open in Stratagems')}</a></div>
+        ${profile.modes.length > 1 ? html`<div class="segmented" role="group" aria-label="${L('탄종·공격', 'Shell / attack')}">${profile.modes.map(item => html`<button type="button" data-mode-pick="${item.id}" aria-pressed="${item.id === mode.id}">${item.name}</button>`)}</div>` : ''}</div>
       <div class="stat-chips">
-        <div class="stat-chip"><span>${mode.directLabel || '직격'} 철거력</span><b>${forceText(mode.direct, mode.forceUnknown)}</b></div>
-        <div class="stat-chip"><span>폭발 철거력 · 중심부</span><b>${forceText(mode.explosion, mode.forceUnknown)}</b></div>
-        ${mode.damage ? html`<div class="stat-chip"><span>시설 피해 (체력 계산용)</span><b>${num(mode.damage.standard)}</b><small>폭발 ${num(mode.damage.explosion)} · AP ${mode.damage.ap}/${mode.damage.explosionAp}</small></div>` : ''}
+        <div class="stat-chip"><span>${L(`${mode.directLabel || '직격'} 철거력`, `${T(mode.directLabel) || 'Direct'} demolition force`)}</span><b>${forceText(mode.direct, mode.forceUnknown)}</b></div>
+        <div class="stat-chip"><span>${L('폭발 철거력 · 중심부', 'Blast demolition force · center')}</span><b>${forceText(mode.explosion, mode.forceUnknown)}</b></div>
+        ${mode.damage ? html`<div class="stat-chip"><span>${L('시설 피해 (체력 계산용)', 'Structure damage (for health)')}</span><b>${num(mode.damage.standard)}</b><small>${L('폭발', 'Blast')} ${num(mode.damage.explosion)} · AP ${mode.damage.ap}/${mode.damage.explosionAp}</small></div>` : ''}
       </div>
-      ${notes.length || mode.shieldBypass || mode.damage?.falloff ? html`<ul class="notes">${notes.map(note => html`<li>${note}</li>`)}${mode.shieldBypass ? html`<li>워프 함선: 본체에 닿으면 보호막을 벗기기 전에도 부술 수 있는 공격입니다.</li>` : ''}${mode.damage?.falloff ? html`<li>체력 계산은 거리 감쇠 전 최대 피해 기준입니다.</li>` : ''}</ul>` : ''}
+      ${notes.length || mode.shieldBypass || mode.damage?.falloff ? html`<ul class="notes">${notes.map(note => html`<li>${note}</li>`)}${mode.shieldBypass ? html`<li>${L('워프 함선: 본체에 닿으면 보호막을 벗기기 전에도 부술 수 있는 공격입니다.', 'Warp Ship: if it reaches the hull, this attack can destroy it even before the shield is down.')}</li>` : ''}${mode.damage?.falloff ? html`<li>${L('체력 계산은 거리 감쇠 전 최대 피해 기준입니다.', 'Health math uses full damage before falloff.')}</li>` : ''}</ul>` : ''}
     </section>
     ${conditionToggles(shown.some(row => row.structure.condition === 'shield'), profile.requiresCallIn && shown.some(row => row.structure.condition === 'jammer'))}
-    <div class="verdict" data-tone="${possible ? 'kill' : ''}"><span class="label">${weapon.name} · ${mode.name} × 시설 ${structures.length}종</span>
-      <h3><span class="big">${possible}</span>곳 바로 가능 · 조건부 ${conditional}곳</h3><p>자료 미확인 ${rows.filter(row => row.outcome === 'unknown').length}곳, 불가 ${blocked.length}곳.</p></div>
+    <div class="verdict" data-tone="${possible ? 'kill' : ''}"><span class="label">${weapon.name} · ${mode.name} × ${L(`시설 ${structures.length}종`, `${structures.length} structures`)}</span>
+      <h3>${L(html`<span class="big">${possible}</span>곳 바로 가능 · 조건부 ${conditional}곳`, html`<span class="big">${possible}</span> right away · ${conditional} conditional`)}</h3><p>${L(`자료 미확인 ${rows.filter(row => row.outcome === 'unknown').length}곳, 불가 ${blocked.length}곳.`, `${rows.filter(row => row.outcome === 'unknown').length} unverified, ${blocked.length} not possible.`)}</p></div>
     <div class="result-list">${shown.map(row => resultCard(row, profile, mode))}</div>
-    ${blocked.length ? html`<details class="disclosure"><summary>이 공격으로 부술 수 없는 시설 ${blocked.length}곳</summary><div class="result-list">${blocked.map(row => resultCard(row, profile, mode))}</div></details>` : ''}
-    <p class="sources">${external(demolitionSource, '철거력·시설 기준')}${external(profile.source || weapon.source, '공격 수치')}${external(structureDamageSource, '시설 피해 규칙')}${profile.damageSource ? external(profile.damageSource, '탄종 피해') : ''}${profile.conflictingSource ? external(profile.conflictingSource, '엇갈리는 종합표') : ''}<span>자료 확인 ${demolitionCheckedAt}</span></p>`;
+    ${blocked.length ? html`<details class="disclosure"><summary>${L(`이 공격으로 부술 수 없는 시설 ${blocked.length}곳`, `${blocked.length} structures it cannot destroy`)}</summary><div class="result-list">${blocked.map(row => resultCard(row, profile, mode))}</div></details>` : ''}
+    <p class="sources">${external(demolitionSource, L('철거력·시설 기준', 'Demolition force and structures'))}${external(profile.source || weapon.source, L('공격 수치', 'Attack stats'))}${external(structureDamageSource, L('시설 피해 규칙', 'Structure damage rules'))}${profile.damageSource ? external(profile.damageSource, L('탄종 피해', 'Shell damage')) : ''}${profile.conflictingSource ? external(profile.conflictingSource, L('엇갈리는 종합표', 'Conflicting summary table')) : ''}<span>${L('자료 확인', 'Checked')} ${demolitionCheckedAt}</span></p>`;
 }
 
 function resultCard(row, profile, mode) {
   const s = row.structure;
   const o = OUTCOME[row.outcome];
-  const verdictWord = { pass: '충족', short: '미달', unknown: '판정 보류' };
+  const verdictWord = { pass: L('충족', 'enough'), short: L('미달', 'short'), unknown: L('판정 보류', 'no verdict') };
   return html`<article class="panel result-item" data-faction="${s.faction}">
     <header>${structureImage(s, 36)}<div><b>${s.name}</b><small class="faction-tag">${s.faction}</small></div>${badge(o.label, o.tone)}</header>
     <p class="how">${howText(row)}</p>
     ${row.conditions.map(condition => html`<p style="color:var(--bleed)">· ${conditionText(condition, profile)}</p>`)}
-    <details class="disclosure"><summary>판정 근거</summary><div>
-      <ul class="notes">${row.routes.map(result => html`<li>${result.route.name}: 철거력 ${result.route.threshold}${result.route.explosiveOnly ? ' (내부 폭발)' : ''} — ${result.parts.filter(part => part.verdict !== 'n/a').map(part => `${part.kind === 'direct' ? '직접' : '폭발'} ${forceText(mode[part.kind], mode.forceUnknown)} ${verdictWord[part.verdict]}`).join(' / ')}</li>`)}</ul>
-      ${row.health ? html`<p class="note">체력 계산: 직격 ${num(row.health.direct)} + 폭발 ${num(row.health.explosion)} = ${num(row.health.total)}${row.health.hits ? ` → ${num(s.health.hp)} ÷ ${num(row.health.total)} = ${num(row.health.hits)}${row.unit} (올림)` : ' → 피해 없음'}</p>` : s.health ? html`<p class="note">체력 계산: 이 공격의 시설 피해가 확인되지 않았습니다.</p>` : ''}
+    <details class="disclosure"><summary>${L('판정 근거', 'Why')}</summary><div>
+      <ul class="notes">${row.routes.map(result => html`<li>${result.route.name}: ${L('철거력', 'demolition force')} ${result.route.threshold}${result.route.explosiveOnly ? L(' (내부 폭발)', ' (explosion inside)') : ''} — ${result.parts.filter(part => part.verdict !== 'n/a').map(part => `${part.kind === 'direct' ? L('직접', 'direct') : L('폭발', 'blast')} ${forceText(mode[part.kind], mode.forceUnknown)} ${verdictWord[part.verdict]}`).join(' / ')}</li>`)}</ul>
+      ${row.health ? html`<p class="note">${L('체력 계산', 'Health math')}: ${L('직격', 'direct')} ${num(row.health.direct)} + ${L('폭발', 'blast')} ${num(row.health.explosion)} = ${num(row.health.total)}${row.health.hits ? L(` → ${num(s.health.hp)} ÷ ${num(row.health.total)} = ${num(row.health.hits)}${row.unit} (올림)`, ` → ${num(s.health.hp)} ÷ ${num(row.health.total)} = ${num(row.health.hits)}${unitText(row.unit, row.health.hits)} (rounded up)`) : L(' → 피해 없음', ' → no damage')}</p>` : s.health ? html`<p class="note">${L('체력 계산: 이 공격의 시설 피해가 확인되지 않았습니다.', 'Health math: this attack\'s structure damage is unverified.')}</p>` : ''}
       <p class="note">${s.tip}</p>
     </div></details>
   </article>`;
@@ -168,12 +170,12 @@ function renderView() {
     const structure = structureById.get(state.structure);
     const factions = [...new Set(structures.map(item => item.faction))];
     render(body, html`<div style="display:grid;gap:14px">
-      ${factions.map(faction => html`<div><div class="picker-group" data-faction="${faction}" style="padding:0 0 6px">${faction}</div><div class="tile-grid">${structures.filter(item => item.faction === faction).map(item => html`<button class="tile" type="button" data-structure="${item.id}" aria-current="${item.id === state.structure}">${structureImage(item)}<span><b>${item.name}</b><small class="faint">철거력 ${item.routes.map(route => route.threshold).join(' / ')}${item.health ? ' · 체력' : ''}</small></span></button>`)}</div></div>`)}
-      <div id="demo-result" style="display:grid;gap:14px;margin-top:10px">${structure ? html`${structurePanel(structure)}${structureResults(structure)}` : html`<div class="empty"><h3>시설을 골라 주세요</h3><p>무엇으로 부술 수 있는지, 어디를 맞혀야 하는지 알려 드립니다.</p></div>`}</div>
+      ${factions.map(faction => html`<div><div class="picker-group" data-faction="${faction}" style="padding:0 0 6px">${faction}</div><div class="tile-grid">${structures.filter(item => item.faction === faction).map(item => html`<button class="tile" type="button" data-structure="${item.id}" aria-current="${item.id === state.structure}">${structureImage(item)}<span><b>${item.name}</b><small class="faint">${L('철거력', 'Force')} ${item.routes.map(route => route.threshold).join(' / ')}${item.health ? L(' · 체력', ' · health') : ''}</small></span></button>`)}</div></div>`)}
+      <div id="demo-result" style="display:grid;gap:14px;margin-top:10px">${structure ? html`${structurePanel(structure)}${structureResults(structure)}` : html`<div class="empty"><h3>${L('시설을 골라 주세요', 'Pick a structure')}</h3><p>${L('무엇으로 부술 수 있는지, 어디를 맞혀야 하는지 알려 드립니다.', 'See what destroys it and where to hit it.')}</p></div>`}</div>
     </div>`);
   } else {
     const weapon = stratagemById.get(state.weapon);
-    render(body, html`<div style="display:grid;gap:14px">${weaponPicker()}<div id="demo-result" style="display:grid;gap:14px;margin-top:10px">${weapon ? weaponResults(weapon) : html`<div class="empty"><h3>스트라타젬을 골라 주세요</h3><p>시설 ${structures.length}곳 각각에 대해 철거 가능 여부와 방법을 보여 드립니다.</p></div>`}</div></div>`);
+    render(body, html`<div style="display:grid;gap:14px">${weaponPicker()}<div id="demo-result" style="display:grid;gap:14px;margin-top:10px">${weapon ? weaponResults(weapon) : html`<div class="empty"><h3>${L('스트라타젬을 골라 주세요', 'Pick a stratagem')}</h3><p>${L(`시설 ${structures.length}곳 각각에 대해 철거 가능 여부와 방법을 보여 드립니다.`, `See whether and how it destroys each of the ${structures.length} structures.`)}</p></div>`}</div></div>`);
     const input = $('#demo-q', root);
     input.addEventListener('input', () => {
       state.q = input.value;
@@ -192,9 +194,9 @@ const scrollToResult = () => requestAnimationFrame(() => $('#demo-result', root)
 
 export function mount(container, context) {
   root = container; ctx = context;
-  render(root, html`<div class="page-head"><div><div class="eyebrow">Demolition</div><h1>철거</h1><p>시설마다 필요한 ‘철거력’이 있고, 한 번의 명중·폭발이 그 값을 넘어야 무너집니다. 일부 시설은 체력을 깎아서도 부술 수 있습니다.</p></div>
-    <span class="badge outline">시설 ${structures.length}곳 · 철거력 확인 ${confirmedCount}종</span></div>
-  <div class="segmented" role="group" aria-label="찾는 방법" style="margin-bottom:16px"><button type="button" data-by="structure">${icon('demolition', 16)} 시설로 찾기</button><button type="button" data-by="weapon">${icon('arsenal', 16)} 스트라타젬으로 찾기</button></div>
+  render(root, html`<div class="page-head"><div><div class="eyebrow">Demolition</div><h1>${L('철거', 'Demolition')}</h1><p>${L('시설마다 필요한 ‘철거력’이 있고, 한 번의 명중·폭발이 그 값을 넘어야 무너집니다. 일부 시설은 체력을 깎아서도 부술 수 있습니다.', 'Every structure needs a certain demolition force, and a single hit or explosion has to reach it. Some structures can also be destroyed by wearing down their health.')}</p></div>
+    <span class="badge outline">${L(`시설 ${structures.length}곳 · 철거력 확인 ${confirmedCount}종`, `${structures.length} structures · ${confirmedCount} stratagems with verified force`)}</span></div>
+  <div class="segmented" role="group" aria-label="${L('찾는 방법', 'Look up by')}" style="margin-bottom:16px"><button type="button" data-by="structure">${icon('demolition', 16)} ${L('시설로 찾기', 'By structure')}</button><button type="button" data-by="weapon">${icon('arsenal', 16)} ${L('스트라타젬으로 찾기', 'By stratagem')}</button></div>
   <div id="demo-body"></div>`);
   root.addEventListener('click', event => {
     const target = event.target.closest('button');
@@ -222,6 +224,6 @@ export function update(route) {
     shieldCleared: q.shield === '1', jammerDisabled: q.jammer === '0',
   });
   // A stratagem link from the catalogue without demolition data explains itself.
-  if (q.w && !weapon && stratagemById.has(q.w)) ctx.toast(`${stratagemById.get(q.w).name}의 철거 자료는 아직 없습니다.`);
+  if (q.w && !weapon && stratagemById.has(q.w)) ctx.toast(L(`${stratagemById.get(q.w).name}의 철거 자료는 아직 없습니다.`, `No demolition data for ${T(stratagemById.get(q.w).name)} yet.`));
   renderView();
 }

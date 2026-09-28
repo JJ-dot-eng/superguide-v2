@@ -136,6 +136,10 @@ kbd { font: 600 11px/1 var(--mono); padding: 3px 5px; border: 1px solid var(--li
 .search-trigger kbd { margin-left: auto; }
 .icon-button { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--text-2); }
 .icon-button:hover { color: var(--text); border-color: var(--text-3); }
+.lang-toggle { width: auto; min-width: 36px; padding: 0 10px; white-space: nowrap; font-size: 13px; font-weight: 750; letter-spacing: .02em; }
+/* The English edition stays hidden for the moment it takes to swap the header
+   text and load the dictionary (index.html reveals it after 4 s regardless). */
+:root[lang="en"]:not([data-i18n-ready]) body { visibility: hidden; }
 
 .tabbar { display: none; }
 
@@ -711,5 +715,9 @@ dialog { color: var(--text); }
   .force-row { grid-template-columns: 1fr 48px; }
   .force-row .force-bar { grid-column: 1 / -1; grid-row: 2; }
   .brand-text { font-size: 15px; }
+  /* Room for the language button: phones have no "/" key to hint at, and the
+     footer keeps the link to "how the numbers work". */
+  .bar-actions { gap: 6px; }
+  .search-trigger kbd, .bar-actions [data-action="method"] { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
