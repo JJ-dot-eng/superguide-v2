@@ -696,5 +696,142 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "stalker": {
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-stalker-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-stalker-claw-thumb.webp",
+        "title": "Stalker_Claws_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Stalker_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Stalker_Claws_Front.png?8c23c6",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Stalker_Claws_Front.png/800px-Stalker_Claws_Front.png?8c23c6",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Stalker_Claws_Front.png/320px-Stalker_Claws_Front.png?8c23c6",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0f420b8c4e2ea134d91055d549a3996598234616b2b790c4f1f8ba35b3061aff",
+        "thumbnailSha256": "68ba13b873bc878acc91ac7dd9ac4e1993754be3be5252d5074bb333b470f9e3",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-stalker-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-stalker-leg-thumb.webp",
+        "title": "Stalker_Legs_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Stalker_Legs_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Stalker_Legs_Front.png?ec12ed",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Stalker_Legs_Front.png/800px-Stalker_Legs_Front.png?ec12ed",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Stalker_Legs_Front.png/320px-Stalker_Legs_Front.png?ec12ed",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "105b8f207042bfe9ae4c6dd2072affc66e2e0b44b7ff5d68559f38c3f91b7e64",
+        "thumbnailSha256": "9a6002f8f0a306b686d16c3a5ae5f0322e030027c231b3113a5efaa882753963",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "wing": [
+      {
+        "src": "./assets/anatomy/revised-stalker-wing.webp",
+        "thumbnail": "./assets/anatomy/revised-stalker-wing-thumb.webp",
+        "title": "Stalker_Wings_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Stalker_Wings_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Stalker_Wings_Front.png?811233",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Stalker_Wings_Front.png/800px-Stalker_Wings_Front.png?811233",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Stalker_Wings_Front.png/320px-Stalker_Wings_Front.png?811233",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "c4bfc5fe01d74f07a50e55c5d7adc04b8dd78b6aad3a289aee6c7cc1a9194394",
+        "thumbnailSha256": "ae05342ffe01b355b15df1e3baedcce9a3bd5dec21d7bb2f1963bdee5b866e6f",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
+  },
+  "dragonroach": {
+    "carapace": [
+      {
+        "src": "./assets/anatomy/revised-dragonroach-carapace.webp",
+        "thumbnail": "./assets/anatomy/revised-dragonroach-carapace-thumb.webp",
+        "title": "Dragonroach_Carapace_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Dragonroach_Carapace_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Dragonroach_Carapace_Front.png?9ff27b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Carapace_Front.png/800px-Dragonroach_Carapace_Front.png?9ff27b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Carapace_Front.png/320px-Dragonroach_Carapace_Front.png?9ff27b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f49832372c046858a64f4f8fab377dfb8a9837b18d5a84a3d28e4c8daba865a5",
+        "thumbnailSha256": "75d22fd7b8135c16a5ccafaa060cab8348df2ce82faa652a1590c3e6cb260bda",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-dragonroach-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-dragonroach-claw-thumb.webp",
+        "title": "Dragonroach_Claws_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Dragonroach_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Dragonroach_Claws_Front.png?af568e",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Claws_Front.png/800px-Dragonroach_Claws_Front.png?af568e",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Claws_Front.png/320px-Dragonroach_Claws_Front.png?af568e",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "803d6015a69dd4696ff45a8d6b90b9110ce4c4fe691cb726258c09f5cd8c1407",
+        "thumbnailSha256": "2ba2dacb9d113e3eb7096bb1bcb090fcf683160d934a869c51b96d54ad8f41e4",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "abdomen-innards": [
+      {
+        "src": "./assets/anatomy/revised-dragonroach-abdomen-innards.webp",
+        "thumbnail": "./assets/anatomy/revised-dragonroach-abdomen-innards-thumb.webp",
+        "title": "Dragonroach_Abdominal_Innards_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Dragonroach_Abdominal_Innards_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Dragonroach_Abdominal_Innards_Front.png?c49381",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Abdominal_Innards_Front.png/800px-Dragonroach_Abdominal_Innards_Front.png?c49381",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Abdominal_Innards_Front.png/320px-Dragonroach_Abdominal_Innards_Front.png?c49381",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "67f13f69ea826ef6d591659c5f95226f198563a8b979b45e196c5a6d9166ac16",
+        "thumbnailSha256": "fa046717d885de7c93aedef9158a6ddad6d8f7d23d87bf20c5cb60da37a2568b",
+        "retrievedAt": "2026-09-28"
+      }
+    ],
+    "leg-armor": [
+      {
+        "src": "./assets/anatomy/revised-dragonroach-leg-armor.webp",
+        "thumbnail": "./assets/anatomy/revised-dragonroach-leg-armor-thumb.webp",
+        "title": "Dragonroach_Leg_Armor_Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Dragonroach_Leg_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Dragonroach_Leg_Armor_Front.png?55bb08",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Leg_Armor_Front.png/800px-Dragonroach_Leg_Armor_Front.png?55bb08",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Dragonroach_Leg_Armor_Front.png/320px-Dragonroach_Leg_Armor_Front.png?55bb08",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "caf86f9e060d9569e294e4700dc2fb2e73971eece75bd2bc652b0b6a687f5823",
+        "thumbnailSha256": "02b29dc341d548ffa8ce701a32f95711629b001146887639a917cc78e85a6125",
+        "retrievedAt": "2026-09-28"
+      }
+    ]
   }
 };

@@ -200,10 +200,12 @@ const originalEnemies = [
     id: 'brood-commander', name: '브루드 커맨더', faction: '테르미니드', source: wiki('Brood_Commander'), sourceRevision: 135088,
     main: main(800, 2, 60, 0),
     note: '기본 브루드 커맨더 기준이며 알파 커맨더와 다릅니다. 머리를 잃어도 출혈이 끝나기 전까지 돌진할 수 있습니다.',
+    // Every part matches Wiki Anatomy revision 136690 (checked 2026-09-28).
+    anatomyRevision: 136690, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 200, 2, 60, 100, 50, false, 'bleed', '머리가 떨어져도 즉시 멈추지 않습니다. 출혈이 끝날 때까지 접근을 피하세요.', { constitution: 300 }),
-      part('claw', '앞발 한쪽', 200, 2, 50, 100, 50, false, 'break', '몸 앞의 큰 앞발 하나에 집중하는 계산입니다.'),
-      part('leg', '다리 한쪽', 170, 1, 40, 100, 60, false, 'break', '장갑이 얇은 옆 다리를 노려 이동과 돌진 속도를 낮추세요.'),
+      part('head', '머리', 200, 2, 60, 100, 50, false, 'bleed', '머리가 떨어져도 즉시 멈추지 않습니다. 출혈이 끝날 때까지 접근을 피하세요.', { constitution: 300, sourcePart: 'Head' }),
+      part('claw', '앞발 한쪽', 200, 2, 50, 100, 50, false, 'break', '몸 앞의 큰 앞발 하나에 집중하는 계산입니다.', { sourcePart: 'Claws (2)' }),
+      part('leg', '다리 한쪽', 170, 1, 40, 100, 60, false, 'break', '장갑이 얇은 옆 다리를 노려 이동과 돌진 속도를 낮추세요.', { sourcePart: 'Legs (4)' }),
     ],
   },
   spewer('bile-spewer-armored', '바일 스퓨어', 'Bile_Spewer', 3, '난이도 6 이상 기준으로 본체·머리 장갑은 3입니다. 입과 후방 복부에는 장갑이 없습니다.', 135087, 'bile-spewer'),
@@ -212,10 +214,16 @@ const originalEnemies = [
     id: 'stalker', name: '스토커', faction: '테르미니드', source: wiki('Stalker'), sourceRevision: 135091,
     main: main(800, 1, 50, 0),
     note: '작은 머리의 체력이 낮습니다. 아래 탄수는 회복할 틈 없이 같은 부위를 연속으로 맞히는 조건이며, 도주 중 체력 회복은 포함하지 않습니다.',
+    // Every part matches Wiki Anatomy revision 136802 (checked 2026-09-28).
+    // Parts after the first three were added then.
+    anatomyRevision: 136802, anatomyCheckedAt: '2026-09-28',
     parts: [
-      part('head', '머리', 175, 1, 0, 100, 100, true, 'kill', '위장 상태에서도 몸 중앙 앞쪽의 작은 머리를 노리세요.'),
-      part('body-armor', '몸통 외피', 800, 2, 50, 100, 100, true, 'break', '넓은 몸통 외피입니다. 이 부위는 본체 체력을 공유하며, 머리보다 많은 피해가 필요합니다.'),
-      part('underbelly', '아래쪽 복부', 800, 1, 50, 100, 100, true, 'kill', '몸 아래쪽의 얇은 복부를 직접 맞히세요. 위쪽 외피와 장갑 수치가 다릅니다.'),
+      part('head', '머리', 175, 1, 0, 100, 100, true, 'kill', '위장 상태에서도 몸 중앙 앞쪽의 작은 머리를 노리세요.', { sourcePart: 'Head' }),
+      part('body-armor', '몸통 외피', 800, 2, 50, 100, 100, true, 'break', '넓은 몸통 외피입니다. 이 부위는 본체 체력을 공유하며, 머리보다 많은 피해가 필요합니다.', { sourcePart: 'Body Armor' }),
+      part('underbelly', '아래쪽 복부', 800, 1, 50, 100, 100, true, 'kill', '몸 아래쪽의 얇은 복부를 직접 맞히세요. 위쪽 외피와 장갑 수치가 다릅니다.', { sourcePart: 'Underbelly' }),
+      part('claw', '앞발 한쪽', 800, 1, 50, 100, 100, true, 'break', '몸 앞의 앞발 하나입니다. 본체 체력을 공유해 피해가 모두 본체로 들어갑니다.', { mainOnly: true, sourcePart: 'Claws (2)' }),
+      part('leg', '다리 한쪽', 800, 1, 50, 100, 100, true, 'break', '다리 하나를 맞히는 조건입니다. 본체 체력을 공유해 피해가 모두 본체로 들어갑니다.', { mainOnly: true, sourcePart: 'Legs (4)' }),
+      part('wing', '날개', 125, 0, 50, 100, 30, true, 'break', '등의 날개입니다. 체력 125로 따로 부서지며 본체에는 30%만 전달됩니다.', { sourcePart: 'Wings' }),
     ],
   },
   {

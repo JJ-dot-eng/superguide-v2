@@ -1005,6 +1005,8 @@ export const expandedEnemies = [
     "sourceRevision": 135097,
     "note": "머리가 주요 치명 부위입니다. 날개 한쪽은 체력 1,500에 자연 감소하지 않는 추가 체력2,500이 있어 총4,000을 깎아야 합니다. 여러 부위 동시 폭발 피해는 합산하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136864,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 6500,
       "armor": 4,
@@ -1093,6 +1095,60 @@ export const expandedEnemies = [
         "effect": "kill",
         "tip": "복부를 덮은 장갑 자체를 맞히세요. 이 부위 파괴는 치명 판정입니다.",
         "sourcePart": "Abdomen Armor"
+      },
+      {
+        "id": "carapace",
+        "name": "등딱지 한쪽",
+        "hp": 1500,
+        "armor": 4,
+        "durability": 100,
+        "exdr": 50,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "등을 덮은 단단한 등딱지 한쪽입니다. 부숴도 죽지 않지만 초과 피해까지 모두 본체로 전달됩니다.",
+        "sourcePart": "Carapace (2)"
+      },
+      {
+        "id": "claw",
+        "name": "앞발 한쪽",
+        "hp": 1000,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 50,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "머리 앞의 앞발 하나입니다. 부숴도 죽지 않지만 초과 피해까지 모두 본체로 전달됩니다.",
+        "sourcePart": "Claws (2)"
+      },
+      {
+        "id": "abdomen-innards",
+        "name": "노출된 복부 내부",
+        "hp": 6500,
+        "armor": 4,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "kill",
+        "tip": "복부 안쪽이 드러났을 때 그 자리를 맞히세요. 본체 체력을 공유하며, 드러내는 데 쓴 공격은 포함하지 않습니다.",
+        "mainOnly": true,
+        "prerequisite": "복부 내부 노출 후",
+        "sourcePart": "Abdomen Innards"
+      },
+      {
+        "id": "leg-armor",
+        "name": "다리 장갑 한 개",
+        "hp": 1000,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 50,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "다리를 덮은 장갑판 하나입니다. 부숴도 죽지 않지만 초과 피해까지 모두 본체로 전달됩니다.",
+        "sourcePart": "Leg Armor (12)"
       }
     ],
     "spearLock": true

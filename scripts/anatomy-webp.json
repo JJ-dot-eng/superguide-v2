@@ -1771,6 +1771,38 @@
     "sha256": "4ceaf58db17bc95be180ef2cfac7dc97cb4e7605faf8b2e6c76aafa7c43dd4e5",
     "sourceSha256": "570682ca573cee1e16b0bb87063046cf02a06cf2afb07f3a88a5c1dba0f2b481"
   },
+  "./assets/anatomy/revised-dragonroach-abdomen-innards-thumb.webp": {
+    "sha256": "062cdc4ae796f30ec810690974f2ba649e77949a564c5aa00a4386aee1f37f59",
+    "sourceSha256": "fa046717d885de7c93aedef9158a6ddad6d8f7d23d87bf20c5cb60da37a2568b"
+  },
+  "./assets/anatomy/revised-dragonroach-abdomen-innards.webp": {
+    "sha256": "34c15d468613fdf9484f008dc9a1585ce740b712606e74668688c1fe956dd9f8",
+    "sourceSha256": "67f13f69ea826ef6d591659c5f95226f198563a8b979b45e196c5a6d9166ac16"
+  },
+  "./assets/anatomy/revised-dragonroach-carapace-thumb.webp": {
+    "sha256": "80fd9d54171d23c7272f93fd7b4beb71b330fc26b4ba1bf4f7ab1dfde7885804",
+    "sourceSha256": "75d22fd7b8135c16a5ccafaa060cab8348df2ce82faa652a1590c3e6cb260bda"
+  },
+  "./assets/anatomy/revised-dragonroach-carapace.webp": {
+    "sha256": "f60f3a2b0c64da8818232f7883af9dd239df18684436489b057af2a67f96ee91",
+    "sourceSha256": "f49832372c046858a64f4f8fab377dfb8a9837b18d5a84a3d28e4c8daba865a5"
+  },
+  "./assets/anatomy/revised-dragonroach-claw-thumb.webp": {
+    "sha256": "85e8b8cb439ac447eb0c2db176fdde1689ec48b500dffb1cede140b8e2f0c3fa",
+    "sourceSha256": "2ba2dacb9d113e3eb7096bb1bcb090fcf683160d934a869c51b96d54ad8f41e4"
+  },
+  "./assets/anatomy/revised-dragonroach-claw.webp": {
+    "sha256": "955186daf9b3f43dc97f073992f621df95becbecddf2282c7417734ca64fb486",
+    "sourceSha256": "803d6015a69dd4696ff45a8d6b90b9110ce4c4fe691cb726258c09f5cd8c1407"
+  },
+  "./assets/anatomy/revised-dragonroach-leg-armor-thumb.webp": {
+    "sha256": "a909d754060083e07a440c4608dc32e711d1371d66124c1afc16c701e8dcb894",
+    "sourceSha256": "02b29dc341d548ffa8ce701a32f95711629b001146887639a917cc78e85a6125"
+  },
+  "./assets/anatomy/revised-dragonroach-leg-armor.webp": {
+    "sha256": "266bf09dd69a2395f08bdfd66ac5b9f324764eabb66af4e0402c5eae30b6c599",
+    "sourceSha256": "caf86f9e060d9569e294e4700dc2fb2e73971eece75bd2bc652b0b6a687f5823"
+  },
   "./assets/anatomy/revised-impaler-butt-thumb.webp": {
     "sha256": "b74b685990a9cd9dec345e83883d4254cef874ceffbd6ffb7b917ae7dbf0b6ad",
     "sourceSha256": "c7fb23209b56ab10f03ea7676396d8fa91162a2a9af18fdcde8e8bca82b19719"
@@ -1890,6 +1922,30 @@
   "./assets/anatomy/revised-spore-charger-underside.webp": {
     "sha256": "fad59e15bf0a1fcfc94cd0e1a6dc43c8cb1cb8f1cb3fbeaa1f410db25f20f41a",
     "sourceSha256": "68429d0eaca960e89204113b49817ab08aa07f1f578915e30bfaf0f0802061c9"
+  },
+  "./assets/anatomy/revised-stalker-claw-thumb.webp": {
+    "sha256": "8adfc8be745c6515ca92f4f4cda00963d3ebc99d6c28c28dd550e48949027fa6",
+    "sourceSha256": "68ba13b873bc878acc91ac7dd9ac4e1993754be3be5252d5074bb333b470f9e3"
+  },
+  "./assets/anatomy/revised-stalker-claw.webp": {
+    "sha256": "165b6c3708c517e972003901e44642b9a1e277945f6b3933a9d86e6d8c1e9e53",
+    "sourceSha256": "0f420b8c4e2ea134d91055d549a3996598234616b2b790c4f1f8ba35b3061aff"
+  },
+  "./assets/anatomy/revised-stalker-leg-thumb.webp": {
+    "sha256": "55929621ff7cf0a79bcf87261d8123073b596469291a6467ce55ba15f13ea285",
+    "sourceSha256": "9a6002f8f0a306b686d16c3a5ae5f0322e030027c231b3113a5efaa882753963"
+  },
+  "./assets/anatomy/revised-stalker-leg.webp": {
+    "sha256": "f7075588f259742334051977ca1fad8695ccc9c56d379756787d7a3dceae9917",
+    "sourceSha256": "105b8f207042bfe9ae4c6dd2072affc66e2e0b44b7ff5d68559f38c3f91b7e64"
+  },
+  "./assets/anatomy/revised-stalker-wing-thumb.webp": {
+    "sha256": "75cc5be70d9793e6a0c896e8c024cd6f06da96dfe72e3c19626a068247c54bb4",
+    "sourceSha256": "ae05342ffe01b355b15df1e3baedcce9a3bd5dec21d7bb2f1963bdee5b866e6f"
+  },
+  "./assets/anatomy/revised-stalker-wing.webp": {
+    "sha256": "7900f219e542c615c8ce53b5707cc601b012df5300108ba0923ab2188be6c9da",
+    "sourceSha256": "c4bfc5fe01d74f07a50e55c5d7adc04b8dd78b6aad3a289aee6c7cc1a9194394"
   },
   "./assets/anatomy/rocket-devastator-head-thumb.webp": {
     "sha256": "f9e4875094e061230053dbd70f36fb23f1b2e9cef1337b82b6897d48c5a402e4",

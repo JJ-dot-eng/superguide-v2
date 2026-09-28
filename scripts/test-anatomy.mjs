@@ -16,8 +16,12 @@ const number = text => Number(text.replace(/[,%]/g, ''));
 const titleOf = enemy => decodeURIComponent(enemy.source.split('/wiki/')[1]).replaceAll('_', ' ');
 const partsOf = enemy => enemy.parts.flatMap(part => [part, ...(part.next ? [part.next] : [])]);
 
-function matches(part, row, label) {
-  if (/^Main\b/.test(row.health)) ok(part.mainOnly === true, `${label}: health ${row.health} shares a main pool`);
+// A part that shares the main pool is mainOnly, or (in legacy entries) a part
+// with the full main health whose transfer is capped at that health.
+const sharesMain = (part, main) => part.mainOnly === true || part.hp === main.hp && part.toMain === 100 && part.overflowCap === true;
+
+function matches(part, row, label, main) {
+  if (/^Main\b/.test(row.health)) ok(sharesMain(part, part.main || main), `${label}: health ${row.health} shares a main pool`);
   else eq(part.hp, number(row.health), `${label}: health`);
   eq(part.armor, number(row.av), `${label}: armor`);
   eq(part.durability, number(row.durability), `${label}: durability`);
@@ -48,13 +52,13 @@ for (const enemy of revised) {
   for (const part of parts.filter(part => part.sourcePart)) {
     const row = byName.get(part.sourcePart);
     ok(row, `${enemy.id}/${part.id}: wiki row ${part.sourcePart}`);
-    matches(part, row, `${enemy.id}/${part.id}`);
+    matches(part, row, `${enemy.id}/${part.id}`, enemy.main);
     covered.add(part.sourcePart);
   }
   for (const [name, partId] of Object.entries(enemy.anatomyMerged || {})) {
     const part = parts.find(item => item.id === partId);
     ok(part && byName.has(name), `${enemy.id}: ${name} merged into ${partId}`);
-    matches(part, byName.get(name), `${enemy.id}/${partId} (${name})`);
+    matches(part, byName.get(name), `${enemy.id}/${partId} (${name})`, enemy.main);
     covered.add(name);
   }
   for (const [name, reason] of Object.entries(enemy.anatomyOmitted || {})) {
