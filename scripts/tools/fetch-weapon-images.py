@@ -14,7 +14,7 @@ root = pathlib.Path(__file__).resolve().parents[2]
 out_dir = root / 'dist' / 'assets' / 'weapons'
 module = root / 'dist' / 'data' / 'weapon-images.js'
 API = 'https://helldivers.wiki.gg/api.php'
-UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-eng)'
+UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github modocracy)'
 WIDTH = 480
 
 def get(url):

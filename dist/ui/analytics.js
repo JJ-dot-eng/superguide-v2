@@ -9,7 +9,7 @@ const MEASUREMENT_IDS = {
 export function initAnalytics(win = window, doc = document) {
   const { protocol, hostname, pathname } = win.location;
   const site = Object.keys(MEASUREMENT_IDS).find(name => pathname === `/${name}` || pathname.startsWith(`/${name}/`));
-  if (protocol !== 'https:' || hostname !== 'jj-dot-eng.github.io' || !site) return () => {};
+  if (protocol !== 'https:' || hostname !== 'modocracy.github.io' || !site) return () => {};
   const id = MEASUREMENT_IDS[site];
 
   win.dataLayer = win.dataLayer || [];

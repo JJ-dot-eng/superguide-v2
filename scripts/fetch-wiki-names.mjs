@@ -8,7 +8,7 @@ import { enemies } from '../dist/data/combat-data.js';
 import { structures } from '../dist/data/demolition-data.js';
 
 const API = 'https://helldivers.wiki.gg/api.php';
-const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-eng)';
+const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github modocracy)';
 const titleOf = url => decodeURIComponent(new URL(url).pathname.replace('/wiki/', '')).replaceAll('_', ' ');
 
 async function wikitext(title) {

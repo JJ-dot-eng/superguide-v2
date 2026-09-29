@@ -3,7 +3,7 @@
 import { writeFile } from 'node:fs/promises';
 
 const API = 'https://helldivers.wiki.gg/api.php';
-const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-eng)';
+const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github modocracy)';
 const SIZES = { small: 'Small Enemies', medium: 'Medium Enemies', large: 'Large Enemies', massive: 'Massive Enemies' };
 
 const get = async params => {

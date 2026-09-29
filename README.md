@@ -2,7 +2,7 @@
 
 헬다이버즈 2의 스트라타젬 수치, 적 부위별 필요 탄수, 시설 철거 조건, 팩션별 추천 장비를 한국어로 찾아보는 비공식 팬 사이트의 리뉴얼 버전입니다. 영어로도 볼 수 있습니다.
 
-**[사이트 바로가기](https://jj-dot-eng.github.io/superguide-v2/)** · **[English](https://jj-dot-eng.github.io/superguide-v2/?lang=en)**
+**[사이트 바로가기](https://modocracy.github.io/superguide-v2/)** · **[English](https://modocracy.github.io/superguide-v2/?lang=en)**
 
 > An unofficial Helldivers 2 field guide: stratagem and weapon stats, shots to kill for every enemy part, what destroys each structure, and loadout picks per faction. Switch to English with the **언어** (Language) button in the header, or open the site with `?lang=en`.
 

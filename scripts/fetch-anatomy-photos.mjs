@@ -13,7 +13,7 @@ import { baseCombatImages } from '../dist/data/combat-images.js';
 
 const root = new URL('../', import.meta.url);
 const API = 'https://helldivers.wiki.gg/api.php';
-const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-eng)';
+const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github modocracy)';
 const IMAGE_FIELDS = ['front_image', 'side_image', 'rear_image', 'left_image', 'right_image'];
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const clean = text => text.replace(/<!--[\s\S]*?-->/g, '').replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();

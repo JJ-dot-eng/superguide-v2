@@ -5,7 +5,7 @@ import { writeFile } from 'node:fs/promises';
 import { enemies } from '../dist/data/combat-data.js';
 
 const API = 'https://helldivers.wiki.gg/api.php';
-const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-eng)';
+const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github modocracy)';
 const titleOf = enemy => decodeURIComponent(enemy.source.split('/wiki/')[1]).replaceAll('_', ' ');
 
 // One Anatomy Row → its fields, keeping the raw wiki text of each value.

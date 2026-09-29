@@ -55,7 +55,7 @@ export function matchKoreanNames(pages, titles) {
 
 async function main() {
 const API = 'https://helldivers.wiki.gg/api.php';
-const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github jj-dot-eng)';
+const UA = 'HD2FieldGuide/2.0 (fan site data check; contact via github modocracy)';
 const get = async params => {
   await delay(250);
   const res = await fetch(`${API}?${new URLSearchParams({ format: 'json', ...params })}`, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(30000) });

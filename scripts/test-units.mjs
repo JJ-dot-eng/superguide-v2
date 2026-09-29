@@ -106,11 +106,11 @@ const gaRun = url => {
   const layer = win.dataLayer || [];
   return { src: loaded[0]?.src, config: layer.find(args => args[0] === 'config')?.[1], events: layer.filter(args => args[0] === 'event').map(args => [args[2].feature, args[2].send_to]) };
 };
-const v2 = gaRun('https://jj-dot-eng.github.io/superguide-v2/#/enemy');
+const v2 = gaRun('https://modocracy.github.io/superguide-v2/#/enemy');
 ok(v2.config === 'G-XKLV3JPDC0' && v2.src.endsWith('id=G-XKLV3JPDC0'), 'v2 site reports to its own property');
 ok(JSON.stringify(v2.events) === JSON.stringify([['combat', 'G-XKLV3JPDC0']]), 'feature events go to the v2 property with the old names');
-ok(gaRun('https://jj-dot-eng.github.io/superguide/').config === 'G-5XFT3VQ054', 'original site keeps its property');
-for (const url of ['http://localhost:4173/', 'https://jj-dot-eng.github.io/superguide-v3/', 'https://example.com/superguide-v2/']) ok(!gaRun(url).src, `no analytics on ${url}`);
+ok(gaRun('https://modocracy.github.io/superguide/').config === 'G-5XFT3VQ054', 'original site keeps its property');
+for (const url of ['http://localhost:4173/', 'https://modocracy.github.io/superguide-v3/', 'https://example.com/superguide-v2/', 'https://jj-dot-eng.github.io/superguide-v2/']) ok(!gaRun(url).src, `no analytics on ${url}`);
 
 // --- Deploy versioning ----------------------------------------------------------------
 const sources = await readSources();
