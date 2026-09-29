@@ -26,12 +26,14 @@ const sharesMain = (part, main) => part.mainOnly === true || part.hp === main.hp
 const unknown = part => Boolean(part.unknownReason);
 
 function matches(part, row, label, main) {
+  // A value the wiki gives as "-" is left uncalculated on the site.
+  const value = (actual, text, message) => text === '-' ? ok(actual === null && unknown(part), `${message} left uncalculated`) : eq(actual, number(text), message);
   if (/^Main\b/.test(row.health)) ok(sharesMain(part, part.main || main), `${label}: health ${row.health} shares a main pool`);
   else if (/^Infinite/i.test(row.health)) ok(part.hp === null && unknown(part), `${label}: infinite health is left uncalculated`);
-  else eq(part.hp, number(row.health), `${label}: health`);
-  eq(part.armor, number(row.av), `${label}: armor`);
-  eq(part.durability, number(row.durability), `${label}: durability`);
-  eq(part.exdr, number(row.exdr), `${label}: explosive resistance`);
+  else value(part.hp, row.health, `${label}: health`);
+  value(part.armor, row.av, `${label}: armor`);
+  value(part.durability, row.durability, `${label}: durability`);
+  value(part.exdr, row.exdr, `${label}: explosive resistance`);
   // A main-pool row is the pool itself, so it has no transfer of its own.
   // "-" means a separate pool that passes nothing on (0%, a separate device,
   // or a transfer the site leaves unverified); some rows leave the cap empty.
@@ -47,7 +49,9 @@ function matches(part, row, label, main) {
   // cell holds that flag, the page gives no bleed amount.
   const downs = [row.fatal, row.bleed].find(cell => /Downs/.test(cell ?? ''));
   const fatal = downs ? /^Yes/.test(downs) : /^Yes/.test(row.fatal);
-  ok(fatal ? ['kill', 'bleed', 'down'].includes(part.effect) : ['break', 'armor'].includes(part.effect), `${label}: fatal ${row.fatal} vs ${part.effect}`);
+  // "No (Downs)" on a flyer is the site's "down" (brought down, not a kill).
+  const allowed = fatal ? ['kill', 'bleed', 'down'] : ['break', 'armor', ...(downs ? ['down'] : [])];
+  ok(allowed.includes(part.effect), `${label}: fatal ${row.fatal} vs ${part.effect}`);
   const bleedCell = /Downs/.test(row.bleed ?? '') ? null : row.bleed;
   const bleed = bleedCell?.match(/^([\d,]+) \[-?([\d.]+)\/s\]$/);
   if (bleedCell === null) return;

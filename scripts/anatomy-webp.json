@@ -2363,6 +2363,14 @@
     "sha256": "30b11a07933e9b57f582269297c9da9aecc42e28ae20b0e1a4a7578f076ccc94",
     "sourceSha256": "9dc66569584199d19c5a042e52d0609c0799044689e76f7bf0207fa5fa0d705b"
   },
+  "./assets/anatomy/revised-hive-lord-fin-thumb.webp": {
+    "sha256": "9d89580f8261a6ffbe751182ad951f5f516434279bc45824d1a0ab4ca1057cda",
+    "sourceSha256": "eb4781a116d626ea576fbcb19f39b4f302a4f584d9d984c89134e98f5363bfff"
+  },
+  "./assets/anatomy/revised-hive-lord-fin.webp": {
+    "sha256": "372126b8ca8480813ba8c5149c17503a11f890999b02036b504bbef009ccd6c6",
+    "sourceSha256": "2b88b503ef8ff586a93178e48133430ee5a3deb918e46f9c8203b09bdb21717b"
+  },
   "./assets/anatomy/revised-hulk-arm-thumb.webp": {
     "sha256": "ff6fb64f24c8a87fe8cf1ea4208d5e7bcc2b8057a9acf22c541a53eada13b0b1",
     "sourceSha256": "e852cb09094774a5b14ca609f76bcd03f002726ec270dbec63005612f5dc4494"
@@ -2491,6 +2499,62 @@
     "sha256": "4334d88fd535288fd00076c1029a4916e9ec3eacf7fb0e822605595f2e09e697",
     "sourceSha256": "2161cea70d505cb1b1ee9beb1dfecf9ce2be4b131f23f9bdc4d65d63bb8f951d"
   },
+  "./assets/anatomy/revised-leviathan-forward-middle-fin-thumb.webp": {
+    "sha256": "e84549d2eb4078190cce26b3d5edfadf865a04f2482f08b76cff8232177f5a57",
+    "sourceSha256": "c3f91c71f7b4110fd1f2e0cc5f960f405b9334d3dfa2ae8654e82bb5d96296aa"
+  },
+  "./assets/anatomy/revised-leviathan-forward-middle-fin.webp": {
+    "sha256": "df1c51979a4dbf7f5bc5d27ffdcf4080a65ad0398bce7cbd2940355bd8c15874",
+    "sourceSha256": "2b50dff229f9db50202ddf678ec832641a069f3f5a3a76753f470c4b74186851"
+  },
+  "./assets/anatomy/revised-leviathan-forward-middle-vertebra-thumb.webp": {
+    "sha256": "b1eec15aaa47e434a7fee4780dd0b4d6f89f9340a5485fb25e8ec9676b75a94a",
+    "sourceSha256": "b0d0681e1f3aa6db47aeeb80f9eab8c63cd530a71ce5a0efcd1ea0144832cd92"
+  },
+  "./assets/anatomy/revised-leviathan-forward-middle-vertebra.webp": {
+    "sha256": "2b0f1c8b9452daa930966b2f6c346eaa780d3a114678eaa17b8fa74ea6c384a9",
+    "sourceSha256": "f6b81156e066d3dbe467c2a018e528cc5f7a0e063eee917df2d22b944e0447dc"
+  },
+  "./assets/anatomy/revised-leviathan-front-fin-thumb.webp": {
+    "sha256": "4bde5d1e70938cf48901e06ca78b0c48fcef579308dd109e301a2111f41d9141",
+    "sourceSha256": "405421a2c21058e360d89533e1695f2e43294188d8af9e2d835641367b0ac9fc"
+  },
+  "./assets/anatomy/revised-leviathan-front-fin.webp": {
+    "sha256": "6495ad6ba35d472c98f752cdb5c6a3df0d86e74b3d7ca5d16673850fde6d87ea",
+    "sourceSha256": "f98c1fbe0877d147f9399d6c3e48f86fc1dff79f5fa948a0ad7af611247924db"
+  },
+  "./assets/anatomy/revised-leviathan-rear-vertebra-thumb.webp": {
+    "sha256": "cd4e106734d8b0aeb4f32ccc061b15c02cabdc4b812687a751dd92a8e0665ba9",
+    "sourceSha256": "c618ddbd245dcccee245dcaa95215f463c0ba746fce2cf5f64949e57aebce2e0"
+  },
+  "./assets/anatomy/revised-leviathan-rear-vertebra.webp": {
+    "sha256": "66a0bea88644ede1547dc4758660116eb59fa1a3756465f0537b6c18cb28dc4b",
+    "sourceSha256": "492e4846ec65e0ab586a8bccdeb9abe1f0b8b94d9092371fd72285932fcac570"
+  },
+  "./assets/anatomy/revised-leviathan-rearward-middle-fin-thumb.webp": {
+    "sha256": "857829270cbfa36203097720d5edacd05ee156a0656d9941113efd38a2e541b8",
+    "sourceSha256": "a1e6a66fdf0e5d8ccf4e348d97ce60d976595055f29f3320390ff03063f68159"
+  },
+  "./assets/anatomy/revised-leviathan-rearward-middle-fin.webp": {
+    "sha256": "9e6aaf3167ff1b82f7991014820a9457e53b6a8fd99174a9512e4f160188c8bf",
+    "sourceSha256": "016ee1c65072fe7cf48b3055670c32e21f0a43d6389f164769330312e795bcef"
+  },
+  "./assets/anatomy/revised-leviathan-rearward-middle-vertebra-thumb.webp": {
+    "sha256": "bb1b3b2c0dc3234fd126cd00eb20bd5acfd04d112d64ef83a3bafba8c76b90a1",
+    "sourceSha256": "dde5b237f3a940fac41c187c294e53c590c90fa3cf7350a55931f6756140a7ee"
+  },
+  "./assets/anatomy/revised-leviathan-rearward-middle-vertebra.webp": {
+    "sha256": "44c77401404bcc7448162106dcc0e8a1802f49498597032b019fc7e6b546a370",
+    "sourceSha256": "894f7f5fabe25ca2e6e83b04688901923542f8da227172e058720e2570d1355c"
+  },
+  "./assets/anatomy/revised-leviathan-warp-disc-thumb.webp": {
+    "sha256": "f1f8c429c8a20f50ade5a7d749b9ae1646bacaca4168b8cd74b644472889f5ca",
+    "sourceSha256": "9461d2c0148f62cc304d6ad285873e8e9d153224c83a92ed835503880d91c6e2"
+  },
+  "./assets/anatomy/revised-leviathan-warp-disc.webp": {
+    "sha256": "ebfda7d47b9fad5bbd73c5fbcd6520826700ef4028f6f8741edb2b0dbb450b30",
+    "sourceSha256": "6f148a7bb795d635d0666651acdd6ca2d8f7288947b7bae22d008426f543ccfc"
+  },
   "./assets/anatomy/revised-nursing-spewer-front-leg-thumb.webp": {
     "sha256": "664ab114f2ae5cc6b66cae814287fa6d61f7a4d7ce0c897ff63071d94dd22e02",
     "sourceSha256": "6bf03f750295cdfb24014e65cdccc2b7d323863b1e288a879fccd252d9ca98dc"
@@ -2562,6 +2626,14 @@
   "./assets/anatomy/revised-overseer-right-arm.webp": {
     "sha256": "e54690b6c0fa654d778dae92764dd5d158d9466049095452b14ae8e89bb8b436",
     "sourceSha256": "8b81843f9e81dbe614c5759ae059da282eff45d61a21d379247e5b6a0e71d1db"
+  },
+  "./assets/anatomy/revised-predator-stalker-wing-thumb.webp": {
+    "sha256": "e5501fe0baedb14f119b410f38ad38066c25819b4fc0eac8be7bca0e908c5091",
+    "sourceSha256": "7595446a75c7a2f8a7dfbf6cb356103fe99042bad57f9de762ef53d94307abf4"
+  },
+  "./assets/anatomy/revised-predator-stalker-wing.webp": {
+    "sha256": "ef9f7f1932b5d5e4a0ca6657acdec6de3040f664fe1c12539a394d346d3b5652",
+    "sourceSha256": "522f35a36e2c37f9ba653ac1e8bc37014345601491f8e019e6e8da4d4a98f01d"
   },
   "./assets/anatomy/revised-radical-forearm-thumb.webp": {
     "sha256": "4b03b0c8ab0ef99e986d0ec7169058f8d2eeead88f35fb0b14b63ea57be05078",
@@ -2739,6 +2811,46 @@
     "sha256": "ece5a993ecc68f2a279239b3d3a2ba8343e202b489d41d0b8e5bb718b021ccad",
     "sourceSha256": "6d903596c5e62a34c5c6bb9a809e9c0957816459d26391bd612e944cade00998"
   },
+  "./assets/anatomy/revised-spore-burst-bile-titan-claw-thumb.webp": {
+    "sha256": "fefe9ef03db8643587762e79edba2ac7a34f021b34bbb93208cc83af45598e43",
+    "sourceSha256": "95ebe260281139041cfc9d5d5b8f162dfe8c085b5b5b09dd8741505a0b3ea648"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-claw.webp": {
+    "sha256": "96df438a15767987139057c563f247e3ecddc3f6ab57f86379a63d32f4562c37",
+    "sourceSha256": "7ffaba620f973ce67866026c7783160f7f0420bebc7be0e0d7b114f1bc91c244"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg-exposed-thumb.webp": {
+    "sha256": "3454cf4301aec673270d025b97327b1ec1a2e068f8db598f6476b685b67f7514",
+    "sourceSha256": "aa1f359442aa076688dff5dc7d079614ca78a6e753a9365c1546bffe962d8bd8"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg-exposed.webp": {
+    "sha256": "4408ea045294b95737859a871e2b56e4ac813e336aa628dd4fe73dad55d7c082",
+    "sourceSha256": "4724d4fa228d1336f7900419ddaf86733730b7b74a3f5ab86c7f3e2b2f4dfa5a"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg-thumb.webp": {
+    "sha256": "2a3597764973fe4a68073218fdcf8881b0574465b11cd686486921d22cb10f37",
+    "sourceSha256": "c0e6d702a65b2b5bf46f7571e5966ac78c27e16acaea83dcba34032222d00fe3"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg.webp": {
+    "sha256": "4c8b18430a396b5efdac365784f6e10d70ca422c6af364c51f68424666d904b3",
+    "sourceSha256": "62ad98254ae037510d2ec90e9e8f77ad2003545ba9a7bf947846fb793ad8364a"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-leg-exposed-thumb.webp": {
+    "sha256": "28695a4346f8b5c8739da669a190678e1963477f6f27b2c935b9115c074b52d6",
+    "sourceSha256": "ffe1701c092fa2f3b17660f2d06096d3ab2ab85dbbdbdd095e90857c12ae196a"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-leg-exposed.webp": {
+    "sha256": "7a4e8ffaa3dc3e8687d31a26c5dd06225aefd310421a7fa1acb9d3c0730c74b5",
+    "sourceSha256": "8fe63b3c1c80bb41ef200c5176fa1440b2a0e2af9c7fd50a2c910ba00426d520"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-leg-thumb.webp": {
+    "sha256": "2a3597764973fe4a68073218fdcf8881b0574465b11cd686486921d22cb10f37",
+    "sourceSha256": "be3bce588b453e88d52755342ed13e8b40c24fa6a40e0f3612dd5b51dbe4579e"
+  },
+  "./assets/anatomy/revised-spore-burst-bile-titan-leg.webp": {
+    "sha256": "4c8b18430a396b5efdac365784f6e10d70ca422c6af364c51f68424666d904b3",
+    "sourceSha256": "6372b2628d5a6a3a5bb6f941741c0ca5a62abf48b9e04ee9ec5d8e8170dfd30c"
+  },
   "./assets/anatomy/revised-spore-charger-claw-thumb.webp": {
     "sha256": "34f0597e62b00a750c7d107c42752130f2dc08bf0f4d5cec96ceff445a9a8f24",
     "sourceSha256": "7eede8d782ae1b709d84c71072f0a8725edc2b15ac0dbfe45934ede8cda4b114"
@@ -2898,6 +3010,78 @@
   "./assets/anatomy/revised-voteless-medium-upper-arm.webp": {
     "sha256": "0c42175398ee2ca388994aaf2e7a621026d166a9880be42fcfb103168ecf7fe4",
     "sourceSha256": "f08829111a6301f673ac0f1155e0d8f6e69a98ccbd4c1558ea4b2f09f65713ab"
+  },
+  "./assets/anatomy/revised-vox-engine-fog-light-thumb.webp": {
+    "sha256": "083196da87363b4c3fb9a0a8a2f83c4ef8c649fe2d7db355eeda4349ffbeb9e7",
+    "sourceSha256": "f06d614305e82ce320be1743deae21d2a33d6d5a50bb843a56da0054f3d70de2"
+  },
+  "./assets/anatomy/revised-vox-engine-fog-light.webp": {
+    "sha256": "4bf6d2b1222efe8055cde1d23e198289ee7e9bffb9d25489d3196b24a0e10180",
+    "sourceSha256": "aec6bb7099d92e66200521f72460d7793fea1d185c7b6b0ed0135f18af443a2c"
+  },
+  "./assets/anatomy/revised-vox-engine-minigun-thumb.webp": {
+    "sha256": "885cb55917fe056819221618c9d56f2352852d1cad1e7d82b18c918a5dc3fe99",
+    "sourceSha256": "f46f0f144e987ed3d46ac6329a950c6a9c149c988fe2815c977ba02e0b6cd38f"
+  },
+  "./assets/anatomy/revised-vox-engine-minigun.webp": {
+    "sha256": "21d28b1238516781de2f871588eaa5f3ae598b3c3e1a6a3a0e8b05cec7351c53",
+    "sourceSha256": "e0af5e055573aefdceccbcde58e9683569b6e6b7e1fb6e689a542c0207633f0c"
+  },
+  "./assets/anatomy/revised-vox-engine-speaker-thumb.webp": {
+    "sha256": "97a328c126a688c27b51e38f6f69403ebe1c185de626f74e53c9c00e0c73995d",
+    "sourceSha256": "5de8057acc129df84fdd0e0469da658591d14641d0b35c99aab9df75ed45b176"
+  },
+  "./assets/anatomy/revised-vox-engine-speaker.webp": {
+    "sha256": "d3295b365d16b48ca47572c9c71c95f281c9a3a9f72b36aab0adbb0717d8bb94",
+    "sourceSha256": "85bcc2c7ffb574768626bfb286330ae2ad728f21ce8ebb3dbbd6457d32a5c708"
+  },
+  "./assets/anatomy/revised-war-strider-fusion-cannon-thumb.webp": {
+    "sha256": "8b526ead302972a3b38ddfe9e4038ed740abfa5d5ac5af28571f5c4bcbc08bc5",
+    "sourceSha256": "0326eb8abca2b3ce4de1c1b5d40333bc071ed921eca67b84e6e31220beb7ddb4"
+  },
+  "./assets/anatomy/revised-war-strider-fusion-cannon.webp": {
+    "sha256": "57744e49e85ff359ea1abd0436fe336f03cdbc9f569200b9e01cc4f0c4fad8d5",
+    "sourceSha256": "06c79471204c6152d38485b57364e4b021a6c5653607e37f6e56acdb14c58631"
+  },
+  "./assets/anatomy/revised-war-strider-greave-thumb.webp": {
+    "sha256": "796a0e6b46237a25f611858824e52b60d885e9dfa8ac748895e1cde5f3e27152",
+    "sourceSha256": "81b46fcc0f327d748840038f25aedbfde619a6d3f8b93397247413c947d0fb0d"
+  },
+  "./assets/anatomy/revised-war-strider-greave.webp": {
+    "sha256": "d9308b7340e8f419f610861e6fb93ca5df890e55f548615b7f6b95b92257b93b",
+    "sourceSha256": "08b7c3c14d269cd523598d5716aceed960dccea793d8d0cef964662cd3b10434"
+  },
+  "./assets/anatomy/revised-war-strider-grenade-launcher-thumb.webp": {
+    "sha256": "0cb99f7ba165f96248b8ba1313920d28c30c8086b061c5c14685c4aef024b2e3",
+    "sourceSha256": "697044e248674e69a93c51bbbc79970ff8d7d5b7874298e0c96e73bc886192fb"
+  },
+  "./assets/anatomy/revised-war-strider-grenade-launcher.webp": {
+    "sha256": "18089a8dbb6afe121eb31c249fe6620090fd0d9c70bbf001d1f40ca469737467",
+    "sourceSha256": "0f7314cd8f9b787f3000feb5278e0c589f4374f01f3b646c8aef46806ba7c5ba"
+  },
+  "./assets/anatomy/revised-warp-ship-bow-thumb.webp": {
+    "sha256": "2a1851e16f62b62ed9cb8e4a63378540010cae3389d1ef2aaba6bfa0a63de5ca",
+    "sourceSha256": "49b959b8d1bd576a1a1323fc1197bd482ffe477f03bb6c2c2075ef7a57b72b08"
+  },
+  "./assets/anatomy/revised-warp-ship-bow.webp": {
+    "sha256": "dab020e53ace4ee7f364381dbf34ac7d927579aad79ceb8946b74f96a17a00f3",
+    "sourceSha256": "259cc7a08dd7f1fa95ccb25839eab9630557c66c3af18221f9f7c88a419ea6cb"
+  },
+  "./assets/anatomy/revised-warp-ship-rear-fuselage-thumb.webp": {
+    "sha256": "978eda66ba1d8ec9240964f7d67d6cafe4a826eb032bb0ce295abd33c82f2d70",
+    "sourceSha256": "a588d989365651df8640ab3edde3782298865f078d53676b4e40f317a4de1b1a"
+  },
+  "./assets/anatomy/revised-warp-ship-rear-fuselage.webp": {
+    "sha256": "519c5528df50872b2189fd1a9827d9277503c012d6808c750c46d7d8d8c5d5f5",
+    "sourceSha256": "51c8ad437ef7e2edd278bde0ea1d383945a4569901e1fdf8d61d0eba448e09e6"
+  },
+  "./assets/anatomy/revised-warp-ship-stern-thumb.webp": {
+    "sha256": "0750b1f55f68c82360b92fb56a0c4ab20565b5ef563d1d5926091f904ba7f0ed",
+    "sourceSha256": "93d015945759d4eb985fadf21719e55378c4d1332e9aa30529c17ce67c19b0a7"
+  },
+  "./assets/anatomy/revised-warp-ship-stern.webp": {
+    "sha256": "0f46423e17e24967da4a89ea4810199f73fbfa4e2bed1aa5e27fcdb7c925392d",
+    "sourceSha256": "945d35d25d5a8bba928c7545107e24c5200bc23edf77e146304fa5a6db4ff1f1"
   },
   "./assets/anatomy/revised-watcher-lower-fin-thumb.webp": {
     "sha256": "15a923ce2b5f3e4e84fdd78c9b6398cdcccd0e4ababf767effd6cc97e46ce817",

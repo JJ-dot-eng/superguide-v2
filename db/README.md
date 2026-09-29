@@ -272,12 +272,13 @@ npm run check
 
 ## 적 부위 재확인 (위키 Anatomy)
 
-초기 적 데이터 일부는 대표 부위만 담고 있습니다. 위키 부위 표와 다시 대조한 적은 `anatomyRevision`(대조한 위키 revision)과 `anatomyCheckedAt`을 가지며, 모든 부위에 위키 행 이름 `sourcePart`를 붙입니다. 2026-09-28 기준 소형·중형 적 전체와 대형·초대형 적 일부(67종)가 위키 부위 표의 모든 행과 일치하고, 나머지 대형·초대형 적도 위키의 치명 부위는 모두 담고 있습니다.
+초기 적 데이터 일부는 대표 부위만 담고 있습니다. 위키 부위 표와 다시 대조한 적은 `anatomyRevision`(대조한 위키 revision)과 `anatomyCheckedAt`을 가지며, 모든 부위에 위키 행 이름 `sourcePart`를 붙입니다. 2026-09-28 기준 전투 적 84종 전체가 위키 부위 표의 모든 행과 일치합니다.
 
 - 위키 페이지에 탭이 여러 개면(예: 스카우트 스트라이더의 Pilot, 팩토리 스트라이더의 Armor Broken) 두 번째 탭부터 행 이름을 `탭: 부위`로 씁니다.
 - 본체 행이 `Main`이 아니면(전차의 `Hull Main`) 적에 `anatomyMain`을, 자체 체력 풀을 가진 부위(포탑, 조종사)에는 그 풀의 행 `sourceMain`을 적습니다.
 - 같은 수치의 행을 한 부위로 합쳐 보여 주면 `anatomyMerged: {위키 행 이름: 부위 id}`, 부위로 표현하지 않는 행(보호막 토글로 다루는 보호막 등)은 `anatomyOmitted: {위키 행 이름: 영문 사유}`로 명시합니다.
 - 기존 수치를 위키에 맞게 고치면 바꾸기 전 값을 `anatomyLegacy: {'부위.필드': 옛 값}`(예: `'main.armor': 3`)에 남깁니다. `test-parity.mjs`는 옛 값으로 되돌린 적에게 legacy 결과를 그대로 재현해 엔진을 계속 검증하고, 새 값은 `test-anatomy.mjs`가 위키와 대조합니다.
+- 한 적의 여러 탭이 같은 행을 다른 각도로 보여 주면(하이브 로드) `anatomyTables: [0]`처럼 대조할 탭만 지정합니다. `anatomyLegacy`의 `null`은 그 필드가 옛 데이터에 없었다는 뜻입니다.
 - 위키 값이 난이도별로 다르면(예: `130 [Default] / 160 at 난이도 4`) 적 설명의 기준대로 가장 높은 난이도 값을 씁니다.
 
 - `node scripts/fetch-enemy-anatomy.mjs`: 모든 전투 적 페이지의 Anatomy 표를 `source/wiki_anatomy.json`에 저장합니다(네트워크 필요).

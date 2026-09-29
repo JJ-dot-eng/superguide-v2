@@ -3170,5 +3170,452 @@ export const revisedCombatImages = {
         "retrievedAt": "2026-09-28"
       }
     ]
+  },
+  "predator-stalker": {
+    "wing": [
+      {
+        "src": "./assets/anatomy/revised-predator-stalker-wing.webp",
+        "thumbnail": "./assets/anatomy/revised-predator-stalker-wing-thumb.webp",
+        "title": "Predator Stalker Wings.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Predator_Stalker_Wings.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Predator_Stalker_Wings.png?4a0b23",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Predator_Stalker_Wings.png/800px-Predator_Stalker_Wings.png?4a0b23",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Predator_Stalker_Wings.png/320px-Predator_Stalker_Wings.png?4a0b23",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "522f35a36e2c37f9ba653ac1e8bc37014345601491f8e019e6e8da4d4a98f01d",
+        "thumbnailSha256": "7595446a75c7a2f8a7dfbf6cb356103fe99042bad57f9de762ef53d94307abf4",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
+  },
+  "spore-burst-bile-titan": {
+    "claw": [
+      {
+        "src": "./assets/anatomy/revised-spore-burst-bile-titan-claw.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-burst-bile-titan-claw-thumb.webp",
+        "title": "Spore Burst Bile Titan Claws Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Burst_Bile_Titan_Claws_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Burst_Bile_Titan_Claws_Front.png?6104d7",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Claws_Front.png/800px-Spore_Burst_Bile_Titan_Claws_Front.png?6104d7",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Claws_Front.png/320px-Spore_Burst_Bile_Titan_Claws_Front.png?6104d7",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "7ffaba620f973ce67866026c7783160f7f0420bebc7be0e0d7b114f1bc91c244",
+        "thumbnailSha256": "95ebe260281139041cfc9d5d5b8f162dfe8c085b5b5b09dd8741505a0b3ea648",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "front-left-leg": [
+      {
+        "src": "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg-thumb.webp",
+        "title": "Spore Burst Bile Titan Leg Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Burst_Bile_Titan_Leg_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Burst_Bile_Titan_Leg_Armor_Front.png?346f36",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Leg_Armor_Front.png/800px-Spore_Burst_Bile_Titan_Leg_Armor_Front.png?346f36",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Leg_Armor_Front.png/320px-Spore_Burst_Bile_Titan_Leg_Armor_Front.png?346f36",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "62ad98254ae037510d2ec90e9e8f77ad2003545ba9a7bf947846fb793ad8364a",
+        "thumbnailSha256": "c0e6d702a65b2b5bf46f7571e5966ac78c27e16acaea83dcba34032222d00fe3",
+        "retrievedAt": "2026-09-29"
+      },
+      {
+        "src": "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-burst-bile-titan-front-left-leg-exposed-thumb.webp",
+        "title": "Spore Burst Bile Titan Front Left Leg Flesh Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Burst_Bile_Titan_Front_Left_Leg_Flesh_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Burst_Bile_Titan_Front_Left_Leg_Flesh_Front.png?c6420b",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Front_Left_Leg_Flesh_Front.png/800px-Spore_Burst_Bile_Titan_Front_Left_Leg_Flesh_Front.png?c6420b",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Front_Left_Leg_Flesh_Front.png/320px-Spore_Burst_Bile_Titan_Front_Left_Leg_Flesh_Front.png?c6420b",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "4724d4fa228d1336f7900419ddaf86733730b7b74a3f5ab86c7f3e2b2f4dfa5a",
+        "thumbnailSha256": "aa1f359442aa076688dff5dc7d079614ca78a6e753a9365c1546bffe962d8bd8",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "leg": [
+      {
+        "src": "./assets/anatomy/revised-spore-burst-bile-titan-leg.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-burst-bile-titan-leg-thumb.webp",
+        "title": "Spore Burst Bile Titan Leg Armor Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Burst_Bile_Titan_Leg_Armor_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Burst_Bile_Titan_Leg_Armor_Front.png?346f36",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Leg_Armor_Front.png/800px-Spore_Burst_Bile_Titan_Leg_Armor_Front.png?346f36",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Leg_Armor_Front.png/320px-Spore_Burst_Bile_Titan_Leg_Armor_Front.png?346f36",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6372b2628d5a6a3a5bb6f941741c0ca5a62abf48b9e04ee9ec5d8e8170dfd30c",
+        "thumbnailSha256": "be3bce588b453e88d52755342ed13e8b40c24fa6a40e0f3612dd5b51dbe4579e",
+        "retrievedAt": "2026-09-29"
+      },
+      {
+        "src": "./assets/anatomy/revised-spore-burst-bile-titan-leg-exposed.webp",
+        "thumbnail": "./assets/anatomy/revised-spore-burst-bile-titan-leg-exposed-thumb.webp",
+        "title": "Spore Burst Bile Titan Leg Flesh Front.png",
+        "stage": "exposed",
+        "source": "https://helldivers.wiki.gg/wiki/File:Spore_Burst_Bile_Titan_Leg_Flesh_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Spore_Burst_Bile_Titan_Leg_Flesh_Front.png?394b76",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Leg_Flesh_Front.png/800px-Spore_Burst_Bile_Titan_Leg_Flesh_Front.png?394b76",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Spore_Burst_Bile_Titan_Leg_Flesh_Front.png/320px-Spore_Burst_Bile_Titan_Leg_Flesh_Front.png?394b76",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "8fe63b3c1c80bb41ef200c5176fa1440b2a0e2af9c7fd50a2c910ba00426d520",
+        "thumbnailSha256": "ffe1701c092fa2f3b17660f2d06096d3ab2ab85dbbdbdd095e90857c12ae196a",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
+  },
+  "hive-lord": {
+    "fin": [
+      {
+        "src": "./assets/anatomy/revised-hive-lord-fin.webp",
+        "thumbnail": "./assets/anatomy/revised-hive-lord-fin-thumb.webp",
+        "title": "Hive_Lord_Fins_Top.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Hive_Lord_Fins_Top.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Hive_Lord_Fins_Top.png?c3f5a2",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Hive_Lord_Fins_Top.png/800px-Hive_Lord_Fins_Top.png?c3f5a2",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Hive_Lord_Fins_Top.png/320px-Hive_Lord_Fins_Top.png?c3f5a2",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2b88b503ef8ff586a93178e48133430ee5a3deb918e46f9c8203b09bdb21717b",
+        "thumbnailSha256": "eb4781a116d626ea576fbcb19f39b4f302a4f584d9d984c89134e98f5363bfff",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
+  },
+  "war-strider": {
+    "fusion-cannon": [
+      {
+        "src": "./assets/anatomy/revised-war-strider-fusion-cannon.webp",
+        "thumbnail": "./assets/anatomy/revised-war-strider-fusion-cannon-thumb.webp",
+        "title": "War Strider Cannons Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:War_Strider_Cannons_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/War_Strider_Cannons_Front.png?d152bf",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/War_Strider_Cannons_Front.png/800px-War_Strider_Cannons_Front.png?d152bf",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/War_Strider_Cannons_Front.png/320px-War_Strider_Cannons_Front.png?d152bf",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "06c79471204c6152d38485b57364e4b021a6c5653607e37f6e56acdb14c58631",
+        "thumbnailSha256": "0326eb8abca2b3ce4de1c1b5d40333bc071ed921eca67b84e6e31220beb7ddb4",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "grenade-launcher": [
+      {
+        "src": "./assets/anatomy/revised-war-strider-grenade-launcher.webp",
+        "thumbnail": "./assets/anatomy/revised-war-strider-grenade-launcher-thumb.webp",
+        "title": "War Strider Grenade Launchers Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:War_Strider_Grenade_Launchers_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/War_Strider_Grenade_Launchers_Front.png?10468f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/War_Strider_Grenade_Launchers_Front.png/800px-War_Strider_Grenade_Launchers_Front.png?10468f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/War_Strider_Grenade_Launchers_Front.png/320px-War_Strider_Grenade_Launchers_Front.png?10468f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "0f7314cd8f9b787f3000feb5278e0c589f4374f01f3b646c8aef46806ba7c5ba",
+        "thumbnailSha256": "697044e248674e69a93c51bbbc79970ff8d7d5b7874298e0c96e73bc886192fb",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "greave": [
+      {
+        "src": "./assets/anatomy/revised-war-strider-greave.webp",
+        "thumbnail": "./assets/anatomy/revised-war-strider-greave-thumb.webp",
+        "title": "War Strider Greaves Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:War_Strider_Greaves_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/War_Strider_Greaves_Side.png?22cdaa",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/War_Strider_Greaves_Side.png/800px-War_Strider_Greaves_Side.png?22cdaa",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/War_Strider_Greaves_Side.png/320px-War_Strider_Greaves_Side.png?22cdaa",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "08b7c3c14d269cd523598d5716aceed960dccea793d8d0cef964662cd3b10434",
+        "thumbnailSha256": "81b46fcc0f327d748840038f25aedbfde619a6d3f8b93397247413c947d0fb0d",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
+  },
+  "vox-engine": {
+    "minigun": [
+      {
+        "src": "./assets/anatomy/revised-vox-engine-minigun.webp",
+        "thumbnail": "./assets/anatomy/revised-vox-engine-minigun-thumb.webp",
+        "title": "Vox Engine Gatling Guns Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Vox_Engine_Gatling_Guns_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Vox_Engine_Gatling_Guns_Front.png?d23bb3",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Vox_Engine_Gatling_Guns_Front.png/800px-Vox_Engine_Gatling_Guns_Front.png?d23bb3",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Vox_Engine_Gatling_Guns_Front.png/320px-Vox_Engine_Gatling_Guns_Front.png?d23bb3",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "e0af5e055573aefdceccbcde58e9683569b6e6b7e1fb6e689a542c0207633f0c",
+        "thumbnailSha256": "f46f0f144e987ed3d46ac6329a950c6a9c149c988fe2815c977ba02e0b6cd38f",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "speaker": [
+      {
+        "src": "./assets/anatomy/revised-vox-engine-speaker.webp",
+        "thumbnail": "./assets/anatomy/revised-vox-engine-speaker-thumb.webp",
+        "title": "Vox Engine Speakers Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Vox_Engine_Speakers_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Vox_Engine_Speakers_Front.png?d93742",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Vox_Engine_Speakers_Front.png/800px-Vox_Engine_Speakers_Front.png?d93742",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Vox_Engine_Speakers_Front.png/320px-Vox_Engine_Speakers_Front.png?d93742",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "85bcc2c7ffb574768626bfb286330ae2ad728f21ce8ebb3dbbd6457d32a5c708",
+        "thumbnailSha256": "5de8057acc129df84fdd0e0469da658591d14641d0b35c99aab9df75ed45b176",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "fog-light": [
+      {
+        "src": "./assets/anatomy/revised-vox-engine-fog-light.webp",
+        "thumbnail": "./assets/anatomy/revised-vox-engine-fog-light-thumb.webp",
+        "title": "Vox Engine Fog Lights.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Vox_Engine_Fog_Lights.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Vox_Engine_Fog_Lights.png?761203",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Vox_Engine_Fog_Lights.png/800px-Vox_Engine_Fog_Lights.png?761203",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Vox_Engine_Fog_Lights.png/320px-Vox_Engine_Fog_Lights.png?761203",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "aec6bb7099d92e66200521f72460d7793fea1d185c7b6b0ed0135f18af443a2c",
+        "thumbnailSha256": "f06d614305e82ce320be1743deae21d2a33d6d5a50bb843a56da0054f3d70de2",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
+  },
+  "warp-ship": {
+    "rear-fuselage": [
+      {
+        "src": "./assets/anatomy/revised-warp-ship-rear-fuselage.webp",
+        "thumbnail": "./assets/anatomy/revised-warp-ship-rear-fuselage-thumb.webp",
+        "title": "Airborne Warp Ship Rear Fuselage Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Airborne_Warp_Ship_Rear_Fuselage_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Airborne_Warp_Ship_Rear_Fuselage_Side.png?c73908",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Airborne_Warp_Ship_Rear_Fuselage_Side.png/800px-Airborne_Warp_Ship_Rear_Fuselage_Side.png?c73908",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Airborne_Warp_Ship_Rear_Fuselage_Side.png/320px-Airborne_Warp_Ship_Rear_Fuselage_Side.png?c73908",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "51c8ad437ef7e2edd278bde0ea1d383945a4569901e1fdf8d61d0eba448e09e6",
+        "thumbnailSha256": "a588d989365651df8640ab3edde3782298865f078d53676b4e40f317a4de1b1a",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "stern": [
+      {
+        "src": "./assets/anatomy/revised-warp-ship-stern.webp",
+        "thumbnail": "./assets/anatomy/revised-warp-ship-stern-thumb.webp",
+        "title": "Airborne Warp Ship Stern Side.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Airborne_Warp_Ship_Stern_Side.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Airborne_Warp_Ship_Stern_Side.png?e8622f",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Airborne_Warp_Ship_Stern_Side.png/800px-Airborne_Warp_Ship_Stern_Side.png?e8622f",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Airborne_Warp_Ship_Stern_Side.png/320px-Airborne_Warp_Ship_Stern_Side.png?e8622f",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "945d35d25d5a8bba928c7545107e24c5200bc23edf77e146304fa5a6db4ff1f1",
+        "thumbnailSha256": "93d015945759d4eb985fadf21719e55378c4d1332e9aa30529c17ce67c19b0a7",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "bow": [
+      {
+        "src": "./assets/anatomy/revised-warp-ship-bow.webp",
+        "thumbnail": "./assets/anatomy/revised-warp-ship-bow-thumb.webp",
+        "title": "Airborne Warp Ship Bow Front.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Airborne_Warp_Ship_Bow_Front.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Airborne_Warp_Ship_Bow_Front.png?88aa0e",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Airborne_Warp_Ship_Bow_Front.png/800px-Airborne_Warp_Ship_Bow_Front.png?88aa0e",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Airborne_Warp_Ship_Bow_Front.png/320px-Airborne_Warp_Ship_Bow_Front.png?88aa0e",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "259cc7a08dd7f1fa95ccb25839eab9630557c66c3af18221f9f7c88a419ea6cb",
+        "thumbnailSha256": "49b959b8d1bd576a1a1323fc1197bd482ffe477f03bb6c2c2075ef7a57b72b08",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
+  },
+  "leviathan": {
+    "front-fin": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-front-fin.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-front-fin-thumb.webp",
+        "title": "Leviathan Front Fins Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Front_Fins_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Front_Fins_Side_View.png?c67e44",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Front_Fins_Side_View.png/800px-Leviathan_Front_Fins_Side_View.png?c67e44",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Front_Fins_Side_View.png/320px-Leviathan_Front_Fins_Side_View.png?c67e44",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f98c1fbe0877d147f9399d6c3e48f86fc1dff79f5fa948a0ad7af611247924db",
+        "thumbnailSha256": "405421a2c21058e360d89533e1695f2e43294188d8af9e2d835641367b0ac9fc",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "warp-disc": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-warp-disc.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-warp-disc-thumb.webp",
+        "title": "Leviathan Warp Disc Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Warp_Disc_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Warp_Disc_Side_View.png?ca0554",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Warp_Disc_Side_View.png/800px-Leviathan_Warp_Disc_Side_View.png?ca0554",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Warp_Disc_Side_View.png/320px-Leviathan_Warp_Disc_Side_View.png?ca0554",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "6f148a7bb795d635d0666651acdd6ca2d8f7288947b7bae22d008426f543ccfc",
+        "thumbnailSha256": "9461d2c0148f62cc304d6ad285873e8e9d153224c83a92ed835503880d91c6e2",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "forward-middle-vertebra": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-forward-middle-vertebra.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-forward-middle-vertebra-thumb.webp",
+        "title": "Leviathan Forward-Middle Vertebrae Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Forward-Middle_Vertebrae_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Forward-Middle_Vertebrae_Side_View.png?ebdcbc",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Forward-Middle_Vertebrae_Side_View.png/800px-Leviathan_Forward-Middle_Vertebrae_Side_View.png?ebdcbc",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Forward-Middle_Vertebrae_Side_View.png/320px-Leviathan_Forward-Middle_Vertebrae_Side_View.png?ebdcbc",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "f6b81156e066d3dbe467c2a018e528cc5f7a0e063eee917df2d22b944e0447dc",
+        "thumbnailSha256": "b0d0681e1f3aa6db47aeeb80f9eab8c63cd530a71ce5a0efcd1ea0144832cd92",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "forward-middle-fin": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-forward-middle-fin.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-forward-middle-fin-thumb.webp",
+        "title": "Leviathan Forward-Middle Fins Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Forward-Middle_Fins_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Forward-Middle_Fins_Side_View.png?208005",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Forward-Middle_Fins_Side_View.png/800px-Leviathan_Forward-Middle_Fins_Side_View.png?208005",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Forward-Middle_Fins_Side_View.png/320px-Leviathan_Forward-Middle_Fins_Side_View.png?208005",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "2b50dff229f9db50202ddf678ec832641a069f3f5a3a76753f470c4b74186851",
+        "thumbnailSha256": "c3f91c71f7b4110fd1f2e0cc5f960f405b9334d3dfa2ae8654e82bb5d96296aa",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "rearward-middle-vertebra": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-rearward-middle-vertebra.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-rearward-middle-vertebra-thumb.webp",
+        "title": "Leviathan Rearward-Middle Vertebrae Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Rearward-Middle_Vertebrae_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Rearward-Middle_Vertebrae_Side_View.png?b5c219",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Rearward-Middle_Vertebrae_Side_View.png/800px-Leviathan_Rearward-Middle_Vertebrae_Side_View.png?b5c219",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Rearward-Middle_Vertebrae_Side_View.png/320px-Leviathan_Rearward-Middle_Vertebrae_Side_View.png?b5c219",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "894f7f5fabe25ca2e6e83b04688901923542f8da227172e058720e2570d1355c",
+        "thumbnailSha256": "dde5b237f3a940fac41c187c294e53c590c90fa3cf7350a55931f6756140a7ee",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "rearward-middle-fin": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-rearward-middle-fin.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-rearward-middle-fin-thumb.webp",
+        "title": "Leviathan Rearward-Middle Fins Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Rearward-Middle_Fins_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Rearward-Middle_Fins_Side_View.png?369ed0",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Rearward-Middle_Fins_Side_View.png/800px-Leviathan_Rearward-Middle_Fins_Side_View.png?369ed0",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Rearward-Middle_Fins_Side_View.png/320px-Leviathan_Rearward-Middle_Fins_Side_View.png?369ed0",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "016ee1c65072fe7cf48b3055670c32e21f0a43d6389f164769330312e795bcef",
+        "thumbnailSha256": "a1e6a66fdf0e5d8ccf4e348d97ce60d976595055f29f3320390ff03063f68159",
+        "retrievedAt": "2026-09-29"
+      }
+    ],
+    "rear-vertebra": [
+      {
+        "src": "./assets/anatomy/revised-leviathan-rear-vertebra.webp",
+        "thumbnail": "./assets/anatomy/revised-leviathan-rear-vertebra-thumb.webp",
+        "title": "Leviathan Rear Vertebrae Side View.png",
+        "stage": "initial",
+        "source": "https://helldivers.wiki.gg/wiki/File:Leviathan_Rear_Vertebrae_Side_View.png",
+        "originalUrl": "https://helldivers.wiki.gg/images/Leviathan_Rear_Vertebrae_Side_View.png?823123",
+        "renderedUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Rear_Vertebrae_Side_View.png/800px-Leviathan_Rear_Vertebrae_Side_View.png?823123",
+        "thumbnailUrl": "https://helldivers.wiki.gg/images/thumb/Leviathan_Rear_Vertebrae_Side_View.png/320px-Leviathan_Rear_Vertebrae_Side_View.png?823123",
+        "width": 800,
+        "height": 533,
+        "thumbnailWidth": 320,
+        "thumbnailHeight": 213,
+        "sha256": "492e4846ec65e0ab586a8bccdeb9abe1f0b8b94d9092371fd72285932fcac570",
+        "thumbnailSha256": "c618ddbd245dcccee245dcaa95215f463c0ba746fce2cf5f64949e57aebce2e0",
+        "retrievedAt": "2026-09-29"
+      }
+    ]
   }
 };

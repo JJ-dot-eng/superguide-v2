@@ -61,8 +61,10 @@ function legacyEnemy(enemy) {
     const [first, ...rest] = path.split('.');
     let target = first === 'main' ? copy.main : copy.parts.find(part => part.id === first);
     while (rest.length > 1) target = target[rest.shift()];
+    // null means the field did not exist in the legacy data.
     assert(target && Object.hasOwn(target, rest[0]), `${enemy.id}: legacy path ${path}`);
-    target[rest[0]] = value;
+    if (value === null) delete target[rest[0]];
+    else target[rest[0]] = value;
   }
   legacyReplayed.add(enemy.id);
   return copy;

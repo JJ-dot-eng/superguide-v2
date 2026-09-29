@@ -8,6 +8,8 @@ export const expandedEnemies = [
     "sourceRevision": 135089,
     "note": "기본 브루드 커맨더와 머리 내구도·본체 전달률이 다릅니다. 머리 파괴 후에도 잠시 돌진·증원 호출이 가능하며, 출혈 시작과 처치를 나눠 표시합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136691,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 1000,
       "armor": 2,
@@ -410,6 +412,8 @@ export const expandedEnemies = [
     "sourceRevision": 135099,
     "note": "은폐하지 않고 계속 추격하는 변종입니다. 본체 체력은 650으로 일반 스토커의 800과 다릅니다. 왼쪽 다리와 오른쪽 다리의 본체 전달률·전달 상한이 서로 다릅니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135099,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 650,
       "armor": 1,
@@ -497,6 +501,19 @@ export const expandedEnemies = [
         "effect": "break",
         "tip": "적 기준 오른쪽 다리 한쪽입니다. 본체 전달률 70%이며 전달 상한이 없습니다.",
         "sourcePart": "Right Legs (2)"
+      },
+      {
+        "id": "wing",
+        "name": "날개",
+        "hp": 125,
+        "armor": 0,
+        "durability": 50,
+        "exdr": 100,
+        "toMain": 30,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "등의 날개입니다. 체력 125로 따로 부서지며 본체에는 30%만 전달됩니다.",
+        "sourcePart": "Wings"
       }
     ],
     "spearLock": true
@@ -870,6 +887,8 @@ export const expandedEnemies = [
     "sourceRevision": 135104,
     "note": "본체 7,000·머리 2,500·포자낭 1,000으로 기본 바일 타이탄과 다릅니다. 포자낭 파괴와 처치를 구분합니다. 다리 살점의 추가 체력은 시간이 지나도 줄지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135104,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 7000,
       "armor": 4,
@@ -1003,6 +1022,73 @@ export const expandedEnemies = [
         "prerequisite": "해당 다리 장갑 제거 후",
         "isolated": true,
         "sourcePart": "Leg Flesh (3)"
+      },
+      {
+        "id": "claw",
+        "name": "앞발 한쪽",
+        "hp": 1000,
+        "armor": 4,
+        "durability": 0,
+        "exdr": 50,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "머리 앞의 집게 모양 앞발 하나입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.",
+        "sourcePart": "Claws (2)"
+      },
+      {
+        "id": "front-left-leg",
+        "name": "왼앞다리 장갑 → 살점",
+        "hp": 1000,
+        "armor": 4,
+        "durability": 100,
+        "exdr": 50,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "armor",
+        "tip": "적 기준 왼앞다리의 장갑판 하나를 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.",
+        "sourcePart": "Leg Armor (12)",
+        "next": {
+          "id": "front-left-leg-exposed",
+          "name": "노출된 왼앞다리 살점",
+          "hp": 2000,
+          "armor": 4,
+          "durability": 100,
+          "exdr": 50,
+          "toMain": 100,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "체력 2,000과 줄지 않는 추가 체력 1,500을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.",
+          "staticConstitution": 1500,
+          "sourcePart": "Front Left Leg Flesh"
+        }
+      },
+      {
+        "id": "leg",
+        "name": "다리 장갑 → 살점",
+        "hp": 1000,
+        "armor": 4,
+        "durability": 100,
+        "exdr": 50,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "armor",
+        "tip": "왼앞다리를 뺀 나머지 다리 하나의 장갑판을 벗긴 뒤 같은 자리의 살점을 계속 공격하세요.",
+        "sourcePart": "Leg Armor (12)",
+        "next": {
+          "id": "leg-exposed",
+          "name": "노출된 나머지 다리 살점",
+          "hp": 2000,
+          "armor": 4,
+          "durability": 100,
+          "exdr": 50,
+          "toMain": 100,
+          "overflowCap": false,
+          "effect": "kill",
+          "tip": "체력 2,000과 줄지 않는 추가 체력 2,000을 모두 소진하면 죽습니다. 그 전에 본체 체력이 바닥나도 죽습니다.",
+          "staticConstitution": 2000,
+          "sourcePart": "Leg Flesh (3)"
+        }
       }
     ],
     "spearLock": true
@@ -1171,6 +1257,11 @@ export const expandedEnemies = [
     "sourceRevision": 134950,
     "note": "본체 체력150,000이며 모든 부위 내구도는0%입니다. 입이 열렸을 때 입 안쪽을 맞히거나, 장갑의 자연 감소하지 않는 추가 체력까지 깎아 살점을 드러내야 합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136936,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyTables": [
+      0
+    ],
     "main": {
       "hp": 150000,
       "armor": 5,
@@ -1312,6 +1403,19 @@ export const expandedEnemies = [
         "effect": "break",
         "tip": "머리 최상단의 매우 단단한 왕관입니다. 장갑10·폭발저항100%로 대부분의 직격 무기가 관통하지 못합니다.",
         "sourcePart": "Crown"
+      },
+      {
+        "id": "fin",
+        "name": "지느러미 한 개",
+        "hp": 5000,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 50,
+        "toMain": 25,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "몸을 따라 난 지느러미 하나입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Fins (14)"
       }
     ],
     "spearLock": true
@@ -1324,6 +1428,11 @@ export const expandedEnemies = [
     "sourceRevision": 135127,
     "note": "눈은 직접 맞혀야 하며 폭발 피해에 면역입니다. 후방 방열판 파괴는 출혈을 시작합니다. 한쪽 다리 파괴와 양쪽 다리 파괴를 구분합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135127,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyLegacy": {
+      "leg.staticConstitution": null
+    },
     "main": {
       "hp": 1800,
       "armor": 4,
@@ -1388,7 +1497,8 @@ export const expandedEnemies = [
         "constitution": 0,
         "resultLabel": "다리 기능 상실",
         "transferExtraHealth": 500,
-        "sourcePart": "Legs (2)"
+        "sourcePart": "Legs (2)",
+        "staticConstitution": 500
       }
     ],
     "spearLock": true
@@ -1401,6 +1511,11 @@ export const expandedEnemies = [
     "sourceRevision": 135125,
     "note": "눈은 직접 맞혀야 하며 폭발 피해에 면역입니다. 후방 방열판 파괴는 출혈을 시작합니다. 한쪽 다리 파괴와 양쪽 다리 파괴를 구분합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135125,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyLegacy": {
+      "leg.staticConstitution": null
+    },
     "main": {
       "hp": 1800,
       "armor": 4,
@@ -1465,7 +1580,8 @@ export const expandedEnemies = [
         "constitution": 0,
         "resultLabel": "다리 기능 상실",
         "transferExtraHealth": 500,
-        "sourcePart": "Legs (2)"
+        "sourcePart": "Legs (2)",
+        "staticConstitution": 500
       }
     ],
     "spearLock": true
@@ -1478,6 +1594,11 @@ export const expandedEnemies = [
     "sourceRevision": 135177,
     "note": "눈은 직접 맞혀야 하며 폭발 피해에 면역입니다. 후방 방열판 파괴는 출혈을 시작합니다. 한쪽 다리 파괴와 양쪽 다리 파괴를 구분합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135177,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyLegacy": {
+      "leg.staticConstitution": null
+    },
     "main": {
       "hp": 1800,
       "armor": 4,
@@ -1546,7 +1667,8 @@ export const expandedEnemies = [
         "resultLabel": "다리 기능 상실",
         "transferExtraHealth": 500,
         "capUnverified": true,
-        "sourcePart": "Legs (2)"
+        "sourcePart": "Legs (2)",
+        "staticConstitution": 500
       }
     ],
     "spearLock": true
@@ -1559,6 +1681,11 @@ export const expandedEnemies = [
     "sourceRevision": 135140,
     "note": "제트팩이 일반 헐크의 후방 방열판을 완전히 가립니다. 제트팩 파괴는 출혈 없이 즉사하며 장갑은 3입니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135140,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyLegacy": {
+      "leg.staticConstitution": null
+    },
     "main": {
       "hp": 1800,
       "armor": 4,
@@ -1625,7 +1752,8 @@ export const expandedEnemies = [
         "constitution": 0,
         "resultLabel": "다리 기능 상실",
         "transferExtraHealth": 500,
-        "sourcePart": "Legs (2)"
+        "sourcePart": "Legs (2)",
+        "staticConstitution": 500
       }
     ],
     "spearLock": true
@@ -1638,6 +1766,11 @@ export const expandedEnemies = [
     "sourceRevision": 135139,
     "note": "제트팩이 일반 헐크의 후방 방열판을 완전히 가립니다. 제트팩 파괴는 출혈 없이 즉사하며 장갑은 3입니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135139,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyLegacy": {
+      "leg.staticConstitution": null
+    },
     "main": {
       "hp": 1800,
       "armor": 4,
@@ -1704,7 +1837,8 @@ export const expandedEnemies = [
         "constitution": 0,
         "resultLabel": "다리 기능 상실",
         "transferExtraHealth": 500,
-        "sourcePart": "Legs (2)"
+        "sourcePart": "Legs (2)",
+        "staticConstitution": 500
       }
     ],
     "spearLock": true
@@ -2148,6 +2282,8 @@ export const expandedEnemies = [
     "sourceRevision": 135195,
     "note": "눈·후방 방열판·고관절이 치명 부위입니다. 눈과 고관절은 폭발 피해를 받지 않으며, 다리 뒤 정강이 장갑은 별도 장갑5 부위입니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136760,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 3500,
       "armor": 4,
@@ -2239,6 +2375,48 @@ export const expandedEnemies = [
         "tip": "다리 본체를 노리세요. 뒤쪽의 장갑5 정강이 덮개는 다른 부위입니다.",
         "constitution": 0,
         "sourcePart": "Legs (2)"
+      },
+      {
+        "id": "fusion-cannon",
+        "name": "융합포 한 문",
+        "hp": 500,
+        "armor": 4,
+        "durability": 80,
+        "exdr": 40,
+        "toMain": null,
+        "overflowCap": null,
+        "effect": "break",
+        "tip": "팔 끝의 융합포입니다. 독립 장치라 부숴도 본체에 피해가 가지 않습니다.",
+        "constitution": 0,
+        "partOnly": true,
+        "partOnlyNote": "독립 장치 자체의 파괴 기준입니다. 본체로 전달되는 피해와 후속 폭발에 의한 처치 횟수는 합산하지 않습니다.",
+        "sourcePart": "Fusion Cannons (2)"
+      },
+      {
+        "id": "grenade-launcher",
+        "name": "유탄 발사기 한 문",
+        "hp": 400,
+        "armor": 4,
+        "durability": 70,
+        "exdr": 100,
+        "toMain": 0,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "유탄 발사기 하나입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.",
+        "sourcePart": "Grenade Launchers (2)"
+      },
+      {
+        "id": "greave",
+        "name": "정강이 보호대 한쪽",
+        "hp": 150,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 50,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "다리 앞의 두꺼운 정강이 보호대입니다. 부숴도 죽지 않습니다.",
+        "sourcePart": "Greaves (2)"
       }
     ],
     "spearLock": true
@@ -2251,6 +2429,8 @@ export const expandedEnemies = [
     "sourceRevision": 135133,
     "note": "비행 중인 드롭십 기준입니다. 동체 파괴와 추진기 파괴로 인한 추락은 다르며, 추락만으로 실린 병력 전멸을 보장하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135133,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 3500,
       "armor": 5,
@@ -3260,11 +3440,31 @@ export const expandedEnemies = [
             "두 폭발의 관통·반경·저항을 따로 적용한 뒤, 같은 부위에 들어온 피해만 합칩니다. 별도 직격 피해는 없습니다."
           ],
           "rows": [
-            { "part": "몸통", "formula": "(1,000 + 600) × 100%", "mainDamage": 1600 },
-            { "part": "하부 차체", "formula": "(1,000 + 600) × 100%", "mainDamage": 1600 },
-            { "part": "궤도 고정부 ×4", "formula": "(1,000 + 600) × 50% × 4", "mainDamage": 3200 },
-            { "part": "궤도 ×4", "formula": "(1,000 + 600) × 60% × 4", "mainDamage": 3840 },
-            { "part": "몸통 덮개 ×2", "formula": "두 폭발 합산 상한 500 × 2", "mainDamage": 1000 }
+            {
+              "part": "몸통",
+              "formula": "(1,000 + 600) × 100%",
+              "mainDamage": 1600
+            },
+            {
+              "part": "하부 차체",
+              "formula": "(1,000 + 600) × 100%",
+              "mainDamage": 1600
+            },
+            {
+              "part": "궤도 고정부 ×4",
+              "formula": "(1,000 + 600) × 50% × 4",
+              "mainDamage": 3200
+            },
+            {
+              "part": "궤도 ×4",
+              "formula": "(1,000 + 600) × 60% × 4",
+              "mainDamage": 3840
+            },
+            {
+              "part": "몸통 덮개 ×2",
+              "formula": "두 폭발 합산 상한 500 × 2",
+              "mainDamage": 1000
+            }
           ],
           "total": 11240,
           "notes": [
@@ -3275,9 +3475,18 @@ export const expandedEnemies = [
             "본체 체력 소진과 즉시 파괴는 구분합니다. 위의 1발 처치 안내는 위키 전술 설명 기준이며, 이 합계는 출혈·폭발 시점까지 재현한 결과가 아닙니다."
           ],
           "sources": [
-            { "url": "https://helldivers.wiki.gg/wiki/Solo_Silo", "label": "솔로 사일로 수치" },
-            { "url": "https://helldivers.wiki.gg/wiki/Damage", "label": "폭발 피해 규칙" },
-            { "url": "https://helldivers.wiki.gg/wiki/Template:Anatomy_Table", "label": "본체 전달·중복 판정" }
+            {
+              "url": "https://helldivers.wiki.gg/wiki/Solo_Silo",
+              "label": "솔로 사일로 수치"
+            },
+            {
+              "url": "https://helldivers.wiki.gg/wiki/Damage",
+              "label": "폭발 피해 규칙"
+            },
+            {
+              "url": "https://helldivers.wiki.gg/wiki/Template:Anatomy_Table",
+              "label": "본체 전달·중복 판정"
+            }
           ]
         },
         "source": "https://helldivers.wiki.gg/wiki/Vox_Engine#Tactical_Information",
@@ -3298,12 +3507,36 @@ export const expandedEnemies = [
             "폭발 저항 60%인 부위에는 2,500 × 40% = 1,000 피해가 들어갑니다. 여기에 각 부위의 본체 전달 비율과 누적 상한을 적용합니다."
           ],
           "rows": [
-            { "part": "몸통 직격", "formula": "1,000 × 100%", "mainDamage": 1000 },
-            { "part": "몸통 폭발", "formula": "1,000 × 100%", "mainDamage": 1000 },
-            { "part": "하부 차체", "formula": "1,000 × 100%", "mainDamage": 1000 },
-            { "part": "궤도 고정부 ×4", "formula": "1,000 × 50% × 4", "mainDamage": 2000 },
-            { "part": "궤도 ×4", "formula": "1,000 × 60% × 4", "mainDamage": 2400 },
-            { "part": "몸통 덮개 ×2", "formula": "한쪽당 전달 상한 500 × 2", "mainDamage": 1000 }
+            {
+              "part": "몸통 직격",
+              "formula": "1,000 × 100%",
+              "mainDamage": 1000
+            },
+            {
+              "part": "몸통 폭발",
+              "formula": "1,000 × 100%",
+              "mainDamage": 1000
+            },
+            {
+              "part": "하부 차체",
+              "formula": "1,000 × 100%",
+              "mainDamage": 1000
+            },
+            {
+              "part": "궤도 고정부 ×4",
+              "formula": "1,000 × 50% × 4",
+              "mainDamage": 2000
+            },
+            {
+              "part": "궤도 ×4",
+              "formula": "1,000 × 60% × 4",
+              "mainDamage": 2400
+            },
+            {
+              "part": "몸통 덮개 ×2",
+              "formula": "한쪽당 전달 상한 500 × 2",
+              "mainDamage": 1000
+            }
           ],
           "total": 8400,
           "notes": [
@@ -3314,9 +3547,18 @@ export const expandedEnemies = [
             "본체 체력 소진과 즉시 파괴는 구분합니다. 위의 1발 처치 안내는 위키 전술 설명 기준이며, 이 합계는 출혈·폭발 시점까지 재현한 결과가 아닙니다."
           ],
           "sources": [
-            { "url": "https://helldivers.wiki.gg/wiki/EAT-411_Leveller", "label": "평탄화기 수치" },
-            { "url": "https://helldivers.wiki.gg/wiki/Damage", "label": "폭발 피해 규칙" },
-            { "url": "https://helldivers.wiki.gg/wiki/Template:Anatomy_Table", "label": "본체 전달·중복 판정" }
+            {
+              "url": "https://helldivers.wiki.gg/wiki/EAT-411_Leveller",
+              "label": "평탄화기 수치"
+            },
+            {
+              "url": "https://helldivers.wiki.gg/wiki/Damage",
+              "label": "폭발 피해 규칙"
+            },
+            {
+              "url": "https://helldivers.wiki.gg/wiki/Template:Anatomy_Table",
+              "label": "본체 전달·중복 판정"
+            }
           ]
         },
         "source": "https://helldivers.wiki.gg/wiki/Vox_Engine#Tactical_Information",
@@ -3326,6 +3568,8 @@ export const expandedEnemies = [
     ],
     "note": "본체 체력이 소진된 뒤 추가 체력 50,000이 초당 10,000씩 감소하여 폭발합니다. 무장·방열판 파괴의 별도 본체 피해와 해치 수류탄 조건이 있습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 134993,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 9000,
       "armor": 5,
@@ -3478,6 +3722,50 @@ export const expandedEnemies = [
         "constitution": null,
         "unknownReason": "체력·내구도·폭발저항 수치가 없고 투척물만 적용되는 특수 처치 기믹입니다. 일반 지원무기 횟수 계산에서는 제외합니다.",
         "sourcePart": "Hatches (2)"
+      },
+      {
+        "id": "minigun",
+        "name": "미니건 한 정",
+        "hp": 300,
+        "armor": 3,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": null,
+        "overflowCap": null,
+        "effect": "break",
+        "tip": "몸체의 미니건 하나입니다. 독립 장치라 부숴도 본체에 피해가 가지 않습니다.",
+        "constitution": 0,
+        "partOnly": true,
+        "partOnlyNote": "독립 장치 자체의 파괴 기준입니다. 본체로 전달되는 피해와 후속 폭발에 의한 처치 횟수는 합산하지 않습니다.",
+        "sourcePart": "Miniguns (2)"
+      },
+      {
+        "id": "speaker",
+        "name": "스피커 한 개",
+        "hp": 800,
+        "armor": 3,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 0,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "선전 방송 스피커 하나입니다. 부숴도 죽지 않고 본체에 피해가 가지 않습니다.",
+        "constitution": 0,
+        "sourcePart": "Speakers (2)"
+      },
+      {
+        "id": "fog-light",
+        "name": "안개등 한 개",
+        "hp": 50,
+        "armor": 1,
+        "durability": 60,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "앞의 작은 안개등 하나입니다. 부숴도 죽지 않습니다.",
+        "constitution": 0,
+        "sourcePart": "Fog Lights (2)"
       }
     ],
     "spearLock": true
@@ -3629,6 +3917,8 @@ export const expandedEnemies = [
     "sourceRevision": 135182,
     "note": "여러 머리·복부 덩어리는 각각 별도 체력입니다. 한 덩어리 파괴를 처치로 취급하지 않으며, 서로 다른 덩어리에 들어간 피해를 자동 합산하지 않습니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136675,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 5000,
       "armor": 0,
@@ -3700,6 +3990,8 @@ export const expandedEnemies = [
     "sourceRevision": 135184,
     "note": "기총소사를 하는 비행체입니다. 사격구는 별도 부위 체력이 아니라 본체 체력을 공유합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135184,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 800,
       "armor": 3,
@@ -3733,6 +4025,11 @@ export const expandedEnemies = [
     "sourceRevision": 135186,
     "note": "지느러미나 꼬리를 부수면 장갑 4의 내부가 드러납니다. 한 외피 파괴와 전체 함선 처치를 구분합니다.",
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135186,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyMerged": {
+      "Broken: Damaged Rearward- Middle Vertebra": "rearward-middle-vertebra"
+    },
     "main": {
       "hp": 15000,
       "armor": 4,
@@ -3821,6 +4118,97 @@ export const expandedEnemies = [
         "tip": "하부 빔 포탑 하나를 노리세요. 파괴하면 공격을 줄일 수 있지만 본체 전달 비율은 미확인입니다.",
         "unknownReason": "본체 피해 전달 비율이 자료 미확인이라 이 부위의 최종 횟수는 계산 보류합니다.",
         "sourcePart": "Turrets (4)"
+      },
+      {
+        "id": "front-fin",
+        "name": "앞 지느러미 한쪽",
+        "hp": 5500,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 35,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Front Fins (2)"
+      },
+      {
+        "id": "warp-disc",
+        "name": "워프 디스크",
+        "hp": 3000,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Warp Disc"
+      },
+      {
+        "id": "forward-middle-vertebra",
+        "name": "앞쪽 중간 척추 외피",
+        "hp": 5500,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 35,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Forward-Middle Vertebra"
+      },
+      {
+        "id": "forward-middle-fin",
+        "name": "앞쪽 중간 지느러미 한쪽",
+        "hp": 5000,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 35,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Forward-Middle Fins (2)"
+      },
+      {
+        "id": "rearward-middle-vertebra",
+        "name": "뒤쪽 중간 척추 외피",
+        "hp": 5500,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 35,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Rearward-Middle Vertebra"
+      },
+      {
+        "id": "rearward-middle-fin",
+        "name": "뒤쪽 중간 지느러미 한쪽",
+        "hp": 3900,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 35,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Rearward-Middle Fins (2)"
+      },
+      {
+        "id": "rear-vertebra",
+        "name": "후방 척추 외피",
+        "hp": 5000,
+        "armor": 5,
+        "durability": 0,
+        "exdr": 35,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Rear Vertebra"
       }
     ],
     "spearLock": true
@@ -3840,6 +4228,11 @@ export const expandedEnemies = [
       "armor": 0
     },
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 135185,
+    "anatomyCheckedAt": "2026-09-28",
+    "anatomyOmitted": {
+      "Shield": "The energy shield is the shield toggle (cleared before counting), not a part"
+    },
     "main": {
       "hp": 3500,
       "armor": 5,
@@ -3888,6 +4281,45 @@ export const expandedEnemies = [
         "effect": "break",
         "tip": "앞쪽 선체 장갑 한 구역입니다. 장갑 파괴 이후 노출 부위의 수치가 없어 그 시점에서 계산을 멈춥니다.",
         "sourcePart": "Frontal Fuselage (2)"
+      },
+      {
+        "id": "rear-fuselage",
+        "name": "후방 동체 한쪽",
+        "hp": 1000,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": false,
+        "effect": "break",
+        "tip": "선체 뒤쪽 동체 하나입니다. 부숴도 죽지 않지만 초과 피해까지 모두 본체로 전달됩니다.",
+        "sourcePart": "Rear Fuselage (2)"
+      },
+      {
+        "id": "stern",
+        "name": "선미 한쪽",
+        "hp": 1000,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Stern (2)"
+      },
+      {
+        "id": "bow",
+        "name": "선수",
+        "hp": 1000,
+        "armor": 5,
+        "durability": 100,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "함선 외피의 한 구역입니다. 부숴도 함선은 죽지 않으며, 본체로 전달되는 피해는 이 구역 체력까지입니다.",
+        "sourcePart": "Bow"
       }
     ],
     "spearLock": true
@@ -4482,6 +4914,8 @@ export const expandedEnemies = [
       "note": "재생을 제외한 최소 이론값입니다. 피격 후 0.5초부터 초당 체력 30이 재생되어 공격 간격에 따라 더 필요할 수 있습니다. 머리·헬멧은 재생하지 않습니다."
     },
     "checkedAt": "2026-09-16",
+    "anatomyRevision": 136236,
+    "anatomyCheckedAt": "2026-09-28",
     "main": {
       "hp": 6000,
       "armor": 1,
@@ -4588,6 +5022,19 @@ export const expandedEnemies = [
           "initial"
         ],
         "sourcePart": "Arms (2)"
+      },
+      {
+        "id": "pelvis",
+        "name": "골반부",
+        "hp": 4000,
+        "armor": 1,
+        "durability": 60,
+        "exdr": 100,
+        "toMain": 100,
+        "overflowCap": true,
+        "effect": "break",
+        "tip": "허리 아래 골반부입니다. 부숴도 죽지 않지만 피해가 모두 본체로 전달됩니다.",
+        "sourcePart": "Pelvis"
       }
     ],
     "spearLock": true
