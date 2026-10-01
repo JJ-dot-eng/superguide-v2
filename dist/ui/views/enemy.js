@@ -18,6 +18,7 @@ import { search } from '../../core/search.js';
 import { num, pct, unitOf, outcomeOf, countText, attackStats, assumptionText, aimText, routeNotes, assumptionSummary, assumptionTag, deliveryOf, josa } from '../../core/explain.js';
 import { html, raw, render, $, $$, icon, badge, external } from '../dom.js';
 import { L, T, lang } from '../../core/i18n.js';
+import { displayName } from '../gear-shared.js';
 
 const FACTIONS = ['테르미니드', '오토마톤', '일루미닛'];
 const DEFAULT_ENEMY = 'charger';
@@ -28,7 +29,7 @@ const GROUPS = [
   { id: 'secondary', name: L('보조무기', 'Secondary'), link: id => `#/gear/${id}`, linkLabel: L('장비에서 보기', 'Open in Gear') },
   { id: 'throwable', name: L('투척', 'Throwable'), link: id => `#/gear/${id}`, linkLabel: L('장비에서 보기', 'Open in Gear') },
 ];
-const personalEntry = w => ({ id: w.id, name: w.name || w.en, code: w.code, source: w.source, group: w.category });
+const personalEntry = w => ({ id: w.id, name: displayName(w), code: w.code, source: w.source, group: w.category });
 const weaponsOf = {
   support: supportWeapons.map(item => ({ ...item, group: 'support' })),
   ...Object.fromEntries(['primary', 'secondary', 'throwable'].map(group => [group, personalWeapons.filter(w => w.category === group && (personalProfiles[w.id] || personalUnsupported[w.id])).map(personalEntry)])),

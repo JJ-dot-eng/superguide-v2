@@ -62,7 +62,9 @@ export function compareAttacks(enemy, entries = [], options = {}) {
     const rawMode = modeId ? resolved.profile?.modes.find(mode => mode.id === modeId) : resolved.profile?.modes[0];
     const base = {
       ...resolved, weaponId, modeId: rawMode?.id ?? modeId ?? null,
-      weaponLabel: resolved.weapon?.name || resolved.weapon?.en || weaponId,
+      // A personal weapon keeps its own English name: its Korean name can
+      // also name an enemy (스토커 is both the Stoker and the Stalker).
+      weaponLabel: (resolved.kind === 'personal' ? L(resolved.weapon.name || resolved.weapon.en, resolved.weapon.en || resolved.weapon.name) : resolved.weapon?.name || resolved.weapon?.en) || weaponId,
       modeLabel: rawMode?.name || null, mode: rawMode || null,
       status: 'unsupported', reason: resolved.unsupported || rawMode?.unsupported || null,
       route: null, best: null, rows: [], hits: null, outcome: null, part: null,

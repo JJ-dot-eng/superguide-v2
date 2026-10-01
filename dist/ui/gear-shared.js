@@ -21,4 +21,6 @@ const TYPE_ORDER = ['assault-rifles', 'marksman-rifles', 'submachine-guns', 'sho
 export const orderTypes = types => [...types].sort((a, b) => (TYPE_ORDER.indexOf(a) + 1 || 99) - (TYPE_ORDER.indexOf(b) + 1 || 99));
 export const typeName = type => TYPE_NAMES[type] || type || L('기타', 'Other');
 export const weaponById = new Map(personalWeapons.map(weapon => [weapon.id, weapon]));
-export const displayName = w => w.name || w.en;
+// Use the weapon's own English name: Korean names can also name an enemy
+// (e.g. 스토커 is both the Stoker weapon and the Stalker enemy).
+export const displayName = w => L(w.name || w.en, w.en || w.name);

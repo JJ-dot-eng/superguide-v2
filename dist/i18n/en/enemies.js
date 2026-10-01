@@ -33,6 +33,7 @@ export default {
   "앞다리 한쪽": "One Front Leg",
   "몸통 외피": "Body Armor",
   "아래쪽 복부": "Underbelly",
+  "스토커": "Stalker",
   "프레데터 스토커": "Predator Stalker",
   "왼쪽 다리 한쪽": "One Left Leg",
   "오른쪽 다리 한쪽": "One Right Leg",

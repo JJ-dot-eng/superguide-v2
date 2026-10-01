@@ -61,6 +61,24 @@ ok(countText({ hits: 3 }, { unit: '발' }) === '3 shots' && countText({ hits: 1,
 ok(unitOf({ unit: '회' }, 1).unit === ' hit', 'English units');
 const { html } = await import('../dist/ui/dom.js');
 ok(String(html`<p title="${'차저'}" data-f="${'테르미니드'}">${'차저'}</p>`) === '<p title="Charger" data-f="테르미니드">Charger</p>', 'shown text is translated; data attributes keep their Korean key');
+// Shared Korean names must retain their entity-specific English meaning.
+const { enemies } = await import('../dist/data/combat-data.js');
+const { personalWeapons } = await import('../dist/data/personal-weapons.js');
+const { displayName } = await import('../dist/ui/gear-shared.js');
+const { compareAttacks } = await import('../dist/core/compare.js');
+const stalker = enemies.find(enemy => enemy.id === 'stalker');
+const stoker = personalWeapons.find(weapon => weapon.id === 'stoker');
+ok(stalker.name === stoker.name, 'Stalker and Stoker exercise the same Korean name');
+for (const language of ['ko', 'en', 'ko', 'en']) {
+  setLang(language);
+  const enemyName = language === 'en' ? 'Stalker' : '스토커';
+  const weaponName = language === 'en' ? 'SMG/FLAM-34 Stoker' : '스토커';
+  ok(T(stalker.name) === enemyName, `${language}: enemy name`);
+  ok(String(html`<button data-enemy="${stalker.id}">${stalker.name}</button><h1>${stalker.name}</h1>`) === `<button data-enemy="stalker">${enemyName}</button><h1>${enemyName}</h1>`, `${language}: enemy list/title translation`);
+  ok(displayName(stoker) === weaponName && String(html`<h2>${displayName(stoker)}</h2>`) === `<h2>${weaponName}</h2>`, `${language}: weapon name survives DOM translation`);
+  const compared = compareAttacks(stalker, [{ weaponId: 'stoker' }]).entries[0];
+  ok(String(html`<div>${compared.weaponLabel}</div>`) === `<div>${weaponName}</div>`, `${language}: compare table weapon name`);
+}
 setLang('ko');
 
 console.log(`PASS i18n: ${checks} checks (${strings.size} Korean data strings with English, dictionary clean, helpers).`);
